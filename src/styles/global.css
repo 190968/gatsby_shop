@@ -1,0 +1,415 @@
+html {
+  background-color: lavenderblush;
+}
+
+
+/* span {
+    font-size: 50px;
+    vertical-align: middle;
+    margin: 30px;
+    display: inline-block;
+    color: red;
+} */
+.img_min {
+    
+    height: 100px;
+    margin: 10px;
+   
+}
+.header {   
+    text-align: left;
+    padding: 10px 15px;
+    background-color: cornflowerblue;
+}
+.footer {    
+    width: 100%;    
+    margin: 60px 0 0;
+}
+.footer p {
+    font-size: 16px;
+}
+.main_Menu_link {
+    
+    width: 16.666%;
+    height: 50px;
+    box-sizing: border-box; 
+    text-decoration: khaki;
+    font: 600 20px/50px 'Verdana', sans-serif;
+    display: inline-block;
+    background-color: chartreuse;
+    text-shadow: none;
+    border-bottom: none;
+}
+.main_Menu_link:hover {
+  font-size: 22px;
+  text-shadow: 0 0 1px red;
+}
+.menu_items {
+    background-color: lavender;    
+    margin: 10px 0 0;
+    padding: 0;
+    text-align: left;
+    font-weight: 600; 
+}
+.menu_items span {
+    font-size: 24px;
+}
+.items p span,
+img  {
+    display: inline-block;
+    vertical-align: middle;
+}
+.items {
+    margin: 5px 0;
+    text-align: left;
+}
+.main_block {
+    width: 80%;
+    margin: 20px auto;
+    text-align: center;
+
+}
+.span_image {
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+    cursor: pointer;
+}
+.brand_favorite {
+    font:italic 600 20px/20px 'Verdana', sans-serif;
+    color: blueviolet;
+    margin: 0;
+}
+.quantBag {
+    margin: -10px -40px 0 0;
+    color: red;
+    width: 1.5%;
+    padding: 0 5px;
+    text-align: center;
+    border-radius: 15px;
+    background-color: lawngreen;
+    float: right;
+    font: 600 16px/20px 'Arial', sans-serif;
+   
+   
+    display: block;
+}
+.span_image:hover {
+    border: 1px solid red;
+   
+   
+   
+}
+.img_div {
+    display: inline-block;
+    margin: 10px;
+    width: auto;
+}
+h4 {
+    margin: 0;
+}
+
+b {
+    font-size: 18px;
+    padding: 5px;
+}
+div span {
+    color: #000;
+    font-size: 1em;
+    display: inline-block;
+    width: 15%;
+    text-align: center;
+    vertical-align: middle;
+    margin: 0;
+
+}
+.cost {
+    cursor: pointer;
+    width: 10%;
+    font-size: 23px;
+}
+img {
+    margin: -5px 0 0;
+    cursor: pointer;
+    padding: 5px;
+}
+/* img:hover {
+   transform: scale(1.2);
+} */
+.img_main_link:hover {
+   text-decoration: underline;
+   
+}
+.img_main_link {   
+    color: #ffffff;
+    height: 20vw;
+    background-size: 100%;
+    font: 300 25px/20vw 'Arial', sans-serif;
+    background-repeat: no-repeat;
+    width: 33%;
+    margin: 1vw 0.1vw ;
+    display: inline-block;
+    cursor: pointer;
+    text-shadow: none;
+    text-decoration: none;
+}
+.div_image {
+    vertical-align: top;
+    width: 65%;
+    float: left;
+    margin: 0;
+    
+    
+}
+.div_phone {
+    height: auto;
+    margin: 10px 0;
+}
+.div_menu {
+    height: auto;
+    width: 100%;
+}
+.delivery_main {
+    position: fixed;
+    top: 200px;
+    text-align: left;
+    background-color: lavender;
+    width: 80%;
+   
+}
+.delivery_name {
+    margin: 0 auto;
+    width: 30%;
+    padding: 10px;
+    background-color: lavender;
+   
+}
+.div_delivery {
+    height: auto;
+    width: 29%;
+    padding: 0;
+    margin: 0 0 20px 10px;
+    display: inline-block;
+    background-color: lavender;
+    vertical-align: top;
+    position: relative; 
+    text-align: left; 
+}
+.div_delivery:before {
+    content: "SELECT DELIVERY";
+    font-size: 18px;
+    font-weight: 600;
+    display: block;
+    padding: 3px;
+    left: 0;
+    background-color: cornflowerblue;
+    position: absolute;
+    width: 100%;
+    top: -30px;
+}
+.admin {
+    text-align: center;
+}
+.admin button {
+    width: 20%;
+    border-radius: 0;
+   
+}
+.orders {
+    width: 100%;
+    margin: 120px auto;
+    position: relative;    
+}
+.orders:before {
+    content: "YOUR ORDERS LAST FOUR MOUNTH";
+    border-bottom: 1px solid #000;
+    font-size: 22px;
+    font-weight: 600;
+    display: block;
+    padding: 3px;
+    left: 0;
+    text-align: left;
+    position: absolute;
+    width: 100%;
+    top: -80px;
+}
+.go_to_account {
+    margin: 80px 0 0;
+    position: relative;
+    
+}
+.go_to_account:before {
+    content: "ENTER TO ACCOUNT";
+    border-bottom: 1px solid #000;
+    font-size: 18px;
+    font-weight: 600;
+    display: block;
+    padding: 3px;
+    left: 0;
+    text-align: left;
+    position: absolute;
+    width: 100%;
+    top: -40px;
+}
+.div_bag_menu {
+   
+    margin-top: 50px;
+    background-color: lavender;
+    font-size: 20px;
+    text-align: justify;
+    font-weight: 600;
+    width:70%;
+    position: relative;  
+}
+.div_bag_menu:before {
+    content: "YOUR BAG";
+    font-size: 23px;
+    position: absolute;
+    top: -30px;
+}
+.div_content {
+    width: 30%;
+    vertical-align: top;
+    height: 60%;
+    text-align: left;
+    float: left;
+    
+    
+}
+.div_content h2,h3,p,span {
+    margin: 15px 0;
+}
+.div_description {
+    width: 30%;
+    margin: 0;
+    float: left;
+    vertical-align: top;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+    height: 40%;
+    text-align: left;
+    
+}
+.div_description li {
+    margin: 0 5px;
+    font-size: 16px;
+}
+.div_item {
+    position: fixed;
+    width: 80%;
+    height: 100%;
+    background-color: #fff;
+    left: 10%;
+    top: 0;    
+}
+.div_bag_item {
+   float: left;
+    
+    text-align: justify;
+    margin: 10px 0;
+    border-bottom: 1px solid #ddd;
+    width: 70%
+}
+.div_big_image {
+    margin: 20px 0;   
+    margin: 10px;
+    width: auto;
+    height: 550px;    
+    background-position: center;    
+    background-repeat: no-repeat;
+}
+.div_small_image {
+    display: inline-block;
+    width: 150px;
+    height: 100px;    
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    margin: 0 5px;
+}
+.div_small_image:hover {
+    border-bottom: 2px solid #000;
+}
+.size {
+   
+    display: inline-block;
+    border: 1px solid lavenderblush;
+    padding: 3px;
+    width: auto;
+    margin: 0  2px;
+    font: 300 16px/20px 'Arial', sans-serif;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.size:hover {
+    border: 1px solid #ddd;
+}
+@media screen and (max-width: 1000px) {
+    .main_block {
+      width: 100%;
+      padding: 5px;
+      margin: 0;
+    }
+    .menu .link {
+        font-size: 18px;
+        padding: 1em 0;
+    }
+    .menu .link,
+    .main_Menu_link {
+    padding: 0.5em 0;   
+    width: 33.33%;
+    height: auto;
+    text-align: center;
+    text-decoration: khaki;
+    font: 400 16px/16px 'Verdana', sans-serif;
+    display: inline-block;
+    background-color: chartreuse;
+    text-shadow: none;   
+    }
+    .div_bag_item,
+    .div_bag_menu {       
+        width: 100%
+    }
+    .div_delivery {
+        width: 60%;
+    }
+    .div_item {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        left: 0;
+        top: 0%;    
+    }
+    .div_image {
+        margin: 0 auto;
+        float: none;
+        height: 80vw;
+    }
+    .div_big_image {
+         
+        margin:  0 auto;
+        width: auto;
+        height: 60vw;
+        background-position: center;    
+        background-repeat: no-repeat;
+    }
+    .div_small_image {
+        width: 15vw;
+        height: 15vw;
+    }
+    .div_content,
+    .div_description {
+        width: 45vw;
+        margin: 10px;
+    }
+    .delivery_name {       
+        left: 15%;
+        width: 70%;       
+    }
+    .img_main_link {      
+        font: 300 18px/20vw 'Arial', sans-serif;        
+    }
+    
+}
