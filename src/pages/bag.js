@@ -111,7 +111,7 @@ const Bag =  ({ bag, delete_from_bag, add_count, currency }) => {
                             <br/>
                             <P>{i.gender}, {i.color}, size: {i.size}</P>
                             <P onClick={()=>delete_from_bag(index)}  style={{display: "block",fontSize: "15px"}}>
-                                <img src="https://i.ibb.co/grVRjyB/trash.png" alt="trash" style={{width:"30px",height:"30px",marginLeft: "-5px"}} />
+                                <img src="https://i.ibb.co/grVRjyB/trash.png" alt="trash" />
                                 remove
                             </P>
                         </Items>

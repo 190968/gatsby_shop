@@ -7,15 +7,22 @@ import Item from "./item";
 
 
 const DivItem = styled.div.attrs(props => ({
-    size: props.size ,
+    brand: props.brand ,
+    model: props.model,
+    color: props.color
 }))`
    
     display: inline-block;  
     margin: 15px 0;
+    padding-top: 13vw;
     background-color: #fff;
+    background-size: 80%;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-image: ${props => `url(https://myrunshop.000webhostapp.com/wp-content/image/${props.brand}/${props.model}_${props.color}.jpg),url(https://myrunshop.000webhostapp.com/wp-content/image/${props.brand}/${props.model}_${props.color}.webp)`};
     font-size: 18px;    
-    height: 260px;
-    width: 18%;
+    height: auto;
+    width: 15vw;
     cursor: pointer;
     &:hover {
         box-shadow: 0 0 5px 5px #ddd;
@@ -45,12 +52,8 @@ const FavoriteItems = styled.h3`
 `;
 const DivItems = styled.div`
     display: flex;
-    justify-content: space-between;
-    
-        flex-direction: row;
-        
-   
-
+    justify-content: space-between;    
+    flex-direction: row;
 `;
 
 const Favorite = () =>{
@@ -76,18 +79,15 @@ const Favorite = () =>{
         <>
             <FavoriteItems>FAVORITE ITEMS</FavoriteItems>
             <DivItems>
-                {data.allDatoCmsItem.nodes.map((i,index) => <DivItem visible={index} onClick={()=>set_number(index+1)} key={index} >
-                
-                    <span                    
-                        as="button"                   
-                        style={{backgroundImage: `url(https://myrunshop.000webhostapp.com/wp-content/image/${i.brand}/${i.modelItem}_${i.color}.jpg),url(https://myrunshop.000webhostapp.com/wp-content/image/${i.brand}/${i.modelItem}_${i.color}.webp)`,
-                            backgroundSize:"80%",
-                            backgroundPosition:"center",
-                            backgroundRepeat: "no-repeat",
-                            height:"60%",
-                            width: "100%"
-                        }}                   
-                    ></span>    
+                {data.allDatoCmsItem.nodes.map((i,index) => <DivItem 
+                    visible={index}
+                    onClick={()=>set_number(index+1)}
+                    key={index} 
+                    brand={i.brand}
+                    color={i.color}
+                    model={i.modelItem}
+                >  
+                    
                     <h2 className="brand_favorite">{i.brand.toUpperCase()}</h2>
                     {i.modelItem} 
                     <Gender>{i.gender}</Gender> 

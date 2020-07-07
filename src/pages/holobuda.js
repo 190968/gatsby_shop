@@ -127,7 +127,7 @@ const Admin = () => {
             <button>send base</button>
            
         </p>    
-        {orders.map((i,index)=><div key={index} style={{textAlign:"left",borderBottom:"1px solid #ccc",padding: "5px 0"}}>
+        {orders.reverse().map((i,index)=><div key={index} style={{textAlign:"left",borderBottom:"1px solid #ccc",padding: "5px 0"}}>
             <IndexOne ind={index} text="№">{index + 1}.</IndexOne>
             <IndexDate ind={index} text="date">{i.date}</IndexDate>
             <IndexPhone ind={index} text="name | &#9743; | @ ">

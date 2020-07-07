@@ -11,7 +11,7 @@ const Main = ({data}) => {
   const [number, set_number] = React.useState(0); 
   return ( 
     <>
-      <Helmet title="Shop for run" defer={false} >
+      <Helmet>
           <meta
               name="viewport"
               content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover"
@@ -20,12 +20,13 @@ const Main = ({data}) => {
           <link rel="canonical" href="https://myshop.surge.sh"/>
           <meta
               name="description="
-              content="This is shop sport shoes ADIDAS,NIKE,SALOMON"
+              content="This is shop for shoes and clothing for running favorite brands  ADIDAS,NIKE,SALOMON,PUMA,REBOOK."
             
           />
-          
+          <title>Shoes for run</title>
           <html lang="en" /> 
-      </Helmet>           
+      </Helmet>
+               
       <Layout set_number={set_number} title={title}>
        
         <Brand number={number} />

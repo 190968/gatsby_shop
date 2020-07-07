@@ -10,19 +10,20 @@ import BlockPhone from "./blockPhone";
 
 export default ({ children , context_brand, context_gender, set_number}) => (
   <div className="main_block" >
-    <Helmet title={context_brand ==="" ? "This is shoes shop" : context_brand} defer={false} >
+    <Helmet>
         <meta
             name="viewport"
             content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover"
            
         />
-        
+        <title>{context_brand === undefined ? "Shoes shop favorite brands" : `${context_brand}- shoes and clothing for running`}</title>
         <html lang="en" /> 
     </Helmet>
+   
     <BlockPhone />
     <Header />  
-    <Menu link = {context_brand} set_number={set_number}/>  
-    <String  link ={context_brand} gender={context_gender}/>   
+    <Menu link = {context_brand} set_number={set_number} />  
+    <String  link ={context_brand} gender={context_gender} />   
     {children}
     <Footer />
   </div>

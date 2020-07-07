@@ -1,47 +1,72 @@
 import React from "react";
 import { connect } from "react-redux";
+import Search from "./search";
 import styled from "styled-components";
 import { addBag, euro } from "../state/app";
 import "../styles/global.css";
-import { Link, graphql, StaticQuery } from "gatsby";
+import { graphql, StaticQuery, navigate } from "gatsby";
 import Linktobag from "./linktobag";
 
 
-const One = styled.h1`
+const One = styled.h2.attrs(props=>({
+    src:props.src,
+}))`
     width: auto;
-    margin: 0 20px;
+    margin: 0 0 0 10px;
     display: inline-block;
-    font: italic 300 30px/30px "Times new roman", sans;
+    padding-left:15%;
+    font: italic 300 1.7vw/50px "Times new roman", sans;
     color: maroon;
+    cursor: pointer;
+    transition: all 0.5s;
+    background:url(${props=>props.src}) left/20% no-repeat;
+    &:hover {
+        padding-right: 20%;
+        background:url(${props=>props.src}) right/20% no-repeat;
+        transition: all 0.5s;
+       
+    }
+    
     @media (max-width: 780px) {
-        font: italic 300 20px/30px "Times new roman", sans;
+        font: italic 300 18px/50px "Times new roman", sans;
     }
     @media (max-width: 580px) {
         display: none;
     }
 `;
-const Image = styled.img`
-    width: 50px;
-    margin: 0;
-    border-radius: 50%;
-`;
-const ImageBag = styled.img`
+
+const Account = styled.button`
     float: right;
-    width: 50px;
-    height: 50px;   
-    margin: 0 10px;
-    border-radius: 50%;
+    width: 42px;
+    border: none;
+    box-sizing: border-box;
+    outline: none;
+    vertical-align: middle;
+    height: 42px;   
+    margin: 2px 10px;
+    cursor: pointer;
+    background: url(https://myrunshop.000webhostapp.com/wp-content/image/icon/men.png) center/80% no-repeat;
     &:hover {
-        width: 55px;
-        height: 55px;
-        transition: all 0.5s;  
-    }
-
-    
-    
+        border-bottom: 2px solid #fff;
+    } 
+   
 `;
 
-const Header = ({ euro,currency, bag }) => (
+const Euro = styled(Account)`   
+    font: 300 40px/20px 'Arial', sans-serif;
+    color: #fff;   
+    background: none;
+   
+`;
+
+
+const Header = ({ euro,currency }) => { 
+    
+    const Navigate = (a) => {
+        navigate(a);
+    };
+
+    return (
     <StaticQuery
         query={ graphql`
             query NonPageQuery {
@@ -54,41 +79,30 @@ const Header = ({ euro,currency, bag }) => (
                 }
             }
         `}
+       
         render={(data) => (   
-        <div className="header">  
-
-            <Link to="/" className="main_link" >
-                <Image src={data.allDatoCmsHeader.nodes[0].siteimage.url}  alt="my site" />
-            </Link>
-            <One>This is my site</One> 
-           
-            <Linktobag />        
-            <Link to="/orders">
+            <div className="header">  
+                <div className="icon">                
+                    <One src={data.allDatoCmsHeader.nodes[0].siteimage.url} onClick={()=>Navigate('/')}>
+                        Best shoes for running 
+                    </One>
+                </div>     
+                <Search />   
+                <Linktobag />                          
+                <Account onClick={()=>Navigate('/orders')} />                
+            
                 
-            <ImageBag  
-                src="https://i.ibb.co/ngy0fnd/2703062-48.png" 
-                alt="2703062-48" 
-                border="0"    
-                  
-            />
-            </Link>
-            {currency === 1 ?
-                <ImageBag src="https://i.ibb.co/82TnYVS/euro.png" alt="euro" border="0"
-                    
-                    onClick={()=>euro(1.2)}
-                />
-            :
-                <ImageBag src="https://i.ibb.co/6ZFBmMH/coin.png" alt="coin" border="0"
-                    
-                    onClick={()=>euro(1)}
-                />
-            }
-           
-           
-        </div>
-    )}
+                {currency === 1 ?
+                    <Euro  onClick={()=>euro(1.2)}>&#8364;</Euro>               
+                :
+                    <Euro onClick={()=>euro(1)}>$</Euro>               
+                }
+            
+            
+            </div>
+        )}
     />
-);
+)};
 
 
 

@@ -70,14 +70,18 @@ const IndexDate = styled(Index)`
     width: 15%;
     
 `;
-const IndexPhone = styled(Index)`
+const IndexStatus = styled(Index)`
    
-    width: 30%;
+    width: 20%;
 `;
 const IndexItem = styled(Index)`
     width: 62%;
 `;
-
+const Order = styled.div`
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+`;
 const Orders = () => {
     const [number, set_number] = React.useState(0);
     const [ orders, set_orders] = React.useState({ord:[]});
@@ -89,29 +93,17 @@ const Orders = () => {
 
     const Go_account = () => {
         const fetchData = async () => {
-            const result = await axios(`http://gatsbyshop.herokuapp.com/toaccount?name=${name}&phone=${phone}`);            
-           
-           
+            const result = await axios(`http://gatsbyshop.herokuapp.com/toaccount?name=${name}&phone=${phone}`);          
             set_orders(result.data);   
             set_visible_account(false);
-            set_visible(true);
-    
+            set_visible(true);    
         };    
            
         fetchData();
 
     };
 
-    // const set = () => {
-    //     const fetchData = async () => {
-    //         const result = await  axios("http://gatsbyshop.herokuapp.com/count");             
-             
-    //           set_orders(result.data);
-             
-    //       };    
-             
-    //       fetchData();
-    // };   
+    
     return (
         <Layout set_number={set_number}>
             {visible_account ? 
@@ -129,12 +121,10 @@ const Orders = () => {
                 </div>        
             :   <>
                 {visible_order ? <div className="orders">
-                    {orders.map((i,index)=><div key={index} style={{textAlign:"left",borderBottom:"1px solid #ccc",padding: "10px 0"}}>
+                    {orders.map((i,index)=><Order key={index}>
                         <IndexOne ind={index} text="№">{index+1}.</IndexOne>
                         <IndexDate ind={index} text="date">{i.date}</IndexDate>
-                        {/* <IndexPhone ind={index} text="name/ &#9743; / @">
-                            {i.person.name}/{i.person.phone}/{i.person.email}
-                        </IndexPhone> */}
+                       
                         <IndexItem ind={index} text="item">
                             {i.bag.map((a,index) => 
                                 <div style={{textAlign: "left",margin: 0}} key={index}>
@@ -149,8 +139,8 @@ const Orders = () => {
                                 </div>
                             )}
                         </IndexItem>    
-                        <Index ind={index} text="status" style={{width:"10%"}}>{i.status===2?"delivery" : i.status===3?"delivered":"on"}</Index>
-                        </div>
+                        <IndexStatus ind={index} text="status">{i.status===2?"delivery" : i.status===3?"delivered":"on"}</IndexStatus>
+                        </Order>
                     )}
                 
                     {orders.length === 0 && <h2>None orders</h2>}

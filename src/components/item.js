@@ -41,6 +41,7 @@ const Item = (props) => {
     }))`
         padding: 5px;
         vertical-align: top;
+        z-index: 1;
         margin: 5px;
         width: 15%;
         border: ${props => props.setSize === new_size ? "1px solid #000": "1px solid #fff"};
@@ -48,6 +49,10 @@ const Item = (props) => {
         cursor: pointer;
         &:hover {
             border: 1px solid #ccc;
+        }
+        h2 b {
+            color: red;
+            font-size: 25px;
         }
     `;
     const handClose = () => {
@@ -64,9 +69,9 @@ const Item = (props) => {
                 <div 
                     className="div_big_image" 
                             
-                    style={{backgroundSize: "80%", backgroundImage: `url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model + "_" + image_color}${number}.jpg),url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model + "_" + image_color}${number}.webp)`}}
+                    style={{backgroundSize: "90%", backgroundImage: `url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model + "_" + image_color}${number}.jpg),url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model + "_" + image_color}${number}.webp)`}}
                 
-                ></div>
+                />
                 {["",1,2].map(i => <div className="div_small_image"
                     onMouseEnter={()=>set_number(i)}
                     onKeyDown={()=>set_number(i)}
@@ -75,24 +80,23 @@ const Item = (props) => {
                     style={{backgroundImage: `url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model + "_" + image_color}${i}.jpg),url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model + "_" + image_color}${i}.webp)`,
                         borderBottom: number === i ? "2px solid #000" : "none"
                     }}
-                    ></div>
+                    />
                 )}   
            
            
             </div>
             { size !== 0 && <>
                 <div className="div_content">
-                    <h2>{page.brand.toUpperCase()} <Linktobag          /></h2>
+                    <h2>{page.brand.toUpperCase()} <Linktobag /></h2>
                     <p>{image_model} {gender} run shoes
                         
                     </p>
-                    <h2>
-                        
+                    <h2>                        
                         {sale === 0 ? 
                             cost + `$` 
                             :
                             <> 
-                            <del>{cost}$</del>  {(cost*(100-sale)/100).toFixed(0) + `$`}
+                            <del>{cost}$</del>  <b>{(cost*(100-sale)/100).toFixed(0) + `$`}</b>
                             </>
                         }
                     </h2>
@@ -101,8 +105,7 @@ const Item = (props) => {
                     <b>size:</b> {new_size}
                     <p>{size.split(",").map((i,index)=><Size key={index} setSize={i} onClick={()=>set_size(i)}>{i}</Size>)}</p>
                     <Button
-                        disabled={new_size === "select size" ? "disabled":""}
-                        
+                        disabled={new_size === "select size" ? "disabled":""}                        
                         title={new_size === "select size" ? "select size":"add to bag"}
                         onClick={()=>addBag({
                             "brand": page.brand.toUpperCase(),

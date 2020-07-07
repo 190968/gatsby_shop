@@ -41,6 +41,9 @@ const FavoriteItems = styled.h3`
 const DivItems = styled.div`
     display: flex;
     justify-content: space-between;
+    h4 b {
+        color: red;
+    }
 `;
 
 const  FavoriteSale = () => {
@@ -86,7 +89,7 @@ const  FavoriteSale = () => {
                     <h4>{i.brand}</h4>
                     {i.modelitem} <br/>
                     {i.color}
-                    <h4><del>{i.cost}$</del> {(i.cost*(100-i.sale)/100).toFixed(0)}$</h4>
+                    <h4><del>{i.cost}$</del> <b>{(i.cost*(100-i.sale)/100).toFixed(0)}$</b></h4>
                 </DivItem>)}
             </DivItems>
            {number && <Item

@@ -2,14 +2,15 @@ import React from "react";
 import styled from "styled-components";
 import { graphql, StaticQuery } from "gatsby";
 
-const Delivery = styled.div`
-    width: auto;
+const Delivery = styled.h3`
+    width: 50%;
     display: inline-block;
-    text-align: left;
-    padding: 10px;
-    font-weight: 300;
+    text-align: center;
+    
+    font: italic 300 20px/50px 'Verdana', sans-serif;
+    margin: 0;
     color: red;
-    background-color: #fff;
+    
     @media (max-width: 880px) {
         display: block;
         width: 100%;
@@ -23,9 +24,10 @@ const Delivery = styled.div`
     }
 `;
 const Phone = styled.div`
-    width: 48%;
+   
+    width: 50%;
     color: blue;
-    font-size: 1em;
+   
     float: right;
     @media (max-width: 880px) {
         display: block;
@@ -39,23 +41,33 @@ const Phone = styled.div`
 const PhoneImage = styled.span.attrs(props=>({
     text:props.text,
 }))`
-    font-size: 30px;
-    font-weight: 600;
-    width: 40%;
-    color: green;
-    margin-right: 5px;
-    text-align: right;
+    font:  400 40px/50px 'Verdana', sans-serif;   
+    width: 100%;   
+    
     
     &:after {
-        font-size: 16px;
-        color: blue;
+        font:  600 15px/10px 'Verdana', sans-serif;  
+       
+        
         position: relative;
-        top: -5px;
+        top: -16px;
         display: inline-block;
-        content: '${props=>props.text}';
+        content: '${props=>props.one}';
+    }
+    &:before {
+        font:  600 15px/10px 'Verdana', sans-serif;  
+        
+       
+        position: relative;
+        top: -1px;
+        left: 224px;
+        display: inline-block;
+        content: '${props=>props.two}';
     }
 `;
-
+const H = styled.h1`
+    display: none;
+`;
 const BlockPhone = () => (
     <StaticQuery
         query={graphql`
@@ -73,11 +85,12 @@ const BlockPhone = () => (
 
    
             <div className="div_phone">
+                <H>This is the best shop world brands shoes and clothing for running</H> 
                 <Delivery>Free delivery on order over </Delivery>
                 <Phone>
-                    <PhoneImage text={data.allDatoCmsPhone.nodes[0].onephone}>&#9743; </PhoneImage>
+                    <PhoneImage one={data.allDatoCmsPhone.nodes[0].onephone} two={data.allDatoCmsPhone.nodes[0].twophone}>&#9743; </PhoneImage>
                     
-                    <PhoneImage text={data.allDatoCmsPhone.nodes[0].twophone}>&#9743; </PhoneImage>
+                   
                     
                 </Phone>
             </div>
