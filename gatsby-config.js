@@ -3,9 +3,9 @@ module.exports = {
     title: `Shop ADIDAS, NIKE, PUMA, SALOMON, REEBOK,NEW-BALANCE  SHOES FOR RUN `,
     defaultImage: `https://i.ibb.co/DDZBPXB/002.jpg` ,
     siteUrl: `https://www.myshop.surge.sh`,
-    description: `This is  site for buying shoes for running by ADIDAS,SALOMON,NIKE,PUMA.`, 
+    description: `E-shop sport shoes and clothing. The best brands Adidas, Nike, Salomon. Buying shoes and clothing for running.Sport shoes for men,women and children.`, 
     twitter: `@kylemathews`,
-    titleTemplate: `%s | MyAwesomeWebsite.com`,
+    titleTemplate: `%s | myshop.surge.sh`,
     twitterUsername: `Alekc`    
   }, 
   plugins: [
@@ -33,10 +33,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `My shop for sky`,
-        short_name: `ShopForRun`,
-        description: `The shoes main brands for the run.`,
-        lang: `en`,
+        name: `ShopForRun`,
+        short_name: `ShopForRun`,       
         start_url: `/`,
         background_color: `#6b37bf`,
         theme_color: `#6b37bf`,        

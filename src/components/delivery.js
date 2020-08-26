@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-import { delete_from_bag, add_count } from "../state/app";
+import { delete_from_bag, add_count, delBag } from "../state/app";
 import styled from "styled-components";
 
 import "../styles/global.css";
@@ -30,16 +30,17 @@ const Button = styled.button`
     font-size: 25px;
     padding: 5px;
     height: auto;
+    cursor: pointer;
     margin: 10px 0 0;
-    background-color: yellow;
+    background-color: lime;
     border: none;
     border-radius: 3px;
     &:hover {
-        box-shadow: 0 0 15px 1px lime;
+        background-color: yellow;    
        
     }
 `;
-const DeliveryName = ({delivery,handClose, bag}) => {
+const DeliveryName = ({ cost_delivery, handClose, bag, delBag}) => {
     const [name, set_name] = React.useState("");
     const [phone, set_phone] = React.useState("");
     const [email, set_email] = React.useState("");
@@ -54,7 +55,7 @@ const DeliveryName = ({delivery,handClose, bag}) => {
                 phone: phone,
                 email: email,
                 bag: bag,
-                delivery: delivery 
+                delivery: cost_delivery 
             },        
 
             headers: {
@@ -66,6 +67,11 @@ const DeliveryName = ({delivery,handClose, bag}) => {
         })
         .then(res=>{
             set_ok("YOUR ORDER ACCEPTED");
+          
+        })
+        .then(res=>{
+            
+            setTimeout(delBag(),2000);
         })
     };
     return (
@@ -100,7 +106,8 @@ const mapStateToProps = state => ({
    
 const mapDispatchToProps = dispatch => ({
     delete_from_bag: (a) => dispatch(delete_from_bag(a)),
-    add_count: (a,b) => dispatch(add_count(a,b))
+    add_count: (a,b) => dispatch(add_count(a,b)),
+    delBag: () => dispatch(delBag())
     
 });
 export default connect(mapStateToProps,mapDispatchToProps)(DeliveryName);

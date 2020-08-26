@@ -1,27 +1,33 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "gatsby";
+
 import { graphql, StaticQuery } from "gatsby";
 
-const Delivery = styled.h3`
-    width: 50%;
+const Delivery = styled.h3`   
     display: inline-block;
-    text-align: center;
-    
+    text-align: left;
+    width: 50%;
+    padding-left: 30px;    
     font: italic 300 20px/50px 'Verdana', sans-serif;
     margin: 0;
     color: red;
-    
+    span {
+        width: auto;
+        font-size: 16px;
+        cursor: pointer;
+        color: purple;
+    }
+    b {
+        color: blue;
+        font-size: 22px;
+    }
     @media (max-width: 880px) {
         display: block;
-        width: 100%;
-        text-align: center;
+       
+       
     }
-    &:after {
-        content: "100$";
-        color: blue;
-        font-weight: 600;
-        font-size: 20px;
-    }
+  
 `;
 const Phone = styled.div`
    
@@ -86,7 +92,8 @@ const BlockPhone = () => (
    
             <div className="div_phone">
                 <H>This is the best shop world brands shoes and clothing for running</H> 
-                <Delivery>Free delivery on order over </Delivery>
+                <Delivery>Free delivery on order over <b>200$</b> <span>Detals!</span></Delivery>
+               
                 <Phone>
                     <PhoneImage one={data.allDatoCmsPhone.nodes[0].onephone} two={data.allDatoCmsPhone.nodes[0].twophone}>&#9743; </PhoneImage>
                     

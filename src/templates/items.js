@@ -5,14 +5,14 @@ import Item from "../components/item";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import  Layout  from "../components/layout";
-import { Curr} from "../components/currency";
+import { Curr } from "../components/currency";
 import { addBag } from "../state/app";
 
 const Currency = styled.button`
     font: 400 22px/30px 'Arial', sans-serif;
     outline: none;
     display: inline-block;
-    width: 30px;
+    width: 25px;
     vertical-align: middle;
     text-align: center;
     height: 30px;
@@ -20,44 +20,10 @@ const Currency = styled.button`
     margin: 0;
     background-color: inherit;   
     &:hover{
-        background-color: #ddd;
-        
+        background-color: #ddd;  
     }
-`
-const Model = styled.span.attrs(props=>({
-    text: props.text,
-}))`
-    position: relative;
-    cursor: pointer;
-    &:hover {
-        &:after {
-            display: inline-block;
-        }
-    }
-    &:after {
-        position: absolute;
-        padding: 10px;
-        background-color: #fff;
-        box-shadow: 0 0 5px 5px #ccc;
-        border-radius: 5px;
-        left: 100%;
-        text-align: left;
-        top: -30px;
-        content: '${props=>props.text}';
-        font-size: 16px;
-        display: none;
-        width: 150px;
-    }
-    &:before {
-        position: absolute;
-        content: "*";
-        font-size: 25px;
-        left: 80%;
-        top: -10px;
-    }
-
-
 `;
+
 const MenuItem = styled.div`
     width: ${props=>props.width}%;
     display: inline-block;
@@ -71,23 +37,36 @@ const MenuItem = styled.div`
     }
 `;
 const Size = styled(Currency)`     
-    font: 300 18px/16px 'Arial', sans-serif;    
+    font: 300 16px/30px 'Arial', sans-serif;    
     display: inline-block;
     text-align: center;
-    padding:0 3px;
+    height: 30px;
     width: auto;
-    margin: 0  2px;       
-    border-radius: 5px;
+    margin: 0;       
+    border-radius: 30px;
     cursor: pointer;  
     &:hover {
-        box-shadow: 1px 1px 2px 2px  #ddd;
+        box-shadow: 0 0 1px 1px  #bbb;
+    }
+`;
+const SizeOne = styled.b`
+   
+    position: absolute;
+    padding: 0 10px;
+    &:after {
+        content: 'x';
+        font-size: 15px;
+        position: absolute;
+        top: -15px;
     }
 `;
 const ButImage = styled.button`
-    border: none;
+    border: 1px solid transparent;
     background-color: #fff;
     margin: 0;
     outline: none;
+    width: 15%;
+    height: 110px;
     vertical-align: middle;
     background-repeat: no-repeat;
     background-size: 100%;
@@ -108,27 +87,21 @@ const But = styled.button`
     vertical-align: middle;
     
 `;
-const Cost = styled.div`
-    display: inline-block;
-    font: 400 20px/18px 'Arial', sans-serif;
-    width: 38%;   
-    padding: 0;
-    margin: 0;
-    vertical-align: middle;
-`;
-const Sale = styled.span.attrs(props => ({
+
+const Sale = styled.b.attrs(props => ({
     props:props.sale
-}))`   
-    
-    dislpay: inline-block;
+}))`    
+    display: inline-block;
     margin: 0;
-    width: 100%;
+    font-size: 25px;
+    width: 40%;
     position: relative;
+    text-align: center;
     padding: 0;
     &:after {
         content: '-${props=>props.sale}%';
-        top: -30px;
-        left: 12px;
+        top: -25px;
+        left: 32px;
         color: yellow;
         visibility: ${props=>props.sale === 0 ? 'hidden': 'visible'};
         background-color: red;
@@ -139,7 +112,7 @@ const Sale = styled.span.attrs(props => ({
     }
 `;
 
-const Items =  ({ currency, pageContext, data, addBag, location}) => {   
+const Items =  ({ currency, pageContext, data,  location}) => {   
     // let brand = pageContext.brand;
     const {state = {}} = location;
     const { model } = state || "run";
@@ -153,24 +126,28 @@ const Items =  ({ currency, pageContext, data, addBag, location}) => {
     const [max_cost, set_max] = React.useState(100);
     const [index_size, set_index] = React.useState();
     const [image_item, set_image_item] = React.useState(false);
-    const [image_color,set_image_color] = React.useState();
-    const [image_model,set_image_model] = React.useState();
+    const [new_index, set_new_index] = React.useState();
     
     const noFilterCost = () => {
-       return (
-        set_min(0),
+      
+        set_min(0);
         set_max(100)
-       );
+      
     };
     const SortOnCost = () => {
         set_sort(!sort)
     };
     
-    
+    const setItem = (a,b) => {
+        set_image_item(a);
+        set_new_index(b);
+       
+    };
     const setColor = (i) => {
         set_color(color === i.color ? "all" : i.color)
     };    
     const orders = data.allMongodbMyBase.nodes
+        .filter(i=> size ? i.size.split(',').some(a=>a===size) : i.size)
         .filter(i=> model ? i.model === model : i.model)
         .filter(i=> gender==='GENDER' ? i : i.gender === gender)
         .sort((a,b)=> sort ? a.cost-b.cost:b.cost-a.cost)
@@ -178,30 +155,28 @@ const Items =  ({ currency, pageContext, data, addBag, location}) => {
         .filter(i=>i.cost <= max_cost)    
         .filter(i=>color === "all" ? i : i.color === color);      
 
-    return <Layout  set_number={set_number} context_brand = {pageContext.brand} context_gender={pageContext.gender} > 
-        <h4>
-           
-            {pageContext.gender.length>3 ? "all" : pageContext.gender}{" "}
-            {pageContext.brand} shoes and clothing ({orders.length} products)
-        </h4>
+    return <Layout model={model} set_number={set_number} orders={orders.length} context_brand = {pageContext.brand} context_gender={pageContext.gender} > 
+        
         <div className="menu_items">
-            <MenuItem width="15" >ITEM</MenuItem>
+            <MenuItem width="15" >ITEM{pageContext.house}</MenuItem>
             <MenuItem width="15" >BRAND</MenuItem>
             <MenuItem width="15">MODEL</MenuItem>
             <MenuItem width="15">
                <select style={{border: "none",outline: "none",background: "inherit"}} onChange={(e)=>set_gender(e.target.value)}>
-                   <option value="GENDER">GENDER</option>
+                   <option value="GENDER" style={{border: "none",outline: "none"}}>all</option>
                    {pageContext.gender.map(i=><option value={i}>{i}</option>)}
-                   {/* <option value="women">women</option>
-                   <option value="boy">boy</option>
-                   <option value="girl">girl</option> */}
+                  
                </select>
             </MenuItem>
-            <MenuItem width="10" >COLOR</MenuItem>
-            <MenuItem width="15">SIZE</MenuItem>
-            <MenuItem width="10">
-                COST
-                {sort ? <b  onClick={SortOnCost}>&#9650;</b> : <b  onClick={SortOnCost}>&#9660;</b>}
+            <MenuItem width="10">COLOR</MenuItem>
+            <MenuItem width="15">
+                SIZE {" "}
+                {size && <SizeOne onClick={()=>set_size("")}>{size}</SizeOne>}
+            
+            </MenuItem>
+            <MenuItem width="15">
+                COST {" "}
+                {sort ? <Size  onClick={SortOnCost}>&#9650;</Size> : <Size  onClick={SortOnCost}>&#9660;</Size>}
                 
                 {(min_cost !== 0 || max_cost !==100) && <But onClick={noFilterCost}>x</But>}
             </MenuItem>
@@ -213,17 +188,12 @@ const Items =  ({ currency, pageContext, data, addBag, location}) => {
                 <ButImage                  
                     style={{backgroundImage: `url(https://myrunshop.000webhostapp.com/wp-content/image/${i.brand}/${i.model}_${i.color}.jpg),
                         url(https://myrunshop.000webhostapp.com/wp-content/image/${pageContext.brand}/${i.model}_${i.color}.webp)`,
-                        width:"15%",height:"120px"}}
-                    onClick={()=>{set_image_item(true);set_image_color(i.color);set_image_model(i.model)}}
+                        }}
+                    onClick={()=>setItem(true,index)}
+                        
                 />    
-                <span style={{width: "15%"}}>{i.brand}</span>
-                <Model 
-                    text="Description:
-                        Upper: Textile
-                        Lining: Leater
-                        Outsole: Sintehic"
-                >{i.model}
-                </Model>
+                <span>{i.brand}</span>
+                <span>{i.model}</span>
                 <span>{i.gender}</span>
                 <MenuItem width="10" style={{color: i.color}}>
                     {i.color}
@@ -234,62 +204,47 @@ const Items =  ({ currency, pageContext, data, addBag, location}) => {
                         checked={color === i.color} 
                     />
                 </MenuItem>
-                <span >
+                <span>
                     {i.size.split(',').map(m=>
-                        <Size style={{ backgroundColor: (size === m & index === index_size) ? '#ddd' : 'inherit'}} 
-                           
-                            onClick={()=>{set_size(m);set_index(index)}}                  
-                           
+                        <Size 
+                            style={{ backgroundColor: size === m  ? '#ddd' : 'inherit'}}                           
+                            onClick={()=>set_size(m)}                          
                         >{m}</Size>
                     )}
                 </span>
-                <span className="cost">
-                    {/* <Currency onClick={()=>set_min(i.cost)}>{"<"}</Currency>  */}
-                    <Cost>
+                <div className="cost">
+                    <Size onClick={()=>set_min(i.cost*currency)}>{"<"}</Size> 
+                   
                         <Sale sale={i.sale}>                  
                             {currency === 1.2 ?(i.cost *currency).toFixed(0):(i.cost *currency).toFixed(0)}<Curr count={currency}/>
                         </Sale>
                         {/* {i.sale > 0 ? <SalePersent>-{i.sale}%</SalePersent>: "" } */}
-                    </Cost>    
-                    {/* <Currency onClick={()=>set_max(i.cost)}>{"<"}</Currency> */}
-                </span>
-               
-                    <button 
-                        style={{
-                            background: "cornflowerblue url(https://myrunshop.000webhostapp.com/wp-content/image/icon/bag.png) center/80% no-repeat",
-                            width: "3vw",
-                            height: "3vw",
-                            border: "none",
-                            margin: "0",
-                            outline: "none",
-                            verticalAlign: "middle",
-                            opacity:(size !== 0 & index === index_size) ? 1 :  0.5
-                        }}
-                       
-                        onClick={()=>addBag({
-                            "brand": i.brand.toUpperCase(),
-                            "model": i.model,
-                            "gender": i.gender,
-                            "cost": i.cost,
-                            "color": i.color,
-                            "size": size,
-                            "count": 1
-                        })} 
-                        title={(size !== 0 & index === index_size) ? "ADD TO BAG" : "SELECT SIZE"}
+                   
+                    <Size onClick={()=>set_max(i.cost*currency)}>{"<"}</Size>
+                </div>
+                {image_item & index === new_index && <Item 
+                        page={i} 
+                        closeImage={set_image_item} 
+                        image_color={i.color} 
+                        image_model={i.model} 
+                        set_image={set_image_item}              
+                        gender={i.gender}
+                        item ={i.item}
+                        sale={i.sale}
+                        cost={i.cost}
+                        size={i.size}
                     />
+                  
+                }
+                  
                
                        
-             </div>
+            </div>
+           
+           
        
         )}
-        {image_item && <Item 
-                page={pageContext} 
-                closeImage={set_image_item} 
-                image_color={image_color} 
-                image_model={image_model} 
-                set_image={set_image_item}
-            /> 
-        }
+        
     </Layout>
 };
 
@@ -318,7 +273,8 @@ export const query = graphql`
                 cost 
                 model
                 size
-                sale                   
+                sale 
+                item                  
             }
         }
    

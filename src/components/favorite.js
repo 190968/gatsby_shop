@@ -19,7 +19,8 @@ const DivItem = styled.div.attrs(props => ({
     background-size: 80%;
     background-position: center top;
     background-repeat: no-repeat;
-    background-image: ${props => `url(https://myrunshop.000webhostapp.com/wp-content/image/${props.brand}/${props.model}_${props.color}.jpg),url(https://myrunshop.000webhostapp.com/wp-content/image/${props.brand}/${props.model}_${props.color}.webp)`};
+    background-image: ${props => `url(https://myrunshop.000webhostapp.com/wp-content/image/${props.brand}/${(props.model).replace(" ","_")}_${props.color}.jpg),
+                    url(https://myrunshop.000webhostapp.com/wp-content/image/${props.brand}/${(props.model).replace(" ","_")}_${props.color}.webp)`};
     font-size: 18px;    
     height: auto;
     width: 15vw;
@@ -70,6 +71,7 @@ const Favorite = () =>{
                         size
                         cost
                         gender
+                        item
                     }
                 }
             }
@@ -77,7 +79,7 @@ const Favorite = () =>{
     )
     return (
         <>
-            <FavoriteItems>FAVORITE ITEMS</FavoriteItems>
+            <FavoriteItems>The Best For Run 2020</FavoriteItems>
             <DivItems>
                 {data.allDatoCmsItem.nodes.map((i,index) => <DivItem 
                     visible={index}
@@ -102,7 +104,8 @@ const Favorite = () =>{
                 gender = {data.allDatoCmsItem.nodes[number-1].gender}
                 size={data.allDatoCmsItem.nodes[number-1].size}
                 cost={data.allDatoCmsItem.nodes[number-1].cost}
-                image_color={data.allDatoCmsItem.nodes[number-1].color} 
+                image_color={data.allDatoCmsItem.nodes[number-1].color}
+                item={data.allDatoCmsItem.nodes[number-1].item}  
                 image_model={data.allDatoCmsItem.nodes[number-1].modelItem } 
                 num={number-1}
                 />

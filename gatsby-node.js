@@ -2,14 +2,14 @@ const path = require(`path`);
 
 
 exports.createPages = async ({ actions }) => {
-const { createPage } = actions;
-const  brands  =  ['adidas','new-balance', 'nike','puma','salomon','reebok'];
+  const { createPage } = actions;
+  const  brands  =  ['adidas','new-balance', 'nike','puma','salomon','reebok'];
 
-    createPage({
+  createPage({
       path:`/all`,
       component: require.resolve('./src/templates/items.js'),
       context: { brand : brands ,gender: ["men","women","boy","girl"]}
-    })
+  })
 
   brands.forEach(i =>
     createPage({
@@ -41,4 +41,16 @@ const  brands  =  ['adidas','new-balance', 'nike','puma','salomon','reebok'];
   );   
  
 
+}
+exports.onCreatePage = ({ page, actions }) => {
+  const { createPage } = actions;
+  console.log('create page');
+  // You can access the variable "house" in your page queries now
+  createPage({
+    ...page,
+    context: {
+      ...page.context,
+      house: `Gryffindor`,
+    },
+  })
 }

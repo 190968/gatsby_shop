@@ -42,6 +42,11 @@ const P = styled.p`
         
         
     }
+    span {
+        display: inline-block;
+        width: 15%;
+        text-align: center;
+    }
 `;
 
 const Button = styled.button`
@@ -91,11 +96,12 @@ const IndexItem = styled(Index)`
 const Admin = () => {
     
     const [orders, set_orders] = React.useState([]);
-    
+    //  const url = 'http://localhost:5001';
+    const url = 'http://gatsbyshop.herokuapp.com';
     
     useEffect(() => {
         const fetchData = async () => {
-            const result = await axios('https://gatsbyshop.herokuapp.com/admin?name=admin&phone=666666&limit=10');           
+            const result = await axios(`${url}/admin?name=admin&phone=666666&limit=10`);           
             set_orders(orders.concat(result.data));            
         };           
         fetchData();
@@ -133,24 +139,24 @@ const Admin = () => {
             <IndexPhone ind={index} text="name | &#9743; | @ ">
                 {i.person.name} | {i.person.phone} | {i.person.email}
             </IndexPhone>
-            <IndexItem ind={index} text="item">
+            <IndexItem ind={index} text="item | cost | delivery">
                 {i.bag.map((a,index) => 
                     <div key={index}>
                         <P  text={1 + index}>
                             {a.brand},{a.model},
                             <br/>color:{a.color},size:{a.size},Qnt:{a.count},
-                            cost: <b>{a.cost}$</b>
-                            delivery:{i.delivery}$
+                            <span>{a.cost}$</span>,
+                            <span>{i.delivery}$</span>
                         </P>
                     </div>
                 )}
             </IndexItem>    
             <Index ind={index} text="status" style={{width:"10%"}}>
-                <InputCheckbox type="radio" checked={i.status===1} onClick={()=>Update_status(i.date,1)}/>
+                <InputCheckbox type="radio" checked={i.status===1} onChange={()=>Update_status(i.date,1)}/>
                 
-                <InputCheckbox type="radio" checked={i.status===2} onClick={()=>Update_status(i.date,2)}/>
+                <InputCheckbox type="radio" checked={i.status===2} onChange={()=>Update_status(i.date,2)}/>
                
-                <InputCheckbox type="radio" checked={i.status===3} onClick={()=>Update_status(i.date,3)}/>
+                <InputCheckbox type="radio" checked={i.status===3} onChange={()=>Update_status(i.date,3)}/>
             </Index>
             </div>
         )}

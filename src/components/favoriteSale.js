@@ -25,8 +25,7 @@ const DivItem = styled.div`
         padding: 10px;
         font-size: 1em;
         width: 33%;
-      }
-
+    }
 `;
 const FavoriteItems = styled.h3`
     background-image: linear-gradient(rgba(255,0,0,0), rgba(255,0,0,1));

@@ -9,7 +9,7 @@ const Menu = ({  link, set_number }) => {
    
     
     return ( 
-        <div className="div_menu">             
+        <nav className="div_menu">             
             {brands.map((i,index)=>
                 <Link 
                     key={i}
@@ -24,7 +24,7 @@ const Menu = ({  link, set_number }) => {
                     {i === "new-balance" ? "NB" : i.toUpperCase()}
                 </Link>
             )}            
-        </div>
+        </nav>
     )
 };
 

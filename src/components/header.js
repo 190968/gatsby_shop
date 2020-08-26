@@ -4,7 +4,7 @@ import Search from "./search";
 import styled from "styled-components";
 import { addBag, euro } from "../state/app";
 import "../styles/global.css";
-import { graphql, StaticQuery, navigate } from "gatsby";
+import { graphql, StaticQuery, Link } from "gatsby";
 import Linktobag from "./linktobag";
 
 
@@ -13,18 +13,18 @@ const One = styled.h2.attrs(props=>({
 }))`
     width: auto;
     margin: 0 0 0 10px;
+    border-radius: 30px;
     display: inline-block;
-    padding-left:15%;
+    padding-left:16%;
     font: italic 300 1.7vw/50px "Times new roman", sans;
     color: maroon;
     cursor: pointer;
-    transition: all 0.5s;
+    transition: all 0.7s;
     background:url(${props=>props.src}) left/20% no-repeat;
     &:hover {
         padding-right: 20%;
         background:url(${props=>props.src}) right/20% no-repeat;
-        transition: all 0.5s;
-       
+        transition: all 0.7s;     
     }
     
     @media (max-width: 780px) {
@@ -35,36 +35,34 @@ const One = styled.h2.attrs(props=>({
     }
 `;
 
-const Account = styled.button`
+const Account = styled.p`
     float: right;
-    width: 42px;
-    border: none;
+    width: 45px;
     box-sizing: border-box;
-    outline: none;
-    vertical-align: middle;
-    height: 42px;   
+    height: 45px;   
     margin: 2px 10px;
     cursor: pointer;
     background: url(https://myrunshop.000webhostapp.com/wp-content/image/icon/men.png) center/80% no-repeat;
     &:hover {
-        border-bottom: 2px solid #fff;
+        box-shadow: 0 0 2px 2px #fff;
     } 
    
 `;
 
 const Euro = styled(Account)`   
-    font: 300 40px/20px 'Arial', sans-serif;
+    font: 300 45px/47px 'Arial', sans-serif;
     color: #fff;   
     background: none;
+    text-align: center;
+   
    
 `;
 
 
-const Header = ({ euro,currency }) => { 
+const Header = ({ euro, currency }) => { 
     
-    const Navigate = (a) => {
-        navigate(a);
-    };
+   
+   
 
     return (
     <StaticQuery
@@ -72,6 +70,7 @@ const Header = ({ euro,currency }) => {
             query NonPageQuery {
                 allDatoCmsHeader {
                     nodes {
+                        title
                         siteimage {                            
                            url                             
                         }
@@ -82,14 +81,19 @@ const Header = ({ euro,currency }) => {
        
         render={(data) => (   
             <div className="header">  
-                <div className="icon">                
-                    <One src={data.allDatoCmsHeader.nodes[0].siteimage.url} onClick={()=>Navigate('/')}>
-                        Best shoes for running 
-                    </One>
-                </div>     
+               
+                    <Link to="/" className="icon" style={{textShadow: 'none',backgroundImage:'none'}}>                
+                        <One src={data.allDatoCmsHeader.nodes[0].siteimage.url} >
+                            {data.allDatoCmsHeader.nodes[0].title}
+                        </One>
+                    </Link>
+                  
                 <Search />   
-                <Linktobag />                          
-                <Account onClick={()=>Navigate('/orders')} />                
+                <Linktobag  title="open bag" /> 
+                <Link to="/orders" title="open account">
+                    <Account />
+                </Link>                         
+                              
             
                 
                 {currency === 1 ?

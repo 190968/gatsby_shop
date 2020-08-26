@@ -1,8 +1,8 @@
-import React from "react"
-import PropTypes from "prop-types"
-import { Helmet } from "react-helmet"
-import { useLocation } from "@reach/router"
-import { useStaticQuery, graphql } from "gatsby"
+import React from "react";
+import PropTypes from "prop-types";
+import { Helmet } from "react-helmet";
+import { useLocation } from "@reach/router";
+import { useStaticQuery, graphql } from "gatsby";
 
 const SEO = ({ title, description, image, article }) => {
   const { pathname } = useLocation()
@@ -15,14 +15,14 @@ const SEO = ({ title, description, image, article }) => {
     siteUrl,
     defaultImage,
     twitterUsername,
-  } = site.siteMetadata
+  } = site.siteMetadata;
 
   const seo = {
     title: title || defaultTitle,
     description: description || defaultDescription,
     image: `${siteUrl}${image || defaultImage}`,
     url: `${siteUrl}${pathname}`,
-  }
+  };
 
   return (
     <Helmet title={seo.title} titleTemplate={titleTemplate}>

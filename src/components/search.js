@@ -39,7 +39,7 @@ const SearchModel = styled.div`
     display: inline-block;
     position: relative;
     top: 10px;
-    width: 20%;
+   
     height: auto;
     background-color: #fff;
 `;

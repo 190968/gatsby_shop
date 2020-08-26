@@ -5,10 +5,11 @@ import { Footer } from "./footer";
 import { Helmet } from 'react-helmet';
 import { String } from "./string";
 import BlockPhone from "./blockPhone";
+import { Info } from "./info";
 
 
 
-export default ({ children , context_brand, context_gender, set_number}) => (
+export default ({ children , context_brand, context_gender, set_number,orders, model}) => (
   <div className="main_block" >
     <Helmet>
         <meta
@@ -23,7 +24,8 @@ export default ({ children , context_brand, context_gender, set_number}) => (
     <BlockPhone />
     <Header />  
     <Menu link = {context_brand} set_number={set_number} />  
-    <String  link ={context_brand} gender={context_gender} />   
+    <String  link ={context_brand} gender={context_gender} />
+    {orders > 0 && <Info brand ={context_brand} gender={context_gender} order={orders} model={model}/>}   
     {children}
     <Footer />
   </div>

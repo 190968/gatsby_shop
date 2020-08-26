@@ -9,8 +9,8 @@ import "../styles/global.css";
 
 const Total = styled.h3`   
     text-align: right;
-    margin: 0;
-    margin-right: 5%;
+    
+    margin-right: 0 5% 10PX;
     color: red;
 `;
 const Empty = styled.span`
@@ -22,17 +22,19 @@ const Empty = styled.span`
 `;
 const Button = styled.button`
     width: 100%;
-    font-size: 25px;
-    padding: 5px;
-    height: auto;
-    margin: 10px 0 0;
-    background-color: yellow;
-    border: 2px solid yellow;
-    border-radius: 3px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: 600;
+    background-color: lime;
+    color: #000;    
+    margin: 0;
+    padding: 10px 0;
     &:hover {
-        box-shadow: 0 0 15px 1px lime;
-        color: blue;
+       background-color: yellow;    
+       
     }
+   
 `;
 const P = styled.p`
     margin: 0;
@@ -80,10 +82,11 @@ const Add = styled.b`
             color: yellow;
         }    
     `;
-    const Quant = styled.span`
+    const Quant = styled.div`
         display: inline-block;
         vertical-align: middle;
-        width: 25%;
+        width: 23%;
+        text-align: center;
     `;   
 
 const Bag =  ({ bag, delete_from_bag, add_count, currency }) => {
@@ -95,8 +98,8 @@ const Bag =  ({ bag, delete_from_bag, add_count, currency }) => {
         <Layout set_number={set_number}>       
             <div className="div_bag_menu">           
                 <span style={{width:"45%"}}>Items</span>
-                <span style={{width:"25%"}}>Qty</span>
-                <span >Cost</span>
+                <span style={{width:"23%"}}>Qty</span>
+                <span>Cost</span>
                 <span>Total</span>            
             </div>       
             {bag.length !== 0 ?  <> 
@@ -121,7 +124,7 @@ const Bag =  ({ bag, delete_from_bag, add_count, currency }) => {
                             <Add onClick={()=>add_count(index,1)}>+</Add>
                         </Quant>
                         <span>{(i.cost*currency).toFixed(0)} <Curr count={currency} /></span>
-                        <span ><b style={{fontSize: "1.3em"}}>{(i.cost*i.count*currency).toFixed(0)}</b><Curr count={currency} /></span>
+                        <span><b style={{fontSize: "1.3em"}}>{(i.cost*i.count*currency).toFixed(0)}</b><Curr count={currency} /></span>
                         
                         
                     
@@ -144,9 +147,9 @@ const Bag =  ({ bag, delete_from_bag, add_count, currency }) => {
                         Total cost: {bag.reduce(((total,num)=> Number(total) + num.cost*num.count*currency + delivery),[]).toFixed(0)} <Curr count={currency} />
                     
                     </Total>
-                    <Button onClick={()=>set_continue_buy(true)}>continue</Button>
+                    <Button onClick={()=>set_continue_buy(true)}>CONTINUE</Button>
                 </div>
-                {continue_buy && <DeliveryName delivery={delivery} handClose={set_continue_buy}/>}
+                {continue_buy && <DeliveryName cost_delivery={delivery} handClose={set_continue_buy}/>}
                 </>
                 :
                 <Empty>Your bag is empty</Empty>

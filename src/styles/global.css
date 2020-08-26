@@ -1,15 +1,6 @@
 html {
   background-color: lavenderblush;
 }
-
-
-/* span {
-    font-size: 50px;
-    vertical-align: middle;
-    margin: 30px;
-    display: inline-block;
-    color: red;
-} */
 .img_min {    
     height: 100px;
     margin: 10px;   
@@ -20,18 +11,41 @@ html {
     padding: 10px 15px;
     background-color: cornflowerblue;
 }
+a:link {
+    text-decoration: none;
+}
 .icon {
     display: inline-block ;
     width: 35%;
     vertical-align: top;
+    
+    text-decoration: none;
 } 
 .footer {    
     width: 100%;
-    z-index: 0;    
-    margin: 60px 0 0;
+    color: yellow;
+    z-index: -10;    
+    margin:  0;
+    background-color: cornflowerblue;
+    padding-bottom: 10px; 
 }
 .footer p {
-    font-size: 16px;
+    font-size: 18px;
+  
+}
+
+input {
+    cursor: pointer;
+    border-radius: 5px;
+    color: cornflowerblue;
+}
+input:focus {
+    background-color: lime;
+    border: 1px solid cornflowerblue;
+}   
+.class_input_two {
+    background-color: red;
+    border: 2px solid blue;
 }
 .main_Menu_link {
     
@@ -39,15 +53,16 @@ html {
     height: 50px;
     box-sizing: border-box; 
     text-decoration: khaki;
-    font: 600 20px/50px 'Verdana', sans-serif;
+    font: 300 22px/50px 'Verdana', sans-serif;
     display: inline-block;
     background-color: chartreuse;
     text-shadow: none;
     border-bottom: none;
 }
 .main_Menu_link:hover {
-  font-size: 22px;
-  text-shadow: 0 0 1px red;
+    font: 600 22px/50px 'Verdana', sans-serif;
+   
+  
 }
 .menu_items {
     background-color: lavender;    
@@ -67,14 +82,19 @@ img  {
 .items {
     margin: 5px 0;
     text-align: left;
+    overflow: hidden;
+    white-space: nowrap;    
 }
+.items span {
+    width: 15%;
+    text-align: center;
+}
+
 .main_block {
     width: 80%;
     margin: 20px auto;
     text-align: center;
-
 }
-
 .brand_favorite {
     font:italic 600 20px/20px 'Verdana', sans-serif;
     color: cornflowerblue;
@@ -89,16 +109,11 @@ img  {
     border-radius: 15px;
     background-color: lawngreen;
     float: right;
-    font: 600 16px/20px 'Arial', sans-serif;
-   
-   
+    font: 600 16px/20px 'Arial', sans-serif;  
     display: block;
 }
 .span_image:hover {
-    border: 1px solid red;
-   
-   
-   
+    border: 1px solid red;   
 }
 .img_div {
     display: inline-block;
@@ -108,7 +123,6 @@ img  {
 h4 {
     margin: 0;
 }
-
 b {
     font-size: 18px;
     padding: 5px;
@@ -117,55 +131,57 @@ b {
 div span {
     color: #000;
     font-size: 1em;
-    display: inline-block;
-    width: 15%;
-    text-align: center;
-    vertical-align: middle;
+    display: inline-block;   
+    text-align: center;   
     margin: 0;
-
 }
 .cost {
     cursor: pointer;
-    width: 10%;
+    text-align: center;
+    width: 15%;
     font-size: 23px;
-   
+    display: inline-block;   
 }
 img {
     margin: -5px 0 0;
     cursor: pointer;
     padding: 5px;
 }
-/* img:hover {
-   transform: scale(1.2);
-} */
 .img_main_link:hover {
-   text-decoration: underline;
-   
+   text-decoration: underline;   
 }
 .img_main_link {   
     color: #ffffff;
     height: 20vw;
-    background-size: 100%;
+    background-size: cover;
     font: 300 25px/20vw 'Arial', sans-serif;
     background-repeat: no-repeat;
     width: 33%;
     margin: 1vw 0.1vw ;
     display: inline-block;
     cursor: pointer;
+   
     text-shadow: none;
     text-decoration: none;
 }
+.img_main_link b {
+    background-color: blue;
+    padding: 5px 10px;
+    border-radius: 15px;
+    opacity: 0.5;
+    color: yellow;
+}
+.img_main_link b:hover {
+    opacity: 1;
+}    
 .div_image {
     vertical-align: top;
     width: 65%;
     float: left;
-    margin: 0;
-    
-    
+    margin: 0;    
 }
 .div_phone {
-    height: 50px;
-   
+    height: 50px;   
     background-color: #fff;
 }
 .div_menu {
@@ -177,15 +193,14 @@ img {
     top: 200px;
     text-align: left;
     background-color: lavender;
-    width: 80%;
-   
+    width: 80%;   
+    z-index: 10;   
 }
 .delivery_name {
     margin: 0 auto;
     width: 30%;
     padding: 10px;
-    background-color: lavender;
-   
+    background-color: lavender;   
 }
 .div_delivery {
     height: auto;
@@ -215,8 +230,7 @@ img {
 }
 .admin button {
     width: 20%;
-    border-radius: 0;
-   
+    border-radius: 0;   
 }
 .orders {
     width: 100%;
@@ -238,8 +252,7 @@ img {
 }
 .go_to_account {
     margin: 80px 0 0;
-    position: relative;
-    
+    position: relative;    
 }
 .go_to_account:before {
     content: "ENTER TO ACCOUNT";
@@ -261,8 +274,12 @@ img {
     font-size: 20px;
     text-align: justify;
     font-weight: 600;
-    width:70%;
+    width: 70%;
     position: relative;  
+}
+.div_bag_menu span,
+.div_bag_item span {
+    width: 15%;
 }
 .div_bag_menu:before {
     content: "YOUR BAG";
@@ -341,7 +358,6 @@ img {
 .div_small_image:hover {
     border-bottom: 2px solid #000;
 }
-
 .string {
     text-align: left;
     margin: 0;

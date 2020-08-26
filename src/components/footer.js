@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef,useEffect } from "react";
 import styled from "styled-components";
 import "../styles/global.css";
 
@@ -14,10 +14,9 @@ const Div = styled.div.attrs(props=>({
         content: '${props=>props.text}';
         position: absolute;
         color: #000;
-        font: 400 16px/20px 'Arial', sans-serif;
+        font: 600 18px/20px 'Verdana', sans-serif;
         top: -45px;
-        left: 0;
-        border-top: 1px solid #ddd;
+        left: 0;        
         text-align: center;
         width: 100%;
         padding: 10px 0;   
@@ -39,11 +38,15 @@ const Div_About = styled.article.attrs(props=>({
     height: 40vw;
     background-color: #fff;
     padding: 30px;
+    color: #000;
     text-align: left;
-
+    border: 1px solid #000;
     p {
         padding-left: 20px;
-       
+       font-size: 18px;
+    }
+    li {
+        margin: 0 ;
     }
 
 `;
@@ -52,8 +55,7 @@ const Close = styled.button`
     cursor: pointer;
     border: none;
     background-color: #fff;
-    height: 40px;
-   
+    height: 40px;   
     width: 40px;    
     margin: -30px;
     &:hover {
@@ -63,9 +65,13 @@ const Close = styled.button`
 const Footer = () => {
     const [padd, set_padd] = React.useState("");
 
+    
+    
+   
     const handClose = () => {
         set_padd("")
     };
+   
     return(
         <div className="footer">
             <Div text="CUSTOMER SERVICES"  onClick={()=>set_padd("10")}>
@@ -82,6 +88,10 @@ const Footer = () => {
                 <p>About Us</p>
 
             </Div>
+          
+           
+           
+                
             <h6>&#169; 2020 ShopForRun.com</h6>
             {padd && <Div_About>
                 <Close  onClick={handClose}>x</Close>
@@ -93,13 +103,21 @@ const Footer = () => {
                            We selected for you the better for running.
                     </p>
                     <h3>Contact Us:</h3>
-                   
-                        <p>tel: +354 29 650 00 45</p>
-                        <p>tel: +354 47 569 87 41</p>
-                        <p>EMAIL: shopforrun@tyr.by</p>
+                        <ul>
+                            <li>tel: +354 29 650 00 45</li>
+                            <li>tel: +354 47 569 87 41</li>
+                            <li>email: shopforrun@tut.by</li>
+                        </ul>    
                    
                     <h3>Delivery</h3>
-                    <p>Return</p>
+                        <ul>
+                            <li>Delivery to warehouse-<b>10$</b></li>
+                            <li>Standart delivery (3 days)-<b>20$</b></li>
+                            <li>Express delivery (1 days)-<b>30$</b></li>
+                            <li>Free delivery (3 days) if on item cost over <b>100$</b></li>
+                        </ul>
+                    <h3>Return</h3>
+                        <p>Free return on 15 days.</p>
                 </Div_About>
             }    
         </div>

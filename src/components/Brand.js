@@ -5,21 +5,17 @@ import "../styles/global.css";
 const brands = ["adidas","new-balance","nike","puma","salomon","reebok"];
 const gender = ["men","women","kids"];
 
-const Brand = ({number}) => {
-    
-    return (
-        <>
-       
+const Brand = ({number}) => (   
+        <>       
             {gender.map(i => <Link   
                     style={{ backgroundImage: `url(https://myrunshop.000webhostapp.com/wp-content/uploads/2020/05/${brands[number]}_${i}.jpg)`}}         
                     to = {`/${brands[number]}/${i}`}                   
                     className="img_main_link"
+                    key={i}
                 >
-            {brands[number]}{" "}{i}
+                    <b>{brands[number]}{" "}{i}</b>
                 </Link>
-            )}    
-           
-        </>    
-    ) 
-}
-export {Brand}; 
+            )}            
+        </> 
+)
+export default Brand; 

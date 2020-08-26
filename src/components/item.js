@@ -22,29 +22,30 @@ const Button = styled.button`
     width: 100%;
     border: none;
     outline: none;
-    background-color: lime;    
+    cursor: pointer;
+    background-color: lime;
+    font-weight: 600;
+    color: #000;    
     margin: 0;
     padding: 10px 0;
     &:hover {
-       box-shadow: 0 0 15px 1px lime;
-       color: #fff;
+       background-color: yellow;
+      
+       
     }
    
 `;
-
-const Item = (props) => {
-
-    const { addBag, page, gender, closeImage, image_color, image_model, size = size || 0, cost, sale=sale || 0 } = props;
-    const [new_size, set_size] = React.useState("select size");
-    const Size = styled.span.attrs(props=>({
+ const Size = styled.span.attrs(props=>({
         setSize: props.setSize,
+        newSize: props.newSize
     }))`
         padding: 5px;
-        vertical-align: top;
+        margin: 0 5px 0 0;
         z-index: 1;
-        margin: 5px;
+        text-align: center;       
         width: 15%;
-        border: ${props => props.setSize === new_size ? "1px solid #000": "1px solid #fff"};
+        border: 1px solid #fff;
+        background-color: ${props => props.setSize === props.newSize ? "#ccc": "#fff"};
         display: inline-block;
         cursor: pointer;
         &:hover {
@@ -55,6 +56,11 @@ const Item = (props) => {
             font-size: 25px;
         }
     `;
+const Item = (props) => {
+
+    const { addBag, page, gender, closeImage, image_color, image_model, size =  0, cost, sale= 0, item = 'shoes' } = props;
+    const [new_size, set_size] = React.useState("select size");
+   
     const handClose = () => {
         closeImage(false)
     };
@@ -69,41 +75,40 @@ const Item = (props) => {
                 <div 
                     className="div_big_image" 
                             
-                    style={{backgroundSize: "90%", backgroundImage: `url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model + "_" + image_color}${number}.jpg),url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model + "_" + image_color}${number}.webp)`}}
+                    style={{backgroundSize: "90%", backgroundImage: `url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model.replace(" ","_") + "_" + image_color}${number}.jpg),url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model.replace(" ","_") + "_" + image_color}${number}.webp)`}}
                 
                 />
                 {["",1,2].map(i => <div className="div_small_image"
-                    onMouseEnter={()=>set_number(i)}
-                    onKeyDown={()=>set_number(i)}
-                    role="button"
-                    tabIndex={0}
-                    style={{backgroundImage: `url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model + "_" + image_color}${i}.jpg),url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model + "_" + image_color}${i}.webp)`,
-                        borderBottom: number === i ? "2px solid #000" : "none"
-                    }}
+                        onMouseEnter={()=>set_number(i)}
+                        
+                       
+                        style={{backgroundImage: `url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model.replace(" ","_") + "_" + image_color}${i}.jpg),
+                                url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model.replace(" ","_") + "_" + image_color}${i}.webp)`,
+                                borderBottom: number === i ? "2px solid #000" : "none"
+                        }}
                     />
                 )}   
            
            
-            </div>
-            { size !== 0 && <>
-                <div className="div_content">
-                    <h2>{page.brand.toUpperCase()} <Linktobag /></h2>
-                    <p>{image_model} {gender} run shoes
-                        
-                    </p>
-                    <h2>                        
-                        {sale === 0 ? 
-                            cost + `$` 
-                            :
-                            <> 
+            </div>            
+            <div className="div_content">
+                <h2>{page.brand.toUpperCase()} <Linktobag /></h2>
+                <p>
+                    {image_model} {gender} run {item}                        
+                </p>
+                <h2>                        
+                    {sale === 0 ? 
+                        cost + `$` 
+                        :
+                        <> 
                             <del>{cost}$</del>  <b>{(cost*(100-sale)/100).toFixed(0) + `$`}</b>
-                            </>
-                        }
-                    </h2>
+                        </>
+                    }
+                </h2>
                 
-                    <p><b>color:</b> {image_color}</p>
-                    <b>size:</b> {new_size}
-                    <p>{size.split(",").map((i,index)=><Size key={index} setSize={i} onClick={()=>set_size(i)}>{i}</Size>)}</p>
+                    <p><strong>color:</strong> {image_color}</p>
+                    <p><strong>size:</strong> {new_size}</p>
+                    <p>{size.split(",").map((i,index)=><Size key={index} newSize={new_size} setSize={i} onClick={()=>set_size(i)}>{i}</Size>)}</p>
                     <Button
                         disabled={new_size === "select size" ? "disabled":""}                        
                         title={new_size === "select size" ? "select size":"add to bag"}
@@ -116,28 +121,26 @@ const Item = (props) => {
                             "size": new_size,
                             "count": 1
                         })} 
-                    >Add to bag</Button>
+                    >ADD TO BAG</Button>
 
-                </div>
-                <div className="div_description">
+            </div>
+            <div className="div_description">
                     <b>Description</b>
-                    <ou>
-                        <li>{gender} shoes for run</li>
+                    <ul>
+                        <li>{gender} {item} for run</li>
                         <li>Upper: Textile</li>
                         <li>Lining: Textile/Sinthetic</li>
                         <li>Outsole: Sintehic</li>
-                    </ou>
-                </div>
-                </>    
-            }
+                    </ul>
+            </div>
+           
         </div>       
 
     )
 
 };
 const mapStateToProps = state => ({
-    bag: state.app.bag,
-   
+    bag: state.app.bag,   
     currency: state.app.currency
 });
    

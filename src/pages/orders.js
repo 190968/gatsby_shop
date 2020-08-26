@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import axios from "axios";
-import { navigate } from "gatsby";
+
 import styled from "styled-components";
 import Layout  from "../components/layout";
 
 import "../styles/global.css";
+
 
 const Index = styled.b.attrs(props=>({
     ind: props.ind,
@@ -35,17 +36,21 @@ const Index = styled.b.attrs(props=>({
 
 const Button = styled.button`
     width: 30%;
-    font-size: 25px;
-    padding: 3px;
-    height: auto;
-    margin: 10px 0 0;
-    background-color: yellow;
-    border: 2px solid yellow;
-    border-radius: 3px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: 800;
+    background-color: lime;
+    color: blue;    
+    margin: 0;
+    padding: 8px 0;
+    border: 1px solid lavander;    
     &:hover {
-        box-shadow: 0 0 15px 1px lime;
-        color: blue;
+       
+       border: 1px solid red;    
+       
     }
+   
 `;
 const Input = styled.input`
     vertical-align: top;
@@ -54,6 +59,7 @@ const Input = styled.input`
     width: 20%;
     color: red;
     border: none;
+    outline: none;
     background-color: #fff;
     margin: 10px;
 `;
@@ -61,7 +67,7 @@ const Input = styled.input`
 const ButtonAccount = styled(Button)`
     margin: 10px;
     width: 20%;
-    padding: 3px 10px;
+   
 `;
 const IndexOne = styled(Index)`
     width: 3%;
@@ -83,17 +89,25 @@ const Order = styled.div`
     padding: 10px 0;
 `;
 const Orders = () => {
+
+    const inputRef = useRef();
     const [number, set_number] = React.useState(0);
     const [ orders, set_orders] = React.useState({ord:[]});
     const [visible_order, set_visible] = React.useState(false);
     const [visible_account, set_visible_account] = React.useState(true);
     const [name , set_name] = React.useState();
     const [phone , set_phone] = React.useState();
-   
 
+    useEffect(()=>{
+        inputRef.current.focus();
+
+    },[]);
+   
+    // const url = 'http://localhost:5001';
+    const url = 'http://gatsbyshop.herokuapp.com';
     const Go_account = () => {
         const fetchData = async () => {
-            const result = await axios(`http://gatsbyshop.herokuapp.com/toaccount?name=${name}&phone=${phone}`);          
+            const result = await axios(`${url}/toaccount?name=${name}&phone=${phone}`);          
             set_orders(result.data);   
             set_visible_account(false);
             set_visible(true);    
@@ -111,7 +125,7 @@ const Orders = () => {
                    
                     <p> 
                    
-                        <Input type="text" value={name} placeholder="input name" onChange={(e)=>set_name(e.target.value)} />
+                        <Input type="text" ref={inputRef} value={name} placeholder="input name" onChange={(e)=>set_name(e.target.value)} />
 
                         <Input type="phone" value={phone} placeholder="input phone" onChange={(e)=>set_phone(e.target.value)}/>
                         <ButtonAccount onClick={Go_account}>ENTER</ButtonAccount>     

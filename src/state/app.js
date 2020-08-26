@@ -7,11 +7,15 @@ const initialState = {
 const add_Bag = 'add_Bag';
 const delete_from_Bag = 'delete_from_Bag';
 const euRo = 'euRo';
+const del_bag = 'del_bag';
 
 
 
 export const addBag = bag => ({
   type: add_Bag, bag
+});
+export const delBag = bag => ({
+  type: del_bag, bag
 });
 export const add_count = (a,b) => ({
   type: add_count, a ,b
@@ -26,6 +30,8 @@ export const euro = currency => ({
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case del_bag:
+      return { ...state, bag: [] };
     case add_Bag:
       return { ...state, bag: state.bag.concat(action.bag) };
     case delete_from_Bag:

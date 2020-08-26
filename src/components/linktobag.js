@@ -9,43 +9,39 @@ const BagLink = styled(Link).attrs(props=> ({
 }))`
     float: right;
     width: 45px;
-    height: 45px;   
+    height: 45px;
+    margin: 2px 10px;   
     background: cornflowerblue url(https://myrunshop.000webhostapp.com/wp-content/image/icon/bag.png) center/90% no-repeat ;
     opacity: ${props=>props.count === 0 ? "0.5" : "1"};
     position: relative;
     &: hover {
         background: cornflowerblue url(https://myrunshop.000webhostapp.com/wp-content/image/icon/bag.png) center/90% no-repeat ;
     }
+    &:hover {
+        box-shadow: 0 0 2px 2px #fff;
+    } 
     &: after {
         position: absolute;
         content: '${props=>props.count}';
-        background: yellow;
-        color: blue;
+        // background: red;
+        color: yellow;
         display: ${props=>props.count === 0 ? "none" : " inline-block"};
-        top: -8px;
-        left: 35px;
-        height: 20px;
-        width: 20px;
+        top: 20px;
+        left: 15px;
+        height: 18px;
+        width: 18px;
         text-align: center;
-        font: 400 14px/20px 'Arial' , sans-serif;
+        font: 600 16px/18px 'Verdana' , sans-serif;
         border-radius: 50%;
+        text-shadow: none;
     }
 `;
-const ImageBag = styled.img`
-    
-    width: 45px;
-    height: 45px;   
-    margin: 0 10px;
-    border-radius: 0;
-    background-color: cornflowerblue; 
-`;
+
 const LinkToBag = ({ bag }) => (
 
-    <BagLink to="/bag" count={bag.length}>
-        {/* <ImageBag src="https://myrunshop.000webhostapp.com/wp-content/image/icon/bag.png"  
-            alt="bag" title="to bag"   
-        />                */}
-    </BagLink>
+    <BagLink to="/bag" count={bag.length}/>
+      
+   
 );
 const mapStateToProps = state => ({
     bag: state.app.bag
