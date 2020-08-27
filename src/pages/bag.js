@@ -8,15 +8,16 @@ import  DeliveryName  from "../components/delivery";
 import "../styles/global.css";
 
 const Total = styled.h3`   
-    text-align: right;
-    
-    margin-right: 0 5% 10PX;
+    text-align: right;    
+    padding: 10px 15px;
     color: red;
+    margin-bottom: 0;
+    
+    background-color: #bbb;
 `;
 const Empty = styled.span`
     display: block;
-    width: 100%;
-   
+    width: 100%;   
     margin: 20px;
     text-align: center;
 `;
@@ -28,7 +29,7 @@ const Button = styled.button`
     font-weight: 600;
     background-color: lime;
     color: #000;    
-    margin: 0;
+   
     padding: 10px 0;
     &:hover {
        background-color: yellow;    
@@ -142,9 +143,9 @@ const Bag =  ({ bag, delete_from_bag, add_count, currency }) => {
                     <p><InputSpan>Express delivery </InputSpan>30 <Curr count={currency} />
                         <Input type="checkbox" value="30" checked={delivery===30} onChange={()=>set_delivery(30)}/>
                     </p>
-                    <hr/>
+                  
                     <Total>
-                        Total cost: {bag.reduce(((total,num)=> Number(total) + num.cost*num.count*currency + delivery),[]).toFixed(0)} <Curr count={currency} />
+                        Total cost: {bag.reduce(((total,num)=> Number(total) + num.cost*num.count*currency + delivery),[]).toFixed(0)}<Curr count={currency} />
                     
                     </Total>
                     <Button onClick={()=>set_continue_buy(true)}>CONTINUE</Button>

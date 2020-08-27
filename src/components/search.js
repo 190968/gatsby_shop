@@ -28,7 +28,12 @@ const ImageBag = styled.img`
 const Input = styled.input`
     border: none;
     outline: none;
-    padding-left: 5px;    
+    padding-left: 5px;
+    &:focus {
+        border: none ;
+        outline: none;
+       
+    }    
 `;
 const ImageSearch = styled(ImageBag)`
     float: none;
@@ -43,6 +48,9 @@ const SearchModel = styled.div`
     height: auto;
     background-color: #fff;
 `;
+
+ // const url = 'http://localhost:5001';
+ const url = 'http://gatsbyshop.herokuapp.com';
 const Search = () => {
 
     const [input, input_view] = React.useState(false);
@@ -52,16 +60,16 @@ const Search = () => {
        
         if (a.length > 2) {
             const fetchData = async () => {
-                const result = await axios(`http://localhost:5001/find?model=${a}`); 
+                const result = await axios(`${url}/find?model=${a}`); 
                 
                 let new_result = [];
-                
+                //add model to array
                 for (const a of result.data) {
                     new_result.push(a.model);
                 };    
             
-            
-                set_model([...new Set(new_result)]);                 
+                // Remove duplicate model    
+                set_model(new_result.length>0 ? [...new Set(new_result)]: ["none model"]);                 
                     
             }; 
             fetchData();
@@ -73,7 +81,7 @@ const Search = () => {
         <ImageSearch  
         src="https://myrunshop.000webhostapp.com/wp-content/image/icon/search.png" 
         alt="search" 
-        onMouseEnter={()=>input_view(!input)}
+        onClick={()=>input_view(!input)}
 
         />
         {input && <SearchModel>

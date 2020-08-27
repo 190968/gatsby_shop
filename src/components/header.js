@@ -16,7 +16,7 @@ const One = styled.h2.attrs(props=>({
     border-radius: 30px;
     display: inline-block;
     padding-left:16%;
-    font: italic 300 1.7vw/50px "Times new roman", sans;
+    font: italic 300 1.5vw/50px "Times new roman", sans;
     color: maroon;
     cursor: pointer;
     transition: all 0.7s;
@@ -27,8 +27,12 @@ const One = styled.h2.attrs(props=>({
         transition: all 0.7s;     
     }
     
-    @media (max-width: 780px) {
-        font: italic 300 18px/50px "Times new roman", sans;
+    @media (max-width: 880px) {
+        font: italic 300 0px/50px "Times new roman", sans;
+        width: 50px;
+        height: 50px;
+        vertical-align: top;
+        background:url(${props=>props.src}) center/100% no-repeat;
     }
     @media (max-width: 580px) {
         display: none;

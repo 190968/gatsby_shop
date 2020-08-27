@@ -33,15 +33,40 @@ a:link {
     font-size: 18px;
   
 }
+label {
+    cursor: pointer;
+    position: relative;
+    padding: 5px;
+}
+label::after {
+    content: "Y";
+    position: absolute;
+    top: -15px;
+    left: 100%;
+    display: none;
+}
+label:hover {
+   background-color: #ddd;
+    padding: 5px;
+    border-radius: 5px;
 
+}
+label:hover:after {
+    display: inline;
+}
+.color {
+    display: none;
+}
 input {
     cursor: pointer;
     border-radius: 5px;
-    color: cornflowerblue;
+    
+    color: #000;
 }
 input:focus {
     background-color: lime;
     border: 1px solid cornflowerblue;
+    outline: none;
 }   
 .class_input_two {
     background-color: red;
@@ -52,10 +77,10 @@ input:focus {
     width: 16.666%;
     height: 50px;
     box-sizing: border-box; 
-    text-decoration: khaki;
+   
     font: 300 22px/50px 'Verdana', sans-serif;
     display: inline-block;
-    background-color: chartreuse;
+   
     text-shadow: none;
     border-bottom: none;
 }
@@ -186,7 +211,7 @@ img {
 }
 .div_menu {
     height: auto;
-    width: 100%;
+    padding: 0;
 }
 .delivery_main {
     position: fixed;
@@ -335,7 +360,7 @@ img {
 .div_bag_item img {
     width: 30px;
     height: 30px;
-    margin-left: -5px; 
+    margin-left: -10px; 
 }
 .div_big_image {
     margin: 20px 0;   
@@ -383,12 +408,11 @@ img {
     padding: 0.5em 0;   
     width: 33.33%;
     height: auto;
+    float: left;
     text-align: center;
-    text-decoration: khaki;
+   
     font: 400 16px/16px 'Verdana', sans-serif;
-    display: inline-block;
-    background-color: chartreuse;
-    text-shadow: none;   
+    
     }
     .div_bag_item,
     .div_bag_menu {       
@@ -436,8 +460,26 @@ img {
     }
     
 }
-@media screen and (max-width: 880px) {
+@media screen and (max-width: 600px) {
     .header {
-        height: auto;
+        height: 100px;
     }
+    .icon {
+        display: inline-block ;
+        width: auto;
+        vertical-align: middle;
+        
+        text-decoration: none;
+    }
+    .menu .link,
+    .main_Menu_link {
+    padding: 0.5em 0;   
+    width: 49%;
+    height: auto;
+    float: left;
+    text-align: center;
+   
+    font: 400 16px/16px 'Verdana', sans-serif;
+    
+    } 
 }

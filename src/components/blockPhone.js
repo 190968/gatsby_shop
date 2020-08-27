@@ -24,7 +24,8 @@ const Delivery = styled.h3`
     }
     @media (max-width: 880px) {
         display: block;
-       
+        width: 100%;
+        text-align: center;
        
     }
   
@@ -37,10 +38,8 @@ const Phone = styled.div`
     float: right;
     @media (max-width: 880px) {
         display: block;
-        width: 100%;
-       
-        background-color: #fff;
-       
+        width: 100%;       
+        background-color: #fff;       
         text-align: center;
     }
 `;

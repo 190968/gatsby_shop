@@ -196,9 +196,11 @@ const Items =  ({ currency, pageContext, data,  location}) => {
                 <span>{i.model}</span>
                 <span>{i.gender}</span>
                 <MenuItem width="10" style={{color: i.color}}>
-                    {i.color}
+                    <label for={i.color} title={i.color} >{i.color}</label>
                     {" "}
-                    <input 
+                    <input
+                        className="color" 
+                        id={i.color}
                         type="checkbox"                    
                         onChange={()=>setColor(i)}
                         checked={color === i.color} 
