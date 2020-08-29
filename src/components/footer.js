@@ -102,7 +102,7 @@ const Footer = () => {
                            is original, not used, in the original box.
                            We selected for you the better for running.
                     </p>
-                    <h3>Contact Us:</h3>
+                    <h3>Support:</h3>
                         <ul>
                             <li>tel: +354 29 650 00 45</li>
                             <li>tel: +354 47 569 87 41</li>
@@ -117,7 +117,7 @@ const Footer = () => {
                             <li>Free delivery (3 days) if on item cost over <b>100$</b></li>
                         </ul>
                     <h3>Return</h3>
-                        <p>Free return on 15 days.</p>
+                        <p>Free Return. <span>Return within 30 days</span></p>
                 </Div_About>
             }    
         </div>

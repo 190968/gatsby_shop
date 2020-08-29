@@ -94,6 +94,7 @@ const BlockPhone = () => (
                 <Delivery>Free delivery on order over <b>200$</b> <span>Detals!</span></Delivery>
                
                 <Phone>
+                   
                     <PhoneImage one={data.allDatoCmsPhone.nodes[0].onephone} two={data.allDatoCmsPhone.nodes[0].twophone}>&#9743; </PhoneImage>
                     
                    

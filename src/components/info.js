@@ -12,7 +12,7 @@ const H4 = styled.p`
     }
     b {
         font-size: 24px;
-        color: red;
+        color: #fff;
     }
    
 `;
@@ -21,7 +21,7 @@ const Info = ({ brand, order, model="one", gender }) => {
     
     return (
         <H4>           
-            {gender.length == 1 ? gender : gender.length == 2 ? "BOYS and GIRLS" : "ALL"}{" "}
+            {gender.length === 1 ? gender : gender.length === 2 ? "BOYS and GIRLS" : ""}{" "}
             {brand.length > 1 ? model.replace("_"," ") : <b>{brand}</b>} shoes and clothing <span>({order} products)</span>
         </H4>
     )

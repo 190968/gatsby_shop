@@ -13,7 +13,7 @@ const Brand = ({number}) => (
                     className="img_main_link"
                     key={i}
                 >
-                    <b>{brands[number]}{" "}{i}</b>
+                    <b>veiw {brands[number]}{" "}{i}</b>
                 </Link>
             )}            
         </> 

@@ -37,6 +37,13 @@ const Button = styled.button`
     }
    
 `;
+const ButtonCode = styled(Button)`
+    width: 30%;
+    height: 40px;
+    background-color: #ccc;
+    font-size: 16px;
+`;
+
 const P = styled.p`
     margin: 0;
     display: inline-block;
@@ -55,16 +62,31 @@ const Items = styled.div`
 const Input = styled.input`
     width: 20px;
     height: 20px;
-    color: yellow;
+   
     float: right;
     margin-right: 5%;
-    cursor: pointer;
     
+    
+`;
+const InputCode = styled(Input)`
+   margin: 10px;
+   display: inline-block;
+    height: 40px;
+    width: 60%;
+    float: none;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 0;
+    outline: 1px solid #ccc;
+    border: none;
+    background-color: #fff;
+
 `;
 const InputSpan = styled.span`
     font-size: 16px;
     display: inline-block;
     margin: 0;
+   
     margin-right: 10px;
     text-align: right;
     width: 70%;
@@ -143,12 +165,16 @@ const Bag =  ({ bag, delete_from_bag, add_count, currency }) => {
                     <p><InputSpan>Express delivery </InputSpan>30 <Curr count={currency} />
                         <Input type="checkbox" value="30" checked={delivery===30} onChange={()=>set_delivery(30)}/>
                     </p>
-                  
+                    <p style={{borderTop: "1px solid #ccc; paddingTop: 20" }}>
+                        <InputCode placeholder="Discount code" type="text" />
+                        <ButtonCode>Apply</ButtonCode>
+                    </p>
                     <Total>
-                        Total cost: {bag.reduce(((total,num)=> Number(total) + num.cost*num.count*currency + delivery),[]).toFixed(0)}<Curr count={currency} />
+                        Total cost: {bag.reduce(((total,num)=> Number(total) + num.cost*num.count*currency + delivery),[]).toFixed(0)}
+                        <Curr count={currency} />
                     
                     </Total>
-                    <Button onClick={()=>set_continue_buy(true)}>CONTINUE</Button>
+                    <Button onClick={()=>set_continue_buy(true)}> GO TO CHECKOUT</Button>
                 </div>
                 {continue_buy && <DeliveryName cost_delivery={delivery} handClose={set_continue_buy}/>}
                 </>

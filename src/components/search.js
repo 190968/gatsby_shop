@@ -7,7 +7,8 @@ import "../styles/global.css";
 import {  navigate } from "gatsby";
 
 const P = styled.p`
-    padding-left: 5px;
+    padding: 5px 10px;
+   
     cursor: pointer;   
     margin: 0;
     width: 100%;
@@ -28,7 +29,8 @@ const ImageBag = styled.img`
 const Input = styled.input`
     border: none;
     outline: none;
-    padding-left: 5px;
+    padding: 5px 10px;
+    border-radius: 5px;
     &:focus {
         border: none ;
         outline: none;

@@ -53,11 +53,12 @@ const SizeOne = styled.b`
    
     position: absolute;
     padding: 0 10px;
+    border-radius: 15px;
     &:after {
         content: 'x';
-        font-size: 15px;
+        font-size: 17px;
         position: absolute;
-        top: -15px;
+        top: -13px;
     }
 `;
 const ButImage = styled.button`
@@ -87,7 +88,19 @@ const But = styled.button`
     vertical-align: middle;
     
 `;
-
+const Color = styled.span.attrs(props=>({
+    props:props.color
+}))`
+    padding: 12px;
+    background-color: ${props=>props.color};   
+    cursor: pointer;
+   
+    vertical-align: middle;
+    border-radius: 20px;
+    &:hover {
+        border: 1px solid yellow;
+    }
+`;
 const Sale = styled.b.attrs(props => ({
     props:props.sale
 }))`    
@@ -153,10 +166,11 @@ const Items =  ({ currency, pageContext, data,  location}) => {
         .sort((a,b)=> sort ? a.cost-b.cost:b.cost-a.cost)
         .filter(i=>i.cost >= min_cost)
         .filter(i=>i.cost <= max_cost)    
-        .filter(i=>color === "all" ? i : i.color === color);      
+        .filter(i=>color === "all" ? i : i.color === color); 
+   
 
     return <Layout model={model} set_number={set_number} orders={orders.length} context_brand = {pageContext.brand} context_gender={pageContext.gender} > 
-        
+       
         <div className="menu_items">
             <MenuItem width="15" >ITEM{pageContext.house}</MenuItem>
             <MenuItem width="15" >BRAND</MenuItem>
@@ -168,7 +182,10 @@ const Items =  ({ currency, pageContext, data,  location}) => {
                   
                </select>
             </MenuItem>
-            <MenuItem width="10">COLOR</MenuItem>
+            <MenuItem width="10">
+                COLOR {" "}
+                <Color color={color} onClick={()=>set_color("all")} title="remove filtr"/>
+            </MenuItem>
             <MenuItem width="15">
                 SIZE {" "}
                 {size && <SizeOne onClick={()=>set_size("")}>{size}</SizeOne>}
@@ -196,15 +213,10 @@ const Items =  ({ currency, pageContext, data,  location}) => {
                 <span>{i.model}</span>
                 <span>{i.gender}</span>
                 <MenuItem width="10" style={{color: i.color}}>
-                    <label for={i.color} title={i.color} >{i.color}</label>
-                    {" "}
-                    <input
-                        className="color" 
-                        id={i.color}
-                        type="checkbox"                    
-                        onChange={()=>setColor(i)}
-                        checked={color === i.color} 
-                    />
+                  
+                  
+                    <Color color={i.color} onClick={()=>setColor(i)} title={i.color}/>
+                    
                 </MenuItem>
                 <span>
                     {i.size.split(',').map(m=>

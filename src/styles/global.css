@@ -1,5 +1,6 @@
 html {
-  background-color: lavenderblush;
+  background-color: lightgoldenrodyellow;
+  
 }
 .img_min {    
     height: 100px;
@@ -39,11 +40,14 @@ label {
     padding: 5px;
 }
 label::after {
-    content: "Y";
+    content: "select";
     position: absolute;
     top: -15px;
     left: 100%;
+    padding: 0 5px;
     display: none;
+    border-radius: 15px;
+    background-color: #ddd;
 }
 label:hover {
    background-color: #ddd;
@@ -97,7 +101,7 @@ input:focus {
     font-weight: 600; 
 }
 .menu_items span {
-    font-size: 24px;
+    font-size: 30px;
 }
 .items p span,
 img  {
@@ -113,6 +117,7 @@ img  {
 .items span {
     width: 15%;
     text-align: center;
+    font-size: 22px;
 }
 
 .main_block {
@@ -190,11 +195,11 @@ img {
     text-decoration: none;
 }
 .img_main_link b {
-    background-color: blue;
+    background-color: crimson;
     padding: 5px 10px;
-    border-radius: 15px;
-    opacity: 0.5;
-    color: yellow;
+    border-radius: 5px;
+    opacity: 1;
+    color: #fff;
 }
 .img_main_link b:hover {
     opacity: 1;
