@@ -5,6 +5,7 @@ import "../styles/global.css";
 import { Router } from "@reach/router"
 import Brand from "../components/Brand";
 import Bag from "./bag";
+import Help from "./help";
 import Orders from "./orders"
 import SEO from "../components/seo";
 
@@ -34,7 +35,7 @@ const Main = () => {
           <html lang="en" /> 
       </Helmet>
       <Router basepath="/" >
-       
+        <Help path="/help"/>
         <Bag path="/bag" />
         <Orders path="/orders" />         
       </Router>              

@@ -7,6 +7,7 @@ import styled from "styled-components";
 import  Layout  from "../components/layout";
 import { Curr } from "../components/currency";
 import { addBag } from "../state/app";
+import { Info } from "../components/info";
 
 const Currency = styled.button`
     font: 400 22px/30px 'Arial', sans-serif;
@@ -25,7 +26,7 @@ const Currency = styled.button`
 `;
 
 const MenuItem = styled.div`
-    width: ${props=>props.width}%;
+    width: ${props=>props.width === '10' ? '10':'15'}%;
     display: inline-block;
     text-align: center;
     padding: 10px 0;
@@ -48,9 +49,9 @@ const Size = styled(Currency)`
     &:hover {
         box-shadow: 0 0 1px 1px  #bbb;
     }
+    
 `;
-const SizeOne = styled.b`
-   
+const SizeOne = styled.b`   
     position: absolute;
     padding: 0 10px;
     border-radius: 15px;
@@ -76,18 +77,14 @@ const ButImage = styled.button`
     &:hover {
         border: 1px solid #ccc;
     }
+    @media (max-width: 600px) {
+        width: 100%;
+        height: 130px;
+    }
 
 `;
-const But = styled.button`
-    width: 25px;
-    height: 25px; 
-    margin: 0;
-    padding: 0;
-    font: message-box;
-    display: inline-block;
-    vertical-align: middle;
-    
-`;
+
+
 const Color = styled.span.attrs(props=>({
     props:props.color
 }))`
@@ -133,10 +130,10 @@ const Items =  ({ currency, pageContext, data,  location}) => {
     const [gender, set_gender] = React.useState("GENDER");
     const [sort, set_sort] = React.useState(true);
     const [color, set_color] = React.useState("all");
-    const [size, set_size] = React.useState(); 
+    const [size, set_size] = React.useState(null); 
     const [number, set_number] = React.useState(0);        
     const [min_cost, set_min] = React.useState(0);
-    const [max_cost, set_max] = React.useState(100);
+    const [max_cost, set_max] = React.useState(1000);
     const [index_size, set_index] = React.useState();
     const [image_item, set_image_item] = React.useState(false);
     const [new_index, set_new_index] = React.useState();
@@ -144,7 +141,9 @@ const Items =  ({ currency, pageContext, data,  location}) => {
     const noFilterCost = () => {
       
         set_min(0);
-        set_max(100)
+        set_max(1000);
+        set_size(null);
+        set_color("all")
       
     };
     const SortOnCost = () => {
@@ -170,32 +169,40 @@ const Items =  ({ currency, pageContext, data,  location}) => {
    
 
     return <Layout model={model} set_number={set_number} orders={orders.length} context_brand = {pageContext.brand} context_gender={pageContext.gender} > 
+        <Info 
+            brand ={pageContext.brand} 
+            gender={pageContext.gender} 
+            order={orders.length} 
+            model={model}
+            color={color}
+            size={size}
+            set_color={set_color}
+            set_size={set_size}
+            min ={min_cost}
+            max ={max_cost}
+            set_min={set_min}
+            set_max={set_max}
+            noFilterCost={noFilterCost}
+        />
        
         <div className="menu_items">
-            <MenuItem width="15" >ITEM{pageContext.house}</MenuItem>
-            <MenuItem width="15" >BRAND</MenuItem>
-            <MenuItem width="15">MODEL</MenuItem>
-            <MenuItem width="15">
+            <MenuItem >ITEM</MenuItem>
+            <MenuItem >BRAND</MenuItem>
+            <MenuItem >MODEL</MenuItem>
+            <MenuItem >
                <select style={{border: "none",outline: "none",background: "inherit"}} onChange={(e)=>set_gender(e.target.value)}>
                    <option value="GENDER" style={{border: "none",outline: "none"}}>all</option>
                    {pageContext.gender.map(i=><option value={i}>{i}</option>)}
                   
                </select>
             </MenuItem>
-            <MenuItem width="10">
-                COLOR {" "}
-                <Color color={color} onClick={()=>set_color("all")} title="remove filtr"/>
-            </MenuItem>
-            <MenuItem width="15">
-                SIZE {" "}
-                {size && <SizeOne onClick={()=>set_size("")}>{size}</SizeOne>}
-            
-            </MenuItem>
-            <MenuItem width="15">
+            <MenuItem width="10">COLOR</MenuItem>
+            <MenuItem >SIZE</MenuItem>
+            <MenuItem >
                 COST {" "}
                 {sort ? <Size  onClick={SortOnCost}>&#9650;</Size> : <Size  onClick={SortOnCost}>&#9660;</Size>}
                 
-                {(min_cost !== 0 || max_cost !==100) && <But onClick={noFilterCost}>x</But>}
+              
             </MenuItem>
             
             
@@ -205,7 +212,8 @@ const Items =  ({ currency, pageContext, data,  location}) => {
                 <ButImage                  
                     style={{backgroundImage: `url(https://myrunshop.000webhostapp.com/wp-content/image/${i.brand}/${i.model}_${i.color}.jpg),
                         url(https://myrunshop.000webhostapp.com/wp-content/image/${pageContext.brand}/${i.model}_${i.color}.webp)`,
-                        }}
+                        }} 
+                        alt="no image"
                     onClick={()=>setItem(true,index)}
                         
                 />    
@@ -232,11 +240,11 @@ const Items =  ({ currency, pageContext, data,  location}) => {
                         <Sale sale={i.sale}>                  
                             {currency === 1.2 ?(i.cost *currency).toFixed(0):(i.cost *currency).toFixed(0)}<Curr count={currency}/>
                         </Sale>
-                        {/* {i.sale > 0 ? <SalePersent>-{i.sale}%</SalePersent>: "" } */}
+                       
                    
                     <Size onClick={()=>set_max(i.cost*currency)}>{"<"}</Size>
                 </div>
-                {image_item & index === new_index && <Item 
+                {(image_item & index === new_index) && <Item 
                         page={i} 
                         closeImage={set_image_item} 
                         image_color={i.color} 

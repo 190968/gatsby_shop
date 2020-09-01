@@ -78,6 +78,7 @@ const Footer = () => {
                 <p>Return item</p>
                 <p>Table size</p>
                 <p>Question to us</p>
+               
             </Div>
             <Div text="SHOPPING"  onClick={()=>set_padd("10")}>
                 <p>Delivery</p>

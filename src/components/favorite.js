@@ -32,7 +32,7 @@ const DivItem = styled.div.attrs(props => ({
        height: 290px;
        display: ${props=>props.visible > 2 ? "none": "inline-block"};
        width: 33%;
-      
+       padding-top: 30vw;
        font-size: 1em;
        margin: 5px auto;
     }

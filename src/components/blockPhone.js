@@ -17,16 +17,23 @@ const Delivery = styled.h3`
         font-size: 16px;
         cursor: pointer;
         color: purple;
+        @media (max-width: 450px) {
+            display: none;
+        }
     }
     b {
         color: blue;
         font-size: 22px;
+        @media (max-width: 550px) {
+            font-size: 18px;
+        }
+       
     }
     @media (max-width: 880px) {
         display: block;
         width: 100%;
         text-align: center;
-       
+        font: italic 300 16px/30px 'Verdana', sans-serif;
     }
   
 `;
@@ -40,35 +47,15 @@ const Phone = styled.div`
         display: block;
         width: 100%;       
         background-color: #fff;       
-        text-align: center;
+        text-align: left;
+        float: left;
     }
 `;
-const PhoneImage = styled.span.attrs(props=>({
-    text:props.text,
-}))`
-    font:  400 40px/50px 'Verdana', sans-serif;   
-    width: 100%;   
-    
-    
-    &:after {
-        font:  600 15px/10px 'Verdana', sans-serif;  
-       
-        
-        position: relative;
-        top: -16px;
-        display: inline-block;
-        content: '${props=>props.one}';
-    }
-    &:before {
-        font:  600 15px/10px 'Verdana', sans-serif;  
-        
-       
-        position: relative;
-        top: -1px;
-        left: 224px;
-        display: inline-block;
-        content: '${props=>props.two}';
-    }
+const Hi = styled.span`
+    display: inline-block;
+    margin: 0 20px;
+    font: italic 300 16px/50px 'Verdana', sans-serif;
+
 `;
 const H = styled.h1`
     display: none;
@@ -90,13 +77,17 @@ const BlockPhone = () => (
 
    
             <div className="div_phone">
-                <H>This is the best shop world brands shoes and clothing for running</H> 
+                <H>This is the best shop world brands shoes and clothing for running</H>
+                <Hi>Hi, Guest!</Hi> 
+                <Link to="/help" style={{textDecoration: "none"}}>
+                   <Hi>Help & Contact</Hi> 
+                </Link>
                 <Delivery>Free delivery on order over <b>200$</b> <span>Detals!</span></Delivery>
-               
+                
                 <Phone>
                    
-                    <PhoneImage one={data.allDatoCmsPhone.nodes[0].onephone} two={data.allDatoCmsPhone.nodes[0].twophone}>&#9743; </PhoneImage>
-                    
+                    {/* <PhoneImage one={data.allDatoCmsPhone.nodes[0].onephone} two={data.allDatoCmsPhone.nodes[0].twophone}>&#9743; </PhoneImage> */}
+                   
                    
                     
                 </Phone>

@@ -92,7 +92,8 @@ const Header = ({ euro, currency }) => {
                         </One>
                     </Link>
                   
-                <Search />   
+                <Search /> 
+               
                 <Linktobag  title="open bag" /> 
                 <Link to="/orders" title="open account">
                     <Account />

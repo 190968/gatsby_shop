@@ -25,7 +25,7 @@ export default ({ children , context_brand, context_gender, set_number,orders, m
     <Header />  
     <Menu link = {context_brand} set_number={set_number} />  
     <String  link ={context_brand} gender={context_gender} />
-    {orders > 0 && <Info brand ={context_brand} gender={context_gender} order={orders} model={model}/>}   
+    {/* {orders > 0 && <Info brand ={context_brand} gender={context_gender} order={orders} model={model}/>}    */}
     {children}
     <Footer />
   </div>
