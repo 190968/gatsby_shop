@@ -2,10 +2,10 @@ module.exports = {
   siteMetadata: {   
     title: `Shop ADIDAS, NIKE, PUMA, SALOMON, REEBOK,NEW-BALANCE  SHOES FOR RUN `,
     defaultImage: `https://i.ibb.co/DDZBPXB/002.jpg` ,
-    siteUrl: `https://www.myshop.surge.sh`,
+    siteUrl: `https://www.aplacadance.ru`,
     description: `E-shop sport shoes and clothing. The best brands Adidas, Nike, Salomon. Buying shoes and clothing for running.Sport shoes for men,women and children.`, 
     twitter: `@kylemathews`,
-    titleTemplate: `%s | myshop.surge.sh`,
+    titleTemplate: `%s | aplacadance.ru`,
     twitterUsername: `Alekc`    
   }, 
   plugins: [
@@ -17,8 +17,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
-        host: 'http://www.myshop.surge.sh',
-        sitemap: 'https://www.myshop.surge.sh/sitemap.xml',
+        host: 'https://aplacadance.ru',
+        sitemap: 'https://www.aplacadance.ru/sitemap.xml',
         resolveEnv: () => process.env.GATSBY_ENV,
         env: {
           development: {
@@ -39,7 +39,7 @@ module.exports = {
         background_color: `#6b37bf`,
         theme_color: `#6b37bf`,        
         display: `standalone`,
-        icon: `src/image/Globe.png`, // This path is relative to the root of the site.
+        icon: `src/image/icon.png`, // This path is relative to the root of the site.
       },
      
     },
@@ -89,11 +89,7 @@ module.exports = {
         connectionString: `mongodb+srv://alex:alex@cluster0alex-mvffj.gcp.mongodb.net/test?retryWrites=true&w=majority`,
         dbName: `my`, 
         collection: `base`,
-        // server: { address: `gcp.mongodb.net/test`, port: 43532 },
-        // auth: { user: `alex`, password: `alex` },
-        // map: {
-        //   orders: { name: `text/markdown` },
-        // },
+        
         
       },
     }, 
