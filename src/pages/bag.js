@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { delete_from_bag, add_count } from "../state/app";
 import styled from "styled-components";
 import  Layout  from "../components/layout";
+import { Link } from "gatsby";
 import { Curr} from "../components/currency";
 import  DeliveryName  from "../components/delivery";
 import "../styles/global.css";
@@ -174,7 +175,9 @@ const Bag =  ({ bag, delete_from_bag, add_count, currency }) => {
                         <Curr count={currency} />
                     
                     </Total>
-                    <Button onClick={()=>set_continue_buy(true)}> GO TO CHECKOUT</Button>
+                    {/* <Button onClick={()=>set_continue_buy(true)}> </Button> */}
+                    <Button> <Link to="/FormDelivery">GO TO CHECKOUT</Link></Button>
+                   
                 </div>
                 {continue_buy && <DeliveryName cost_delivery={delivery} handClose={set_continue_buy}/>}
                 </>

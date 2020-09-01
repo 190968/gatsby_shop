@@ -5,6 +5,7 @@ import { delete_from_bag, add_count, delBag } from "../state/app";
 import styled from "styled-components";
 
 import "../styles/global.css";
+import { Link } from "gatsby";
 
 const Input = styled.input`
     display: block;
@@ -13,25 +14,14 @@ const Input = styled.input`
     padding: 5px;
     border: none;
 `;
-const Close = styled.button`    
-    float: right;
-    cursor: pointer;
-    border: none;
-    background-color: inherit;
-    height: 40px;
-    width: 40px;    
-    margin: 0;
-    &:hover {
-        background-color: #ddd;
-    }
-`;
+
 const Button = styled.button`
     width: 100%;
     font-size: 25px;
     padding: 5px;
     height: auto;
     cursor: pointer;
-    margin: 10px 0 0;
+    margin: 10px 0;
     background-color: lime;
     border: none;
     border-radius: 3px;
@@ -40,7 +30,7 @@ const Button = styled.button`
        
     }
 `;
-const DeliveryName = ({ cost_delivery, handClose, bag, delBag}) => {
+const DeliveryName = ({ cost_delivery, bag, delBag}) => {
     const [name, set_name] = React.useState("");
     const [phone, set_phone] = React.useState("");
     const [email, set_email] = React.useState("");
@@ -76,9 +66,10 @@ const DeliveryName = ({ cost_delivery, handClose, bag, delBag}) => {
     };
     return (
         <div className="delivery_main">
+            
             <div className="delivery_name">
-            <Close  onClick={()=>handClose(false)}>x</Close>
-            <h4>Last step  input yous's: </h4>
+            
+            <h4>LAST STEP </h4>
             <br/>
             NAME:  <Input type="text"  value={name}  onChange={(e)=>set_name(e.target.value)} placeholder="input name" />
             PHONE: <Input type="phone" value={phone} onChange={(e)=>set_phone(e.target.value)} placeholder="input phone" />
@@ -89,10 +80,13 @@ const DeliveryName = ({ cost_delivery, handClose, bag, delBag}) => {
             >
                 BUY
             </Button>
+            <Link to="/bag" className="delivery_main_link">BACK TO BAG</Link>
+            <Link to="/"className="delivery_main_link">TO MAIN</Link>
             <h3>{ok}</h3>
             </div>
 
         </div>
+        
     )
 };
 

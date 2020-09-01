@@ -1,5 +1,6 @@
 var Mongoclient = require('mongodb').MongoClient;
 require('dotenv').config();
+var cors = require('cors');
 const express = require("express");
 var bodyParser = require('body-parser');
 

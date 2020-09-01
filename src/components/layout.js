@@ -5,7 +5,6 @@ import { Footer } from "./footer";
 import { Helmet } from 'react-helmet';
 import { String } from "./string";
 import BlockPhone from "./blockPhone";
-import { Info } from "./info";
 
 
 
@@ -18,7 +17,8 @@ export default ({ children , context_brand, context_gender, set_number,orders, m
            
         />
         <title>{context_brand === undefined ? "Shoes shop favorite brands" : `${context_brand}- shoes and clothing for running`}</title>
-        <html lang="en" /> 
+        <html lang="en" />
+        <link rel="canonical" ></link> 
     </Helmet>
    
     <BlockPhone />

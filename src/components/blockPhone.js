@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "gatsby";
+import Country from "./country";
 
-import { graphql, StaticQuery } from "gatsby";
 
 const Delivery = styled.h3`   
     display: inline-block;
@@ -60,25 +60,16 @@ const Hi = styled.span`
 const H = styled.h1`
     display: none;
 `;
-const BlockPhone = () => (
-    <StaticQuery
-        query={graphql`
-            query Phone {               
-                    allDatoCmsPhone {
-                        nodes {
-                            onephone
-                            twophone
-                        }
-                    }
-               
-            }
-        `}
-        render={(data) => (      
+const BlockPhone = () => {
+   
+    
+       return (      
 
    
             <div className="div_phone">
+               
                 <H>This is the best shop world brands shoes and clothing for running</H>
-                <Hi>Hi, Guest!</Hi> 
+                <Hi>Hi, Guest! from <Country /></Hi> 
                 <Link to="/help" style={{textDecoration: "none"}}>
                    <Hi>Help & Contact</Hi> 
                 </Link>
@@ -92,9 +83,9 @@ const BlockPhone = () => (
                     
                 </Phone>
             </div>
-        )}
+        
 
-    />
+   
 
-);
+)};
 export default BlockPhone;

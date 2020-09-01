@@ -217,13 +217,22 @@ img {
     padding: 0;
     
 }
+.delivery_main_link {
+    font: 16px;
+    color: #000;
+    margin: 5px;
+    display: inline-block;
+    text-shadow: none;
+
+}
 .delivery_main {
-    position: fixed;
-    top: 200px;
+    padding-top: 100px;
     text-align: left;
-    background-color: lavender;
-    width: 80%;   
-    z-index: 10;   
+   
+    width: 80%;
+    margin: 0 auto;   
+    z-index: 10; 
+    height: 700px;  
 }
 .delivery_name {
     margin: 0 auto;
