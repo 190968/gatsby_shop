@@ -30,7 +30,7 @@ const Button = styled.button`
        
     }
 `;
-const DeliveryName = ({ cost_delivery, bag, delBag}) => {
+const DeliveryName = ({ bag, delBag, delivery }) => {
     const [name, set_name] = React.useState("");
     const [phone, set_phone] = React.useState("");
     const [email, set_email] = React.useState("");
@@ -39,14 +39,14 @@ const DeliveryName = ({ cost_delivery, bag, delBag}) => {
     function sendData() {
         axios({
             method: 'post',
-            // url: "http://localhost:5001/write",
-            url: "https://www.aplacadance.ru/.netlify/functions/tobag",
+            url: "http://localhost:5001/write",
+            // url: "https://www.aplacadance.ru/.netlify/functions/tobag",
             data: {           
                 name: name,
                 phone: phone,
                 email: email,
                 bag: bag,
-                delivery: cost_delivery 
+                delivery: delivery 
             },
             headers: {
                 'Access-Control-Allow-Origin': '*',
@@ -94,7 +94,8 @@ const DeliveryName = ({ cost_delivery, bag, delBag}) => {
 
 
 const mapStateToProps = state => ({
-    bag: state.app.bag    
+    bag: state.app.bag,
+    delivery: state.app.delivery    
    
 });
    

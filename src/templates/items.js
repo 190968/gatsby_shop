@@ -76,7 +76,7 @@ const ButImage = styled.button`
 
 
 const Color = styled.span.attrs(props=>({
-    props:props.color
+    color:props.color
 }))`
     padding: 12px;
     background-color: ${props=>props.color};   
@@ -90,7 +90,7 @@ const Color = styled.span.attrs(props=>({
 `;
 const Sale = styled.b.attrs(props => ({
     sale:props.sale,
-    currency:props.currency
+    props:props.currency
 }))`    
     display: inline-block;
     margin: 0;
@@ -117,12 +117,20 @@ const Sale = styled.b.attrs(props => ({
         font: 400 20px/18px 'Arial', sans-serif;
     }
 `;
-
+const Select = styled.select`
+    border: none;
+    outline: none;
+    background: inherit;
+    option {
+        border: none;
+        outline: none;
+    }
+`;
 const Items =  ({ currency, pageContext, data,  location}) => {   
     // let brand = pageContext.brand;
     const {state = {}} = location;
     const { model } = state || "run";
-    const s = currency === 1.2 ? '€' : currency === 1 ? "$"  : "£" ;
+    const s = (currency === 0.8) ? "€" : (currency === 1) ? "$"  : "£" ;
     const [gender, set_gender] = React.useState("GENDER");
     const [sort, set_sort] = React.useState(true);
     const [color, set_color] = React.useState("all");
@@ -186,16 +194,16 @@ const Items =  ({ currency, pageContext, data,  location}) => {
             <MenuItem >BRAND</MenuItem>
             <MenuItem >MODEL</MenuItem>
             <MenuItem >
-               <select style={{border: "none",outline: "none",background: "inherit"}} onBlur={(e)=>set_gender(e.target.value)}>
-                   <option value="GENDER" style={{border: "none",outline: "none"}}>all</option>
+               <Select  onChange={(e)=>set_gender(e.target.value)}>
+                   <option value="GENDER" >all</option>
                    {pageContext.gender.map(i=><option value={i}>{i}</option>)}
                   
-               </select>
+               </Select>
             </MenuItem>
             <MenuItem width="10">COLOR</MenuItem>
             <MenuItem >SIZE</MenuItem>
             <MenuItem >
-                COST {" "}
+                COST {" "}{s}
                 {sort ? <Size  onClick={SortOnCost}>&#9650;</Size> : <Size  onClick={SortOnCost}>&#9660;</Size>}
                 
               

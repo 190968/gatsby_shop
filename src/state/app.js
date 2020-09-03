@@ -1,5 +1,6 @@
 const initialState = {
   currency: 1,
+  delivery: 20,
   
   bag: []
 };
@@ -8,9 +9,12 @@ const add_Bag = 'add_Bag';
 const delete_from_Bag = 'delete_from_Bag';
 const euRo = 'euRo';
 const del_bag = 'del_bag';
+const set_delivery = 'set_delivery';
 
 
-
+export const setDelivery = a => ({
+  type: set_delivery, a
+});
 export const addBag = bag => ({
   type: add_Bag, bag
 });
@@ -30,6 +34,8 @@ export const euro = currency => ({
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case set_delivery:
+      return {...state, delivery: action.a};
     case del_bag:
       return { ...state, bag: [] };
     case add_Bag:
@@ -37,9 +43,8 @@ export default (state = initialState, action) => {
     case delete_from_Bag:
       return {...state, bag: state.bag.filter((i,index)=> index !== action.index )};  
     case euRo:
-      return { ...state, currency: action.currency === '€' ?
-       0.8 : action.currency === "$" ?
-       1 : 0.6 };
+      return { ...state, currency: action.currency === "€" ?
+       0.8 : action.currency === "$" ? 1 : action.currency === "£" ?  0.6 : 10 };
     case add_count:
         return { ...state, bag: state.bag.filter((i,index)=>index === action.a ? i.count = i.count + action.b : i.count)};
    

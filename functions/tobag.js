@@ -11,21 +11,25 @@ app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
-exports.handler = (event, context, callback) => {      
+exports.handler = (event, context, callback) => { 
+        // Only allow POST
+        if (event.httpMethod !== "POST") {
+        return { statusCode: 405, body: "Method Not Allowed" };
+        }     
         var d = new Date();    
         var date = d.getFullYear() +"/"+(d.getMonth() + 1) + "/" + d.getDate() + " " + d.getHours() + ":" + d.getMinutes()   ;
-    
+        const params = querystring.parse(event.body);
         Mongoclient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true },function(err, db){
             if ( err ) throw err;
             var set = {
                 date: date,           
                 person:{
-                "name": event.body.name,
-                "phone": event.body.phone,
-                "email": event.body.email
+                "name": params.name,
+                "phone": params.phone,
+                "email": params.email
                 },
-                "delivery": event.body.delivery,
-                "bag": event.body.bag,       
+                "delivery": params.delivery,
+                "bag": params.bag,       
                 "status": 1
             };
             var dbo = db.db("my");       

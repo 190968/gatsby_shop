@@ -12,6 +12,7 @@ import SEO from "../components/seo";
 import Favorite from "../components/favorite";
 import FavoriteSale from "../components/favoriteSale";
 import FormDelivery from "./FormDelivery";
+import BlockPhone from "../components/blockPhone";
 
 const Main = () => { 
   
@@ -35,6 +36,7 @@ const Main = () => {
           <title>Shoes for run</title>
           <html lang="en" /> 
       </Helmet>
+     
       <Router basepath="/" >
         <Help path="/help"/>
         <Bag path="/bag" />

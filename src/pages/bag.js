@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { delete_from_bag, add_count } from "../state/app";
+import { delete_from_bag, add_count, setDelivery } from "../state/app";
 import styled from "styled-components";
 import  Layout  from "../components/layout";
 import { Link } from "gatsby";
@@ -113,11 +113,11 @@ const Add = styled.b`
         text-align: center;
     `;   
 
-const Bag =  ({ bag, delete_from_bag, add_count, currency }) => {
+const Bag =  ({ bag, delete_from_bag, add_count, currency, delivery, setDelivery }) => {
     const s = currency === 0.8 ? '€' : currency === 1 ? "$"  : "£" ;
     const [number, set_number] = React.useState(0);
     const [continue_buy, set_continue_buy] = React.useState(false); 
-    const [delivery, set_delivery] = React.useState(10);
+    // const [delivery, set_delivery] = React.useState(10);
     return (
         <Layout set_number={set_number}>       
             <div className="div_bag_menu">           
@@ -158,13 +158,13 @@ const Bag =  ({ bag, delete_from_bag, add_count, currency }) => {
                 )}
                 <div className="div_delivery">
                     <p><InputSpan>Delivery to the warehouse</InputSpan>10 {s}
-                        <Input type="checkbox" value="10" checked={delivery===10} onChange={()=>set_delivery(10)}/>
+                        <Input type="checkbox" value="10" checked={delivery===10} onChange={()=>setDelivery(10)}/>
                     </p>
                     <p><InputSpan>Home delivery</InputSpan>20 {s}
-                        <Input type="checkbox" value="20" checked={delivery===20} onChange={()=>set_delivery(20)}/>
+                        <Input type="checkbox" value="20" checked={delivery===20} onChange={()=>setDelivery(20)}/>
                     </p>
                     <p><InputSpan>Express delivery </InputSpan>30 {s}
-                        <Input type="checkbox" value="30" checked={delivery===30} onChange={()=>set_delivery(30)}/>
+                        <Input type="checkbox" value="30" checked={delivery===30} onChange={()=>setDelivery(30)}/>
                     </p>
                     <p style={{borderTop: "1px solid #ccc; paddingTop: 20" }}>
                         <InputCode placeholder="Discount code" type="text" />
@@ -190,12 +190,14 @@ const Bag =  ({ bag, delete_from_bag, add_count, currency }) => {
 
 const mapStateToProps = state => ({
     bag: state.app.bag,    
-    currency: state.app.currency   
+    currency: state.app.currency,
+    delivery: state.app.delivery   
 });
    
 const mapDispatchToProps = dispatch => ({
     delete_from_bag: (a) => dispatch(delete_from_bag(a)),
-    add_count: (a,b) => dispatch(add_count(a,b))
+    add_count: (a,b) => dispatch(add_count(a,b)),
+    setDelivery: (a) => dispatch(setDelivery(a))
     
 });
 export default connect(mapStateToProps,mapDispatchToProps)(Bag);

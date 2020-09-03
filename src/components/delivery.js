@@ -13,6 +13,7 @@ const Input = styled.input`
     padding: 5px;
     border: none;
 `;
+
 const Close = styled.button`    
     float: right;
     cursor: pointer;
@@ -40,6 +41,7 @@ const Button = styled.button`
        
     }
 `;
+ // url: "https://www.aplacadance.ru/.netlify/functions/tobag",
 const DeliveryName = ({ cost_delivery, handClose, bag, delBag}) => {
     const [name, set_name] = React.useState("");
     const [phone, set_phone] = React.useState("");
@@ -49,8 +51,8 @@ const DeliveryName = ({ cost_delivery, handClose, bag, delBag}) => {
     function sendData() {
         axios({
             method: 'post',
-            // url: "http://localhost:5001/write",
-            url: "https://www.aplacadance.ru/.netlify/functions/tobag",
+            url: "http://localhost:5001/write",
+           
             data: {           
                 name: name,
                 phone: phone,
