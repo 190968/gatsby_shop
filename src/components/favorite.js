@@ -22,17 +22,17 @@ const DivItem = styled.div.attrs(props => ({
     background-image: ${props => `url(https://myrunshop.000webhostapp.com/wp-content/image/${props.brand}/${(props.model).replace(" ","_")}_${props.color}.jpg),
                     url(https://myrunshop.000webhostapp.com/wp-content/image/${props.brand}/${(props.model).replace(" ","_")}_${props.color}.webp)`};
     font-size: 18px;    
-    height: auto;
+    height: fit-content;
     width: 15vw;
     cursor: pointer;
     &:hover {
         box-shadow: 0 0 5px 5px #ddd;
     };
     @media (max-width: 580px) {
-       height: 290px;
+      
        display: ${props=>props.visible > 2 ? "none": "inline-block"};
        width: 33%;
-       padding-top: 30vw;
+       padding: 30vw 0 5px;
        font-size: 1em;
        margin: 5px auto;
     }

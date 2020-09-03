@@ -4,7 +4,7 @@ import { delete_from_bag, add_count } from "../state/app";
 import styled from "styled-components";
 import  Layout  from "../components/layout";
 import { Link } from "gatsby";
-import { Curr} from "../components/currency";
+
 import  DeliveryName  from "../components/delivery";
 import "../styles/global.css";
 
@@ -114,7 +114,7 @@ const Add = styled.b`
     `;   
 
 const Bag =  ({ bag, delete_from_bag, add_count, currency }) => {
-   
+    const s = currency === 0.8 ? '€' : currency === 1 ? "$"  : "£" ;
     const [number, set_number] = React.useState(0);
     const [continue_buy, set_continue_buy] = React.useState(false); 
     const [delivery, set_delivery] = React.useState(10);
@@ -147,8 +147,8 @@ const Bag =  ({ bag, delete_from_bag, add_count, currency }) => {
                                 {i.count}
                             <Add onClick={()=>add_count(index,1)}>+</Add>
                         </Quant>
-                        <span>{(i.cost*currency).toFixed(0)} <Curr count={currency} /></span>
-                        <span><b style={{fontSize: "1.3em"}}>{(i.cost*i.count*currency).toFixed(0)}</b><Curr count={currency} /></span>
+                        <span>{(i.cost*currency).toFixed(0)} {s}</span>
+                        <span><b style={{fontSize: "1.3em"}}>{(i.cost*i.count*currency).toFixed(0)}</b>{s}</span>
                         
                         
                     
@@ -157,13 +157,13 @@ const Bag =  ({ bag, delete_from_bag, add_count, currency }) => {
                 
                 )}
                 <div className="div_delivery">
-                    <p><InputSpan>Delivery to the warehouse</InputSpan>10 <Curr count={currency} />
+                    <p><InputSpan>Delivery to the warehouse</InputSpan>10 {s}
                         <Input type="checkbox" value="10" checked={delivery===10} onChange={()=>set_delivery(10)}/>
                     </p>
-                    <p><InputSpan>Home delivery</InputSpan>20 <Curr count={currency} />
+                    <p><InputSpan>Home delivery</InputSpan>20 {s}
                         <Input type="checkbox" value="20" checked={delivery===20} onChange={()=>set_delivery(20)}/>
                     </p>
-                    <p><InputSpan>Express delivery </InputSpan>30 <Curr count={currency} />
+                    <p><InputSpan>Express delivery </InputSpan>30 {s}
                         <Input type="checkbox" value="30" checked={delivery===30} onChange={()=>set_delivery(30)}/>
                     </p>
                     <p style={{borderTop: "1px solid #ccc; paddingTop: 20" }}>
@@ -172,10 +172,10 @@ const Bag =  ({ bag, delete_from_bag, add_count, currency }) => {
                     </p>
                     <Total>
                         Total cost: {bag.reduce(((total,num)=> Number(total) + num.cost*num.count*currency + delivery),[]).toFixed(0)}
-                        <Curr count={currency} />
+                        {s}
                     
                     </Total>
-                    {/* <Button onClick={()=>set_continue_buy(true)}> </Button> */}
+                    
                     <Button> <Link to="/FormDelivery">GO TO CHECKOUT</Link></Button>
                    
                 </div>

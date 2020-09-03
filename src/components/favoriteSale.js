@@ -12,7 +12,7 @@ const Sale = styled.b`
 `;
 
 const DivItem = styled.div`
-    height: 250px;
+    height: fit-content;
     width: 18%;
     display: inline-block;  
     margin: 15px 0;
@@ -22,7 +22,7 @@ const DivItem = styled.div`
         box-shadow: 0 0 5px 5px #ddd;
     }
     @media (max-width: 580px) {
-        padding: 10px;
+        padding: 5px;
         font-size: 1em;
         width: 33%;
     }
@@ -79,7 +79,7 @@ const  FavoriteSale = () => {
                             backgroundSize:"80%",
                             backgroundPosition:"center",
                             backgroundRepeat: "no-repeat",
-                            height:"50%",
+                            height:"150px",
                             width: "100%"
                         }}                   
                     >

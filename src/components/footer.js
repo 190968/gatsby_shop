@@ -1,4 +1,4 @@
-import React, { useRef,useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import "../styles/global.css";
 
@@ -28,14 +28,14 @@ const Div = styled.div.attrs(props=>({
         }
     }
 `;
-const Div_About = styled.article.attrs(props=>({
+const DivAbout = styled.article.attrs(props=>({
     props:props.padd
 }))`
     position: fixed;
     top: 50px;
     width: 60%;
     left: 20%;
-    height: 40vw;
+    height: content-fix;
     background-color: #fff;
     padding: 30px;
     color: #000;
@@ -48,7 +48,10 @@ const Div_About = styled.article.attrs(props=>({
     li {
         margin: 0 ;
     }
-
+    @media(max-width: 600px){
+        width: 100%;
+        left: 0;
+    }
 `;
 const Close = styled.button`    
     float: left;
@@ -94,7 +97,7 @@ const Footer = () => {
            
                 
             <h6>&#169; 2020 ShopForRun.com</h6>
-            {padd && <Div_About>
+            {padd && <DivAbout>
                 <Close  onClick={handClose}>x</Close>
                     <h3>About us:</h3>
                     <p> The online shop <b>ShopForRun.by</b> the better ability
@@ -119,7 +122,7 @@ const Footer = () => {
                         </ul>
                     <h3>Return</h3>
                         <p>Free Return. <span>Return within 30 days</span></p>
-                </Div_About>
+                </DivAbout>
             }    
         </div>
     )

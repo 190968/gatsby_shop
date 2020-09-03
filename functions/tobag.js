@@ -4,7 +4,7 @@ var cors = require('cors');
 const express = require("express");
 var bodyParser = require('body-parser');
 
-// app.use(bodyParser.json());
+var uri = "mongodb+srv://alex:alex@cluster0alex-mvffj.gcp.mongodb.net/my?retryWrites=true"; 
 const app = express()
 
 app.use(cors())
@@ -15,7 +15,7 @@ exports.handler = (event, context, callback) => {
         var d = new Date();    
         var date = d.getFullYear() +"/"+(d.getMonth() + 1) + "/" + d.getDate() + " " + d.getHours() + ":" + d.getMinutes()   ;
     
-        Mongoclient.connect(process.env.uri, { useNewUrlParser: true, useUnifiedTopology: true },function(err, db){
+        Mongoclient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true },function(err, db){
             if ( err ) throw err;
             var set = {
                 date: date,           

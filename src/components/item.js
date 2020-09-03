@@ -58,7 +58,7 @@ const Button = styled.button`
     `;
 const Item = (props) => {
 
-    const { addBag, page, gender, closeImage, image_color, image_model, size =  0, cost, sale= 0, item = 'shoes' } = props;
+    const { currency,addBag, page, gender, closeImage, image_color, image_model, size =  0, cost, sale= 0, item = 'shoes' } = props;
     const [new_size, set_size] = React.useState("select size");
    
     const handClose = () => {
@@ -98,10 +98,10 @@ const Item = (props) => {
                 </p>
                 <h2>                        
                     {sale === 0 ? 
-                        cost + `$` 
+                        cost*currency.toFixed(0) + `$` 
                         :
                         <> 
-                            <del>{cost}$</del>  <b>{(cost*(100-sale)/100).toFixed(0) + `$`}</b>
+                            <del>{cost*currency}$</del>  <b>{(cost*(100-sale)/100).toFixed(0) + `$`}</b>
                         </>
                     }
                 </h2>

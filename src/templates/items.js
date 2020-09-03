@@ -5,7 +5,7 @@ import Item from "../components/item";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import  Layout  from "../components/layout";
-import { Curr } from "../components/currency";
+
 import { addBag } from "../state/app";
 import { Info } from "../components/info";
 
@@ -51,17 +51,7 @@ const Size = styled(Currency)`
     }
     
 `;
-const SizeOne = styled.b`   
-    position: absolute;
-    padding: 0 10px;
-    border-radius: 15px;
-    &:after {
-        content: 'x';
-        font-size: 17px;
-        position: absolute;
-        top: -13px;
-    }
-`;
+
 const ButImage = styled.button`
     border: 1px solid transparent;
     background-color: #fff;
@@ -99,16 +89,17 @@ const Color = styled.span.attrs(props=>({
     }
 `;
 const Sale = styled.b.attrs(props => ({
-    props:props.sale
+    sale:props.sale,
+    currency:props.currency
 }))`    
     display: inline-block;
     margin: 0;
     font-size: 25px;
-    width: 40%;
+    width: auto;
     position: relative;
     text-align: center;
-    padding: 0;
-    &:after {
+    padding: 0 10px;
+    &:before {
         content: '-${props=>props.sale}%';
         top: -25px;
         left: 32px;
@@ -120,28 +111,33 @@ const Sale = styled.b.attrs(props => ({
         position: absolute;
         font: 600 16px/18px 'Arial', sans-serif;
     }
+    &:after {
+        content: '${props=>props.currency}';      
+        padding: 5px 2px 0 5px;       
+        font: 400 20px/18px 'Arial', sans-serif;
+    }
 `;
 
 const Items =  ({ currency, pageContext, data,  location}) => {   
     // let brand = pageContext.brand;
     const {state = {}} = location;
     const { model } = state || "run";
-
+    const s = currency === 1.2 ? '€' : currency === 1 ? "$"  : "£" ;
     const [gender, set_gender] = React.useState("GENDER");
     const [sort, set_sort] = React.useState(true);
     const [color, set_color] = React.useState("all");
     const [size, set_size] = React.useState(null); 
     const [number, set_number] = React.useState(0);        
     const [min_cost, set_min] = React.useState(0);
-    const [max_cost, set_max] = React.useState(1000);
-    const [index_size, set_index] = React.useState();
+    const [max_cost, set_max] = React.useState(100000);
+   
     const [image_item, set_image_item] = React.useState(false);
     const [new_index, set_new_index] = React.useState();
     
     const noFilterCost = () => {
       
         set_min(0);
-        set_max(1000);
+        set_max(10000);
         set_size(null);
         set_color("all")
       
@@ -163,11 +159,11 @@ const Items =  ({ currency, pageContext, data,  location}) => {
         .filter(i=> model ? i.model === model : i.model)
         .filter(i=> gender==='GENDER' ? i : i.gender === gender)
         .sort((a,b)=> sort ? a.cost-b.cost:b.cost-a.cost)
-        .filter(i=>i.cost >= min_cost)
-        .filter(i=>i.cost <= max_cost)    
+        .filter(i=>i.cost*currency >= min_cost)
+        .filter(i=>i.cost*currency <= max_cost)    
         .filter(i=>color === "all" ? i : i.color === color); 
    
-
+    
     return <Layout model={model} set_number={set_number} orders={orders.length} context_brand = {pageContext.brand} context_gender={pageContext.gender} > 
         <Info 
             brand ={pageContext.brand} 
@@ -190,7 +186,7 @@ const Items =  ({ currency, pageContext, data,  location}) => {
             <MenuItem >BRAND</MenuItem>
             <MenuItem >MODEL</MenuItem>
             <MenuItem >
-               <select style={{border: "none",outline: "none",background: "inherit"}} onChange={(e)=>set_gender(e.target.value)}>
+               <select style={{border: "none",outline: "none",background: "inherit"}} onBlur={(e)=>set_gender(e.target.value)}>
                    <option value="GENDER" style={{border: "none",outline: "none"}}>all</option>
                    {pageContext.gender.map(i=><option value={i}>{i}</option>)}
                   
@@ -237,8 +233,11 @@ const Items =  ({ currency, pageContext, data,  location}) => {
                 <div className="cost">
                     <Size onClick={()=>set_min(i.cost*currency)}>{"<"}</Size> 
                    
-                        <Sale sale={i.sale}>                  
-                            {currency === 1.2 ?(i.cost *currency).toFixed(0):(i.cost *currency).toFixed(0)}<Curr count={currency}/>
+                        <Sale sale={i.sale} currency={s} >                  
+                           
+                                {(i.cost*currency).toFixed(0)} 
+                               
+                           
                         </Sale>
                        
                    

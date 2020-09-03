@@ -2,9 +2,9 @@ import React from "react";
 import styled from "styled-components";
 
 const DivInfo = styled.div`
-    margin: 20px 0;    
+   
     font: 400 22px/50px "Taroma", sans-serif;    
-    height: 50px;
+    height: fit-content;
     width: auto;
     background-color: #fff;
     span {
@@ -33,7 +33,7 @@ const Color = styled.span.attrs(props=>({
     position: relative;
     font: italic 300 16px/16px "Taroma", sans-serif;
     margin: 0 10px;
-    display: ${props=>(props.color === "all" || props.color === null || props.color === 0 || props.color === 1000) ? 'none': 'inline-block'};
+    display: ${props=>(props.color === "all" || props.color === null || props.color === 0 || props.color === 100000) ? 'none': 'inline-block'};
     vertical-align: middle;
     border-radius: 10px;
     z-index: 0;
@@ -59,19 +59,9 @@ const Color = styled.span.attrs(props=>({
         background-color: #000;
     }
 `;
-const But = styled.button`
-    width: 25px;
-    height: 25px; 
-    margin: 0;
-    border-radius: 10px;
-    padding: 0;
-    font: message-box;
-    display: inline-block;
-    vertical-align: middle;
-    
-`;
+
 const Info = ({  model="one",...props}) => {
-    const {brand ,gender,set_size, set_color,set_min,set_max,noFilterCost } = props;
+    const {brand ,gender,set_size, set_color,set_min,set_max } = props;
     return (
 
         <DivInfo> 
@@ -82,7 +72,7 @@ const Info = ({  model="one",...props}) => {
             
            
                
-                <Color color={props.color} onClick={()=>set_color("all")} title="remove filtr">
+                <Color color={props.color} onClick={()=>set_color("all")}>
                     <b>color:</b>{props.color}
                 </Color>
            
@@ -90,8 +80,8 @@ const Info = ({  model="one",...props}) => {
                
                 <Color color={props.size} onClick={()=>set_size(null)}><b>size:</b>{props.size}</Color>
                 <Color color={props.min} onClick={()=>set_min(0)}><b>cost {">"} </b>{props.min}</Color>
-                <Color color={props.max} onClick={()=>set_max(1000)}><b>cost {"<"}</b>{props.max}</Color>
-                <But onClick={noFilterCost}>x</But>
+                <Color color={props.max} onClick={()=>set_max(100000)}><b>cost {"<"}</b>{props.max}</Color>
+                
            
            
         </DivInfo>

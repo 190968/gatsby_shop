@@ -69,7 +69,7 @@ const BlockPhone = () => {
             <div className="div_phone">
                
                 <H>This is the best shop world brands shoes and clothing for running</H>
-                <Hi>Hi, Guest! from <Country /></Hi> 
+                <Hi>Hi, Guest! <img src="https://image.flaticon.com/icons/svg/64/64113.svg" width="42" height="32" alt="Location" title="Location"></img> <Country /></Hi> 
                 <Link to="/help" style={{textDecoration: "none"}}>
                    <Hi>Help & Contact</Hi> 
                 </Link>

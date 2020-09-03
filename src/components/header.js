@@ -41,12 +41,12 @@ const One = styled.h2.attrs(props=>({
 
 const Account = styled.p`
     float: right;
-    width: 45px;
+    width: 47px;
     box-sizing: border-box;
-    height: 45px;   
-    margin: 2px 10px;
+    height: 40px;   
+    margin: 8px;
     cursor: pointer;
-    background: url(https://myrunshop.000webhostapp.com/wp-content/image/icon/men.png) center/80% no-repeat;
+    background: url(https://myrunshop.000webhostapp.com/wp-content/image/icon/men.png) center/60% no-repeat;
     &:hover {
         box-shadow: 0 0 2px 2px #fff;
     } 
@@ -54,20 +54,41 @@ const Account = styled.p`
 `;
 
 const Euro = styled(Account)`   
-    font: 300 45px/47px 'Arial', sans-serif;
+    font: 300 35px/47px 'Arial', sans-serif;
     color: #fff;   
     background: none;
     text-align: center;
+    margin: 2px 0;
+    display: inline-block;
+    &:hover {
+        box-shadow: none;
+        color: red;
+    } 
    
+`;
+const DivCur = styled.div`
+    display: inline-block;
+    width: 45px;
+    height: 47px;
+    overflow: hidden;
+    float: right;
+    vertical-align: middle;
    
+    transition: all 0.5s;
+    border: 2px solid cornflowerblue;
+    &:hover {
+        width: 150px;
+        transition: all 0.5s;
+        border-bottom: 2px solid #fff;
+        background-color: #ccc;
+    }
+
 `;
 
 
 const Header = ({ euro, currency }) => { 
-    
-   
-   
-
+    const s = currency === 0.8 ? '€' : currency === 1 ? "$"  : "£" ;
+  
     return (
     <StaticQuery
         query={ graphql`
@@ -97,16 +118,14 @@ const Header = ({ euro, currency }) => {
                 <Linktobag  title="open bag" /> 
                 <Link to="/orders" title="open account">
                     <Account />
-                </Link>                         
-                              
-            
-                
-                {currency === 1 ?
-                    <Euro  onClick={()=>euro(1.2)}>&#8364;</Euro>               
-                :
-                    <Euro onClick={()=>euro(1)}>$</Euro>               
-                }
-            
+                </Link> 
+                         
+                <DivCur>                 
+                {["€","$","£"].filter(i=>i!==s).concat(s).reverse().map(i=><Euro onClick={()=>euro(i)}>{i}</Euro> )}    
+                    
+                   
+                   
+                </DivCur>           
             
             </div>
         )}

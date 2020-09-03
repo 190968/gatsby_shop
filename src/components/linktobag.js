@@ -11,11 +11,11 @@ const BagLink = styled(Link).attrs(props=> ({
     width: 45px;
     height: 45px;
     margin: 2px 10px;   
-    background: cornflowerblue url(https://myrunshop.000webhostapp.com/wp-content/image/icon/bag.png) center/90% no-repeat ;
+    background: cornflowerblue url(https://myrunshop.000webhostapp.com/wp-content/image/icon/bag.png) center/80% no-repeat ;
     opacity: ${props=>props.count === 0 ? "0.5" : "1"};
     position: relative;
     &: hover {
-        background: cornflowerblue url(https://myrunshop.000webhostapp.com/wp-content/image/icon/bag.png) center/90% no-repeat ;
+        background: cornflowerblue url(https://myrunshop.000webhostapp.com/wp-content/image/icon/bag.png) center/80% no-repeat ;
     }
     &:hover {
         box-shadow: 0 0 2px 2px #fff;

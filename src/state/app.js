@@ -37,7 +37,9 @@ export default (state = initialState, action) => {
     case delete_from_Bag:
       return {...state, bag: state.bag.filter((i,index)=> index !== action.index )};  
     case euRo:
-      return { ...state, currency: action.currency };
+      return { ...state, currency: action.currency === '€' ?
+       0.8 : action.currency === "$" ?
+       1 : 0.6 };
     case add_count:
         return { ...state, bag: state.bag.filter((i,index)=>index === action.a ? i.count = i.count + action.b : i.count)};
    

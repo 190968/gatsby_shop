@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "gatsby";
 
-const Div_About = styled.article.attrs(props=>({
+const DivAbout = styled.article.attrs(props=>({
     props:props.padd
 }))`
    width: 80%;
@@ -28,7 +28,7 @@ const Div_About = styled.article.attrs(props=>({
         width: 100%;
     } 
 `;
-const Div_input = styled.div`
+const DivInput = styled.div`
     background-color: blue;
     width: 100%;
     
@@ -54,15 +54,15 @@ const Help = () => {
     
     return (
                  
-           <Div_About>
+           <DivAbout>
                     <Link to="/" className="to_main" ></Link>   
                    
                     <span>Customer service  </span>
-                    <Div_input>
+                    <DivInput>
                         <h2>Send us</h2>
                         <Input type="text" placeholder="Own question"/>
                         <Button>Send</Button>
-                    </Div_input>
+                    </DivInput>
                     <Link to="/">Home</Link>
                     <h3>About us:</h3>
                     <p> The online shop <b>ShopForRun.by</b> the better ability
@@ -87,7 +87,7 @@ const Help = () => {
                         </ul>
                     <h3>Return</h3>
                         <p>Free Return. <b>Return within 30 days</b></p>
-            </Div_About>
+            </DivAbout>
               
         
     )

@@ -42,7 +42,7 @@ const Button = styled.button`
     font-weight: 800;
     background-color: lime;
     color: blue;    
-    margin: 0;
+    height: 45px;
     padding: 8px 0;
     border: 1px solid lavander;    
     &:hover {
@@ -56,17 +56,17 @@ const Input = styled.input`
     vertical-align: top;
     height: 45px;
     padding: 0 10px;
-    width: 20%;
+    width: 30%;
     color: red;
     border: none;
     outline: none;
     background-color: #fff;
-    margin: 10px;
+    margin: 5px;
 `;
 
 const ButtonAccount = styled(Button)`
-    margin: 10px;
-    width: 20%;
+    margin: 5px;
+    width: 30%;
    
 `;
 const IndexOne = styled(Index)`
