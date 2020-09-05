@@ -73,11 +73,7 @@ const InputCheckbox = styled.input`
     cursor: pointer;
     
 `;
-const ButtonAccount = styled(Button)`
-    margin: 10px;
-    width: 20%;
-    padding: 3px 10px;
-`;
+
 const IndexOne = styled(Index)`
     width: 3%;
 `;
