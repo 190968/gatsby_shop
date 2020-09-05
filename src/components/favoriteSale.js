@@ -13,6 +13,7 @@ const Sale = styled.b`
 
 const DivItem = styled.div`
     height: fit-content;
+    padding-bottom: 10px;
     width: 18%;
     display: inline-block;  
     margin: 15px 0;
@@ -40,8 +41,9 @@ const FavoriteItems = styled.h3`
 const DivItems = styled.div`
     display: flex;
     justify-content: space-between;
-    h4 b {
+    h3 b {
         color: red;
+        font-size: 25px;
     }
 `;
 
@@ -85,10 +87,10 @@ const  FavoriteSale = () => {
                     >
                         <Sale>{i.sale}%</Sale>
                     </span>    
-                    <h4>{i.brand}</h4>
-                    {i.modelitem} <br/>
-                    {i.color}
-                    <h4><del>{i.cost}$</del> <b>{(i.cost*(100-i.sale)/100).toFixed(0)}$</b></h4>
+                    <h4 className="brand_favorite">{i.brand.toUpperCase()}</h4>
+                    <h4>{i.modelitem}</h4> 
+                    <h4>{i.color}</h4>
+                    <h3><del>{i.cost}$</del> <b>{(i.cost*(100-i.sale)/100).toFixed(0)}$</b></h3>
                 </DivItem>)}
             </DivItems>
            {number && <Item

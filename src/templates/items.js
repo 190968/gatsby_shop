@@ -78,14 +78,27 @@ const ButImage = styled.button`
 const Color = styled.span.attrs(props=>({
     color:props.color
 }))`
-    padding: 12px;
+    height: 25px;
+    padding: 0 12px;
+    display: inline-block;
     background-color: ${props=>props.color};   
     cursor: pointer;
+    position: relative;
    
     vertical-align: middle;
     border-radius: 20px;
-    &:hover {
-        border: 1px solid yellow;
+    &:hover:before {
+        display: inline-block;
+        font-weight: 600;
+    }
+    &:before {
+        content: 'select ${props=>props.color}';
+        position: absolute;
+        top: -20px;
+        left: -25px;
+        display: none;
+        color: #000;
+        font-size: 16px;
     }
 `;
 const Sale = styled.b.attrs(props => ({
@@ -126,7 +139,7 @@ const Select = styled.select`
         outline: none;
     }
 `;
-const Items =  ({ currency, pageContext, data,  location}) => {   
+const Items =  ({ currency, pageContext, data,  location, countr }) => {   
     // let brand = pageContext.brand;
     const {state = {}} = location;
     const { model } = state || "run";
@@ -172,7 +185,7 @@ const Items =  ({ currency, pageContext, data,  location}) => {
         .filter(i=>color === "all" ? i : i.color === color); 
    
     
-    return <Layout model={model} set_number={set_number} orders={orders.length} context_brand = {pageContext.brand} context_gender={pageContext.gender} > 
+    return <Layout countr={countr} model={model} set_number={set_number} orders={orders.length} context_brand = {pageContext.brand} context_gender={pageContext.gender} > 
         <Info 
             brand ={pageContext.brand} 
             gender={pageContext.gender} 
@@ -196,14 +209,14 @@ const Items =  ({ currency, pageContext, data,  location}) => {
             <MenuItem >
                <Select  onChange={(e)=>set_gender(e.target.value)}>
                    <option value="GENDER" >all</option>
-                   {pageContext.gender.map(i=><option value={i}>{i}</option>)}
+                   {pageContext.gender.map(i=><option key={i} value={i}>{i}</option>)}
                   
                </Select>
             </MenuItem>
             <MenuItem width="10">COLOR</MenuItem>
             <MenuItem >SIZE</MenuItem>
             <MenuItem >
-                COST {" "}{s}
+                COST 
                 {sort ? <Size  onClick={SortOnCost}>&#9650;</Size> : <Size  onClick={SortOnCost}>&#9660;</Size>}
                 
               
@@ -227,7 +240,7 @@ const Items =  ({ currency, pageContext, data,  location}) => {
                 <MenuItem width="10" style={{color: i.color}}>
                   
                   
-                    <Color color={i.color} onClick={()=>setColor(i)} title={i.color}/>
+                    <Color color={i.color} onClick={()=>setColor(i)} />
                     
                 </MenuItem>
                 <span>

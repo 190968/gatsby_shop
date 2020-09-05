@@ -39,7 +39,7 @@ const DivItem = styled.div.attrs(props => ({
 `;
 const Gender = styled.p`
     font-size: 16px;
-    margin: 0;
+    margin: 10px 0;
 `; 
 
 const FavoriteItems = styled.h3`
@@ -90,8 +90,8 @@ const Favorite = () =>{
                     model={i.modelItem}
                 >  
                     
-                    <h2 className="brand_favorite">{i.brand.toUpperCase()}</h2>
-                    {i.modelItem} 
+                    <h4 className="brand_favorite">{i.brand.toUpperCase()}</h4>
+                    <b>{i.modelItem} </b>
                     <Gender>{i.gender}</Gender> 
                     <Gender>{i.color}</Gender>
                 </DivItem>

@@ -117,9 +117,9 @@ const Bag =  ({ bag, delete_from_bag, add_count, currency, delivery, setDelivery
     const s = currency === 0.8 ? '€' : currency === 1 ? "$"  : "£" ;
     const [number, set_number] = React.useState(0);
     const [continue_buy, set_continue_buy] = React.useState(false); 
-    // const [delivery, set_delivery] = React.useState(10);
+   
     return (
-        <Layout set_number={set_number}>       
+        <Layout set_number={set_number} title="Your bag">       
             <div className="div_bag_menu">           
                 <span style={{width:"45%"}}>Items</span>
                 <span style={{width:"23%"}}>Qty</span>
@@ -129,9 +129,12 @@ const Bag =  ({ bag, delete_from_bag, add_count, currency, delivery, setDelivery
             {bag.length !== 0 ?  <> 
                 {bag.map((i,index) => 
                     <div className="div_bag_item" key={index}>
-                    
+                        <h1>This is better site to buy run shoes.</h1>
                         <Items 
-                            style={{backgroundImage: `url(https://myrunshop.000webhostapp.com/wp-content/image/${i.brand.toLowerCase()}/${i.model}_${i.color}.jpg),url(https://myrunshop.000webhostapp.com/wp-content/image/${i.brand.toLowerCase()}/${i.model}_${i.color}.webp)`}}
+                            style={{backgroundImage: `url(https://myrunshop.000webhostapp.com/wp-content/image/
+                                ${i.brand.toLowerCase()}/${i.model}_${i.color}.jpg),
+                                url(https://myrunshop.000webhostapp.com/wp-content/image/
+                                ${i.brand.toLowerCase()}/${i.model}_${i.color}.webp)`}}
                         >
                             <P><b>{i.brand}</b></P> 
                             <P>{i.model}</P>
@@ -176,7 +179,7 @@ const Bag =  ({ bag, delete_from_bag, add_count, currency, delivery, setDelivery
                     
                     </Total>
                     
-                    <Button> <Link to="/FormDelivery">GO TO CHECKOUT</Link></Button>
+                    <Button> <Link to="/formdelivery">GO TO CHECKOUT</Link></Button>
                    
                 </div>
                 {continue_buy && <DeliveryName cost_delivery={delivery} handClose={set_continue_buy}/>}

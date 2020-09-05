@@ -19,6 +19,9 @@ exports.handler = (event, context, callback) => {
         var d = new Date();    
         var date = d.getFullYear() +"/"+(d.getMonth() + 1) + "/" + d.getDate() + " " + d.getHours() + ":" + d.getMinutes()   ;
         const params = querystring.parse(event.body);
+        const name_my = event.queryStringParameters.name || "World";
+        console.log(name_my);
+        const name = params.name;
         Mongoclient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true },function(err, db){
             if ( err ) throw err;
             var set = {
@@ -37,7 +40,10 @@ exports.handler = (event, context, callback) => {
             if ( err ) {
                 res.send(err)
             } else {       
-                res.send("Ok");
+                return {
+                    statusCode: 200,
+                    body: `Hello, ${name}`
+                  };
                 db.close();          
             }    
             });           

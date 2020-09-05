@@ -119,7 +119,7 @@ const Orders = () => {
 
     
     return (
-        <Layout set_number={set_number}>
+        <Layout set_number={set_number} title="Your orders">
             {visible_account ? 
                 <div className="go_to_account">
                    

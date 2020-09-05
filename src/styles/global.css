@@ -1,5 +1,6 @@
 html {
   background-color: lightgoldenrodyellow;
+ 
   
 }
 .img_min {    
@@ -98,7 +99,11 @@ input:focus {
     margin: 10px 0 0;
     padding: 0;
     text-align: left;
-    font-weight: 600; 
+    font-weight: 600;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 50px;
+    z-index: 10;
 }
 .menu_items span {
     font-size: 30px;
@@ -128,7 +133,7 @@ img  {
 .brand_favorite {
     font:italic 600 20px/20px 'Verdana', sans-serif;
     color: cornflowerblue;
-    margin: 0;
+    margin:  0 0 10px;
 }
 .quantBag {
     margin: -10px -40px 0 0;
@@ -356,7 +361,7 @@ img {
 }
 .div_item {
     position: fixed;
-    z-index: 1;
+    z-index: 15;
     width: 80%;
     height: 100%;
     background-color: #fff;
@@ -374,6 +379,10 @@ img {
     width: 30px;
     height: 30px;
     margin-left: -10px; 
+}
+.div_bag_item h1 {
+    display: none;
+    
 }
 .div_big_image {
     margin: 20px 0;   

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Helmet } from 'react-helmet';
 import { Link } from "gatsby";
 
 const DivAbout = styled.article.attrs(props=>({
@@ -53,7 +54,12 @@ const Button = styled.button`
 const Help = () => {
     
     return (
-                 
+        <>
+        <Helmet>
+        
+        <title>Only better brands shoes for run</title>
+        <html lang="en" /> 
+        </Helmet>     
            <DivAbout>
                     <Link to="/" className="to_main" ></Link>   
                    
@@ -88,6 +94,7 @@ const Help = () => {
                     <h3>Return</h3>
                         <p>Free Return. <b>Return within 30 days</b></p>
             </DivAbout>
+        </>    
               
         
     )

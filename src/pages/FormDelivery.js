@@ -39,8 +39,8 @@ const DeliveryName = ({ bag, delBag, delivery }) => {
     function sendData() {
         axios({
             method: 'post',
-            url: "http://localhost:5001/write",
-            // url: "https://www.aplacadance.ru/.netlify/functions/tobag",
+            // url: "http://localhost:5001/write",
+            url: "https://www.aplacadance.ru/.netlify/functions/tobag",
             data: {           
                 name: name,
                 phone: phone,

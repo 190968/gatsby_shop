@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "gatsby";
-import Country from "./country";
+import { connect } from "react-redux";
 
 
 const Delivery = styled.h3`   
@@ -60,7 +60,7 @@ const Hi = styled.span`
 const H = styled.h1`
     display: none;
 `;
-const BlockPhone = () => {
+const BlockPhone = ({country}) => {
    
     
        return (      
@@ -69,23 +69,25 @@ const BlockPhone = () => {
             <div className="div_phone">
                
                 <H>This is the best shop world brands shoes and clothing for running</H>
-                <Hi>Hi, Guest! <img src="https://image.flaticon.com/icons/svg/64/64113.svg" width="42" height="32" alt="Location" title="Location"></img> <Country /></Hi> 
+                <Hi>Hi, Guest! <img src="https://image.flaticon.com/icons/svg/64/64113.svg" width="42" height="32" alt="Location" title="Location"></img> {country}</Hi> 
                 <Link to="/help" style={{textDecoration: "none"}}>
                    <Hi>Help & Contact</Hi> 
                 </Link>
                 <Delivery>Free delivery on order over <b>200$</b> <span>Detals!</span></Delivery>
                 
-                <Phone>
-                   
-                    {/* <PhoneImage one={data.allDatoCmsPhone.nodes[0].onephone} two={data.allDatoCmsPhone.nodes[0].twophone}>&#9743; </PhoneImage> */}
-                   
-                   
-                    
-                </Phone>
+                
             </div>
         
 
    
 
 )};
-export default BlockPhone;
+
+const mapStateToProps = state => ({
+    country: state.app.country   
+   
+});
+   
+
+export default connect(mapStateToProps)(BlockPhone);
+   

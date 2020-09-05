@@ -1,7 +1,7 @@
 const initialState = {
   currency: 1,
   delivery: 20,
-  
+  country: "",
   bag: []
 };
 
@@ -10,8 +10,11 @@ const delete_from_Bag = 'delete_from_Bag';
 const euRo = 'euRo';
 const del_bag = 'del_bag';
 const set_delivery = 'set_delivery';
+const set_country = 'set_country';
 
-
+export const setCountry = a => ({
+  type: set_country, a
+});
 export const setDelivery = a => ({
   type: set_delivery, a
 });
@@ -34,6 +37,8 @@ export const euro = currency => ({
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case set_country:
+      return {...state, country: action.a};
     case set_delivery:
       return {...state, delivery: action.a};
     case del_bag:

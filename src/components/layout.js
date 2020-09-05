@@ -1,5 +1,6 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Menu from "./menu";
+
 import Header from "./header";
 import { Footer } from "./footer";
 import { Helmet } from 'react-helmet';
@@ -8,25 +9,30 @@ import BlockPhone from "./blockPhone";
 
 
 
-export default ({ children , context_brand, context_gender, set_number,orders, model}) => (
-  <div className="main_block" >
-    <Helmet>
+export default function Layout ({ children , context_brand, context_gender, set_number, title}){
+  
+  return (
+    <div className="main_block" >
+      <Helmet>
         <meta
-            name="viewport"
-            content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover"
-           
+          name="viewport"
+          content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover"
+            
         />
-        <title>{context_brand === undefined ? "Shoes shop favorite brands" : `${context_brand}- shoes and clothing for running`}</title>
+        <title>{ context_brand === undefined ? title : `${context_brand} 
+             -  the running shoes and clothing for ${context_gender}`
+          }
+        </title>
         <html lang="en" />
         <link rel="canonical" ></link> 
-    </Helmet>
-   
-    <BlockPhone />
-    <Header />  
-    <Menu link = {context_brand} set_number={set_number} />  
-    <String  link ={context_brand} gender={context_gender} />
-    {/* {orders > 0 && <Info brand ={context_brand} gender={context_gender} order={orders} model={model}/>}    */}
-    {children}
-    <Footer />
-  </div>
-)
+      </Helmet>
+    
+      <BlockPhone />
+      <Header />  
+      <Menu link = {context_brand} set_number={set_number} />  
+      <String  link ={context_brand} gender={context_gender} />    
+        {children}
+      <Footer />
+    </div>
+  )
+};
