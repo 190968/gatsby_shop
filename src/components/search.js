@@ -40,7 +40,8 @@ const Input = styled.input`
 const ImageSearch = styled(ImageBag)`
     float: none;
     vertical-align: top;
-    margin: 5px 0 0 5vw;   
+    margin: 5px 0 ;
+    
 `;
 const SearchModel = styled.div`
     display: inline-block;

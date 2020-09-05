@@ -202,8 +202,7 @@ img {
 .img_main_link b {
     background-color: crimson;
     padding: 5px 10px;
-    border-radius: 5px;
-   
+    border-radius: 5px;   
     color: #fff;
 }
 
@@ -483,15 +482,17 @@ img {
     }
     .div_content,
     .div_description {
-        width: 45vw;
-        margin: 10px;
+        width: 100vw;
+        padding: 10px;
+        height: fit-content;
+       
     }
     .delivery_name {       
         left: 15%;
         width: 70%;       
     }
     .img_main_link b{      
-        font: 300  1.3vw/20vw 'Arial', sans-serif;        
+        font: 300  1.9vw/20vw 'Arial', sans-serif;        
     }
     html {
         font:100%/1 'Quattrocento Sans',sans-serif;
@@ -537,4 +538,5 @@ img {
     .menu_items {
         display: none;
     }
+    
 }

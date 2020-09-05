@@ -33,7 +33,7 @@ const Delivery = styled.h3`
         display: block;
         width: 100%;
         text-align: center;
-        font: italic 300 16px/30px 'Verdana', sans-serif;
+        font: italic 300 15px/25px 'Verdana', sans-serif;
     }
   
 `;
@@ -45,6 +45,10 @@ const Hi = styled.span`
     &:hover {
         text-decoration: underline;
         color: blue;
+    }
+    @media (max-width: 880px) {
+        
+        font: italic 300 15px/25px 'Verdana', sans-serif;
     }
 `;
 const H = styled.h1`

@@ -49,6 +49,10 @@ const Account = styled.p`
     background: url(https://myrunshop.000webhostapp.com/wp-content/image/icon/men.png) center/60% no-repeat;
     &:hover {
         box-shadow: 0 0 2px 2px #fff;
+    }
+    @media(max-width: 500px) {
+        width: 35px;
+        
     } 
    
 `;

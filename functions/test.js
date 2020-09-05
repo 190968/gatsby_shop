@@ -1,7 +1,7 @@
 exports.handler = (event, context, callback) => {
-  const  GREETING  = process.env.uri;
+  const name = event.queryStringParameters.name || "World";
   callback(null, {
     statusCode: 200,
-    body: `No worries, ${GREETING} all is working fine!`
+    body: `No worries, ${name},  all is working fine!`
   })
 }

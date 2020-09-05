@@ -42,15 +42,3 @@ exports.createPages = async ({ actions }) => {
  
 
 }
-exports.onCreatePage = ({ page, actions }) => {
-  const { createPage } = actions;
-  console.log('create page');
-  // You can access the variable "house" in your page queries now
-  createPage({
-    ...page,
-    context: {
-      ...page.context,
-      house: `Gryffindor`,
-    },
-  })
-}
