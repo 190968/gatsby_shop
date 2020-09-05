@@ -30,7 +30,7 @@ const Button = styled.button`
        
     }
 `;
-const DeliveryName = ({ bag, delBag, delivery }) => {
+const FormDelivery = ({ bag, delBag, delivery }) => {
     const [name, set_name] = React.useState("");
     const [phone, set_phone] = React.useState("");
     const [email, set_email] = React.useState("");
@@ -65,15 +65,13 @@ const DeliveryName = ({ bag, delBag, delivery }) => {
         })
     };
     return (
-        <div className="delivery_main">
-            
-            <div className="delivery_name">
-            
+        <div className="delivery_main">            
+            <div className="delivery_name">            
             <h4>LAST STEP </h4>
-            <br/>
-            NAME:  <Input type="text"  value={name}  onChange={(e)=>set_name(e.target.value)} placeholder="input name" />
-            PHONE: <Input type="phone" value={phone} onChange={(e)=>set_phone(e.target.value)} placeholder="input phone" />
-            EMAIL: <Input type="email" value={email} onChange={(e)=>set_email(e.target.value)} placeholder="input email" />
+           
+            NAME:  <Input type="text" required value={name}  onChange={(e)=>set_name(e.target.value)} placeholder="input name" />
+            PHONE: <Input type="phone" required value={phone} onChange={(e)=>set_phone(e.target.value)} placeholder="input phone" />
+            EMAIL: <Input type="email" required value={email} onChange={(e)=>set_email(e.target.value)} placeholder="input email" />
             <Button 
                 onClick={sendData}
                 disabled={!(name.length > 3 & email.includes("@") & email.includes("."))}
@@ -105,4 +103,4 @@ const mapDispatchToProps = dispatch => ({
     delBag: () => dispatch(delBag())
     
 });
-export default connect(mapStateToProps,mapDispatchToProps)(DeliveryName);
+export default connect(mapStateToProps,mapDispatchToProps)(FormDelivery);

@@ -14,7 +14,7 @@ import SEO from "../components/seo";
 
 import Favorite from "../components/favorite";
 import FavoriteSale from "../components/favoriteSale";
-import formdelivery from "./formdelivery";
+import FormDelivery from "./delivery";
 
 const Main = ({setCountry}) => { 
   
@@ -56,7 +56,7 @@ const Main = ({setCountry}) => {
       <Router basepath="/" >
         <Help path="/help"/>
         <Bag path="/bag" />
-        <formdelivery path="/delivery" />
+        <FormDelivery path="/delivery" />
         <Orders path="/orders" />         
       </Router>              
       <Layout set_number={set_number} >
