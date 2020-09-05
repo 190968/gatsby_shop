@@ -79,7 +79,7 @@ const Item = (props) => {
                 
                 />
                 {["",1,2].map(i => <div className="div_small_image"
-                        onMouseEnter={()=>set_number(i)}
+                        onClick={()=>set_number(i)}
                         
                        
                         style={{backgroundImage: `url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model.replace(" ","_") + "_" + image_color}${i}.jpg),
