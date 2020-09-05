@@ -37,25 +37,15 @@ const Delivery = styled.h3`
     }
   
 `;
-const Phone = styled.div`
-   
-    width: 50%;
-    color: blue;
-   
-    float: right;
-    @media (max-width: 880px) {
-        display: block;
-        width: 100%;       
-        background-color: #fff;       
-        text-align: left;
-        float: left;
-    }
-`;
+
 const Hi = styled.span`
     display: inline-block;
     margin: 0 20px;
     font: italic 300 16px/50px 'Verdana', sans-serif;
-
+    &:hover {
+        text-decoration: underline;
+        color: blue;
+    }
 `;
 const H = styled.h1`
     display: none;
@@ -70,10 +60,10 @@ const BlockPhone = ({country}) => {
                
                 <H>This is the best shop world brands shoes and clothing for running</H>
                 <Hi>Hi, Guest! <img src="https://image.flaticon.com/icons/svg/64/64113.svg" width="42" height="32" alt="Location" title="Location"></img> {country}</Hi> 
-                <Link to="/help" style={{textDecoration: "none"}}>
+                <Link to="/help" style={{textDecoration: "none",backgroundImage: "none"}}>
                    <Hi>Help & Contact</Hi> 
                 </Link>
-                <Delivery>Free delivery on order over <b>200$</b> <span>Detals!</span></Delivery>
+                <Delivery>Free delivery on order over <b>200$</b></Delivery>
                 
                 
             </div>
