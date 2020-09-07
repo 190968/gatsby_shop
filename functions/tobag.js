@@ -2,6 +2,7 @@ var Mongoclient = require('mongodb').MongoClient;
 require('dotenv').config();
 var cors = require('cors');
 const express = require("express");
+import querystring from "querystring";
 var bodyParser = require('body-parser');
 
 var uri = "mongodb+srv://alex:alex@cluster0alex-mvffj.gcp.mongodb.net/my?retryWrites=true"; 
@@ -19,8 +20,8 @@ exports.handler = (event, context, callback) => {
         var d = new Date();    
         var date = d.getFullYear() +"/"+(d.getMonth() + 1) + "/" + d.getDate() + " " + d.getHours() + ":" + d.getMinutes()   ;
         const params = querystring.parse(event.body);
-        const name_my = event.queryStringParameters.name || "World";
-        console.log(name_my);
+        
+        
         const name = params.name;
         Mongoclient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true },function(err, db){
             if ( err ) throw err;

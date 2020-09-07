@@ -179,7 +179,7 @@ const Bag =  ({ bag, delete_from_bag, add_count, currency, delivery, setDelivery
                     
                     </Total>
                     
-                    <Button> <Link to="/formdelivery">GO TO CHECKOUT</Link></Button>
+                    <Button> <Link to="/delivery">GO TO CHECKOUT</Link></Button>
                    
                 </div>
                 {continue_buy && <DeliveryName cost_delivery={delivery} handClose={set_continue_buy}/>}

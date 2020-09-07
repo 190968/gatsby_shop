@@ -1,7 +1,7 @@
 const initialState = {
   currency: 1,
   delivery: 20,
-  country: "",
+  country: " ",
   bag: []
 };
 

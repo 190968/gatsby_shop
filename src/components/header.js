@@ -44,9 +44,9 @@ const Account = styled.p`
     width: 47px;
     box-sizing: border-box;
     height: 40px;   
-    margin: 8px;
+    margin: 4px;
     cursor: pointer;
-    background: url(https://myrunshop.000webhostapp.com/wp-content/image/icon/men.png) center/60% no-repeat;
+    background: url(https://myrunshop.000webhostapp.com/wp-content/image/icon/men.png) center/60% 80% no-repeat;
     &:hover {
         box-shadow: 0 0 2px 2px #fff;
     }
@@ -79,11 +79,11 @@ const DivCur = styled.div`
     vertical-align: middle;
    
     transition: all 0.5s;
-    border: 2px solid cornflowerblue;
+    
     &:hover {
         width: 150px;
         transition: all 0.5s;
-        border-bottom: 2px solid #fff;
+       
         background-color: #ccc;
     }
 

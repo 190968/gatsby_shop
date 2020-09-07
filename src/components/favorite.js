@@ -23,10 +23,10 @@ const DivItem = styled.div.attrs(props => ({
                     url(https://myrunshop.000webhostapp.com/wp-content/image/${props.brand}/${(props.model).replace(" ","_")}_${props.color}.webp)`};
     font-size: 18px;    
     height: fit-content;
-    width: 15vw;
+    width: 20vw;
     cursor: pointer;
     &:hover {
-        box-shadow: 0 0 5px 5px #ddd;
+        box-shadow:inset 0 0 5px 5px #ddd;
     };
     @media (max-width: 580px) {
       
@@ -43,7 +43,7 @@ const Gender = styled.p`
 `; 
 
 const FavoriteItems = styled.h3`
-    background-color: yellow;
+    background-color: beige;
     padding: 15px;
     margin: 0;
     @media (max-width: 580px) {

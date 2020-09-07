@@ -140,7 +140,7 @@ const Select = styled.select`
     }
 `;
 const Items =  ({ currency, pageContext, data,  location, countr }) => {   
-    // let brand = pageContext.brand;
+   
     const {state = {}} = location;
     const { model } = state || "run";
     const s = (currency === 0.8) ? "€" : (currency === 1) ? "$"  : "£" ;

@@ -1,8 +1,6 @@
-import React, {useEffect} from "react";
+import React from "react";
 import { Helmet } from 'react-helmet';
-import { connect } from "react-redux";
-import { setCountry } from "../state/app";
-import axios from 'axios';
+
 import Layout from "../components/layout";
 import "../styles/global.css";
 import { Router } from "@reach/router"
@@ -16,23 +14,22 @@ import Favorite from "../components/favorite";
 import FavoriteSale from "../components/favoriteSale";
 import FormDelivery from "./delivery";
 
-const Main = ({setCountry}) => { 
+const Main = () => { 
   
   const [number, set_number] = React.useState(0); 
   
    
    
-  useEffect(() => {
-      const fetch = async () => {
-          axios("https://ipapi.co/json/")
-          .then(res =>{
+  // useEffect(() => {
+      
+  //         axios("https://ipapi.co/json/")
+  //         .then(res =>{
       
           
-          setCountry(res.data.country);
-          });
-      };
-      fetch();    
-  },[]);
+  //         setCountry(res.data.country || "BY");
+  //         });
+        
+  // },[]);
   
  
   return ( 
@@ -70,10 +67,4 @@ const Main = ({setCountry}) => {
 };
 
  
-const mapDispatchToProps = dispatch => ({
-  
-  setCountry: (a) => dispatch(setCountry(a))
-  
-  
-});
-export default connect(null,mapDispatchToProps)(Main);
+export default Main;

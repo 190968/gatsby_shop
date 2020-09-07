@@ -1,7 +1,7 @@
 import React, { useEffect }  from "react";
 import "../styles/global.css";
 import axios from "axios";
-
+import { Helmet } from 'react-helmet';
 import styled from "styled-components";
 const Index = styled.b.attrs(props=>({
     ind: props.ind,
@@ -59,7 +59,7 @@ const Button = styled.button`
     border: 2px solid yellow;
     border-radius: 3px;
     &:hover {
-        box-shadow: 0 0 15px 1px lime;
+        border: 2px solid red;
         color: blue;
     }
 `;
@@ -88,45 +88,78 @@ const IndexPhone = styled(Index)`
 const IndexItem = styled(Index)`
     width: 42%;
 `;
-
+const Account = styled.p`
+    float: right;
+    width: 47px;
+    box-sizing: border-box;
+    height: 40px;   
+    margin: 4px;
+    cursor: pointer;
+    background: url(https://myrunshop.000webhostapp.com/flags/BY.png) center/100% no-repeat;
+    &:hover {
+        box-shadow: 0 0 2px 2px #fff;
+    }
+    @media(max-width: 500px) {
+        width: 35px;
+        
+    } 
+   
+`;
 const Admin = () => {
     
     const [orders, set_orders] = React.useState([]);
     //  const url = 'http://localhost:5001';
     const url = 'http://gatsbyshop.herokuapp.com';
     
-    useEffect(() => {
-        const fetchData = async () => {
-            const result = await axios(`${url}/admin?name=admin&phone=666666&limit=10`);           
-            set_orders(orders.concat(result.data));            
-        };           
-        fetchData();
-    },[]);
+    useEffect(() => {        
+        axios(`${url}/admin?name=admin&phone=666666&limit=10`)
+        .then((result)=>{
+            set_orders([...orders,...result.data])  
+        })
+        .catch(()=>{})       
+    },[])
 
     const Update_status = (a,b) =>{
-        const fetchData = async () => {
-            const result1 = await axios(`https://gatsbyshop.herokuapp.com/status?status=${b}&date=${a}`); 
-            const result = await axios('http://gatsbyshop.herokuapp.com/admin?name=admin&phone=666666&limit=10');           
-            // set_orders([]);
-            set_orders([].concat(result.data));                 
+        
+            // axios(`https://gatsbyshop.herokuapp.com/status?status=${b}&date=${a}`); 
+            axios('http://gatsbyshop.herokuapp.com/admin?name=admin&phone=666666&limit=10')           
+           .then((res)=>{
+                set_orders([...res.data]);    
+           })
+           .catch(()=>{})
+                        
                    
-        }; 
-        fetchData();          
-    }
+    }; 
+       
+    
 
     return (
+        <>
+       <Helmet>
+        <meta
+          name="viewport"
+          content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover"
+            
+        />
+        <title> Admin panel
+        </title>
+        <html lang="en" />
+        <link rel="canonical" ></link> 
+      </Helmet>
         <div className="admin" >
             <h3>ADMIN PANEL</h3>
+            <a href="https://www.aplacadance.ru/.netlify/functions/test?name='bob'">totest</a>
+            <Account>sdfsdfsdf</Account>
         <p style={{marginBottom: "50px"}}>
-           <button>
+           <Button>
             <a href="https://shop-5589.admin.datocms.com/editor">to cms</a>
-           </button>
-           <button>
+           </Button>
+           <Button>
             <a href="https://files.000webhost.com/">to image</a>
-           </button>
+           </Button>
           
-            <button>view questions</button>
-            <button>send base</button>
+            <Button>view questions</Button>
+            <Button>send base</Button>
            
         </p>    
         {orders.reverse().map((i,index)=><div key={index} style={{textAlign:"left",borderBottom:"1px solid #ccc",padding: "5px 0"}}>
@@ -157,6 +190,7 @@ const Admin = () => {
             </div>
         )}
         </div>
+        </>
     
     )
 }

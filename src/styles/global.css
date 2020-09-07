@@ -126,8 +126,8 @@ img  {
 }
 
 .main_block {
-    width: 80%;
-    margin: 20px auto;
+    width: 90%;
+    margin: 0 auto;
     text-align: center;
 }
 .brand_favorite {
@@ -186,24 +186,21 @@ img {
    text-decoration: underline;   
 }
 .img_main_link {   
-    color: #ffffff;
     height: 20vw;
     background-size: cover;
-    font: 300 25px/30vw 'Arial', sans-serif;
-    background-repeat: no-repeat;
-    width: 33%;
-    margin: 1vw 0.1vw ;
+   
+    width: 33.33%;   
     display: inline-block;
     cursor: pointer;
    
     text-shadow: none;
-    text-decoration: none;
-}
+}   
 .img_main_link b {
     background-color: crimson;
     padding: 5px 10px;
     border-radius: 5px;   
     color: #fff;
+    font:  300 1.5vw/29vw "Times new roman", sans;
 }
 
 .div_image {
@@ -219,6 +216,7 @@ img {
 .div_menu {
     height: auto;
     padding: 0;
+    margin: 0;
     
 }
 .delivery_main_link {
@@ -361,10 +359,10 @@ img {
 .div_item {
     position: fixed;
     z-index: 15;
-    width: 80%;
+    width: 90%;
     height: 100%;
     background-color: #fff;
-    left: 10%;
+    left: 5%;
     top: 0;    
 }
 .div_bag_item {
@@ -406,7 +404,8 @@ img {
 }
 .string {
     text-align: left;   
-    padding: 10px ;
+    font:  400 18px/50px 'Arial', sans-serif;
+    padding-left: 20px;
 }
 .string b {
     margin-left: 10px;
@@ -443,10 +442,12 @@ img {
     width: 33.33%;
     height: auto;
     float: left;
-    text-align: center;
-   
-    font: 400 16px/16px 'Verdana', sans-serif;
-    
+    text-align: center;   
+    font: 400 16px/16px 'Verdana', sans-serif;    
+    }
+    .main_Menu_link:hover {
+        color: red;
+        font: 600 16px/16px 'Verdana', sans-serif;     
     }
     .div_bag_item,
     .div_bag_menu {       
@@ -483,7 +484,7 @@ img {
     .div_content,
     .div_description {
         width: 100vw;
-        padding: 10px;
+        padding: 0 20px 10px;
         height: fit-content;
        
     }
@@ -492,7 +493,7 @@ img {
         width: 70%;       
     }
     .img_main_link b{      
-        font: 300  1.9vw/20vw 'Arial', sans-serif;        
+       display: none;
     }
     html {
         font:100%/1 'Quattrocento Sans',sans-serif;

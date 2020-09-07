@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect} from "react";
 import styled from "styled-components";
 import { Link } from "gatsby";
+import axios from 'axios';
+import { setCountry } from "../state/app";
 import { connect } from "react-redux";
 
 
@@ -54,7 +56,21 @@ const Hi = styled.span`
 const H = styled.h1`
     display: none;
 `;
-const BlockPhone = ({country}) => {
+const BlockPhone = ({country = "BY", setCountry}) => {
+
+    
+
+    useEffect(() => {
+      
+        axios("https://ipapi.co/json/")
+        .then(res =>{
+    
+        
+        setCountry(res.data.country || "BY");
+        });
+      
+    },[]);
+
    
     
        return (      
@@ -63,13 +79,19 @@ const BlockPhone = ({country}) => {
             <div className="div_phone">
                
                 <H>This is the best shop world brands shoes and clothing for running</H>
-                <Hi>Hi, Guest! <img src="https://image.flaticon.com/icons/svg/64/64113.svg" width="42" height="32" alt="Location" title="Location"></img> {country}</Hi> 
+                <Hi>Hi, Guest! 
+                    <img src = "https://image.flaticon.com/icons/svg/64/64113.svg" width="42" height="32" alt="Location" title="Location"></img>
+                    {country &&
+                        <img src = {`https://myrunshop.000webhostapp.com/flags/${country}.png`} width='42' height='42' alt='flag' title='flag'/>
+                    } 
+                </Hi> 
                 <Link to="/help" style={{textDecoration: "none",backgroundImage: "none"}}>
                    <Hi>Help & Contact</Hi> 
                 </Link>
                 <Delivery>Free delivery on order over <b>200$</b></Delivery>
                 
                 
+
             </div>
         
 
@@ -81,7 +103,12 @@ const mapStateToProps = state => ({
     country: state.app.country   
    
 });
-   
+const mapDispatchToProps = dispatch => ({
+  
+    setCountry: (a) => dispatch(setCountry(a))
+    
+    
+  });  
 
-export default connect(mapStateToProps)(BlockPhone);
+export default connect(mapStateToProps,mapDispatchToProps)(BlockPhone);
    
