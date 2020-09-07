@@ -88,26 +88,11 @@ const IndexPhone = styled(Index)`
 const IndexItem = styled(Index)`
     width: 42%;
 `;
-const Account = styled.p`
-    float: right;
-    width: 47px;
-    box-sizing: border-box;
-    height: 40px;   
-    margin: 4px;
-    cursor: pointer;
-    background: url(https://myrunshop.000webhostapp.com/flags/BY.png) center/100% no-repeat;
-    &:hover {
-        box-shadow: 0 0 2px 2px #fff;
-    }
-    @media(max-width: 500px) {
-        width: 35px;
-        
-    } 
-   
-`;
+
 const Admin = () => {
     
     const [orders, set_orders] = React.useState([]);
+    const [text, set_text] = React.useState(" ");
     //  const url = 'http://localhost:5001';
     const url = 'http://gatsbyshop.herokuapp.com';
     
@@ -117,6 +102,14 @@ const Admin = () => {
             set_orders([...orders,...result.data])  
         })
         .catch(()=>{})       
+    },[])
+    useEffect(() => {        
+        axios('https://www.aplacadance.ru/.netlify/functions/test?name=bob')
+        .then((result)=>{
+            set_text(result);
+            console.log(result)  
+        })
+        .catch(()=>{})        
     },[])
 
     const Update_status = (a,b) =>{
@@ -147,9 +140,9 @@ const Admin = () => {
         <link rel="canonical" ></link> 
       </Helmet>
         <div className="admin" >
-            <h3>ADMIN PANEL</h3>
-            <a href="https://www.aplacadance.ru/.netlify/functions/test?name='bob'">totest</a>
-            <Account>sdfsdfsdf</Account>
+            <h3>ADMIN PANEL {text}</h3>
+            
+          
         <p style={{marginBottom: "50px"}}>
            <Button>
             <a href="https://shop-5589.admin.datocms.com/editor">to cms</a>

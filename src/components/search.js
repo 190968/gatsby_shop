@@ -53,7 +53,8 @@ const SearchModel = styled.div`
 `;
 
  // const url = 'http://localhost:5001';
- const url = 'http://gatsbyshop.herokuapp.com';
+//  const url = 'http://gatsbyshop.herokuapp.com';
+const url = 'https://www.aplacadance.ru/.netlify/functions/find_model';
 const Search = () => {
 
     const [input, input_view] = React.useState(false);
@@ -63,7 +64,7 @@ const Search = () => {
        
         if (a.length > 2) {
             const fetchData = async () => {
-                const result = await axios(`${url}/find?model=${a}`); 
+                const result = await axios(`${url}?model=${a}`); 
                 
                 let new_result = [];
                 //add model to array
