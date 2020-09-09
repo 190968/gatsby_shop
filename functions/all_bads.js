@@ -5,7 +5,7 @@ var Mongoclient = require('mongodb').MongoClient;
 
 
 
-exports.handler = (event, context, callback) => { 
+exports.handler = async (event, context, callback) => { 
         
     var uri = "mongodb+srv://alex:alex@cluster0alex-mvffj.gcp.mongodb.net/my?retryWrites=true"; 
   

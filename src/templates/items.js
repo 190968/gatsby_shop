@@ -185,23 +185,20 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
         .filter(i=>i.cost*currency >= min_cost)
         .filter(i=>i.cost*currency <= max_cost)    
         .filter(i=>color === "all" ? i : i.color === color); 
-    //     var max = [1];
+        var max = [].sort();
    
-    //     const a =() => await {
-    //         return {
-    //             for( const i of orders){
-    //             max.push(Number(i.cost));
-    //             }
-    //         };
-    //     }
-    //     const sa = Math.max(max.join());
-    //     console.log(sa);
-    //     useEffect(()=>{ 
+       
+            for(const i of orders){
+            max.push(i.cost);
+        }
+       
+   
+        useEffect(()=>{ 
    
    
-    // set_max(Math.max(max.join()))
-    // set_min(20)
-    // },[]);   
+    set_max(max[max.length-1]);
+    set_min(max[0]);
+    },[]);   
 
 
     return <Layout countr={countr} model={model} set_number={set_number} orders={orders.length} context_brand = {pageContext.brand} context_gender={pageContext.gender} > 
@@ -266,6 +263,7 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
                 <span>
                     {i.size.split(',').map(m=>
                         <Size 
+                            key={m}
                             style={{ backgroundColor: size === m  ? '#ddd' : 'inherit'}}                           
                             onClick={()=>set_size(m)}                          
                         >{m}</Size>
