@@ -13,7 +13,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
 exports.handler = (event, context, callback) => { 
-        // Only allow POST
+        
         if (event.httpMethod !== "POST") {
         return { statusCode: 405, body: "Method Not Allowed" };
         }     
@@ -22,7 +22,7 @@ exports.handler = (event, context, callback) => {
         const params = querystring.parse(event.body);
         
         
-        const name = params.name;
+       
         Mongoclient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true },function(err, db){
             if ( err ) throw err;
             var set = {
@@ -39,13 +39,13 @@ exports.handler = (event, context, callback) => {
             var dbo = db.db("my");       
             dbo.collection("urls").insertOne(set,(err,data) => {
             if ( err ) {
-                res.send(err)
+                res.send( err )
             } else {       
                 return {
                     statusCode: 200,
                     body: `Hello, ${name}`
-                  };
-                db.close();          
+                  
+                };         
             }    
             });           
         });

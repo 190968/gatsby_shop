@@ -1,0 +1,31 @@
+var Mongoclient = require('mongodb').MongoClient;
+
+
+
+
+
+
+exports.handler = (event, context, callback) => { 
+        
+    var uri = "mongodb+srv://alex:alex@cluster0alex-mvffj.gcp.mongodb.net/my?retryWrites=true"; 
+  
+    
+   
+        var s = await Mongoclient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+        var m = await s.db("my").collection("urls").find({}).toArray();
+    
+       
+           
+   
+        
+     
+      console.log(m);
+      return {
+        statusCode: 200,
+       
+        body: `${m}`
+      }   
+        
+    
+            
+};

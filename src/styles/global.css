@@ -1,7 +1,10 @@
 html {
-  background-color: lightgoldenrodyellow;
- 
-  
+  background-color: lightgoldenrodyellow; 
+}
+.main_block {
+    width: 1350px;
+    margin: 0 auto;
+    text-align: center;
 }
 .img_min {    
     height: 100px;
@@ -125,11 +128,7 @@ img  {
     font-size: 22px;
 }
 
-.main_block {
-    width: 90%;
-    margin: 0 auto;
-    text-align: center;
-}
+
 .brand_favorite {
     font:italic 600 20px/20px 'Verdana', sans-serif;
     color: cornflowerblue;
@@ -425,7 +424,13 @@ img {
     background: url('https://www.datocms-assets.com/28552/1590394654-image.jpg') center/100% no-repeat;
     border: 1px solid #ddd;
 }
-
+@media screen and (max-width: 1350px) {
+    .main_block {
+      width: 100%;
+      padding: 5px;
+      margin: 0;
+    }   
+}
 @media screen and (max-width: 1000px) {
     .main_block {
       width: 100%;

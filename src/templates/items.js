@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "../styles/global.css";
 import {  graphql } from "gatsby";
 import Item from "../components/item";
@@ -8,6 +8,7 @@ import  Layout  from "../components/layout";
 
 import { addBag } from "../state/app";
 import { Info } from "../components/info";
+import Slider from "./slider";
 
 const Currency = styled.button`
     font: 400 22px/30px 'Arial', sans-serif;
@@ -29,7 +30,8 @@ const MenuItem = styled.div`
     width: ${props=>props.width === '10' ? '10':'15'}%;
     display: inline-block;
     text-align: center;
-    padding: 10px 0;
+    vertical-align: middle;
+    padding: 5px 0;
     b {
         cursor: pointer;
         &:hover {
@@ -38,13 +40,13 @@ const MenuItem = styled.div`
     }
 `;
 const Size = styled(Currency)`     
-    font: 300 16px/30px 'Arial', sans-serif;    
+    font: 300 15px/30px 'Arial', sans-serif;    
     display: inline-block;
     text-align: center;
     height: 30px;
     width: auto;
     margin: 0;       
-    border-radius: 30px;
+   
     cursor: pointer;  
     &:hover {
         box-shadow: 0 0 1px 1px  #bbb;
@@ -150,7 +152,7 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
     const [size, set_size] = React.useState(null); 
     const [number, set_number] = React.useState(0);        
     const [min_cost, set_min] = React.useState(0);
-    const [max_cost, set_max] = React.useState(100000);
+    const [max_cost, set_max] = React.useState(180);
    
     const [image_item, set_image_item] = React.useState(false);
     const [new_index, set_new_index] = React.useState();
@@ -183,8 +185,25 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
         .filter(i=>i.cost*currency >= min_cost)
         .filter(i=>i.cost*currency <= max_cost)    
         .filter(i=>color === "all" ? i : i.color === color); 
+    //     var max = [1];
    
-    
+    //     const a =() => await {
+    //         return {
+    //             for( const i of orders){
+    //             max.push(Number(i.cost));
+    //             }
+    //         };
+    //     }
+    //     const sa = Math.max(max.join());
+    //     console.log(sa);
+    //     useEffect(()=>{ 
+   
+   
+    // set_max(Math.max(max.join()))
+    // set_min(20)
+    // },[]);   
+
+
     return <Layout countr={countr} model={model} set_number={set_number} orders={orders.length} context_brand = {pageContext.brand} context_gender={pageContext.gender} > 
         <Info 
             brand ={pageContext.brand} 
@@ -203,7 +222,8 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
         />
        
         <div className="menu_items">
-            <MenuItem >ITEM</MenuItem>
+            <MenuItem >ITEM </MenuItem>
+           
             <MenuItem >BRAND</MenuItem>
             <MenuItem >MODEL</MenuItem>
             <MenuItem >
@@ -215,10 +235,10 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
             </MenuItem>
             <MenuItem width="10">COLOR</MenuItem>
             <MenuItem >SIZE</MenuItem>
-            <MenuItem >
-                COST 
-                {sort ? <Size  onClick={SortOnCost}>&#9650;</Size> : <Size  onClick={SortOnCost}>&#9660;</Size>}
-                
+            <MenuItem style={{padding:"3px"}}>
+               
+                {sort ? <Size  onClick={SortOnCost}>cost A to Z</Size> : <Size  onClick={SortOnCost}>cost Z to A</Size>}
+                <Slider min={min_cost} max={max_cost} setMin={set_min} setMax={set_max}/>
               
             </MenuItem>
             
@@ -252,7 +272,7 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
                     )}
                 </span>
                 <div className="cost">
-                    <Size onClick={()=>set_min(i.cost*currency)}>{"<"}</Size> 
+                    {/* <Size onClick={()=>set_min(i.cost*currency)}>{"<"}</Size>  */}
                    
                         <Sale sale={i.sale} currency={s} >                  
                            
@@ -262,7 +282,8 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
                         </Sale>
                        
                    
-                    <Size onClick={()=>set_max(i.cost*currency)}>{"<"}</Size>
+                    {/* <Size onClick={()=>set_max(i.cost*currency)}>{"<"}</Size> */}
+                   
                 </div>
                 {(image_item & index === new_index) && <Item 
                         page={i} 

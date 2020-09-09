@@ -93,18 +93,23 @@ const Admin = () => {
     
     const [orders, set_orders] = React.useState([]);
     const [text, set_text] = React.useState(" ");
-    //  const url = 'http://localhost:5001';
-    const url = 'http://gatsbyshop.herokuapp.com';
+     const url = 'http://localhost:5001';
+    // const url = 'http://gatsbyshop.herokuapp.com';
     
     useEffect(() => {        
-        axios(`${url}/admin?name=admin&phone=666666&limit=10`)
+        axios(`${url}/admin`)
         .then((result)=>{
             set_orders([...orders,...result.data])  
         })
         .catch(()=>{})       
     },[])
     useEffect(() => {        
-        axios('https://www.aplacadance.ru/.netlify/functions/test?name=bob')
+        axios( { url:'http://localhost:8888/.netlify/functions/myfun?name=bob',
+         headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/json'
+        },
+        })
         .then((result)=>{
             set_text(result);
             console.log(result)  

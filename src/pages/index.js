@@ -20,16 +20,6 @@ const Main = () => {
   
    
    
-  // useEffect(() => {
-      
-  //         axios("https://ipapi.co/json/")
-  //         .then(res =>{
-      
-          
-  //         setCountry(res.data.country || "BY");
-  //         });
-        
-  // },[]);
   
  
   return ( 

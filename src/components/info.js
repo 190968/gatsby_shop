@@ -37,7 +37,7 @@ const Color = styled.span.attrs(props=>({
     position: relative;
     font: italic 300 16px/16px "Taroma", sans-serif;
     margin: 0 10px;
-    display: ${props=>(props.color === "all" || props.color === null || props.color === 0 || props.color === 100000) ? 'none': 'inline-block'};
+    display: ${props=>(props.color === "all" || props.color === null || props.color === 0 || props.color === 180) ? 'none': 'inline-block'};
     vertical-align: middle;
     border-radius: 10px;
     z-index: 0;
@@ -84,7 +84,7 @@ const Info = ({  model="one",...props}) => {
                
                 <Color color={props.size} onClick={()=>set_size(null)}><b>size:</b>{props.size}</Color>
                 <Color color={props.min} onClick={()=>set_min(0)}><b>cost {">"} </b>{props.min}</Color>
-                <Color color={props.max} onClick={()=>set_max(100000)}><b>cost {"<"}</b>{props.max}</Color>
+                <Color color={props.max} onClick={()=>set_max(180)}><b>cost {"<"}</b>{props.max}</Color>
                 
            
            
