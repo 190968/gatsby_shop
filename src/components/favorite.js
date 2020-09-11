@@ -16,7 +16,7 @@ const DivItem = styled.div.attrs(props => ({
     margin: 15px 0;
     padding-top: 13vw;
     background-color: #fff;
-    background-size: 80%;
+    background-size: 80% 60%;
     background-position: center top;
     background-repeat: no-repeat;
     background-image: ${props => `url(https://myrunshop.000webhostapp.com/wp-content/image/${props.brand}/${(props.model).replace(" ","_")}_${props.color}.jpg),

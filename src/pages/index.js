@@ -25,6 +25,8 @@ const Main = () => {
   return ( 
     <>
       <Helmet>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-177617068-1"></script>
+        
           <meta
             name="viewport"
             content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover"
@@ -38,8 +40,7 @@ const Main = () => {
           />
           <title>Shoes for run</title>
           <html lang="en" /> 
-      </Helmet>
-      
+      </Helmet>      
       <Router basepath="/" >
         <Help path="/help"/>
         <Bag path="/bag" />

@@ -79,10 +79,10 @@ const BlockPhone = ({country = "BY", setCountry}) => {
             <div className="div_phone">
                
                 <H>This is the best shop world brands shoes and clothing for running</H>
-                <Hi>Hi, Guest! 
-                    <img src = "https://image.flaticon.com/icons/svg/64/64113.svg" width="42" height="32" alt="Location" title="Location"></img>
+                <Hi>Hi, Guest! From 
+                    {/* <img src = "https://image.flaticon.com/icons/svg/64/64113.svg" width="42" height="32" alt="Location" title="Location"></img> */}
                     {country &&
-                        <img src = {`https://myrunshop.000webhostapp.com/flags/${country}.png`} width='42' height='42' alt='flag' title='flag'/>
+                        <img src = {`https://myrunshop.000webhostapp.com/flags/${country}.png`} width='42' height='42' alt={country}   title={country}/>
                     } 
                 </Hi> 
                 <Link to="/help" style={{textDecoration: "none",backgroundImage: "none"}}>

@@ -40,9 +40,19 @@ module.exports = {
         theme_color: `#6b37bf`,        
         display: `standalone`,
         icon: `src/image/icon.jpg`, // This path is relative to the root of the site.
-      },
-     
+      },    
     },
+    {
+      resolve: `gatsby-plugin-gtag`,
+      options: {
+        // your google analytics tracking id
+        trackingId: `UA-177617068-1`,
+        // Puts tracking script in the head instead of the body
+        head: false,
+        // enable ip anonymization
+        anonymize: true,
+      }
+    },    
     {
       resolve:'gatsby-plugin-offline',     
         options: {
@@ -51,8 +61,8 @@ module.exports = {
           }
        }
         
-      },
-      {
+    },
+    {
       resolve: 'gatsby-source-datocms',
       options: {
         // You can find your read-only API token under the Settings > API tokens

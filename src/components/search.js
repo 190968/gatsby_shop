@@ -8,7 +8,7 @@ import {  navigate } from "gatsby";
 
 const P = styled.p`
     padding: 5px 10px;
-   
+    z-index: 15;
     cursor: pointer;   
     margin: 0;
     width: 100%;
@@ -83,7 +83,7 @@ const Search = () => {
     };
     return <>
         <ImageSearch  
-        src="https://myrunshop.000webhostapp.com/wp-content/image/icon/search.png" 
+        src="/search.png" 
         alt="search" 
         onClick={()=>input_view(!input)}
 

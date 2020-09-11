@@ -42,14 +42,14 @@ const DivInput = styled.div`
 const Input = styled.input`
     width: 70%;
     padding: 10px;
-    font: 20px;
+   
     margin-right: 10px;
     border: none;
 `;
 const Button = styled.button`
-    width: 20%;
+    width: 29%;
     padding: 10px;
-    font: 20px;
+   
 `;
 const Help = () => {
     
@@ -67,15 +67,15 @@ const Help = () => {
                     <DivInput>
                         <h2>Send us</h2>
                         <Input type="text" placeholder="Own question"/>
-                        <Button>Send</Button>
+                        <Link to="/delivery">Send</Link>
                     </DivInput>
                     <Link to="/">Home</Link>
                     <h3>About us:</h3>
                     <p> The online shop <b>ShopForRun.by</b> the better ability
-                         to buy run shoes and clothing the best world brands
-                          Adidas, Puma, New-balance, Nike, Reebok. All items
-                           is original, not used, in the original box.
-                           We selected for you the better for running.
+                        to buy run shoes and clothing the best world brands
+                        Adidas, Puma, New-balance, Nike, Reebok. All items
+                        is original, not used, in the original box.
+                        We selected for you the better for running.
                     </p>
                     <h3>Contact:</h3>
                         <ul>

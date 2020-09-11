@@ -11,59 +11,45 @@ const Main = styled.div`
     width: 95%;
   
     border-radius: 5px;
-    background: blue;   
+    background: cornflowerblue;   
     position: relative;
     &:after {
         content: "${props=>props.pos_max}";  
         width: 30px;
         height: 25px;
-        border-radius: 5px;
+        border-radius: 7px;
         position: absolute;
-        color: #fff;
-        font: 300 13px/25px 'Arial', sans-serif;
+        color: blue;
+        font: 300 14px/25px 'Arial', sans-serif;
         top: -7px;
         left: ${props=>props.pos_max-15}px;
         opacity: 1;
-        background: #823eb7;
+        background: yellow;
         cursor: pointer;
     }    
     &:active {
         &:after {
-            border: 1px solid yellow;
+            border: 1px solid blue;
+            font-weight: 600;
         }    
     }   
 `;
 
 
-const Min = styled.div.attrs(props => ({
-    pos_min:props.pos_min   
-}))`
-    height: 10px;
+const Min = styled(Main)`
+   
     width: ${props=>props.pos_min}px;    
     float: left;
-    border-radius: 5px;
-    background-color: #ccc;
-    position: relative;
+    background: #ccc;   
     top: -10px;
-    &:before {
+    &:after {
         content: "${props=>props.pos_min}";  
-        width: 30px;
-        height: 25px;
-        border-radius: 5px;
-        position: absolute;
-        font: 300 13px/25px 'Arial', sans-serif;
-        color: #fff;
+        
         top: -8px;
         left: ${props=>props.pos_min-15}px;
-        opacity: 1;
-        background: #823eb7;
-        cursor: pointer;
+       
     }
-    &:active {
-        &:before {
-            border: 1px solid yellow;
-        }    
-    }
+    
 `; 
 const Max = styled.div.attrs(props => ({
     pos_max:props.pos_max   

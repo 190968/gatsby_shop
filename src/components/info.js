@@ -27,13 +27,14 @@ const DivInfo = styled.div`
    
 `;
 
-const Color = styled.span.attrs(props=>({
+const Color = styled.b.attrs(props=>({
     props:props.color
 }))`
     padding: 5px 8px;
-    border: 1px solid #000;
+    border: 1px solid yellow;
     cursor: pointer;
-  
+    background-color: cornflowerblue;
+    
     position: relative;
     font: italic 300 16px/16px "Taroma", sans-serif;
     margin: 0 10px;
@@ -41,26 +42,23 @@ const Color = styled.span.attrs(props=>({
     vertical-align: middle;
     border-radius: 10px;
     z-index: 0;
-    b {
-        font-size: 15px;
-    };
+   
+      
+        color: yellow;
+   
     &:after {
         content: 'x';
-        color: #000;
-        padding: 0 6px;
+        color: cornflowerblue;
+        padding: 0 5px;
         text-align: center;
         font-size: 13px;
-        border: 1px solid #000;
+        border: 1px solid cornflowerblue;;
         border-radius: 20px;
         position: absolute;
         top: -10px;
         z-index: 10;
         left: -10px;
-        background-color: #ddd;
-    };
-    &:hover after {
-        color: #fff;
-        background-color: #000;
+        background-color: yellow;
     }
 `;
 
@@ -77,14 +75,14 @@ const Info = ({  model="one",...props}) => {
            
                
                 <Color color={props.color} onClick={()=>set_color("all")}>
-                    <b>color:</b>{props.color}
+                    color: {props.color}
                 </Color>
            
            
                
-                <Color color={props.size} onClick={()=>set_size(null)}><b>size:</b>{props.size}</Color>
-                <Color color={props.min} onClick={()=>set_min(0)}><b>cost {">"} </b>{props.min}</Color>
-                <Color color={props.max} onClick={()=>set_max(180)}><b>cost {"<"}</b>{props.max}</Color>
+                <Color color={props.size} onClick={()=>set_size(null)}>size: {props.size}</Color>
+                <Color color={props.min} onClick={()=>set_min(0)}>cost {">"} {props.min}</Color>
+                <Color color={props.max} onClick={()=>set_max(180)}>cost {"<"} {props.max}</Color>
                 
            
            

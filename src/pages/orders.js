@@ -35,7 +35,7 @@ const Index = styled.b.attrs(props=>({
 `;
 
 const Button = styled.button`
-    width: 30%;
+    width: 33%;
     border: none;
     outline: none;
     cursor: pointer;
@@ -56,9 +56,10 @@ const Input = styled.input`
     vertical-align: top;
     height: 45px;
     padding: 0 10px;
-    width: 30%;
+    width: 33%;
     color: red;
     border: none;
+    border-radius: none;
     outline: none;
     background-color: #fff;
     margin: 5px;
@@ -103,61 +104,49 @@ const Orders = () => {
 
     },[]);
    
-    // const url = 'http://localhost:5001';
-    const url = 'http://gatsbyshop.herokuapp.com';
-    const Go_account = () => {
-        const fetchData = async () => {
-            const result = await axios(`${url}/toaccount?name=${name}&phone=${phone}`);          
-            set_orders(result.data);   
-            set_visible_account(false);
-            set_visible(true);    
-        };    
-           
-        fetchData();
-
+    const url = 'http://localhost:5001';
+    // const url = 'http://gatsbyshop.herokuapp.com';
+    const Go_account = async () => {        
+        let result = await axios(`${url}/toaccount?name=${name}&phone=${phone}`);          
+        set_orders(result.data);   
+        set_visible_account(false);
+        set_visible(true);
     };
 
     
     return (
         <Layout set_number={set_number} title="Your orders">
             {visible_account ? 
-                <div className="go_to_account">
-                   
-                    <p> 
-                   
+                <div className="go_to_account">                   
+                    <p>                   
                         <Input type="text" ref={inputRef} value={name} placeholder="input name" onChange={(e)=>set_name(e.target.value)} />
 
                         <Input type="phone" value={phone} placeholder="input phone" onChange={(e)=>set_phone(e.target.value)}/>
-                        <ButtonAccount onClick={Go_account}>ENTER</ButtonAccount>     
-                        
-                    </p>
-                   
+                        <ButtonAccount onClick={Go_account}>ENTER</ButtonAccount>                  
+                    </p>                   
                 </div>        
             :   <>
                 {visible_order ? <div className="orders">
-                    {orders.map((i,index)=><Order key={index}>
-                        <IndexOne ind={index} text="№">{index+1}.</IndexOne>
-                        <IndexDate ind={index} text="date">{i.date}</IndexDate>
-                       
-                        <IndexItem ind={index} text="item">
-                            {i.bag.map((a,index) => 
-                                <div style={{textAlign: "left",margin: 0}} key={index}>
-                                    <p style={{margin: "0 0 10px" }}>
-                                        {index+1}.{a.brand},{a.model},
-                                      
-                                        color:{a.color},size:{a.size},Qnt:{a.count},cost: 
-                                        <b>{a.cost}$</b>
-                                       
-                                    </p>
-                                    
-                                </div>
-                            )}
-                        </IndexItem>    
-                        <IndexStatus ind={index} text="status">{i.status===2?"delivery" : i.status===3?"delivered":"on"}</IndexStatus>
+                    {orders.map((i,index) => 
+                        <Order key={index}>
+                            <IndexOne ind={index} text="№">{index+1}.</IndexOne>
+                            <IndexDate ind={index} text="date">{i.date}</IndexDate>                       
+                            <IndexItem ind={index} text="item">
+                                {i.bag.map((a,index) => 
+                                    <div style={{textAlign: "left",margin: 0}} key={index}>
+                                        <p style={{margin: "0 0 10px" }}>
+                                            {index+1}.{a.brand},{a.model},                                      
+                                            color:{a.color},size:{a.size},Qnt:{a.count},cost: 
+                                            <b>{a.cost}$</b>                                      
+                                        </p>                                    
+                                    </div>
+                                )}
+                            </IndexItem>    
+                            <IndexStatus ind={index} text="status">{i.status===2?"in delivery" : i.status===3?"delivered":"in work"}</IndexStatus>
                         </Order>
                     )}
                 
-                    {orders.length === 0 && <h2>None orders</h2>}
+                    {orders.length === 0 && <h2>Sorry.None orders at last four month</h2>}
                     </div>
                     :
                     <div>

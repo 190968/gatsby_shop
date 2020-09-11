@@ -89,8 +89,8 @@ const  FavoriteSale = () => {
                     </span>    
                     <h4 className="brand_favorite">{i.brand.toUpperCase()}</h4>
                     <h4>{i.modelitem}</h4> 
-                    <h4>{i.color}</h4>
-                    <h3><del>{i.cost}$</del> <b>{(i.cost*(100-i.sale)/100).toFixed(0)}$</b></h3>
+                    <p>{i.color}</p>
+                    <p><del>{i.cost}$</del> <b>{(i.cost*(100-i.sale)/100).toFixed(0)}$</b></p>
                 </DivItem>)}
             </DivItems>
            {number && <Item

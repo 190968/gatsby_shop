@@ -39,7 +39,7 @@ const FormDelivery = ({ bag, delBag, delivery }) => {
     function sendData() {
         axios({
             method: 'post',
-            // url: "http://localhost:5001/write",
+            
             url: "https://www.aplacadance.ru/.netlify/functions/tobag",
             data: {           
                 name: name,
@@ -79,7 +79,7 @@ const FormDelivery = ({ bag, delBag, delivery }) => {
                 BUY
             </Button>
             <Link to="/bag" className="delivery_main_link">BACK TO BAG</Link>
-            <Link to="/"className="delivery_main_link">TO MAIN</Link>
+            <Link to="/" className="delivery_main_link two">TO MAIN</Link>
             <h3>{ok}</h3>
             </div>
 

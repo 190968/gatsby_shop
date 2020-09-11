@@ -8,7 +8,7 @@ const Index = styled.b.attrs(props=>({
 }))`
     font: 300 16px/16px 'Arial', sans-serif;
     position: relative;
-    text-align: center;
+    text-align: left;
     vertical-align: top;
     width: 20%;
     display: inline-block;
@@ -24,6 +24,17 @@ const Index = styled.b.attrs(props=>({
         width: 100%;
         padding: 10px 0;       
         display: ${props=>props.ind === 0 ? "inline-block" : "none"}
+    }
+    p {
+        margin: 0;
+        padding: 0;
+       
+        b {
+            display: inline-block;
+            width: 70%;
+            margin: 0;
+            text-align: right;
+        }
     }
 `;
 const P = styled.p`
@@ -69,7 +80,7 @@ const InputCheckbox = styled.input`
     height: 20px;
     color: yellow;
     
-    margin:10px 2%;
+   
     cursor: pointer;
     
 `;
@@ -92,8 +103,9 @@ const IndexItem = styled(Index)`
 const Admin = () => {
     
     const [orders, set_orders] = React.useState([]);
-    const [text, set_text] = React.useState(" ");
-     const url = 'http://localhost:5001';
+    // const [text, set_text] = React.useState(" ");
+    //  const url = 'http://localhost:5001';
+    const url = 'https://www.aplacadance.ru/.netlify/functions/all_bads';
     // const url = 'http://gatsbyshop.herokuapp.com';
     
     useEffect(() => {        
@@ -103,21 +115,21 @@ const Admin = () => {
         })
         .catch(()=>{})       
     },[])
-    useEffect(() => {        
-        axios( { url:'http://localhost:8888/.netlify/functions/myfun?name=bob',
-         headers: {
-            'Access-Control-Allow-Origin': '*',
-            'Content-Type': 'application/json'
-        },
-        })
-        .then((result)=>{
-            set_text(result);
-            console.log(result)  
-        })
-        .catch(()=>{})        
-    },[])
+    // useEffect(() => {        
+    //     axios( { url:'http://localhost:8888/.netlify/functions/myfun?name=bob',
+    //      headers: {
+    //         'Access-Control-Allow-Origin': '*',
+    //         'Content-Type': 'application/json'
+    //     },
+    //     })
+    //     .then((result)=>{
+    //         set_text(result);
+    //         console.log(result)  
+    //     })
+    //     .catch(()=>{})        
+    // },[])
 
-    const Update_status = (a,b) =>{
+    const UpdateStatusDelivery = (a,b) =>{
         
             // axios(`https://gatsbyshop.herokuapp.com/status?status=${b}&date=${a}`); 
             axios('http://gatsbyshop.herokuapp.com/admin?name=admin&phone=666666&limit=10')           
@@ -133,34 +145,34 @@ const Admin = () => {
 
     return (
         <>
-       <Helmet>
-        <meta
-          name="viewport"
-          content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover"
-            
-        />
-        <title> Admin panel
-        </title>
-        <html lang="en" />
-        <link rel="canonical" ></link> 
-      </Helmet>
+        <Helmet>
+            <meta
+            name="viewport"
+            content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover"
+                
+            />
+            <title> Admin panel
+            </title>
+            <html lang="en" />
+            <link rel="canonical" ></link> 
+        </Helmet>
         <div className="admin" >
-            <h3>ADMIN PANEL {text}</h3>
+            <h3>ADMIN PANEL</h3>
             
           
-        <p style={{marginBottom: "50px"}}>
-           <Button>
-            <a href="https://shop-5589.admin.datocms.com/editor">to cms</a>
-           </Button>
-           <Button>
-            <a href="https://files.000webhost.com/">to image</a>
-           </Button>
-          
-            <Button>view questions</Button>
-            <Button>send base</Button>
-           
-        </p>    
-        {orders.reverse().map((i,index)=><div key={index} style={{textAlign:"left",borderBottom:"1px solid #ccc",padding: "5px 0"}}>
+            <p style={{marginBottom: "50px"}}>
+            <Button>
+                <a href="https://shop-5589.admin.datocms.com/editor">to cms</a>
+            </Button>
+            <Button>
+                <a href="https://files.000webhost.com/">to image</a>
+            </Button>
+            
+                <Button>view questions</Button>
+                <Button>send base</Button>
+            
+            </p>    
+            {orders.reverse().map((i,index)=><div key={index} style={{textAlign:"left",borderBottom:"1px solid #ccc",padding: "5px 0"}}>
             <IndexOne ind={index} text="№">{index + 1}.</IndexOne>
             <IndexDate ind={index} text="date">{i.date}</IndexDate>
             <IndexPhone ind={index} text="name | &#9743; | @ ">
@@ -179,17 +191,24 @@ const Admin = () => {
                 )}
             </IndexItem>    
             <Index ind={index} text="status" style={{width:"10%"}}>
-                <InputCheckbox type="radio" checked={i.status===1} onChange={()=>Update_status(i.date,1)}/>
-                
-                <InputCheckbox type="radio" checked={i.status===2} onChange={()=>Update_status(i.date,2)}/>
-               
-                <InputCheckbox type="radio" checked={i.status===3} onChange={()=>Update_status(i.date,3)}/>
+                <p>
+                    <b>in work</b>
+                    <InputCheckbox type="radio" checked={i.status===1} onChange={()=>UpdateStatusDelivery(i.date,1)}/>
+                </p>
+                <p>
+                <b>in delivery</b>
+                <InputCheckbox type="radio" checked={i.status===2} onChange={()=>UpdateStatusDelivery(i.date,2)}/>
+                </p>
+                <p> 
+                 <b>delivered</b>                  
+                <InputCheckbox type="radio" checked={i.status===3} onChange={()=>UpdateStatusDelivery(i.date,3)}/>
+                </p>
             </Index>
             </div>
-        )}
+            )}
         </div>
         </>
     
     )
 }
- export default Admin;
+export default Admin;

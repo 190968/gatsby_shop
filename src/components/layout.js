@@ -14,15 +14,18 @@ export default function Layout ({ children , context_brand, context_gender, set_
   return (
     <div className="main_block" >
       <Helmet>
-        <meta
-          name="viewport"
-          content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover"
+      
+      <meta
+        name="viewport"
+        content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover"
             
-        />
-        <title>{ context_brand === undefined ? title : `${context_brand} 
+      />
+       
+
+      <title>{ context_brand === undefined ? title : `${context_brand} 
              -   for ${context_gender}`
           }
-        </title>
+      </title>
         <html lang="en" />
         <link rel="canonical" ></link> 
       </Helmet>

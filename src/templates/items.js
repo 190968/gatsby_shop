@@ -185,17 +185,12 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
         .filter(i=>i.cost*currency >= min_cost)
         .filter(i=>i.cost*currency <= max_cost)    
         .filter(i=>color === "all" ? i : i.color === color); 
-        var max = [].sort();
+    var max = [].sort();       
+        for(const i of orders){
+        max.push(i.cost);
+    }   
    
-       
-            for(const i of orders){
-            max.push(i.cost);
-        }
-       
-   
-        useEffect(()=>{ 
-   
-   
+    useEffect(()=>{  
     set_max(max[max.length-1]);
     set_min(max[0]);
     },[]);   
