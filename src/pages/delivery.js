@@ -8,23 +8,25 @@ import "../styles/global.css";
 import { Link } from "gatsby";
 
 const Input = styled.input`
-    display: block;
-    width: 100%;
-    margin: 0 0 10px;
+    display: inline-block;
+    width: 20%;
+    margin: 0 0 20px;
+    font-size: 1.2vw;
     padding: 5px;
     border: none;
 `;
 
 const Button = styled.button`
-    width: 100%;
+    width: 30%;
     font-size: 25px;
     padding: 5px;
     height: auto;
     cursor: pointer;
-    margin: 10px 0;
+    margin: 10px auto;
+    display: block;
     background-color: lime;
     border: none;
-    border-radius: 3px;
+  
     &:hover {
         background-color: yellow;    
        
@@ -67,20 +69,30 @@ const FormDelivery = ({ bag, delBag, delivery }) => {
     return (
         <div className="delivery_main">            
             <div className="delivery_name">            
-            <h4>LAST STEP </h4>
-           
-            NAME:  <Input type="text" required value={name}  onChange={(e)=>set_name(e.target.value)} placeholder="input name" />
-            PHONE: <Input type="phone" required value={phone} onChange={(e)=>set_phone(e.target.value)} placeholder="input phone" />
-            EMAIL: <Input type="email" required value={email} onChange={(e)=>set_email(e.target.value)} placeholder="input email" />
-            <Button 
-                onClick={sendData}
-                disabled={!(name.length > 3 & email.includes("@") & email.includes("."))}
-            >
-                BUY
-            </Button>
-            <Link to="/bag" className="delivery_main_link">BACK TO BAG</Link>
-            <Link to="/" className="delivery_main_link two">TO MAIN</Link>
-            <h3>{ok}</h3>
+               
+            
+                <label>COUNTRY:</label>
+                <Input type="text" required value={name}  onChange={(e)=>set_name(e.target.value)} placeholder="input country" />
+                <label>CITY:</label> 
+                <Input type="phone" required value={phone} onChange={(e)=>set_phone(e.target.value)} placeholder="input city" />
+                <label>STREET: </label>
+                <Input type="email" required value={email} onChange={(e)=>set_email(e.target.value)} placeholder="input street" />
+                <label>NAME:  </label>
+                <Input type="text" required value={name}  onChange={(e)=>set_name(e.target.value)} placeholder="input name" />
+                <label>PHONE: </label>
+                <Input type="phone" required value={phone} onChange={(e)=>set_phone(e.target.value)} placeholder="input phone" />
+                <label>EMAIL: </label>
+                <Input type="email" required value={email} onChange={(e)=>set_email(e.target.value)} placeholder="input email" />
+                
+                <Button 
+                    onClick={sendData}
+                    disabled={!(name.length > 3 & email.includes("@") & email.includes("."))}
+                >
+                    BUY
+                </Button>
+                <Link to="/bag" className="delivery_main_link">BACK TO BAG</Link>
+                <Link to="/" className="delivery_main_link two">TO MAIN</Link>
+                <h3>{ok}</h3>
             </div>
 
         </div>

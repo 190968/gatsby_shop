@@ -242,10 +242,30 @@ img {
 }
 .delivery_name {
     margin: 0 auto;
-    width: 30%;
+    width: calc(100vw - 20px)px;
     padding: 10px;
-    background-color: lavender;   
+    background-color: lavender;
 }
+.delivery_name label {
+    width: 10vw;
+    font-size: 1.2vw;
+    text-align: right;
+    font-weight: 600;
+    margin-right: 10px;
+    display: inline-block;
+
+}    
+.delivery_name:before {
+    content : "LAST STEP";
+    width: calc(100% + 20px);
+    padding: 10px;
+    font-weight: 600;
+    margin: -10px 0 30px -10px;
+    background-color: thistle;
+    display: block;
+       
+}
+
 .div_delivery {
     height: auto;
     width: 29%;
@@ -366,7 +386,7 @@ img {
     width: 1350px;
     height: 100%;
     background-color: #fff;
-    left: calc(50vw-1350px/2);
+    left: calc(100vw-1350px/2);
     top: 0;    
 }
 .div_bag_item {
@@ -459,12 +479,21 @@ img {
         color: red;
         font: 600 16px/16px 'Verdana', sans-serif;     
     }
-    .div_bag_item,
+   
     .div_bag_menu {       
-        width: 100%
+        width: 100%;
+        margin-top: 130px;
+    }
+    .div_bag_item {       
+        width: 100%;       
     }
     .div_delivery {
-        width: 60%;
+        width: 70%;
+        margin: 40px auto 10px;
+    }
+    .delivery_name label {
+        width: 12vw;
+        margin-left: 10px;
     }
     .div_item {
         position: fixed;
@@ -516,6 +545,10 @@ img {
     .delivery_name {       
         left: 0;
         width: 100%;       
+    }
+    .delivery_name label {
+        width: 8vw;
+        margin-right: 1vw;
     }
     .icon {
         display: inline-block ;

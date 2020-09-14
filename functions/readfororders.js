@@ -8,7 +8,7 @@ var uri = "mongodb+srv://alex:alex@cluster0alex-mvffj.gcp.mongodb.net/my?retryWr
   const phone = event.queryStringParameters.phone;
         
         
-  var s = await Mongoclient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+  var s = await Mongoclient.connect(env, { useNewUrlParser: true, useUnifiedTopology: true });
   var d =  await s.db("my").collection("urls").find({"person.name" : name, "person.phone": phone }).toArray();
 
           

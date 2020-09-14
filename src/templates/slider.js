@@ -46,7 +46,7 @@ const Min = styled(Main)`
         content: "${props=>props.pos_min}";  
         
         top: -8px;
-        left: ${props=>props.pos_min-15}px;
+        left: ${props=>props.pos_min}px;
        
     }
     

@@ -1,33 +1,24 @@
 var Mongoclient = require('mongodb').MongoClient;
-require('dotenv').config();
-var cors = require('cors');
-const express = require("express");
+
+
 import querystring from "querystring";
-var bodyParser = require('body-parser');
 
-var uri = "mongodb+srv://alex:alex@cluster0alex-mvffj.gcp.mongodb.net/my?retryWrites=true"; 
-const app = express()
 
-app.use(cors())
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }))
+// var uri = "mongodb+srv://alex:alex@cluster0alex-mvffj.gcp.mongodb.net/my?retryWrites=true"; 
 
-exports.handler = (event, context, callback) => { 
+
+exports.handler = async (event, context, callback) => { 
         
-        if (event.httpMethod !== "POST") {
-        return { statusCode: 405, body: "Method Not Allowed" };
-        }     
-        var d = new Date();    
-        var date = d.getFullYear() +"/"+(d.getMonth() + 1) + "/" + d.getDate() + " " + d.getHours() + ":" + d.getMinutes()   ;
-        const params = querystring.parse(event.body);
-        
-        
+    const uri = process.env.uri;   
+    var d = new Date();    
+    var date = d.getFullYear() +"/"+(d.getMonth() + 1) + "/" + d.getDate() + " " + d.getHours() + ":" + d.getMinutes()   ;
+    const params = querystring.parse(event.body); 
        
-        Mongoclient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true },function(err, db){
-            if ( err ) throw err;
+    var connect = await Mongoclient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+           
             var set = {
                 date: date,           
-                person:{
+                person: {
                 "name": params.name,
                 "phone": params.phone,
                 "email": params.email
@@ -36,18 +27,14 @@ exports.handler = (event, context, callback) => {
                 "bag": params.bag,       
                 "status": 1
             };
-            var dbo = db.db("my");       
-            dbo.collection("urls").insertOne(set,(err,data) => {
-            if ( err ) {
-                res.send( err )
-            } else {       
-                return {
-                    statusCode: 200,
-                    body: `Hello, ${name}`
-                  
-                };         
-            }    
-            });           
-        });
+    var dbo = await connect.db("my").collection("urls").insertOne(set);
+            
+    return {
+        statusCode: 200,
+        body: `Hello, ${name}`               
+                      
+    };    
+                    
+        
             
 };

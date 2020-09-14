@@ -8,7 +8,7 @@ import {  navigate } from "gatsby";
 
 const P = styled.p`
     padding: 5px 10px;
-    z-index: 15;
+    z-index: 100;
     cursor: pointer;   
     margin: 0;
     width: 100%;
@@ -52,29 +52,29 @@ const SearchModel = styled.div`
     background-color: #fff;
 `;
 
- // const url = 'http://localhost:5001';
+//  const url = 'http://localhost:5001/find';
 //  const url = 'http://gatsbyshop.herokuapp.com';
-const url = 'https://www.aplacadance.ru/.netlify/functions/find_model';
+const url = 'https://aplacadance.ru/.netlify/functions/find_model';
 const Search = () => {
 
     const [input, input_view] = React.useState(false);
-    const [model, set_model] = React.useState([]);
+    const [model, set_model] = React.useState(['']);
 
     const update_model = (a) => {
        
         if (a.length > 2) {
             const fetchData = async () => {
-                const result = await axios(`${url}?model=${a}`); 
+                const result = await axios(`${url}?model=${a}`);                
+                let dataOne = result.data.split(",");
+                let data =[...new Set(dataOne)];
                 
-                let new_result = [];
-                //add model to array
-                for (const a of result.data) {
-                    new_result.push(a.model);
-                };    
-            
-                // Remove duplicate model    
-                set_model(new_result.length>0 ? [...new Set(new_result)]: ["none model"]);                 
-                    
+                if(data.length > 1 ){
+                     set_model(data);  
+                }  else {
+                    set_model(["none model"]);
+                }  
+                              
+                 
             }; 
             fetchData();
         } else {
@@ -83,14 +83,18 @@ const Search = () => {
     };
     return <>
         <ImageSearch  
-        src="/search.png" 
-        alt="search" 
-        onClick={()=>input_view(!input)}
+            src="/search.png" 
+            alt="search" 
+            onClick={()=>input_view(!input)}
 
         />
         {input && <SearchModel>
             <Input type="text"  placeholder="input model" onChange={(e)=>update_model(e.target.value)}/>
-            {model.map(i=><div><P onClick={()=>{set_model([]);navigate('/all/',{state:{model:i}})}}>{i}</P></div>)}
+            {model.map((i,index) => <P onClick={()=>{set_model([]);navigate('/all/',{state:{model:i}})}}>
+                   {i}
+                </P>
+               
+            )}
 
             </SearchModel>
         }

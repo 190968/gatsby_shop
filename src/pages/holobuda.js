@@ -109,7 +109,7 @@ const Admin = () => {
     // const url = 'http://gatsbyshop.herokuapp.com';
     
     useEffect(() => {        
-        axios(`${url}/admin`)
+        axios(`${url}`)
         .then((result)=>{
             set_orders([...orders,...result.data])  
         })

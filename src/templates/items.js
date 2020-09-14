@@ -237,7 +237,7 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
             
         </div>   
         {orders.map((i,index) => 
-            <div className="items">              
+            <div className="items" key={index} >              
                 <ButImage                  
                     style={{backgroundImage: `url(https://myrunshop.000webhostapp.com/wp-content/image/${i.brand}/${i.model}_${i.color}.jpg),
                         url(https://myrunshop.000webhostapp.com/wp-content/image/${pageContext.brand}/${i.model}_${i.color}.webp)`,
