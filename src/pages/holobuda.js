@@ -115,7 +115,7 @@ const Admin = () => {
     useEffect(() => {        
         axios(`${url}`)
         .then((result)=>{
-            set_orders([...orders,...result.data])  
+            set_orders([...result])  
         })
         .catch(()=>{})       
     },[orders])

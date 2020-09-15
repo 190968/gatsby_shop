@@ -6,7 +6,7 @@ exports.handler = async (event, context, callback) => {
 
   var s = await Mongoclient.connect(env, { useNewUrlParser: true, useUnifiedTopology: true });
   var m = await s.db("my").collection("urls").find({}).toArray();  
-  console.log(m.lenght);
+  console.log(m.length);
   return {
     statusCode: 200,       
     body: `${m}`

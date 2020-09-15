@@ -20,11 +20,11 @@ exports.handler = async (event, context, callback) => {
     for(const i of d){
         mod.push(i.model);
     };
-    console.log(mod);
-    const model = [...new Set(mod)];
+    console.log(mod.length);
+    const model_all = [...new Set(mod)];
     return {
         statusCode: 200,
-        body: `${model}`
+        body: `${model_all}`
     };
             
 };
