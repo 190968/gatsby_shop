@@ -2,7 +2,7 @@ html {
   background-color: lightgoldenrodyellow; 
 }
 :root {
---width-main: 1350px;
+--width-main: 90vw;
 }
 .main_block,
 .div_item {
@@ -291,11 +291,10 @@ img {
 }
 .admin {
     text-align: center;
+    width: 90%;
+    margin: 0 auto;
 }
-.admin button {
-    width: 20%;
-    border-radius: 0;   
-}
+
 .orders {
     width: 100%;
     margin: 120px auto;
@@ -383,10 +382,10 @@ img {
 .div_item {
     position: fixed;
     z-index: 15;
-    width: 1350px;
-    height: 100%;
+    width: 90vw;
+    height: 100vh;
     background-color: #fff;
-    left: calc(100vw-1350px/2);
+   
     top: 0;    
 }
 .div_bag_item {
@@ -457,6 +456,9 @@ img {
     }   
 }
 @media screen and (max-width: 1000px) {
+    .admin {
+        width: 100%;
+    }
     .main_block {
       width: 100%;
       padding: 5px;

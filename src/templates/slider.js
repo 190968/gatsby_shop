@@ -22,7 +22,7 @@ const Main = styled.div`
         color: blue;
         font: 300 14px/25px 'Arial', sans-serif;
         top: -7px;
-        left: ${props=>props.pos_max-15}px;
+        left: ${props=>props.pos_max}px;
         opacity: 1;
         background: yellow;
         cursor: pointer;
@@ -38,24 +38,25 @@ const Main = styled.div`
 
 const Min = styled(Main)`
    
-    width: ${props=>props.pos_min}px;    
+    width: ${props=>props.min}px;    
     float: left;
-    background: #ccc;   
+    background: #ccc;
+    border-right:10px solid red;   
     top: -10px;
     &:after {
-        content: "${props=>props.pos_min}";  
+        content: "${props=>props.min}";  
         
         top: -8px;
-        left: ${props=>props.pos_min}px;
+        left: ${props=>props.min-15}px;
        
     }
     
 `; 
 const Max = styled.div.attrs(props => ({
-    pos_max:props.pos_max   
+    pos_max:props.max   
 }))`
     height: 10px;
-    width: ${props=>180-props.pos_max}px; 
+    width: ${props=>150 - props.max}px; 
     border-radius: 5px;
     float: right;
     background-color: #ccc;
@@ -67,13 +68,13 @@ const Slider = ({min, max, setMin, setMax}) => {
     const Mouse_move_min = (e) => {
             if (slider_min) {
         
-                setMin(min < 1 ? 1 : e.nativeEvent.offsetX)
+                setMin(min < 1 ? 2 : e.nativeEvent.offsetX)
             } else { }
     };
     const Mouse_move_max = (e) => {
         if (slider_max) {
         
-            setMax(max > 199 ? 198 : e.nativeEvent.offsetX)
+            setMax(max > 150 ? 148 : e.nativeEvent.offsetX-15)
         } else {}
     };     
    
@@ -89,10 +90,10 @@ const Slider = ({min, max, setMin, setMax}) => {
         onMouseMove={e=>Mouse_move_max(e)}
         >
       
-       <Max  pos_max={max} ></Max>
+       <Max  max={max} ></Max>
       </Main>
       <Min  
-        pos_min={min}
+        min={min}
         onMouseUp={()=>set_slider_min(false)} 
         onMouseDown={()=>set_slider_min(true)} 
         onMouseMove={e=>Mouse_move_min(e)}

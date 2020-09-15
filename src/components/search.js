@@ -65,8 +65,8 @@ const Search = () => {
         if (a.length > 2) {
             const fetchData = async () => {
                 const result = await axios(`${url}?model=${a}`);                
-                let dataOne = result.data.split(",");
-                let data =[...new Set(dataOne)];
+                let data = result.data.split(",");
+               
                 
                 if(data.length > 1 ){
                      set_model(data);  

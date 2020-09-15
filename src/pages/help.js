@@ -8,9 +8,9 @@ const DivAbout = styled.article.attrs(props=>({
 }))`
    width: 80%;
    margin: 0 auto;
-   height: auto;
+   height: fit-content;
     background-color: #fff;
-    padding: 0 30px;
+    padding: 0 30px 10px;
     color: #000;
     text-align: left;
   
@@ -62,7 +62,7 @@ const Help = () => {
         </Helmet>     
            <DivAbout>
                     <Link to="/" className="to_main" ></Link>   
-                   
+                    
                     <span>Customer service  </span>
                     <DivInput>
                         <h2>Send us</h2>

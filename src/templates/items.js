@@ -231,7 +231,7 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
                
                 {sort ? <Size  onClick={SortOnCost}>cost A to Z</Size> : <Size  onClick={SortOnCost}>cost Z to A</Size>}
                 <Slider min={min_cost} max={max_cost} setMin={set_min} setMax={set_max}/>
-              
+            
             </MenuItem>
             
             

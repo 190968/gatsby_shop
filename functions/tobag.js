@@ -4,7 +4,7 @@ var Mongoclient = require('mongodb').MongoClient;
 import querystring from "querystring";
 
 
-// var uri = "mongodb+srv://alex:alex@cluster0alex-mvffj.gcp.mongodb.net/my?retryWrites=true"; 
+
 
 
 exports.handler = async (event, context, callback) => { 

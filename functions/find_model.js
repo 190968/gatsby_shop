@@ -2,7 +2,6 @@ var Mongoclient = require('mongodb').MongoClient;
 
 
 
-// var uri = "mongodb+srv://alex:alex@cluster0alex-mvffj.gcp.mongodb.net/my?retryWrites=true"; 
 
 
 exports.handler = async (event, context, callback) => { 
@@ -22,9 +21,10 @@ exports.handler = async (event, context, callback) => {
         mod.push(i.model);
     };
     console.log(mod);
+    const model = [...new Set(mod)];
     return {
         statusCode: 200,
-        body: `${mod}`
+        body: `${model}`
     };
             
 };
