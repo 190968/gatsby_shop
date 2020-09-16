@@ -56,7 +56,7 @@ const Max = styled.div.attrs(props => ({
     pos_max:props.max   
 }))`
     height: 10px;
-    width: ${props=>150 - props.max}px; 
+    width: ${props=> (190 - props.max)}px; 
     border-radius: 5px;
     float: right;
     background-color: #ccc;
@@ -74,7 +74,7 @@ const Slider = ({min, max, setMin, setMax}) => {
     const Mouse_move_max = (e) => {
         if (slider_max) {
         
-            setMax(max > 150 ? 148 : e.nativeEvent.offsetX-15)
+            setMax(max > 190 ? 188 : e.nativeEvent.offsetX-15)
         } else {}
     };     
    

@@ -58,7 +58,7 @@ const url = 'https://aplacadance.ru/.netlify/functions/find_model';
 const Search = () => {
 
     const [input, input_view] = React.useState(false);
-    const [model, set_model] = React.useState(['']);
+    const [model, set_model] = React.useState([]);
 
     const update_model = (a) => {
        
