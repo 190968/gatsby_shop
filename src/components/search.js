@@ -54,7 +54,8 @@ const SearchModel = styled.div`
 
 //  const url = 'http://localhost:5001/find';
 //  const url = 'http://gatsbyshop.herokuapp.com';
-const url = 'https://aplacadance.ru/.netlify/functions/find_model';
+const url = 'http://localhost:8888/.netlify/functions/myfun';
+// const url = 'https://aplacadance.ru/.netlify/functions/find_model';
 const Search = () => {
 
     const [input, input_view] = React.useState(false);
@@ -90,7 +91,7 @@ const Search = () => {
         />
         {input && <SearchModel>
             <Input type="text"  placeholder="input model" onChange={(e)=>update_model(e.target.value)}/>
-            {model.map((i,index) => <P onClick={()=>{set_model([]);navigate('/all/',{state:{model:i}})}}>
+            {model.map((i,index) => <P key={index} onClick={()=>{set_model([]);navigate('/all/',{state:{model:i}})}}>
                    {i}
                 </P>
                

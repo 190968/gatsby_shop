@@ -24,17 +24,20 @@ const Empty = styled.span`
 `;
 const Button = styled.button`
     width: 100%;
-    border: none;
+    border: 2px solid lime;
     outline: none;
     cursor: pointer;
     font-weight: 600;
     background-color: lime;
     color: #000;    
    
-    padding: 10px 0;
+    padding: 8px 0;
     &:hover {
        background-color: yellow;    
        
+    }
+    &:active {
+       border: 2px solid red;
     }
    
 `;

@@ -1,11 +1,13 @@
 import React from "react";
 import axios from "axios";
+
 import { connect } from "react-redux";
 import { delete_from_bag, add_count, delBag } from "../state/app";
 import styled from "styled-components";
 
 import "../styles/global.css";
 import { Link } from "gatsby";
+import BlockPhone from "../components/blockPhone";
 
 const Input = styled.input`
     display: inline-block;
@@ -25,58 +27,60 @@ const Button = styled.button`
     margin: 10px auto;
     display: block;
     background-color: lime;
-    border: none;
-  
+    border: 2px solid lime;
+    &:active {
+        border: 2px solid red;
+     }
     &:hover {
         background-color: yellow;    
        
     }
 `;
 const FormDelivery = ({ bag, delBag, delivery }) => {
+    const [country, set_country] = React.useState("");
+    const [city, set_city] = React.useState("");
+    const [street, set_street] = React.useState("");
     const [name, set_name] = React.useState("");
     const [phone, set_phone] = React.useState("");
     const [email, set_email] = React.useState("");
     const [ok, set_ok] = React.useState("");   
 
     function sendData() {
-        axios({
-            method: 'post',
-            
-            url: "https://www.aplacadance.ru/.netlify/functions/tobag",
-            data: {           
-                name: name,
-                phone: phone,
-                email: email,
-                bag: bag,
-                delivery: delivery 
-            },
-            headers: {
-                'Access-Control-Allow-Origin': '*',
-                'Content-Type': 'application/json'
-            }
-          
-               
-        })
-        .then(res=>{
-            set_ok("YOUR ORDER ACCEPTED");
-          
-        })
+        const url =  "https://www.aplacadance.ru/.netlify/functions/tobag";
+       
+        // const url = 'http://localhost:8888/.netlify/functions/new_bag';       
+        const params = {           
+            name,
+            phone,
+            email,
+            bag,
+            delivery 
+        };
+        const headers = {
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/json'
+        };
+        axios.post(`http://localhost:8888/.netlify/functions/new_bag`,JSON.stringify(params))     
+        .then(res => set_ok("YOUR ORDER ACCEPTED"))
         .then(res=>{
             
             setTimeout(delBag(),2000);
         })
     };
-    return (
-        <div className="delivery_main">            
+    console.log("This is request");
+    return <>
+        <BlockPhone />
+        <div className="delivery_main"> 
+                   
             <div className="delivery_name">            
                
             
                 <label>COUNTRY:</label>
-                <Input type="text" required value={name}  onChange={(e)=>set_name(e.target.value)} placeholder="input country" />
+                <Input type="text" required value={country}  onChange={(e)=>set_country(e.target.value)} placeholder="input country" />
                 <label>CITY:</label> 
-                <Input type="phone" required value={phone} onChange={(e)=>set_phone(e.target.value)} placeholder="input city" />
+                <Input type="phone" required value={city} onChange={(e)=>set_city(e.target.value)} placeholder="input city" />
                 <label>STREET: </label>
-                <Input type="email" required value={email} onChange={(e)=>set_email(e.target.value)} placeholder="input street" />
+                <Input type="email" required value={street} onChange={(e)=>set_street(e.target.value)} placeholder="input street" />
                 <label>NAME:  </label>
                 <Input type="text" required value={name}  onChange={(e)=>set_name(e.target.value)} placeholder="input name" />
                 <label>PHONE: </label>
@@ -92,12 +96,12 @@ const FormDelivery = ({ bag, delBag, delivery }) => {
                 </Button>
                 <Link to="/bag" className="delivery_main_link">BACK TO BAG</Link>
                 <Link to="/" className="delivery_main_link two">TO MAIN</Link>
-                <h3>{ok}</h3>
+                <h3 style={{textAlign: 'center'}}>{ok}</h3>
             </div>
 
         </div>
         
-    )
+    </>
 };
 
 

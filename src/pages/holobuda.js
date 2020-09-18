@@ -108,17 +108,20 @@ const Admin = () => {
     
     const [orders, set_orders] = React.useState([]);
     
-     const url = 'http://localhost:5001/all_bags';
-    // const url = 'https://www.aplacadance.ru/.netlify/functions/all_bags';
+    //  const url = 'http://localhost:5001/all_bags';
+    const url = 'https://www.aplacadance.ru/.netlify/functions/all_bags';
    
     
     useEffect(() => {        
-        axios(`${url}`)
+        axios(`${url}`,{headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/json'
+        }})
         .then((result)=>{
             set_orders([...result.data])  
         })
         .catch(()=>{})       
-    },[orders])
+    },[])
    
 
     const UpdateStatusDelivery = (a,b) =>{

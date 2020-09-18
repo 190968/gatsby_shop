@@ -20,7 +20,7 @@ const Close = styled.button`
 
 const Button = styled.button`
     width: 100%;
-    border: none;
+    border: 2px solid lime;
     outline: none;
     cursor: pointer;
     background-color: lime;
@@ -29,11 +29,12 @@ const Button = styled.button`
     margin: 0;
     padding: 10px 0;
     &:hover {
-       background-color: yellow;
-      
-       
+       background-color: yellow;      
     }
-   
+    &:active {
+        box-shadow: inset 0 0 5px  1px green;
+        
+    }
 `;
  const Size = styled.span.attrs(props=>({
         setSize: props.setSize,

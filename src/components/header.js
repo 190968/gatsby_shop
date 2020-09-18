@@ -125,7 +125,7 @@ const Header = ({ euro, currency }) => {
                 </Link> 
                          
                 <DivCur>                 
-                {["€","$","£"].filter(i=>i!==s).concat(s).reverse().map(i=><Euro onClick={()=>euro(i)}>{i}</Euro> )}    
+                {["€","$","£"].filter(i=>i!==s).concat(s).reverse().map(i=><Euro key={i} onClick={()=>euro(i)}>{i}</Euro> )}    
                     
                    
                    
