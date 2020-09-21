@@ -118,7 +118,7 @@ const Admin = () => {
             'Content-Type': 'application/json'
         }})
         .then((result)=>{
-            set_orders([...result.data])  
+            set_orders([...result])  
         })
         .catch(()=>{})       
     },[])
@@ -129,7 +129,7 @@ const Admin = () => {
             axios(`https://www.aplacadance.ru/.netlify/functions/status_rewrite?status=${b}&date=${a}`) 
             
            .then((res)=>{
-                set_orders([...res.data]);    
+                set_orders([...res]);    
            })
            .catch(()=>{})
                         

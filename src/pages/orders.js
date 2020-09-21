@@ -44,15 +44,14 @@ const Button = styled.button`
     color: blue;    
     height: 45px;
     padding: 8px 0;
-    border: 1px solid lavander;    
-    &:hover {
-       
-      
-       
-    }
+    border: 1px solid lavander;   
     &:active {
-        box-shadow: inset 0 0 5px  1px green;
-        
+        box-shadow: inset 0 0 5px  1px green;        
+    }
+    @media(width-max: 600px){
+        width: 70%;
+        display: block;
+        margin: 10px auto;
     }
 `;
 const Input = styled.input`

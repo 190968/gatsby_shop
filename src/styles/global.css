@@ -16,8 +16,8 @@ html {
 }
 .header {   
     text-align: left;
-    height: 70px;
-    padding: 10px 15px;
+    height: 49px;
+    padding: 0 15px;
     background-color: cornflowerblue;
 }
 a:link {
@@ -131,6 +131,11 @@ img  {
     text-align: center;
     font-size: 22px;
 }
+.items span:first-of-type {
+    font-size: 25px;
+    margin: 10px 0;
+    font-weight: 600;
+}
 .brand_favorite {
     font:italic 600 20px/20px 'Verdana', sans-serif;
     color: cornflowerblue;
@@ -187,7 +192,7 @@ img {
    text-decoration: underline;   
 }
 .img_main_link {   
-    height: 20vw;
+    height: 25vw;
     background-size: cover;
    
     width: 33.33%;   
@@ -567,7 +572,7 @@ img {
     float: left;
     text-align: center;
    
-    font: 400 16px/16px 'Verdana', sans-serif;
+    font: 400 22px/16px 'Verdana', sans-serif;
     
     }
     .items {

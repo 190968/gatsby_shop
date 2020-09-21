@@ -20,7 +20,7 @@ const DivInfo = styled.div`
         color: maroon;
     }
     @media(max-width: 500px) {
-        font: 400 18px/20px "Taroma", sans-serif;
+        font: 400 18px/24px "Taroma", sans-serif;
         margin: 0; 
         height: content-fit;   
     }
@@ -33,19 +33,15 @@ const Color = styled.b.attrs(props=>({
     padding: 5px 8px;
     border: 1px solid yellow;
     cursor: pointer;
-    background-color: cornflowerblue;
-    
+    background-color: cornflowerblue;    
     position: relative;
     font: italic 300 16px/16px "Taroma", sans-serif;
     margin: 0 10px;
     display: ${props=>(props.color === "all" || props.color === null || props.color === 0 || props.color === 180) ? 'none': 'inline-block'};
     vertical-align: middle;
     border-radius: 10px;
-    z-index: 0;
-   
-      
-        color: yellow;
-   
+    z-index: 0;      
+    color: yellow;   
     &:after {
         content: 'x';
         color: cornflowerblue;

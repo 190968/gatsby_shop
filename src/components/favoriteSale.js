@@ -24,7 +24,7 @@ const DivItem = styled.div`
     }
     @media (max-width: 580px) {
         padding: 5px;
-        font-size: 1em;
+        
         width: 33%;
     }
 `;

@@ -278,7 +278,7 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
                     {/* <Size onClick={()=>set_max(i.cost*currency)}>{"<"}</Size> */}
                    
                 </div>
-                {(image_item & index === new_index) && <Item 
+                {(image_item & index === new_index) ? <Item 
                         page={i} 
                         closeImage={set_image_item} 
                         image_color={i.color} 
@@ -290,7 +290,9 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
                         cost={i.cost}
                         size={i.size}
                     />
-                  
+                    :
+                    <>
+                    </>    
                 }
                   
                

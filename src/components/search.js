@@ -1,4 +1,4 @@
-import React from "react";
+import React ,{ useRef } from "react";
 
 import axios from "axios";
 import styled from "styled-components";
@@ -29,7 +29,7 @@ const ImageBag = styled.img`
 const Input = styled.input`
     border: none;
     outline: none;
-    padding: 5px 10px;
+    padding: 10px;
     border-radius: 5px;
     &:focus {
         border: none ;
@@ -46,20 +46,27 @@ const ImageSearch = styled(ImageBag)`
 const SearchModel = styled.div`
     display: inline-block;
     position: relative;
-    top: 10px;
+    
    
     height: auto;
     background-color: #fff;
 `;
-
 //  const url = 'http://localhost:5001/find';
 //  const url = 'http://gatsbyshop.herokuapp.com';
-const url = 'http://localhost:8888/.netlify/functions/myfun';
-// const url = 'https://aplacadance.ru/.netlify/functions/find_model';
-const Search = () => {
+// const url = 'http://localhost:8888/.netlify/functions/myfun';
+const url = 'https://aplacadance.ru/.netlify/functions/find_model';
 
+const Search = () => {
+    const inputE1 = useRef();
     const [input, input_view] = React.useState(false);
     const [model, set_model] = React.useState([]);
+
+    function openInput(){
+        return (
+            input_view(!input),
+            inputE1.current.focus()
+        )
+    };
 
     const update_model = (a) => {
        
@@ -86,19 +93,19 @@ const Search = () => {
         <ImageSearch  
             src="/search.png" 
             alt="search" 
-            onClick={()=>input_view(!input)}
+            onClick={openInput}
 
         />
-        {input && <SearchModel>
-            <Input type="text"  placeholder="input model" onChange={(e)=>update_model(e.target.value)}/>
+        <SearchModel>
+            <Input type="text" ref={inputE1} placeholder="search model" onChange={(e)=>update_model(e.target.value)}/>
             {model.map((i,index) => <P key={index} onClick={()=>{set_model([]);navigate('/all/',{state:{model:i}})}}>
                    {i}
                 </P>
                
             )}
 
-            </SearchModel>
-        }
+        </SearchModel>
+       
         </>
 };
  export default Search;
