@@ -72,8 +72,13 @@ const Search = () => {
        
         if (a.length > 2) {
             const fetchData = async () => {
-                const result = await axios(`${url}?model=${a}`);                
+                const result = await axios(`${url}?model=${a}`,
+                {
+                    'Access-Control-Allow-Origin': '*',
+                    'Content-Type': 'application/json'
+                });                
                 let data = result.data.split(",");
+                console.log(result.data.split(","));
                
                 
                 if(data.length > 1 ){

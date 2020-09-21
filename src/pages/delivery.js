@@ -60,7 +60,7 @@ const FormDelivery = ({ bag, delBag, delivery }) => {
             'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/json'
         };
-        axios.post(`http://localhost:8888/.netlify/functions/new_bag`,JSON.stringify(params))     
+        axios.post(url,JSON.stringify(params))     
         .then(res => set_ok("YOUR ORDER ACCEPTED"))
         .then(res=>{
             

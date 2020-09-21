@@ -98,8 +98,8 @@ const Orders = () => {
     const [ orders, set_orders] = React.useState({ord:[]});
     const [visible_order, set_visible] = React.useState(false);
     const [visible_account, set_visible_account] = React.useState(true);
-    const [name , set_name] = React.useState();
-    const [phone , set_phone] = React.useState();
+    const [name , set_name] = React.useState("");
+    const [phone , set_phone] = React.useState("");
 
     useEffect(()=>{
         inputRef.current.focus();
@@ -107,10 +107,16 @@ const Orders = () => {
     },[]);
    
     const url = 'https://www.aplacadance.ru/.netlify/functions/readfororders';
-    // const url = 'http://gatsbyshop.herokuapp.com';
+    // const url = 'http://localhost:8888/.netlify/functions/read_orders';
     const Go_account = async () => {        
-        let result = await axios(`${url}?name=${name}&phone=${phone}`);          
-        set_orders(result.data);   
+        let result = await axios(`${url}?name=${name}&phone=${phone}`,{
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers": "Content-Type",
+            "Content-Type" : "Application/json",
+            "Access-Control-Allow-Methods": "OPTIONS,GET"
+        });          
+        set_orders(result.data);
+        console.log(result.data);   
         set_visible_account(false);
         set_visible(true);
     };

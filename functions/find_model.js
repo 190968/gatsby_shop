@@ -24,7 +24,13 @@ exports.handler = async (event, context, callback) => {
     const model_all = [...new Set(mod)];
     return {
         statusCode: 200,
-        body: `${model_all}`
+        headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers": "Content-Type",
+            "Content-Type" :"Application/json",
+            "Access-Control-Allow-Methods": "OPTIONS,GET"
+        },
+        body: `${JSON.stringify(model_all)}`
     };
             
 };

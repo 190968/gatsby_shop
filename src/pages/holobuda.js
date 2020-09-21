@@ -106,23 +106,29 @@ const IndexItem = styled(Index)`
 
 const Admin = () => {
     
-    const [orders, set_orders] = React.useState([]);
+    const [orders, set_orders] = React.useState({ord:[]});
+    const [view, set_view] = React.useState(false);
     
-    //  const url = 'http://localhost:5001/all_bags';
-    const url = 'https://www.aplacadance.ru/.netlify/functions/all_bags';
+    const url = 'http://localhost:8888/.netlify/functions/hello';
+    // const url = 'https://www.aplacadance.ru/.netlify/functions/all_bags';
    
     
-    useEffect(() => {        
-        axios(`${url}`,{headers: {
-            'Access-Control-Allow-Origin': '*',
-            'Content-Type': 'application/json'
-        }})
-        .then((result)=>{
-            set_orders([...result])  
-        })
-        .catch(()=>{})       
-    },[])
-   
+   useEffect(() => {
+        const fetchData = async () => {        
+            const result = await axios( 
+                'http://www.aplacadance.ru/.netlify/functions/all_bags', {         
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Headers": "Content-Type",
+                "Content-Type" : "Application/json",
+                "Access-Control-Allow-Methods": "OPTIONS,GET"
+
+            });     
+            set_orders(result.data);
+            set_view(true);
+           
+        };  
+        fetchData();
+    },[]); 
 
     const UpdateStatusDelivery = (a,b) =>{
         
@@ -166,8 +172,9 @@ const Admin = () => {
                 <Button>view questions</Button>
                 <Button>send base</Button>
             
-            </p>    
-            {orders.reverse().map((i,index)=><div key={index} style={{border:"1px solid #ccc",padding: "5px"}}>
+            </p>
+            {view && <>    
+            {orders.map((i,index)=><div key={index} style={{border:"1px solid #ccc",padding: "5px"}}>
             <IndexOne ind={index} text="№">{index + 1}.</IndexOne>
             <IndexDate ind={index} text="date">{i.date}</IndexDate>
             <IndexPhone ind={index} text="buyer">
@@ -204,6 +211,8 @@ const Admin = () => {
             </Index>
             </div>
             )}
+            </>
+            }
         </div>
         </>
     
