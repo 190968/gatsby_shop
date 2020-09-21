@@ -15,7 +15,13 @@ var uri = "mongodb+srv://alex:alex@cluster0alex-mvffj.gcp.mongodb.net/my?retryWr
 
   return {
     statusCode: 200,
-    body: `${d}`
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Headers": "Content-Type",
+      "Content-Type" : "Application/json",
+      "Access-Control-Allow-Methods": "OPTIONS,GET"
+  },
+    body: `${JSON.stringify(d)}`
   };
             
                  

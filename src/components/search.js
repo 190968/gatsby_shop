@@ -53,8 +53,8 @@ const SearchModel = styled.div`
 `;
 //  const url = 'http://localhost:5001/find';
 //  const url = 'http://gatsbyshop.herokuapp.com';
-// const url = 'http://localhost:8888/.netlify/functions/myfun';
-const url = 'https://aplacadance.ru/.netlify/functions/find_model';
+const url = 'http://localhost:8888/.netlify/functions/myfun';
+// const url = 'https://aplacadance.ru/.netlify/functions/find_model';
 
 const Search = () => {
     const inputE1 = useRef();
@@ -77,8 +77,8 @@ const Search = () => {
                     'Access-Control-Allow-Origin': '*',
                     'Content-Type': 'application/json'
                 });                
-                let data = result.data.split(",");
-                console.log(result.data.split(","));
+                let data = result.data;
+                console.log(result.data);
                
                 
                 if(data.length > 1 ){

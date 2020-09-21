@@ -116,7 +116,7 @@ const Admin = () => {
    useEffect(() => {
         const fetchData = async () => {        
             const result = await axios( 
-                'http://www.aplacadance.ru/.netlify/functions/all_bags', {         
+                'https://aplacadance.ru/.netlify/functions/all_bags', {         
                 "Access-Control-Allow-Origin": "*",
                 "Access-Control-Allow-Headers": "Content-Type",
                 "Content-Type" : "Application/json",
