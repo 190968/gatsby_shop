@@ -24,13 +24,14 @@ const ImageBag = styled.img`
 const Input = styled.input`
     border: none;
     outline: none;
-    padding: 10px;   
+    padding: 10px; 
+    width: 100%;  
     &:focus {
         border: none ;
         outline: none;       
     }
     @media (max-width: 1000px) {
-        font:100%/1.45 'Quattrocento Sans',sans-serif;
+        font:100%/1.8 'Quattrocento Sans',sans-serif;
     }    
 `;
 const ImageSearch = styled(ImageBag)`
@@ -39,11 +40,16 @@ const ImageSearch = styled(ImageBag)`
     margin: 5px 0;    
 `;
 const SearchModel = styled.div`
-    display: inline-block;
-    border: 1px solid corflnowerblue;
+  
+   display: inline-block;
     height: auto;
     z-index: 15;
-    position: relative;   
+    position: relative;
+    width: 20vw;
+    @media(max-width: 600px) {
+        width: 40vw;
+    }
+   
 `;
 //  const url = 'http://localhost:5001/find';
 //  const url = 'http://gatsbyshop.herokuapp.com';

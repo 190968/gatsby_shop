@@ -486,10 +486,11 @@ img {
    
     .div_bag_menu {       
         width: 100%;
-        margin-top: 130px;
+        margin-top: 150px;
     }
     .div_bag_item {       
-        width: 100%;       
+        width: 100%;
+              
     }
     .div_delivery {
         width: 70%;
@@ -549,6 +550,10 @@ img {
 @media screen and (max-width: 600px) {
     .go_to_account, .orders {
         margin: 200px 0 0;
+    }
+    .div_delivery {
+        width: 100%;
+        margin: 40px auto 10px;
     }
     .delivery_name {       
         left: 0;

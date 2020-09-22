@@ -104,13 +104,10 @@ const Orders = () => {
     const [ orders, set_orders] = React.useState({ord:[]});
     const [visible_order, set_visible] = React.useState(false);
     const [visible_account, set_visible_account] = React.useState(true);
-    const [name , set_name] = React.useState("");
-    const [phone , set_phone] = React.useState("");
+    const [name , set_name] = React.useState();
+    const [phone , set_phone] = React.useState();
 
-    useEffect(()=>{
-        inputRef.current.focus();
-
-    },[]);
+    useEffect(() => inputRef.current.focus(),[]);
    
     const url = 'https://www.aplacadance.ru/.netlify/functions/readfororders';
     // const url = 'http://localhost:8888/.netlify/functions/read_orders';

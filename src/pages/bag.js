@@ -53,14 +53,14 @@ const P = styled.p`
     display: inline-block;
 `;
 const Items = styled.div`
-    textAlign: left;
+  
     display: inline-block;
     vertical-align: middle;
-        width: 45%;
-        padding-left: 16%;
-        background-position: left center;
-        background-repeat: no-repeat;
-        background-size: 30%;
+    width: 50%;
+    padding-left: 16%;
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-size: 30%;
     
 `;
 const Input = styled.input`
@@ -101,18 +101,25 @@ const Add = styled.b`
         border: 1px solid #ddd;
         border-radius: 50%;
         cursor: pointer;
-        font-size: 20px;
+       
         padding: 1px 7px;
+        
         margin: 10px;
         &:hover {
             background-color: cornflowerblue;
             color: yellow;
+        }
+        @media(max-width: 600px) {
+            display: block;
+            width: 20%;
+            margin: 0 auto;
         }    
     `;
     const Quant = styled.div`
         display: inline-block;
         vertical-align: middle;
-        width: 23%;
+        font-size: 22px;
+        width: 18%;
         text-align: center;
     `;   
 
@@ -124,8 +131,8 @@ const Bag =  ({ bag, delete_from_bag, add_count, currency, delivery, setDelivery
     return (
         <Layout set_number={set_number} title="Your bag">       
             <div className="div_bag_menu">           
-                <span style={{width:"45%"}}>Items</span>
-                <span style={{width:"23%"}}>Qty</span>
+                <span style={{width:"50%"}}>Items</span>
+                <span style={{width:"18%"}}>Qty</span>
                 <span>Cost</span>
                 <span>Total</span>            
             </div>       
@@ -134,10 +141,10 @@ const Bag =  ({ bag, delete_from_bag, add_count, currency, delivery, setDelivery
                     <div className="div_bag_item" key={index}>
                         <h1>This is better site to buy run shoes.</h1>
                         <Items 
-                            style={{backgroundImage: `url(https://myrunshop.000webhostapp.com/wp-content/image/
-                                ${i.brand.toLowerCase()}/${i.model}_${i.color}.jpg),
-                                url(https://myrunshop.000webhostapp.com/wp-content/image/
-                                ${i.brand.toLowerCase()}/${i.model}_${i.color}.webp)`}}
+                            style={{ backgroundImage: `
+                                url(https://myrunshop.000webhostapp.com/wp-content/image/${i.brand.toLowerCase()}/${i.model}_${i.color}.jpg),
+                                url(https://myrunshop.000webhostapp.com/wp-content/image/${i.brand.toLowerCase()}/${i.model}_${i.color}.webp)
+                                ` }}
                         >
                             <P><b>{i.brand}</b></P> 
                             <P>{i.model}</P>
