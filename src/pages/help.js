@@ -10,12 +10,12 @@ const DivAbout = styled.article.attrs(props=>({
    margin: 0 auto;
    height: fit-content;
     background-color: #fff;
-    padding: 0 30px 10px;
+    padding: 0 2vw 10px;
     color: #000;
     text-align: left;
   
     p {
-        padding-left: 20px;
+        padding-left: 1vw;
        font-size: 18px;
     }
     li {
@@ -29,25 +29,31 @@ const DivAbout = styled.article.attrs(props=>({
         width: 100%;
     } 
 `;
+const InputName = styled.input`
+    width: 32.33%;
+    margin: 5px 1% 10px 0;
+    padding: 10px;
+`;
 const DivInput = styled.div`
     background-color: blue;
     width: 100%;
     
-    padding: 10px 30px;
+    padding: 2vw;
     h2 {
         color: #fff;
         margin: 0 0 20px;
     }
+   
 `;
 const Input = styled.input`
-    width: 70%;
+    width: 65.5%;
     padding: 10px;
    
-    margin-right: 10px;
+    margin-right: 1.2%;
     border: none;
 `;
 const Button = styled.button`
-    width: 29%;
+    width: 32.2%;
     padding: 10px;
    
 `;
@@ -65,9 +71,12 @@ const Help = () => {
                     
                     <span>Customer service  </span>
                     <DivInput>
-                        <h2>Send us</h2>
-                        <Input type="text" placeholder="Own question"/>
-                        <Link to="/delivery">Send</Link>
+                        <h2>Contact  us</h2>
+                        <InputName type="text" placeholder="NAME" />
+                        <InputName type="text"  placeholder="PHONE"/>
+                        <InputName type="text"  placeholder="EMAIL"/>
+                        <Input type="text" placeholder="OWN QUESTION"/>
+                        <Button to="/delivery">Send</Button>
                     </DivInput>
                     <Link to="/">Home</Link>
                     <h3>About us:</h3>

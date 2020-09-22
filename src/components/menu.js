@@ -16,8 +16,8 @@ const Menu = ({  link, set_number }) => {
                     to = {`/${i}`} 
                     onMouseEnter = {()=>set_number(index)}
                     style={{backgroundImage: "none",
-                        backgroundColor: i === link  ? "cornflowerblue" : "chartreuse",
-                        color: i === link ? "#fff" : "blue" 
+                        backgroundColor: i == link  ? "cornflowerblue" : "chartreuse",
+                        color: i == link ? "#fff" : "blue" 
                     }} 
                     className="main_Menu_link"
                 >

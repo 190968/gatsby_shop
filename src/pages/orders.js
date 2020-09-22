@@ -17,7 +17,7 @@ const Index = styled.b.attrs(props=>({
     vertical-align: top;
     width: 20%;
     display: inline-block;
-    padding: 10px 0;
+  
     &:before {
         content: '${props=>props.text}';
         position: absolute;
@@ -31,6 +31,7 @@ const Index = styled.b.attrs(props=>({
        
         display: ${props=>props.ind === 0 ? "inline-block" : "none"}
     }
+    
 
 `;
 
@@ -48,8 +49,8 @@ const Button = styled.button`
     &:active {
         box-shadow: inset 0 0 5px  1px green;        
     }
-    @media(width-max: 600px){
-        width: 70%;
+    @media(max-width: 600px){
+        width: 80%;
         display: block;
         margin: 10px auto;
     }
@@ -57,14 +58,19 @@ const Button = styled.button`
 const Input = styled.input`
     vertical-align: top;
     height: 45px;
-    padding: 0 10px;
+    padding: 10px;
     width: 33%;
     color: red;
     border: none;
-    border-radius: none;
+   
     outline: none;
     background-color: #fff;
     margin: 5px;
+    @media(max-width: 600px){
+        width: 80%;
+        display: block;
+        margin: 10px auto;
+    }
 `;
 
 const ButtonAccount = styled(Button)`
@@ -73,7 +79,7 @@ const ButtonAccount = styled(Button)`
    
 `;
 const IndexOne = styled(Index)`
-    width: 3%;
+    width: 5%;
 `;
 const IndexDate = styled(Index)`
     width: 15%;
@@ -81,7 +87,7 @@ const IndexDate = styled(Index)`
 `;
 const IndexStatus = styled(Index)`
    
-    width: 20%;
+    width: 18%;
 `;
 const IndexItem = styled(Index)`
     width: 62%;
@@ -89,7 +95,7 @@ const IndexItem = styled(Index)`
 const Order = styled.div`
     text-align: left;
     border-bottom: 1px solid #ccc;
-    padding: 10px 0;
+   
 `;
 const Orders = () => {
 

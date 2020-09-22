@@ -71,13 +71,13 @@ label:hover:after {
 }
 input {
     cursor: pointer;
-    border-radius: 5px;
+   
     
     color: #000;
 }
 input:focus {
     background-color: lime;
-    border: 1px solid cornflowerblue;
+    border: 1px solid corflnowerblue;
     outline: none;
 }   
 .class_input_two {
@@ -222,11 +222,9 @@ img {
 .div_menu {
     height: auto;
     padding: 0;
-    margin: 0;
-    
+    margin: 0;    
 }
-.delivery_main_link {
-    
+.delivery_main_link {    
     color: #000;
     margin: 5px;
     display: inline-block;
@@ -237,9 +235,7 @@ img {
    
 }
 .delivery_main {
-    padding-top: 100px;
-   
-   
+    padding-top: 100px;  
     width: 100%;
     margin: 0 auto;   
     z-index: 10; 
@@ -267,8 +263,7 @@ img {
     font-weight: 600;
     margin: -10px 0 30px -10px;
     background-color: thistle;
-    display: block;
-       
+    display: block;       
 }
 
 .div_delivery {
@@ -299,11 +294,14 @@ img {
     width: 90%;
     margin: 0 auto;
 }
-
 .orders {
     width: 100%;
     margin: 120px auto;
     position: relative;    
+}
+.orders p {
+    padding-left: 20px;
+    font: 300 18px/24px 'Arial',sans-serif;
 }
 .orders:before {
     content: "YOUR ORDERS LAST FOUR MOUNTH";
@@ -323,7 +321,7 @@ img {
     position: relative;    
 }
 .go_to_account:before {
-    content: "ENTER TO ACCOUNT";
+    content: "ENTER TO ACCOUNT (ACCOUNT WILL CREATED IN MOMENT BUYING)";
     border-bottom: 1px solid #000;
     font-size: 18px;
     font-weight: 600;
@@ -389,8 +387,7 @@ img {
     z-index: 15;
     width: 90vw;
     height: 100vh;
-    background-color: #fff;
-   
+    background-color: #fff;   
     top: 0;    
 }
 .div_bag_item {
@@ -527,6 +524,10 @@ img {
         width: 15vw;
         height: 15vw;
     }
+    .go_to_account, .orders {
+        margin: 170px 0 0;
+    }
+   
     .div_content,
     .div_description {
         width: 100vw;
@@ -546,8 +547,8 @@ img {
     }
 }
 @media screen and (max-width: 600px) {
-    .go_to_account {
-        margin: 150px 0 0;
+    .go_to_account, .orders {
+        margin: 200px 0 0;
     }
     .delivery_name {       
         left: 0;

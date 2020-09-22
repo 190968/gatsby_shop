@@ -109,7 +109,7 @@ const Admin = () => {
     const [orders, set_orders] = React.useState({ord:[]});
     const [view, set_view] = React.useState(false);
     
-    const url = 'http://localhost:8888/.netlify/functions/hello';
+    // const url = 'http://localhost:8888/.netlify/functions/hello';
     // const url = 'https://www.aplacadance.ru/.netlify/functions/all_bags';
    
     

@@ -9,7 +9,7 @@ import "../styles/global.css";
 const Main = styled.div`
     height: 10px;
     width: 95%;
-  
+   
     border-radius: 5px;
     background: cornflowerblue;   
     position: relative;

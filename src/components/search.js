@@ -1,8 +1,6 @@
-import React ,{ useRef } from "react";
-
+import React  from "react";
 import axios from "axios";
 import styled from "styled-components";
-
 import "../styles/global.css";
 import {  navigate } from "gatsby";
 
@@ -16,57 +14,47 @@ const P = styled.p`
     &:hover {
         background-color: #ddd;
     }
-
 `;
 const ImageBag = styled.img`
     float: right;
     width: 42x;
     height: 42px;   
-    margin: 0 10px;
-    
-   
+    margin: 0 10px;   
 `;
 const Input = styled.input`
     border: none;
     outline: none;
-    padding: 10px;
-    border-radius: 5px;
+    padding: 10px;   
     &:focus {
         border: none ;
-        outline: none;
-       
+        outline: none;       
+    }
+    @media (max-width: 1000px) {
+        font:100%/1.45 'Quattrocento Sans',sans-serif;
     }    
 `;
 const ImageSearch = styled(ImageBag)`
     float: none;
     vertical-align: top;
-    margin: 5px 0 ;
-    
+    margin: 5px 0;    
 `;
 const SearchModel = styled.div`
     display: inline-block;
-    position: relative;
-    
-   
+    border: 1px solid corflnowerblue;
     height: auto;
-    background-color: #fff;
+    z-index: 15;
+    position: relative;   
 `;
 //  const url = 'http://localhost:5001/find';
 //  const url = 'http://gatsbyshop.herokuapp.com';
-const url = 'http://localhost:8888/.netlify/functions/myfun';
-// const url = 'https://aplacadance.ru/.netlify/functions/find_model';
+// const url = 'http://localhost:8888/.netlify/functions/myfun';
+const url = 'https://aplacadance.ru/.netlify/functions/find_model';
 
 const Search = () => {
-    const inputE1 = useRef();
-    const [input, input_view] = React.useState(false);
+   
     const [model, set_model] = React.useState([]);
 
-    function openInput(){
-        return (
-            input_view(!input),
-            inputE1.current.focus()
-        )
-    };
+   
 
     const update_model = (a) => {
        
@@ -77,12 +65,12 @@ const Search = () => {
                     'Access-Control-Allow-Origin': '*',
                     'Content-Type': 'application/json'
                 });                
-                let data = result.data;
+                let models = result.data;
                 console.log(result.data);
                
                 
-                if(data.length > 1 ){
-                     set_model(data);  
+                if(models.length > 1 ){
+                     set_model(models);  
                 }  else {
                     set_model(["none model"]);
                 }  
@@ -94,23 +82,19 @@ const Search = () => {
             set_model([]);
         }          
     };
-    return <>
-        <ImageSearch  
-            src="/search.png" 
-            alt="search" 
-            onClick={openInput}
-
-        />
-        <SearchModel>
-            <Input type="text" ref={inputE1} placeholder="search model" onChange={(e)=>update_model(e.target.value)}/>
-            {model.map((i,index) => <P key={index} onClick={()=>{set_model([]);navigate('/all/',{state:{model:i}})}}>
+    return (
+        <SearchModel  onMouseLeave={()=>set_model([])}>
+            <Input type="text"  placeholder="search model" onChange={(e)=>update_model(e.target.value)}/>
+            {model.map((i,index) => 
+                <P key={index}
+                    onClick={()=>{set_model([]);navigate('/all/',{state:{model:i}})}}
+                   
+                >
                    {i}
                 </P>
                
             )}
-
-        </SearchModel>
-       
-        </>
+        </SearchModel>       
+    )            
 };
  export default Search;
