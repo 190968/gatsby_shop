@@ -1,4 +1,5 @@
 import React from "react";
+import { navigate } from "gatsby";
 import styled from "styled-components";
 import "../styles/global.css";
 
@@ -39,6 +40,7 @@ const DivAbout = styled.article.attrs(props=>({
     background-color: #fff;
     padding: 30px;
     color: #000;
+    z-index: 100;
     text-align: left;
     border: 1px solid #000;
     p {
@@ -65,65 +67,25 @@ const Close = styled.button`
         background-color: #ddd;
     }
 `;
-const Footer = () => {
-    const [padd, set_padd] = React.useState("");
-
-    
-    
-   
-    const handClose = () => {
-        set_padd("")
-    };
-   
-    return(
+const Footer = () => {  
+    return (
         <div className="footer">
-            <Div text="CUSTOMER SERVICES"  onClick={()=>set_padd("10")}>
+            <Div text="CUSTOMER SERVICES"  onClick={()=>navigate("/help/")}>
                 <p>Return item</p>
                 <p>Table size</p>
-                <p>Question to us</p>
-               
+                <p>Question to us</p>               
             </Div>
-            <Div text="SHOPPING"  onClick={()=>set_padd("10")}>
+            <Div text="SHOPPING" onClick={()=>navigate("/help/")}>
                 <p>Delivery</p>
                 <p>Account</p>
                 <p>Store Finder</p>
             </Div>    
-            <Div text="ABOUT US" onClick={()=>set_padd("10")}>
+            <Div text="ABOUT US" onClick={()=>navigate("/help/")}>
                 <p>About Us</p>
-
-            </Div>
-          
-           
-           
+            </Div>           
                 
             <h6>&#169; 2020 ShopForRun.com</h6>
-            {padd && <DivAbout>
-                <Close  onClick={handClose}>x</Close>
-                    <h3>About us:</h3>
-                    <p> The online shop <b>ShopForRun.by</b> the better ability
-                         to buy run shoes and clothing the best world brands
-                          Adidas, Puma, New-balance, Nike, Reebok. All items
-                           is original, not used, in the original box.
-                           We selected for you the better for running.
-                    </p>
-                    <h3>Support:</h3>
-                        <ul>
-                            <li>tel: +354 29 650 00 45</li>
-                            <li>tel: +354 47 569 87 41</li>
-                            <li>email: shopforrun@tut.by</li>
-                        </ul>    
-                   
-                    <h3>Delivery</h3>
-                        <ul>
-                            <li>Delivery to warehouse-<b>10$</b></li>
-                            <li>Standart delivery (3 days)-<b>20$</b></li>
-                            <li>Express delivery (1 days)-<b>30$</b></li>
-                            <li>Free delivery (3 days) if on item cost over <b>100$</b></li>
-                        </ul>
-                    <h3>Return</h3>
-                        <p>Free Return. <span>Return within 30 days</span></p>
-                </DivAbout>
-            }    
+            
         </div>
     )
 };

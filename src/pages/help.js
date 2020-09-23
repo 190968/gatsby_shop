@@ -24,6 +24,9 @@ const DivAbout = styled.article.attrs(props=>({
     span {
         font: 600 39px/30px 'Arial', san-serif;
         vertical-align: middle;
+        @media(max-width: 600px) {
+            font: 600 30px/30px 'Arial', san-serif;
+        } 
     }
     @media(max-width: 600px) {
         width: 100%;
@@ -52,12 +55,46 @@ const Input = styled.input`
     margin-right: 1.2%;
     border: none;
 `;
-const Button = styled.button`
+const Button = styled.button.attrs(props=>({
+    text: props.text
+}))`
     width: 32.2%;
     padding: 10px;
+    position: relative;
+    :before {
+        content: "input all position ";
+        position: absolute;
+        top: -25px;
+        left: 30%;
+        visibility: hidden;
+        background-color: yellow;
+        padding: 0 10px;
+      
+        color: blue;
+        border-radius: 10px;
+    }
+    :hover :before {
+        visibility: ${props => props.text.length < 3 ? 'visible': 'hidden'};
+    }
    
 `;
 const Help = () => {
+
+    const [name, set_name] = React.useState("");
+    const [phone, set_phone] = React.useState("");
+    const [email, set_email] = React.useState("");
+    const [message, set_message] = React.useState("");
+    const [contact, set_contact] = React.useState(false);
+ 
+    function sendMessage() {
+       set_contact(true);
+       setTimeout(()=>set_contact(false),3000);
+       set_name("");
+       set_phone("");
+       set_email("");
+       set_message("")
+
+    };
     
     return (
         <>
@@ -69,15 +106,28 @@ const Help = () => {
            <DivAbout>
                     <Link to="/" className="to_main" ></Link>   
                     
-                    <span>Customer service  </span>
+                    <span>Customer service</span>
+                    
                     <DivInput>
+                        { contact ? 
+                        <h2>Message sending to manager</h2>
+                        : <>   
                         <h2>Contact  us</h2>
-                        <InputName type="text" placeholder="NAME" />
-                        <InputName type="text"  placeholder="PHONE"/>
-                        <InputName type="text"  placeholder="EMAIL"/>
-                        <Input type="text" placeholder="OWN QUESTION"/>
-                        <Button to="/delivery">Send</Button>
+                        <InputName type="text" placeholder="NAME" value={name} onChange={(e)=>set_name(e.target.value)} />
+                        <InputName type="text"  placeholder="PHONE" value={phone} onChange={(e)=>set_phone(e.target.value)} />
+                        <InputName type="text"  placeholder="EMAIL" value={email} onChange={(e)=>set_email(e.target.value)}  />
+                        <Input type="text" placeholder="OWN QUESTION (min ten symbols)" value={message} onChange={(e)=>set_message(e.target.value)} />
+                        <Button
+                            disabled = {name.length < 3 || phone.length < 10 || message.length < 20}
+                            text = {name}
+                            onClick={sendMessage}
+                        >
+                            Send
+                        </Button>
+                        </>
+                        }
                     </DivInput>
+                    
                     <Link to="/">Home</Link>
                     <h3>About us:</h3>
                     <p> The online shop <b>ShopForRun.by</b> the better ability

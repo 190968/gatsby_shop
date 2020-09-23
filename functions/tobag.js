@@ -1,14 +1,6 @@
 var Mongoclient = require('mongodb').MongoClient;
 
-
-
-
-
-
-
-
-exports.handler = async (event, context, callback) => { 
-        
+exports.handler = async (event, context, callback) => {         
     const uri = process.env.uri;   
     var d = new Date();    
     var date = d.getFullYear() +"/"+(d.getMonth() + 1) + "/" + d.getDate() + " " + d.getHours() + ":" + d.getMinutes()   ;

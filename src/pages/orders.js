@@ -101,7 +101,7 @@ const Orders = () => {
 
     const inputRef = useRef();
     const [number, set_number] = React.useState(0);
-    const [ orders, set_orders] = React.useState({ord:[]});
+    const [orders, set_orders] = React.useState({ord:[]});
     const [visible_order, set_visible] = React.useState(false);
     const [visible_account, set_visible_account] = React.useState(true);
     const [name , set_name] = React.useState();
@@ -118,8 +118,7 @@ const Orders = () => {
             "Content-Type" : "Application/json",
             "Access-Control-Allow-Methods": "OPTIONS,GET"
         });          
-        set_orders(result.data);
-        console.log(result.data);   
+        set_orders(result.data);        
         set_visible_account(false);
         set_visible(true);
     };
@@ -130,7 +129,7 @@ const Orders = () => {
             {visible_account ? 
                 <div className="go_to_account">                   
                     <p>                   
-                        <Input type="text" ref={inputRef} value={name} placeholder="input name" onChange={(e)=>set_name(e.target.value)} />
+                        <Input type="text" ref={inputRef} value={name||''} placeholder="input name" onChange={(e)=>set_name(e.target.value)} />
 
                         <Input type="phone" value={phone} placeholder="input phone" onChange={(e)=>set_phone(e.target.value)}/>
                         <ButtonAccount onClick={Go_account}>ENTER</ButtonAccount>                  
@@ -146,9 +145,9 @@ const Orders = () => {
                                 {i.bag.map((a,index) => 
                                     <div style={{textAlign: "left",margin: 0}} key={index}>
                                         <p style={{margin: "0 0 10px" }}>
-                                            {index+1}.{a.brand},{a.model},                                      
-                                            color:{a.color},size:{a.size},Qnt:{a.count},cost: 
-                                            <b>{a.cost}$</b>                                      
+                                            {index+1}. {a.brand}, {a.model},                                      
+                                            color: {a.color}, size: {a.size}, Qnt: {a.count}, 
+                                            cost: <b>{a.cost}$</b>                                      
                                         </p>                                    
                                     </div>
                                 )}

@@ -14,7 +14,7 @@ const Sale = styled.b`
 const DivItem = styled.div`
     height: fit-content;
     padding-bottom: 10px;
-    width: 18%;
+    width: 200px;
     display: inline-block;  
     margin: 15px 0;
     background-color: #fff;
@@ -22,7 +22,7 @@ const DivItem = styled.div`
     &:hover {
         box-shadow: 0 0 5px 5px #ddd;
     }
-    @media (max-width: 580px) {
+    @media (max-width: 600px) {
         padding: 5px;
         
         width: 33%;

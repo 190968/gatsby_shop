@@ -85,8 +85,7 @@ const Color = styled.span.attrs(props=>({
     display: inline-block;
     background-color: ${props=>props.color};   
     cursor: pointer;
-    position: relative;
-   
+    position: relative;   
     vertical-align: middle;
     border-radius: 20px;
     &:hover:before {
@@ -157,13 +156,11 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
     const [image_item, set_image_item] = React.useState(false);
     const [new_index, set_new_index] = React.useState();
     
-    const noFilterCost = () => {
-      
+    const noFilterCost = () => {      
         set_min(0);
         set_max(10000);
         set_size(null);
-        set_color("all")
-      
+        set_color("all")      
     };
     const SortOnCost = () => {
         set_sort(!sort)
@@ -246,7 +243,7 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
                     onClick={()=>setItem(true,index)}
                         
                 />    
-                <span>{i.brand}</span>
+                <span className="brand">{i.brand}</span>
                 <span>{i.model}</span>
                 <span>{i.gender}</span>
                 <MenuItem width="10" style={{color: i.color}}>

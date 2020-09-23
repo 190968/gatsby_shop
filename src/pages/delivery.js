@@ -16,6 +16,10 @@ const Input = styled.input`
     font-size: 1.2vw;
     padding: 5px;
     border: none;
+    @media(max-width: 600px) {
+        font-size: 3vw;
+        width: 50%;
+    }
 `;
 
 const Button = styled.button`
@@ -30,10 +34,13 @@ const Button = styled.button`
     border: 2px solid lime;
     &:active {
         border: 2px solid red;
-     }
+    }
     &:hover {
-        background-color: yellow;    
-       
+        background-color: yellow;       
+    }
+    @media(max-width: 600px) {
+        font-size: 4vw;
+        width: 70%;
     }
 `;
 const FormDelivery = ({ bag, delBag, delivery }) => {

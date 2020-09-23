@@ -130,10 +130,14 @@ const Admin = () => {
         fetchData();
     },[]); 
 
-    const UpdateStatusDelivery = (a,b) =>{
-        
-            axios(`https://www.aplacadance.ru/.netlify/functions/status_rewrite?status=${b}&date=${a}`) 
-            
+    const UpdateStatusDelivery =  (a,b) => {        
+            axios(
+                `https://www.aplacadance.ru/.netlify/functions/status_rewrite?status=${b}&date=${a}`,{                            
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Headers": "Content-Type",
+                "Content-Type" : "Application/json",
+                "Access-Control-Allow-Methods": "OPTIONS,GET"
+            })            
            .then((res)=>{
                 set_orders([...res]);    
            })
@@ -184,10 +188,10 @@ const Admin = () => {
                 {i.bag.map((a,index) => 
                     <div key={index}>
                         <P  text={1 + index}>
-                            {a.brand},{a.model},
-                            <br/>color:{a.color},size:{a.size},Qnt:{a.count},
+                            {a.brand}, {a.model},
+                            <br/>color:{a.color}, size:{a.size}, Qnt:{a.count},
                             <br/>cost:<span>{a.cost}$</span>,
-                            deliv:<span>{i.delivery}$</span>
+                            delivery:<span>{i.delivery}$</span>
                         </P>
                     </div>
                 )}

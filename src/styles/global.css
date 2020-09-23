@@ -131,7 +131,7 @@ img  {
     text-align: center;
     font-size: 22px;
 }
-.items span:first-of-type {
+.items .brand {
     font-size: 25px;
     margin: 10px 0;
     font-weight: 600;
@@ -279,15 +279,15 @@ img {
 }
 .div_delivery:before {
     content: "SELECT DELIVERY";
-    font-size: 18px;
+    font-size: 22px;
     font-weight: 600;
     display: block;
-    padding: 3px;
+    padding: 8px;
     left: 0;
     background-color: cornflowerblue;
     position: absolute;
     width: 100%;
-    top: -30px;
+    top: -35px;
 }
 .admin {
     text-align: center;
@@ -548,6 +548,12 @@ img {
     }
 }
 @media screen and (max-width: 600px) {
+    .delivery_name label {
+        font-size: 3vw;
+        width: 30%;
+        
+    }
+    
     .go_to_account, .orders {
         margin: 200px 0 0;
     }
@@ -559,10 +565,7 @@ img {
         left: 0;
         width: 100%;       
     }
-    .delivery_name label {
-        width: 8vw;
-        margin-right: 1vw;
-    }
+    
     .icon {
         display: inline-block ;
         width: auto;

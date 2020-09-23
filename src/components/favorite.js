@@ -14,7 +14,7 @@ const DivItem = styled.div.attrs(props => ({
    
     display: inline-block;  
     margin: 15px 0;
-    padding-top: 13vw;
+    padding-top: 20%;
     background-color: #fff;
     background-size: 80% 60%;
     background-position: center top;
@@ -28,13 +28,14 @@ const DivItem = styled.div.attrs(props => ({
     &:hover {
         box-shadow:inset 0 0 5px 5px #ddd;
     };
-    @media (max-width: 580px) {
+    @media (max-width: 600px) {
       
        display: ${props=>props.visible > 2 ? "none": "inline-block"};
        width: 33%;
-       padding: 30vw 0 5px;
+       background-size: 90% 70%;
+       background-position: center -25px;
+       padding-top: 32%;
       
-       margin: 5px auto;
     }
 `;
 const Gender = styled.p`
@@ -81,21 +82,20 @@ const Favorite = () =>{
         <>
             <FavoriteItems>The Best For Run 2020</FavoriteItems>
             <DivItems>
-                {data.allDatoCmsItem.nodes.map((i,index) => <DivItem 
+                {data.allDatoCmsItem.nodes.map((i,index) => 
+                <DivItem 
                     visible={index}
                     onClick={()=>set_number(index+1)}
                     key={index} 
                     brand={i.brand}
                     color={i.color}
                     model={i.modelItem}
-                >  
-                    
+                >                    
                     <h4 className="brand_favorite">{i.brand.toUpperCase()}</h4>
                     <b>{i.modelItem} </b>
                     <Gender>{i.gender}</Gender> 
                     <Gender>{i.color}</Gender>
-                </DivItem>
-            
+                </DivItem>            
                 )}
             </DivItems>
             {number && <Item
