@@ -179,9 +179,9 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
         .filter(i=> model ? i.model === model : i.model)
         .filter(i=> gender==='GENDER' ? i : i.gender === gender)
         .sort((a,b)=> sort ? a.cost-b.cost:b.cost-a.cost)
-        .filter(i=>i.cost*currency >= min_cost)
-        .filter(i=>i.cost*currency <= max_cost)    
-        .filter(i=>color === "all" ? i : i.color === color); 
+        .filter(i=> i.cost >= min_cost)
+        .filter(i=> i.cost <= max_cost)    
+        .filter(i=> color === "all" ? i : i.color === color); 
     var max = [].sort();       
         for(const i of orders){
         max.push(i.cost);
@@ -193,7 +193,14 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
     },[]);   
 
 
-    return <Layout countr={countr} model={model} set_number={set_number} orders={orders.length} context_brand = {pageContext.brand} context_gender={pageContext.gender} > 
+    return <Layout 
+            countr={countr} 
+            model={model} 
+            set_number={set_number} 
+            orders={orders.length} 
+            context_brand = {pageContext.brand} 
+            context_gender={pageContext.gender} 
+        > 
         <Info 
             brand ={pageContext.brand} 
             gender={pageContext.gender} 
@@ -211,8 +218,7 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
         />
        
         <div className="menu_items">
-            <MenuItem >ITEM </MenuItem>
-           
+            <MenuItem >ITEM </MenuItem>          
             <MenuItem >BRAND</MenuItem>
             <MenuItem >MODEL</MenuItem>
             <MenuItem >
@@ -227,7 +233,7 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
             <MenuItem style={{padding:"3px"}}>
                
                 {sort ? <Size  onClick={SortOnCost}>cost A to Z</Size> : <Size  onClick={SortOnCost}>cost Z to A</Size>}
-                <Slider min={min_cost} max={max_cost} setMin={set_min} setMax={set_max}/>
+                <Slider min={min_cost} max={max_cost} setMin={set_min} setMax={set_max} />
             
             </MenuItem>
             
@@ -261,18 +267,14 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
                         >{m}</Size>
                     )}
                 </span>
-                <div className="cost">
-                    {/* <Size onClick={()=>set_min(i.cost*currency)}>{"<"}</Size>  */}
-                   
-                        <Sale sale={i.sale} currency={s} >                  
+                <div className="cost">                  
+                    <Sale sale={i.sale} currency={s} >     
                            
-                                {(i.cost*currency).toFixed(0)} 
+                        {(i.cost*currency).toFixed(0)} 
                                
                            
-                        </Sale>
-                       
+                    </Sale>              
                    
-                    {/* <Size onClick={()=>set_max(i.cost*currency)}>{"<"}</Size> */}
                    
                 </div>
                 {(image_item & index === new_index) ? <Item 

@@ -5,6 +5,36 @@ import styled from "styled-components";
 import { addBag } from "../state/app";
 import Linktobag from "./linktobag";
 
+
+const Sale = styled.b.attrs(props => ({
+    sale:props.sale,
+    props:props.currency
+}))`    
+    display: inline-block;
+    margin: 0;
+    font-size: 25px;
+    width: auto;
+    position: relative;
+    text-align: center;
+    padding: 0 10px;
+    &:before {
+        content: '-${props=>props.sale}%';
+        top: -25px;
+        left: 32px;
+        color: yellow;
+        visibility: ${props=>props.sale === 0 ? 'hidden': 'visible'};
+        background-color: red;
+        padding: 5px 2px;
+        border-radius: 50%;
+        position: absolute;
+        font: 600 16px/18px 'Arial', sans-serif;
+    }
+    &:after {
+        content: '${props=>props.currency}';      
+        padding: 5px 2px 0 5px;       
+        font: 400 20px/18px 'Arial', sans-serif;
+    }
+`;
 const Close = styled.button`    
     float: left;
     cursor: pointer;
@@ -61,7 +91,7 @@ const Item = (props) => {
 
     const { currency,addBag, page, gender, closeImage, image_color, image_model, size =  0, cost, sale= 0, item = 'shoes' } = props;
     const [new_size, set_size] = React.useState("select size");
-   
+    const s = (currency === 0.8) ? "€" : (currency === 1) ? "$"  : "£" ;
     const handClose = () => {
         closeImage(false)
     };
@@ -99,7 +129,12 @@ const Item = (props) => {
                 </p>
                 <h2>                        
                     {sale === 0 ? 
-                        cost*currency.toFixed(0) + `$` 
+                       <Sale sale={sale} currency={s} >     
+                           
+                            {(cost*currency).toFixed(0)} 
+                              
+                          
+                        </Sale>           
                         :
                         <> 
                             <del>{cost*currency}$</del>  <b>{(cost*(100-sale)/100).toFixed(0) + `$`}</b>

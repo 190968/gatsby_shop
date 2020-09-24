@@ -2,7 +2,7 @@ var Mongoclient = require('mongodb').MongoClient;
 
 exports.handler = async (event, context, callback) => {        
        
-     var uri = process.env.uri;        
+    const uri = process.env.uri;        
     const status = event.queryStringParameters.status;
     const date =   event.queryStringParameters.date;   
 
@@ -12,6 +12,12 @@ exports.handler = async (event, context, callback) => {
     
     return {
         statusCode: 200,
+        headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers": "Content-Type",
+            "Content-Type" :"Application/json",
+            "Access-Control-Allow-Methods": "OPTIONS,GET"
+        },       
         body: "Rewrite OK"
     };
             

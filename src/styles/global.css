@@ -4,6 +4,12 @@ html {
 :root {
 --width-main: 90vw;
 }
+a {
+    color: black;
+    background-image: none;
+    text-shadow: none;
+    font-weight: 600;
+}
 .main_block,
 .div_item {
     width: var(--width-main);
@@ -20,9 +26,7 @@ html {
     padding: 0 15px;
     background-color: cornflowerblue;
 }
-a:link {
-    text-decoration: none;
-}
+
 .icon {
     display: inline-block ;
     width: 35%;

@@ -104,26 +104,29 @@ const Help = () => {
         <html lang="en" /> 
         </Helmet>     
            <DivAbout>
-                    <Link to="/" className="to_main" ></Link>   
+                    <Link to="/" className="to_main" ></Link>
                     
                     <span>Customer service</span>
                     
                     <DivInput>
                         { contact ? 
-                        <h2>Message sending to manager</h2>
+                            <h2>Message sending to manager</h2>
                         : <>   
-                        <h2>Contact  us</h2>
-                        <InputName type="text" placeholder="NAME" value={name} onChange={(e)=>set_name(e.target.value)} />
-                        <InputName type="text"  placeholder="PHONE" value={phone} onChange={(e)=>set_phone(e.target.value)} />
-                        <InputName type="text"  placeholder="EMAIL" value={email} onChange={(e)=>set_email(e.target.value)}  />
-                        <Input type="text" placeholder="OWN QUESTION (min ten symbols)" value={message} onChange={(e)=>set_message(e.target.value)} />
-                        <Button
-                            disabled = {name.length < 3 || phone.length < 10 || message.length < 20}
-                            text = {name}
-                            onClick={sendMessage}
-                        >
-                            Send
-                        </Button>
+                            <h2>Contact  us</h2>
+                            <InputName type="text" placeholder="NAME" value={name} onChange={(e)=>set_name(e.target.value)} />
+                            <InputName type="text"  placeholder="PHONE" value={phone} onChange={(e)=>set_phone(e.target.value)} />
+                            <InputName type="text"  placeholder="EMAIL" value={email} onChange={(e)=>set_email(e.target.value)}  />
+                            <Input 
+                                type="text" 
+                                placeholder="OWN QUESTION (min ten symbols)" 
+                                value={message} 
+                                onChange={(e)=>set_message(e.target.value)} 
+                            />
+                            <Button
+                                disabled = {name.length < 3 || phone.length < 10 || message.length < 20}
+                                text = {name}
+                                onClick={sendMessage}
+                            >Send</Button>
                         </>
                         }
                     </DivInput>

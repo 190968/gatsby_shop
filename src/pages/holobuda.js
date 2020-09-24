@@ -25,7 +25,7 @@ const Index = styled.b.attrs(props=>({
         background-color: #ccc;
        
         width: 105%;
-        padding:10px 20px;       
+        padding:10px 0;       
         display: ${props=>props.ind === 0 ? "inline-block" : "none"}
     }
     p {
@@ -98,7 +98,7 @@ const IndexDate = styled(Index)`
 `;
 const IndexPhone = styled(Index)`
    
-    width: 30%;
+    width: 25%;
 `;
 const IndexItem = styled(Index)`
     width: 30%;
@@ -162,23 +162,23 @@ const Admin = () => {
             <link rel="canonical" ></link> 
         </Helmet>
         <div className="admin" >
-            <h3>ADMIN PANEL</h3>
+            <h4>ADMIN PANEL</h4>
             
           
             <p style={{marginBottom: "50px"}}>
             <Button>
-                <a href="https://shop-5589.admin.datocms.com/editor">DATO CMS</a>
+                <a href="https://shop-5589.admin.datocms.com/editor">CMS</a>
             </Button>
             <Button>
-                <a href="https://files.000webhost.com/">image</a>
+                <a href="https://files.000webhost.com/">IMAGE</a>
             </Button>
             
-                <Button>view questions</Button>
-                <Button>send base</Button>
+            <Button>questions</Button>
+            <Button>base</Button>
             
             </p>
             {view && <>    
-            {orders.map((i,index)=><div key={index} style={{border:"1px solid #ccc",padding: "5px"}}>
+            {orders.reverse().map((i,index)=><div key={index} style={{border:"1px solid #ccc",padding: "5px"}}>
             <IndexOne ind={index} text="№">{index + 1}.</IndexOne>
             <IndexDate ind={index} text="date">{i.date}</IndexDate>
             <IndexPhone ind={index} text="buyer">
@@ -196,7 +196,7 @@ const Admin = () => {
                     </div>
                 )}
             </IndexItem>    
-            <Index ind={index} text="status" style={{width:"20%"}}>
+            <Index ind={index} text="status" style={{width:"25%"}}>
                 <p>
                     
                     <InputCheckbox type="radio" checked={i.status===1} onChange={()=>UpdateStatusDelivery(i.date,1)}/>
