@@ -5,11 +5,13 @@ html {
 --width-main: 90vw;
 }
 a {
-    color: black;
+    color: #fff;
     background-image: none;
+    text-decoration: none;
     text-shadow: none;
-    font-weight: 600;
+    font-weight: 300;
 }
+
 .main_block,
 .div_item {
     width: var(--width-main);
@@ -93,18 +95,14 @@ input:focus {
     width: 16.666%;
     height: 50px;
     box-sizing: border-box; 
-   
+    text-decoration: none;
     font: 300 22px/50px 'Verdana', sans-serif;
     display: inline-block;
    
     text-shadow: none;
     border-bottom: none;
 }
-.main_Menu_link:hover {
-    font: 600 22px/50px 'Verdana', sans-serif;
-   
-  
-}
+
 .menu_items {
     background-color: lavender;    
     margin: 10px 0 0;
@@ -208,9 +206,14 @@ img {
 .img_main_link b {
     background-color: crimson;
     padding: 5px 10px;
-    border-radius: 5px;   
+    border-radius: 5px;
+    opacity: 0;   
     color: #fff;
     font:  300 1.5vw/29vw "Times new roman", sans;
+}
+.img_main_link:hover b {
+    opacity: 1;
+    transition: all 0.5s;
 }
 
 .div_image {
@@ -398,6 +401,8 @@ img {
    float: left;    
     text-align: justify;
     margin: 10px 0;
+    background-color: #fff;
+    padding: 10px 0;
     border-bottom: 1px solid #ddd;
     width: 70%
 }
@@ -447,8 +452,14 @@ img {
     height: 80px;
     border-radius: 50px;
     border: 1px solid #fff;
-   vertical-align: middle;  
+    vertical-align: middle;  
     background: url('https://www.datocms-assets.com/28552/1590394654-image.jpg') center/100% no-repeat;
+}
+.locations {
+    margin-top: -10px;
+    height: 50px;
+    float: left;
+    vertical-align: top;
 }
 .to_main:hover {
     background: url('https://www.datocms-assets.com/28552/1590394654-image.jpg') center/100% no-repeat;

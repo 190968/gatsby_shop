@@ -250,7 +250,7 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
                         
                 />    
                 <span className="brand">{i.brand}</span>
-                <span>{i.model}</span>
+                <span>{i.model.replace("_"," ")}</span>
                 <span>{i.gender}</span>
                 <MenuItem width="10" style={{color: i.color}}>
                   

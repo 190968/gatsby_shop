@@ -12,16 +12,11 @@ import SEO from "../components/seo";
 
 import Favorite from "../components/favorite";
 import FavoriteSale from "../components/favoriteSale";
+import Locations from "./locations";
 import FormDelivery from "./delivery";
 
-const Main = () => { 
-  
+const Main = () => {   
   const [number, set_number] = React.useState(0); 
-  
-   
-   
-  
- 
   return ( 
     <>
       <Helmet>
@@ -44,6 +39,7 @@ const Main = () => {
       <Router basepath="/" >
         <Help path="/help"/>
         <Bag path="/bag" />
+        <Locations path="/locations" />
         <FormDelivery path="/delivery" />
         <Orders path="/orders" />         
       </Router>              

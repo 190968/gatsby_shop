@@ -51,7 +51,7 @@ const Account = styled.p`
         box-shadow: 0 0 2px 2px #fff;
     }
     @media(max-width: 500px) {
-        width: 35px;
+        width: 47px;
         
     } 
    

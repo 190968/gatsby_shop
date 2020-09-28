@@ -2,9 +2,10 @@ const initialState = {
   currency: 1,
   delivery: 20,
   country: " ",
+  locations: [],
   bag: []
 };
-
+const set_locations = 'set_locations';
 const add_Bag = 'add_Bag';
 const delete_from_Bag = 'delete_from_Bag';
 const euRo = 'euRo';
@@ -14,6 +15,9 @@ const set_country = 'set_country';
 
 export const setCountry = a => ({
   type: set_country, a
+});
+export const setLocations = a => ({
+  type: set_locations, a
 });
 export const setDelivery = a => ({
   type: set_delivery, a
@@ -37,6 +41,8 @@ export const euro = currency => ({
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case set_locations:
+      return { ...state, locations: state.locations.concat(action.a) };
     case set_country:
       return {...state, country: action.a};
     case set_delivery:

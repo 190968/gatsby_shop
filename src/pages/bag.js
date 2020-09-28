@@ -12,8 +12,7 @@ const Total = styled.h3`
     text-align: right;    
     padding: 10px 15px;
     color: red;
-    margin-bottom: 0;
-    
+    margin-bottom: 0;    
     background-color: #bbb;
 `;
 const Empty = styled.span`
@@ -50,14 +49,19 @@ const ButtonCode = styled(Button)`
 
 const P = styled.p`
     margin: 0;
+   
     display: inline-block;
+    b {
+        padding: 0 10px 0 0;
+    }
 `;
 const Items = styled.div`
   
     display: inline-block;
     vertical-align: middle;
-    width: 50%;
+    width: 53%;
     padding-left: 16%;
+    background-color: #fff;
     background-position: left center;
     background-repeat: no-repeat;
     background-size: 30%;
@@ -109,9 +113,10 @@ const Add = styled.b`
             background-color: cornflowerblue;
             color: yellow;
         }
-        @media(max-width: 600px) {
+        @media(max-width: 650px) {
             display: block;
-            width: 20%;
+            width: 25px;
+            height: 25px;
             margin: 0 auto;
         }    
     `;
@@ -119,7 +124,7 @@ const Add = styled.b`
         display: inline-block;
         vertical-align: middle;
         font-size: 22px;
-        width: 18%;
+        width: 15%;
         text-align: center;
     `;   
 
@@ -131,8 +136,8 @@ const Bag =  ({ bag, delete_from_bag, add_count, currency, delivery, setDelivery
     return (
         <Layout set_number={set_number} title="Your bag">       
             <div className="div_bag_menu">           
-                <span style={{width:"50%"}}>Items</span>
-                <span style={{width:"18%"}}>Qty</span>
+                <span style={{width:"53%"}}>Items</span>
+                <span style={{width:"15%"}}>Qty</span>
                 <span>Cost</span>
                 <span>Total</span>            
             </div>       
@@ -146,8 +151,8 @@ const Bag =  ({ bag, delete_from_bag, add_count, currency, delivery, setDelivery
                                 url(https://myrunshop.000webhostapp.com/wp-content/image/${i.brand.toLowerCase()}/${i.model}_${i.color}.webp)
                                 ` }}
                         >
-                            <P><b>{i.brand}</b></P> 
-                            <P>{i.model}</P>
+                            <P><b>{i.brand},</b></P> 
+                            <P>{i.model},</P>
                             <br/>
                             <P>{i.gender}, {i.color}, size: {i.size}</P>
                             <P onClick={()=>delete_from_bag(index)}  style={{display: "block",fontSize: "15px"}}>

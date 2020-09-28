@@ -132,14 +132,14 @@ const Help = () => {
                     </DivInput>
                     
                     <Link to="/">Home</Link>
-                    <h3>About us:</h3>
+                    <h3>About us</h3>
                     <p> The online shop <b>ShopForRun.by</b> the better ability
                         to buy run shoes and clothing the best world brands
                         Adidas, Puma, New-balance, Nike, Reebok. All items
                         is original, not used, in the original box.
                         We selected for you the better for running.
                     </p>
-                    <h3>Contact:</h3>
+                    <h3>Contact</h3>
                         <ul>
                             <li>tel: +350 21 650 00 45</li>
                             <li>tel: +350 48 569 87 41</li>
