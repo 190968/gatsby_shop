@@ -5,13 +5,18 @@ html {
 --width-main: 90vw;
 }
 a {
-    color: #fff;
+   
     background-image: none;
     text-decoration: none;
     text-shadow: none;
     font-weight: 300;
 }
-
+a:hover {
+    border-bottom: 3px solid  cornflowerblue;
+}
+a:active,a:focus {
+    border-bottom: 3px solid red;
+}
 .main_block,
 .div_item {
     width: var(--width-main);
@@ -105,7 +110,7 @@ input:focus {
 
 .menu_items {
     background-color: lavender;    
-    margin: 10px 0 0;
+    margin: 5px 0 0;
     padding: 0;
     text-align: left;
     font-weight: 600;
@@ -223,7 +228,7 @@ img {
     margin: 0;    
 }
 .div_phone {
-    height: fit-content;   
+    height: auto;   
     background-color: #fff;
 }
 .div_menu {
@@ -437,7 +442,8 @@ img {
     border-bottom: 2px solid #000;
 }
 .string {
-    text-align: left;   
+    text-align: left;
+    color: red;   
     font:  400 18px/50px 'Arial', sans-serif;
     padding-left: 20px;
 }
@@ -524,15 +530,12 @@ img {
         top: 0%;    
     }
     .div_image {
-        margin: 0 auto;
-        float: none;
-        height: 80vw;
+        margin: 10px auto 0;
+        float: none;        
     }
-    .div_big_image {
-         
-        margin:  0 auto;
-        width: auto;
-        height: 60vw;
+    .div_big_image {         
+        margin:  0 auto 5px;
+        width: auto;        
         background-position: center;    
         background-repeat: no-repeat;
     }
@@ -584,8 +587,7 @@ img {
     .icon {
         display: inline-block ;
         width: auto;
-        vertical-align: middle;
-        
+        vertical-align: middle;        
         text-decoration: none;
     }
     .menu .link,
@@ -601,18 +603,15 @@ img {
     }
     .items {
         margin: 5px;
-        text-align: center;
-       
+        text-align: center;       
         width: 45%;
         display: inline-block;
         white-space: nowrap;    
     }
     .items span, .cost {
         display: block;
+       
         width: 100%;
-        text-align: center;
-        font-size: 19px;
-        margin: 0;
     } 
     .menu_items {
         display: none;

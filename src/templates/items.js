@@ -140,6 +140,19 @@ const Select = styled.select`
         outline: none;
     }
 `;
+const Page = styled.p`
+    text-align: right;
+    padding: 0 10px;
+    margin: 5px 0;
+    span {
+       padding: 0 10px;
+      
+       cursor: pointer;
+       :hover :not(:nth-of-type(1)) {
+          text-decoration: underline;
+       }
+    }
+`;
 const Items =  ({ currency, pageContext, data,  location, countr }) => {   
    
     const {state = {}} = location;
@@ -152,6 +165,7 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
     const [number, set_number] = React.useState(0);        
     const [min_cost, set_min] = React.useState(0);
     const [max_cost, set_max] = React.useState(180);
+    const [page, set_page] = React.useState(1);
    
     const [image_item, set_image_item] = React.useState(false);
     const [new_index, set_new_index] = React.useState();
@@ -175,6 +189,7 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
         set_color(color === i.color ? "all" : i.color)
     };    
     const orders = data.allMongodbMyBase.nodes
+       
         .filter(i=> size ? i.size.split(',').some(a=>a===size) : i.size)
         .filter(i=> model ? i.model === model : i.model)
         .filter(i=> gender==='GENDER' ? i : i.gender === gender)
@@ -216,7 +231,11 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
             set_max={set_max}
             noFilterCost={noFilterCost}
         />
-       
+        <Page>
+            <span>Page:</span>
+            {orders.filter((i,index)=>!("" + (index/10)).includes(".")).map((i,index) => 
+            <span style={{backgroundColor: index+1 === page  ? '#ddd' : 'inherit'}} onClick={()=>set_page(index+1)}>{index+1}</span>)}
+        </Page>
         <div className="menu_items">
             <MenuItem >ITEM </MenuItem>          
             <MenuItem >BRAND</MenuItem>
@@ -239,11 +258,12 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
             
             
         </div>   
-        {orders.map((i,index) => 
+        {orders.filter((i,index)=> (page-1)*10 <= index && index < page*10).map((i,index) => 
             <div className="items" key={index} >              
                 <ButImage                  
                     style={{backgroundImage: `url(https://myrunshop.000webhostapp.com/wp-content/image/${i.brand}/${i.model}_${i.color}.jpg),
-                        url(https://myrunshop.000webhostapp.com/wp-content/image/${pageContext.brand}/${i.model}_${i.color}.webp)`,
+                        url(https://myrunshop.000webhostapp.com/wp-content/image/${pageContext.brand}/${i.model}_${i.color}.webp),
+                        url('https://www.datocms-assets.com/28552/1590394654-image.jpg')`
                         }} 
                         alt="no image"
                     onClick={()=>setItem(true,index)}

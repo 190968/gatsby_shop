@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Helmet } from 'react-helmet';
-import { YMaps, Map, Placemark, Hint } from 'react-yandex-maps';
+import { YMaps, Map, Placemark } from 'react-yandex-maps';
 
 import { connect } from "react-redux";
 import { Link } from "gatsby";
@@ -47,28 +47,33 @@ const Locations = ({ locations }) => {
                         This is a map of our store in your city. 
                    </p>                    
                         <Map 
-                            defaultState={{ center: [locations[0], locations[1]], zoom: 12 }}
+                            state={{ center: [locations[0], locations[1]], zoom: 12 }}
                             height="80vh" width="100%" 
                            
                            
                         >
                             <Placemark 
                                 geometry={[locations[0]-0.030, locations[1] + 0.040]}  
-                               
+                                properties={{hintContent: "Store number one",
+                                        balloonContent: "Shoes and clothing"
+                                }}
+                                  
                             >
-                            <Hint  options= {{
-                                    
-                                    contentLayout: 'Come on, drag already!'}} />
+                            
                             </Placemark>
-                            <Placemark 
+                            <Placemark style={{}}
                                 geometry={[locations[0] + 0.025, locations[1] - 0.030]}  
-                                properties= {{
-                                    iconCaptition: "dfdf",
-                                    hintContent: 'Come on, drag already!',
-                                    balloonContent: 'HGBKHBJKH'
-                                },{
-                                    preset: 'islands#circleDotIcon',
-                                    iconColor: 'yellow'
+                                properties={{
+                                    hintContent: "Shop number two",
+                                    balloonContent: " phone: +345-25-357-36-36"
+                                }}
+                                modules= {
+                                    ['geoObject.addon.balloon', 'geoObject.addon.hint']
+                                }
+                                options={{                                    
+                                    preset: 'islands#icon',
+                                    iconColor: 'red'                   
+                                    
                                 }}
                             />
                             

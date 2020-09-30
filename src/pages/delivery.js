@@ -81,26 +81,27 @@ const FormDelivery = ({ bag, delBag, delivery }) => {
                    
             <div className="delivery_name">            
                
-            
-                <label>COUNTRY:</label>
-                <Input type="text" required value={country}  onChange={(e)=>set_country(e.target.value)} placeholder="input country" />
-                <label>CITY:</label> 
-                <Input type="phone" required value={city} onChange={(e)=>set_city(e.target.value)} placeholder="input city" />
-                <label>STREET: </label>
-                <Input type="email" required value={street} onChange={(e)=>set_street(e.target.value)} placeholder="input street" />
-                <label>NAME:  </label>
-                <Input type="text" required value={name}  onChange={(e)=>set_name(e.target.value)} placeholder="input name" />
-                <label>PHONE: </label>
-                <Input type="phone" required value={phone} onChange={(e)=>set_phone(e.target.value)} placeholder="input phone" />
-                <label>EMAIL: </label>
-                <Input type="email" required value={email} onChange={(e)=>set_email(e.target.value)} placeholder="input email" />
-                
-                <Button 
-                    onClick={sendData}
-                    disabled={!(name.length > 3 & email.includes("@") & email.includes("."))}
-                >
-                    BUY
-                </Button>
+                <form>
+                    <label>COUNTRY:</label>                
+                    <Input type="text" required value={country}  onChange={(e)=>set_country(e.target.value)} placeholder="input country" />
+                    <label>CITY:</label> 
+                    <Input type="phone" required value={city} onChange={(e)=>set_city(e.target.value)} placeholder="input city" />
+                    <label>STREET: </label>
+                    <Input type="email" required value={street} onChange={(e)=>set_street(e.target.value)} placeholder="input street" />
+                    <label>NAME:  </label>
+                    <Input type="text" required value={name}  onChange={(e)=>set_name(e.target.value)} placeholder="input name" />
+                    <label>PHONE: </label>
+                    <Input type="phone" required value={phone} onChange={(e)=>set_phone(e.target.value)} placeholder="input phone" />
+                    <label>EMAIL: </label>
+                    <Input type="email" required value={email} onChange={(e)=>set_email(e.target.value)} placeholder="input email" />
+                    
+                    <Button 
+                        onClick={sendData}
+                        disabled={!(name.length > 3 & email.includes("@") & email.includes("."))}
+                    >
+                        BUY
+                    </Button>
+                </form>
                 <Link to="/bag" className="delivery_main_link">BACK TO BAG</Link>
                 <Link to="/" className="delivery_main_link two">TO MAIN</Link>
                 <h3 style={{textAlign: 'center'}}>{ok}</h3>

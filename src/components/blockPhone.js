@@ -1,28 +1,25 @@
 import React, { useEffect} from "react";
 import styled from "styled-components";
-import { Link } from "gatsby";
+import { Link, navigate } from "gatsby";
 import axios from 'axios';
-import { YMaps, Map, Placemark } from 'react-yandex-maps';
+import location from "../image/location.png";
+
 import { setCountry,setLocations } from "../state/app";
 import { connect } from "react-redux";
 
 
-const Delivery = styled.h3`   
+const Delivery = styled.div`   
     display: inline-block;
-   
-    width: 50%;
-    padding-left: 30px;    
+    vertical-align: middle;
+    width: 48%;
+    text-align: left;
     font: italic 300 20px/50px 'Verdana', sans-serif;
     margin: 0;
     color: red;
     span {
         width: auto;
-        font-size: 16px;
-        cursor: pointer;
-        color: purple;
-        @media (max-width: 450px) {
-            display: none;
-        }
+        font-size: 18px;       
+        color: red;       
     }
     b {
         color: blue;
@@ -34,57 +31,29 @@ const Delivery = styled.h3`
    
     }
     @media (max-width: 880px) {
-        display: block;
-        width: 100%;
         text-align: center;
+        width: 100%;        
         font: italic 300 15px/25px 'Verdana', sans-serif;
     }
   
 `;
-const NewMap = styled.div`
-    width: 90vw;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    text-align: center;
-    background-color: rgba(0,0,0,0.5);
-    z-index: 2500;
-    h2 {
-        background-color: rgba(255,255,255,1);
-        margin: 0 auto 0;
-        padding: 20px;
-        width: 50%;
-    }
-    span {
-        background-color: rgba(255,255,255,1);
-        float: right;
-        padding: 0 10px;
-        cursor: pointer;
-        :hover {
-            background-color:  rgba(0,0,0,1);
-            color: #fff;
-        }
-    }
-    p {
-       
-        margin: 10vw auto 0;
-       
-        width: 50%;
-    }
-   
-`;
 const Img = styled.img`
     width: 40px;
-    height: 60px;
+    height: 40px;
     opacity: 0.5;
+    float: right;
+    margin: 0 10px;
     :hover {
         opacity: 1;
     }
 
 `;
-const Hi = styled.span`
+const Hi = styled.p`
     display: inline-block;
     margin: 0 20px;
+    color: #bbb;
+    float: left;
+    cursor: pointer;
     font: italic 300 16px/50px 'Verdana', sans-serif;
     &:hover {
         text-decoration: underline;
@@ -98,10 +67,10 @@ const Hi = styled.span`
 const H = styled.h1`
     display: none;
 `;
-const BlockPhone = ({country = "BY", setCountry, locations, setLocations}) => {
+const BlockPhone = ({country = "BY", setCountry,  setLocations}) => {
 
    
-    const [map, view_map] = React.useState(false);
+    
 
     useEffect(() => {      
         axios("https://ipapi.co/json/")
@@ -114,29 +83,28 @@ const BlockPhone = ({country = "BY", setCountry, locations, setLocations}) => {
 
    
     
-       return (      
-
-   
+       return (   
             <div className="div_phone">
-               
-                <H>This is the best shop world brands shoes and clothing for running</H>
-                <Hi>Hello, Guest! From 
+               <Delivery>
+                    <H>This is the best shop world brands shoes and clothing for running</H>
+                    <Hi onClick={()=>navigate("/orders")} title="Enter account">Hello, Guest! From 
+                    
+                        {country &&
+                            <img src = {`https://myrunshop.000webhostapp.com/flags/${country}.png`} alt={country}   title={country}/>
+                        } 
+                    </Hi> 
                    
-                    {country &&
-                        <img src = {`https://myrunshop.000webhostapp.com/flags/${country}.png`} alt={country}   title={country}/>
-                    } 
-                </Hi> 
-                <Link to="/help"  title="help">
-                   <Hi>Help & Contact</Hi> 
-                </Link>
-                <Delivery>Free delivery on order over 
-                    <b>200$</b>
+                    <Hi title="help" onClick={()=>navigate("/help")}>Help & Contact</Hi> 
                    
+                </Delivery>
+                <Delivery>
+                    <span>Free delivery on order over</span> 
+                    <b>200$</b>         
                
-                   <Link to="/locations">
-                        <Img onClick={()=>view_map(true)} src = "https://image.flaticon.com/icons/svg/64/64113.svg" width="50" height="40" alt="Location" title="Location"/>
-                        <span>our store</span>
-                    </Link>
+                  
+                        <Img  onClick={()=>navigate("/locations")} src = {location}  alt="Location" title="Location"/>
+                       
+                   
                 </Delivery>
 
               
