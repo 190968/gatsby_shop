@@ -1,9 +1,9 @@
 module.exports = { 
   siteMetadata: {   
     title: `Shop ADIDAS, NIKE, PUMA, SALOMON, REEBOK,NEW-BALANCE  SHOES FOR RUN `,
-    defaultImage: `https://i.ibb.co/DDZBPXB/002.jpg` ,
+    defaultImage: `/icon.jpg` ,
     siteUrl: `https://www.aplacadance.ru`,
-    description: `E-shop sport shoes and clothing. The best brands Adidas, Nike, Salomon. Buying shoes and clothing for running.Sport shoes for men,women and children.`, 
+    description: `E-shop  shoes and clothing for active sport. The best brands Adidas, Nike, Salomon, Reebok,Puma. Buying shoes and clothing for running.Sport shoes for men,women and children.`, 
     twitter: `@kylemathews`,
     titleTemplate: `%s | aplacadance.ru`,
     twitterUsername: `Alekc`    

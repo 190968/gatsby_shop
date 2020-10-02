@@ -11,11 +11,13 @@ a {
     text-shadow: none;
     font-weight: 300;
 }
+
 a:hover {
     border-bottom: 3px solid  cornflowerblue;
 }
 a:active,a:focus {
     border-bottom: 3px solid red;
+   
 }
 .main_block,
 .div_item {
@@ -53,6 +55,7 @@ a:active,a:focus {
     font-size: 18px;
   
 }
+
 label {
     cursor: pointer;
     position: relative;
@@ -160,6 +163,17 @@ img  {
     font: 600 16px/20px 'Arial', sans-serif;  
     display: block;
 }
+.sort {
+   
+    width: fit-content;
+    float: right;
+    font-size: 16px;
+    margin-right: 2vw;
+}
+.sort select {
+    border: 1px solid #ccc;
+    padding: 5px;
+}
 .span_image:hover {
     border: 1px solid red;   
 }
@@ -228,7 +242,8 @@ img {
     margin: 0;    
 }
 .div_phone {
-    height: auto;   
+    height: auto; 
+    padding: 0 1vw;  
     background-color: #fff;
 }
 .div_menu {

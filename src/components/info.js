@@ -15,11 +15,13 @@ const DivInfo = styled.div`
         color: #bbb;
         
     }
-   
-    @media(max-width: 500px) {
-        font: 400 18px/24px "Taroma", sans-serif;
+    // b {
+    //     font-size: 25px;
+    // }
+    @media(max-width: 600px) {
+        font: 400 16px/24px "Taroma", sans-serif;
         margin: 0; 
-        height: content-fit;   
+        height: 50px;   
     }
    
 `;
@@ -56,15 +58,14 @@ const Color = styled.b.attrs(props=>({
     }
 `;
 
-const Info = ({  model="one",...props}) => {
-    const {brand ,gender,set_size, set_color,set_min,set_max } = props;
+export const Info = ({  model="one",...props}) => {
+    const {brand ,gender,set_size, set_color,set_min,set_max,set_sort } = props;
     return (
-
         <DivInfo> 
            
             {brand.length > 1 ? model.replace("_"," ") : <b>{brand}</b>}          
             {gender.length === 1 ? gender : gender.length === 2 ? <span>{`BOYS and GIRLS`}</span>: ""}{" "}
-             shoes and clothing <span>({props.order})</span>
+             <b>{props.item}</b> <span>({props.order} items)</span>
             
            
                
@@ -72,10 +73,15 @@ const Info = ({  model="one",...props}) => {
                 <Color color={props.size} onClick={()=>set_size(null)}>size: {props.size}</Color>
                 <Color color={props.min} onClick={()=>set_min(0)}>cost {">"} {props.min}</Color>
                 <Color color={props.max} onClick={()=>set_max(180)}>cost {"<"} {props.max}</Color>
-                
+                <span className="sort">
+                    sort by:
+                    <select onChange={(e)=>set_sort(e.target.value)}>
+                        <option value="true" >cheap first</option>
+                        <option value="false" >expensive first</option>
+                    </select>
+                </span>     
            
            
         </DivInfo>
     )
 };
- export {Info};

@@ -1,9 +1,8 @@
 import React, { useEffect} from "react";
 import styled from "styled-components";
-import { Link, navigate } from "gatsby";
+import { navigate } from "gatsby";
 import axios from 'axios';
 import location from "../image/location.png";
-
 import { setCountry,setLocations } from "../state/app";
 import { connect } from "react-redux";
 
@@ -11,37 +10,69 @@ import { connect } from "react-redux";
 const Delivery = styled.div`   
     display: inline-block;
     vertical-align: middle;
-    width: 48%;
+    width: 300px;
     text-align: left;
     font: italic 300 20px/50px 'Verdana', sans-serif;
     margin: 0;
     color: red;
     span {
         width: auto;
-        font-size: 18px;       
+        font:  300 18px/50px 'Verdana', sans-serif;
         color: red;       
     }
     b {
-        color: blue;
-        margin-right: 30px;
-        font-size: 22px;
+        color: blue;       
+        
         @media (max-width: 550px) {
             font-size: 18px;
         }
    
     }
+    p {
+        display: inline-block;
+        margin: 0;
+        vertical-align: middle;
+       
+    }
     @media (max-width: 880px) {
+       
         text-align: center;
-        width: 100%;        
+              
         font: italic 300 15px/25px 'Verdana', sans-serif;
     }
   
+`;
+const Delivery_two = styled(Delivery)`
+    width: calc(100% - 300px);
+    @media (max-width: 880px) {
+         display: block;
+         width: 100%; 
+         font: 300 15px/25px 'Verdana', sans-serif;  
+    } 
+    span {
+        float: right;
+        cursor: pointer;
+        :hover {
+            color: blue;
+           text-decoration: underline;
+        }
+        @media (max-width: 880px) {
+            font: 300 15px/25px 'Verdana', sans-serif; 
+           float: none;
+           margin-left: 10px;
+       } 
+    }
+    b {
+        @media (max-width: 880px) {
+           font-size: 15px;
+       } 
+    }      
 `;
 const Img = styled.img`
     width: 40px;
     height: 40px;
     opacity: 0.5;
-    float: right;
+   
     margin: 0 10px;
     :hover {
         opacity: 1;
@@ -52,7 +83,7 @@ const Hi = styled.p`
     display: inline-block;
     margin: 0 20px;
     color: #bbb;
-    float: left;
+    
     cursor: pointer;
     font: italic 300 16px/50px 'Verdana', sans-serif;
     &:hover {
@@ -87,25 +118,25 @@ const BlockPhone = ({country = "BY", setCountry,  setLocations}) => {
             <div className="div_phone">
                <Delivery>
                     <H>This is the best shop world brands shoes and clothing for running</H>
-                    <Hi onClick={()=>navigate("/orders")} title="Enter account">Hello, Guest! From 
-                    
-                        {country &&
-                            <img src = {`https://myrunshop.000webhostapp.com/flags/${country}.png`} alt={country}   title={country}/>
-                        } 
-                    </Hi> 
+                    <Hi onClick={()=>navigate("/orders")} title="Enter account">Hello, Guest! From           
+                        
+                        <img src = {`https://myrunshop.000webhostapp.com/flags/${country}.png`} height="40px" width="40px" alt={country}   title={country}/>
+                        
+                    </Hi>  
+                    <Img  onClick={()=>navigate("/locations")} src = {location}  alt="Location" title="Location"/>
                    
-                    <Hi title="help" onClick={()=>navigate("/help")}>Help & Contact</Hi> 
-                   
-                </Delivery>
-                <Delivery>
-                    <span>Free delivery on order over</span> 
-                    <b>200$</b>         
-               
-                  
-                        <Img  onClick={()=>navigate("/locations")} src = {location}  alt="Location" title="Location"/>
-                       
+                     
                    
                 </Delivery>
+                <Delivery_two>
+                    <p>Free delivery on order over 
+                        <b>200$</b>         
+                    </p>
+                    <span title="help" onClick={()=>navigate("/help")}>Help & Contact</span> 
+                   
+                     
+                   
+                </Delivery_two>
 
               
                 

@@ -23,6 +23,7 @@ const One = styled.h2.attrs(props=>({
     background:url(${props=>props.src}) left/20% no-repeat;
     &:hover {
         padding-right: 20%;
+        color: #fff;
         background:url(${props=>props.src}) right/20% no-repeat;
         transition: all 0.7s;     
     }

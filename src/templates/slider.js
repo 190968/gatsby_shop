@@ -36,27 +36,23 @@ const Main = styled.div`
 `;
 
 
-const Min = styled(Main)`
-   
-    width: ${props=>props.min}px;    
-    float: left;
+const Min = styled(Main)`   
+  width: ${props=>props.min}px;    
+  float: left;
     background: #ccc;
     border-right:10px solid red;   
     top: -10px;
     &:after {
-        content: "${props=>props.min}";  
-        
-        top: -8px;
-        left: ${props=>props.min-15}px;
-       
-    }
-    
+      content: "${props=>props.min}";
+      top: -8px;
+      left: ${props=>props.min-15}px;       
+    }    
 `; 
 const Max = styled.div.attrs(props => ({
     pos_max:props.max   
 }))`
     height: 10px;
-    width: ${props=> (190 - props.max)}px; 
+    width: ${props=> (95 - (props.max/180)*100 )}%; 
     border-radius: 5px;
     float: right;
     background-color: #ccc;

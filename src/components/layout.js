@@ -14,7 +14,7 @@ export default function Layout ({ children , context_brand, context_gender, set_
   return (
     <div className="main_block" >
       <Helmet>
-      
+      <meta http-equiv="Cache-control" content="public" max-age="31536000"></meta>
       <meta
         name="viewport"
         content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover"

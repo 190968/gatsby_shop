@@ -38,6 +38,10 @@ const MenuItem = styled.div`
             background-color: #ccc;
         }
     }
+    p {
+        margin: 0;
+        font-size: 16px;
+    }
 `;
 const Size = styled(Currency)`     
     font: 300 15px/30px 'Arial', sans-serif;    
@@ -144,14 +148,30 @@ const Page = styled.p`
     text-align: right;
     padding: 0 10px;
     margin: 5px 0;
+   
     span {
        padding: 0 10px;
-      
+       color: blue;
        cursor: pointer;
        :hover :not(:nth-of-type(1)) {
           text-decoration: underline;
        }
     }
+`;
+const Checkbox = styled.input`
+    margin: 0 10px;
+    height: 20px;
+    width: 20px;
+    display: none;
+`;
+const Label = styled.label.attrs(props=>({
+    props:props.for,
+   
+}))`
+    color: blue;
+    margin: 0 5px;
+    background-color: ${props=>props.for === props.item ? "yellow" :" inherrit "}
+
 `;
 const Items =  ({ currency, pageContext, data,  location, countr }) => {   
    
@@ -166,7 +186,7 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
     const [min_cost, set_min] = React.useState(0);
     const [max_cost, set_max] = React.useState(180);
     const [page, set_page] = React.useState(1);
-   
+    const [item, set_item] = React.useState("shoes");
     const [image_item, set_image_item] = React.useState(false);
     const [new_index, set_new_index] = React.useState();
     
@@ -189,23 +209,24 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
         set_color(color === i.color ? "all" : i.color)
     };    
     const orders = data.allMongodbMyBase.nodes
-       
+        .filter(i=>i.item === item)
         .filter(i=> size ? i.size.split(',').some(a=>a===size) : i.size)
         .filter(i=> model ? i.model === model : i.model)
         .filter(i=> gender==='GENDER' ? i : i.gender === gender)
         .sort((a,b)=> sort ? a.cost-b.cost:b.cost-a.cost)
         .filter(i=> i.cost >= min_cost)
         .filter(i=> i.cost <= max_cost)    
-        .filter(i=> color === "all" ? i : i.color === color); 
-    var max = [].sort();       
-        for(const i of orders){
-        max.push(i.cost);
-    }   
+        .filter(i=> color === "all" ? i : i.color === color);
+
+    // var max = [].sort((a,b)=>a.cost-b.cost);       
+    //     for(const i of data.allMongodbMyBase.nodes){
+    //     max.push(i.cost);
+    // }   
    
-    useEffect(()=>{  
-    set_max(max[max.length-1]);
-    set_min(max[0]);
-    },[]);   
+    // useEffect(()=>{  
+    // set_max(max[max.length-1]);
+    // set_min(max[0]);
+    // },[]);   
 
 
     return <Layout 
@@ -222,11 +243,13 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
             order={orders.length} 
             model={model}
             color={color}
+            set_sort={SortOnCost}
             size={size}
             set_color={set_color}
             set_size={set_size}
             min ={min_cost}
             max ={max_cost}
+            item= { item }
             set_min={set_min}
             set_max={set_max}
             noFilterCost={noFilterCost}
@@ -234,10 +257,18 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
         <Page>
             <span>Page:</span>
             {orders.filter((i,index)=>!("" + (index/10)).includes(".")).map((i,index) => 
-            <span style={{backgroundColor: index+1 === page  ? '#ddd' : 'inherit'}} onClick={()=>set_page(index+1)}>{index+1}</span>)}
+            <span style={{backgroundColor: index+1 === page  ? 'yellow' : 'inherit'}} onClick={()=>set_page(index+1)}>{index+1}</span>)}
         </Page>
         <div className="menu_items">
-            <MenuItem >ITEM </MenuItem>          
+            <MenuItem >
+                ITEM
+                <p>
+                    <Label for="shoes" item={item}>Shoes</Label>
+                    <Checkbox id="shoes" type="checkbox" name="shoes" onChange={()=>set_item("shoes")}/>
+                    <Label for="clothing" item={item}>Clothing</Label>
+                    <Checkbox  id="clothing" type="checkbox" name="clothing"  onChange={()=>set_item("clothing")}/>
+                </p>
+            </MenuItem>          
             <MenuItem >BRAND</MenuItem>
             <MenuItem >MODEL</MenuItem>
             <MenuItem >
@@ -251,7 +282,7 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
             <MenuItem >SIZE</MenuItem>
             <MenuItem style={{padding:"3px"}}>
                
-                {sort ? <Size  onClick={SortOnCost}>cost A to Z</Size> : <Size  onClick={SortOnCost}>cost Z to A</Size>}
+                {/* {sort ? <Size  onClick={SortOnCost}>cost A to Z</Size> : <Size  onClick={SortOnCost}>cost Z to A</Size>} */}
                 <Slider min={min_cost} max={max_cost} setMin={set_min} setMax={set_max} />
             
             </MenuItem>
@@ -270,7 +301,7 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
                         
                 />    
                 <span className="brand">{i.brand}</span>
-                <span>{i.model.replace("_"," ")}</span>
+                <span>{i.model.replace("T_S","T-S").replace(/_/g," ")}</span>
                 <span>{i.gender}</span>
                 <MenuItem width="10" style={{color: i.color}}>
                   

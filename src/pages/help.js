@@ -151,7 +151,7 @@ const Help = () => {
                             <li>Delivery to warehouse-<b>10$</b></li>
                             <li>Standart delivery (3 days)-<b>20$</b></li>
                             <li>Express delivery (1 days)-<b>30$</b></li>
-                            <li>Free delivery (3 days) if on item cost over <b>100$</b></li>
+                            <li>Free delivery (3 days) if on item cost over <b>200$</b></li>
                         </ul>
                     <h3>Return</h3>
                         <p>Free Return. <b>Return within 30 days</b></p>

@@ -22,17 +22,14 @@ const Index = styled.b.attrs(props=>({
         left: -6px;
         text-align: left;
         padding-left: 10px;
-        background-color: #ccc;
-       
+        background-color: #ccc;       
         width: 105%;
         padding:10px 0;       
         display: ${props=>props.ind === 0 ? "inline-block" : "none"}
     }
     p {
         margin: 0;
-        padding: 0;
-        
-       
+        padding: 0;      
         b {
             display: inline-block;
             width: 80%;
@@ -55,10 +52,7 @@ const P = styled.p`
     &:before {
         content: '${props=>props.text}.';
         margin: 0 2px 0 -15px;
-        font-weight: 600;
-       
-        
-        
+        font-weight: 600;        
     }
     span {
         display: inline-block;
@@ -68,7 +62,7 @@ const P = styled.p`
 `;
 
 const Button = styled.button`
-    width: 25%;
+    width: 20%;
     font-size: calc(10px + 1vw);
     padding: 3px;   
     margin: 10px 0 0;
@@ -76,7 +70,7 @@ const Button = styled.button`
     border: 2px solid yellow;
     border-radius: 3px;
     &:hover {
-        border: 2px solid red;
+       
         color: blue;
     }
 `;
@@ -141,12 +135,23 @@ const Admin = () => {
            .then((res)=>{
                 set_orders([...res]);    
            })
-           .catch(()=>{})
-                        
+           .catch(()=>{})                     
                    
-    }; 
+    };
+    const reboot =  () => {          
+        axios.post(
+                    "https://api.netlify.com/build_hooks/5f48b46b75f3d244801b7483",{                            
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Headers": "Content-Type",
+                    "Content-Type" : "Application/json",
+                    "Access-Control-Allow-Methods": "OPTIONS,GET"
+        })            
+        .then((res)=>  res  )
+        .catch(()=>{})
+                       
+         
        
-    
+    };
 
     return (
         <>
@@ -156,14 +161,12 @@ const Admin = () => {
             content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover"
                 
             />
-            <title> Admin panel
-            </title>
+            <title>Admin panel</title>
             <html lang="en" />
             <link rel="canonical" ></link> 
         </Helmet>
         <div className="admin" >
-            <h4>ADMIN PANEL</h4>
-            
+            <h4>ADMIN PANEL</h4>         
           
             <p style={{marginBottom: "50px"}}>
             <Button>
@@ -175,6 +178,10 @@ const Admin = () => {
             
             <Button>questions</Button>
             <Button>base</Button>
+            <Button onClick={()=>reboot()}>
+                 rebuild
+               
+            </Button>
             
             </p>
             {view && <>    
