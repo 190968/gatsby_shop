@@ -22,7 +22,7 @@ const Main = styled.div`
         color: blue;
         font: 300 14px/25px 'Arial', sans-serif;
         top: -7px;
-        left: ${props=>props.pos_max}px;
+        left: ${props=> ((props.pos_max-15)/180)*100 }%;
         opacity: 1;
         background: yellow;
         cursor: pointer;
@@ -68,8 +68,7 @@ const Slider = ({min, max, setMin, setMax}) => {
             } else { }
     };
     const Mouse_move_max = (e) => {
-        if (slider_max) {
-        
+        if (slider_max) {        
             setMax(max > 190 ? 188 : e.nativeEvent.offsetX-15)
         } else {}
     };     

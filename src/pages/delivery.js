@@ -104,7 +104,7 @@ const FormDelivery = ({ bag, delBag, delivery }) => {
                 </form>
                 <Link to="/bag" className="delivery_main_link">BACK TO BAG</Link>
                 <Link to="/" className="delivery_main_link two">TO MAIN</Link>
-                <h3 style={{textAlign: 'center'}}>{ok}</h3>
+                <h3>{ok}</h3>
             </div>
 
         </div>

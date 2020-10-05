@@ -11,7 +11,7 @@ const Index = styled.b.attrs(props=>({
     position: relative;
     text-align: left;
     vertical-align: top;
-    width: 22%;
+    width: 25%;
     display: inline-block;
     padding: 5px 0 0;
     &:before {
@@ -44,7 +44,7 @@ const P = styled.p`
     font: 300 calc(10px + 0.5vw)/22px 'Arial', sans-serif;
     position: relative;
     text-align: left;
-    margin: 0 0 5px;
+    margin: 50px 0 5px;
     vertical-align: top;
     width: 100%;
     padding: 0 5px;
@@ -65,7 +65,7 @@ const Button = styled.button`
     width: 20%;
     font-size: calc(10px + 1vw);
     padding: 3px;   
-    margin: 10px 0 0;
+    margin: 50px 0 0;
     background-color: yellow;
     border: 2px solid yellow;
     border-radius: 3px;
@@ -155,76 +155,76 @@ const Admin = () => {
 
     return (
         <>
-        <Helmet>
-            <meta
-            name="viewport"
-            content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover"
-                
-            />
-            <title>Admin panel</title>
-            <html lang="en" />
-            <link rel="canonical" ></link> 
-        </Helmet>
-        <div className="admin" >
-            <h4>ADMIN PANEL</h4>         
-          
-            <p style={{marginBottom: "50px"}}>
-            <Button>
-                <a href="https://shop-5589.admin.datocms.com/editor">CMS</a>
-            </Button>
-            <Button>
-                <a href="https://files.000webhost.com/">IMAGE</a>
-            </Button>
-            
-            <Button>questions</Button>
-            <Button>base</Button>
-            <Button onClick={()=>reboot()}>
-                 rebuild
-               
-            </Button>
-            
-            </p>
-            {view && <>    
-            {orders.reverse().map((i,index)=><div key={index} style={{border:"1px solid #ccc",padding: "5px"}}>
-            <IndexOne ind={index} text="№">{index + 1}.</IndexOne>
-            <IndexDate ind={index} text="date">{i.date}</IndexDate>
-            <IndexPhone ind={index} text="buyer">
-                {i.person.name} <br/> {i.person.phone} <br/> {i.person.email}
-            </IndexPhone>
-            <IndexItem ind={index} text="orders">
-                {i.bag.map((a,index) => 
-                    <div key={index}>
-                        <P  text={1 + index}>
-                            {a.brand}, {a.model},
-                            <br/>color:{a.color}, size:{a.size}, Qnt:{a.count},
-                            <br/>cost:<span>{a.cost}$</span>,
-                            delivery:<span>{i.delivery}$</span>
-                        </P>
-                    </div>
-                )}
-            </IndexItem>    
-            <Index ind={index} text="status" style={{width:"25%"}}>
-                <p>
+            <Helmet>
+                <meta
+                name="viewport"
+                content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover"
                     
-                    <InputCheckbox type="radio" checked={i.status===1} onChange={()=>UpdateStatusDelivery(i.date,1)}/>
-                    <b>in work</b>
-                </p>
+                />
+                <title>Admin panel</title>
+                <html lang="en" />
+                <link rel="canonical" ></link> 
+            </Helmet>
+            <div className="admin" >
+                <h4>ADMIN PANEL</h4> 
+            
                 <p>
+                    <Button>
+                        <a href="https://shop-5589.admin.datocms.com/editor">CMS</a>
+                    </Button>
+                    <Button>
+                        <a href="https://files.000webhost.com/">IMAGE</a>
+                    </Button>
+                    
+                    <Button>questions</Button>
+                    <Button>base</Button>
+                    <Button onClick={()=>reboot()}>
+                        rebuild
+                    
+                    </Button>
                 
-                <InputCheckbox type="radio" checked={i.status===2} onChange={()=>UpdateStatusDelivery(i.date,2)}/>
-                <b>in delivery</b>
                 </p>
-                <p> 
-                                   
-                <InputCheckbox type="radio" checked={i.status===3} onChange={()=>UpdateStatusDelivery(i.date,3)}/>
-                <b>delivered</b>
-                </p>
-            </Index>
+                {view && <>    
+                {orders.reverse().map((i,index) => <div key={index}  className="order" >
+                <IndexOne ind={index} text="№">{index + 1}.</IndexOne>
+                <IndexDate ind={index} text="date">{i.date}</IndexDate>
+                <IndexPhone ind={index} text="buyer">
+                    {i.person.name} <br/> {i.person.phone} <br/> {i.person.email}
+                </IndexPhone>
+                <IndexItem ind={index} text="orders">
+                    {i.bag.map((a,index) => 
+                        <div key={index}>
+                            <P  text={1 + index}>
+                                {a.brand}, {a.model},
+                                <br/>color:{a.color}, size:{a.size}, Qnt:{a.count},
+                                <br/>cost:<span>{a.cost}$</span>,
+                                delivery:<span>{i.delivery}$</span>
+                            </P>
+                        </div>
+                    )}
+                </IndexItem>    
+                <Index ind={index} text="status">
+                    <p>
+                        
+                        <InputCheckbox type="radio" checked={i.status===1} onChange={()=>UpdateStatusDelivery(i.date,1)}/>
+                        <b>in work</b>
+                    </p>
+                    <p>
+                    
+                    <InputCheckbox type="radio" checked={i.status===2} onChange={()=>UpdateStatusDelivery(i.date,2)}/>
+                    <b>in delivery</b>
+                    </p>
+                    <p> 
+                                    
+                    <InputCheckbox type="radio" checked={i.status===3} onChange={()=>UpdateStatusDelivery(i.date,3)}/>
+                    <b>delivered</b>
+                    </p>
+                </Index>
+                </div>
+                )}
+                </>
+                }
             </div>
-            )}
-            </>
-            }
-        </div>
         </>
     
     )

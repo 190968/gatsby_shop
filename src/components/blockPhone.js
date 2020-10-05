@@ -117,7 +117,7 @@ const BlockPhone = ({country = "BY", setCountry,  setLocations}) => {
        return (   
             <div className="div_phone">
                <Delivery>
-                    <H>This is the best shop world brands shoes and clothing for running</H>
+                   
                     <Hi onClick={()=>navigate("/orders")} title="Enter account">Hello, Guest! From           
                         
                         <img src = {`https://myrunshop.000webhostapp.com/flags/${country}.png`} height="40px" width="40px" alt={country}   title={country}/>

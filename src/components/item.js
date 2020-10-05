@@ -16,7 +16,8 @@ const Sale = styled.b.attrs(props => ({
     width: auto;
     position: relative;
     text-align: center;
-    padding: 0 10px;
+    padding: 0;
+    color: #000;
     &:before {
         content: '-${props=>props.sale}%';
         top: -25px;
@@ -103,16 +104,12 @@ const Item = (props) => {
             <Close  onClick={handClose}>x</Close>
 
             <div className="div_image">
-                <div 
-                    className="div_big_image" 
-                            
+                <div className="div_big_image"                             
                     style={{backgroundSize: "90%", backgroundImage: `url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model.replace(" ","_") + "_" + image_color}${number}.jpg),url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model.replace(" ","_") + "_" + image_color}${number}.webp)`}}
                 
                 />
                 {["",1,2].map(i => <div className="div_small_image"
-                        onClick={()=>set_number(i)}
-                        
-                       
+                        onClick={()=>set_number(i)}                       
                         style={{backgroundImage: `url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model.replace(" ","_") + "_" + image_color}${i}.jpg),
                                 url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model.replace(" ","_") + "_" + image_color}${i}.webp)`,
                                 borderBottom: number === i ? "2px solid #000" : "none"
@@ -129,10 +126,8 @@ const Item = (props) => {
                 </p>
                 <h2>                        
                     {sale === 0 ? 
-                       <Sale sale={sale} currency={s} >     
-                           
-                            {(cost*currency).toFixed(0)} 
-                              
+                       <Sale sale={sale} currency={s}>                          
+                            {(cost*currency).toFixed(0)}            
                           
                         </Sale>           
                         :

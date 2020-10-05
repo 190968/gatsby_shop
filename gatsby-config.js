@@ -5,7 +5,7 @@ module.exports = {
     siteUrl: `https://www.aplacadance.ru`,
     description: `E-shop  shoes and clothing for active sport. The best brands Adidas, Nike, Salomon, Reebok,Puma. Buying shoes and clothing for running.Sport shoes for men,women and children.`, 
     twitter: `@kylemathews`,
-    titleTemplate: `%s | aplacadance.ru`,
+    titleTemplate: `%s`,
     twitterUsername: `Alekc`    
   }, 
   plugins: [

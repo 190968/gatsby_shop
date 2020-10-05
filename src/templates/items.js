@@ -1,11 +1,10 @@
-import React, {useEffect} from "react";
+import React from "react";
 import "../styles/global.css";
 import {  graphql } from "gatsby";
 import Item from "../components/item";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import  Layout  from "../components/layout";
-
 import { addBag } from "../state/app";
 import { Info } from "../components/info";
 import Slider from "./slider";
@@ -38,10 +37,10 @@ const MenuItem = styled.div`
             background-color: #ccc;
         }
     }
-    p {
-        margin: 0;
+   
+       
         font-size: 16px;
-    }
+   
 `;
 const Size = styled(Currency)`     
     font: 300 15px/30px 'Arial', sans-serif;    
@@ -173,6 +172,36 @@ const Label = styled.label.attrs(props=>({
     background-color: ${props=>props.for === props.item ? "yellow" :" inherrit "}
 
 `;
+const Filtr = styled.b.attrs(props=>({
+    props:props.color
+}))`
+    padding: 5px 8px;    
+    border: 1px solid yellow;
+    cursor: pointer;
+    background-color: cornflowerblue;    
+    position: relative;
+    font: italic 300 16px/16px "Taroma", sans-serif;
+    margin: 0 10px;
+    display: ${props=>(props.color === "all" || props.color === null || props.color === 0 || props.color === 180) ? 'none': 'inline-block'};
+    vertical-align: middle;
+    // border-radius: 10px;
+    z-index: 0;      
+    color: yellow;   
+    &:after {
+        content: 'x';
+        color: cornflowerblue;
+        padding: 0 5px;
+        text-align: center;
+        font-size: 13px;
+        border: 1px solid cornflowerblue;;
+        // border-radius: 20px;
+        position: absolute;
+        top: -5px;
+        z-index: 10;
+        left: -15px;
+        background-color: yellow;
+    }
+`;
 const Items =  ({ currency, pageContext, data,  location, countr }) => {   
    
     const {state = {}} = location;
@@ -218,15 +247,7 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
         .filter(i=> i.cost <= max_cost)    
         .filter(i=> color === "all" ? i : i.color === color);
 
-    // var max = [].sort((a,b)=>a.cost-b.cost);       
-    //     for(const i of data.allMongodbMyBase.nodes){
-    //     max.push(i.cost);
-    // }   
-   
-    // useEffect(()=>{  
-    // set_max(max[max.length-1]);
-    // set_min(max[0]);
-    // },[]);   
+    
 
 
     return <Layout 
@@ -242,8 +263,7 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
             gender={pageContext.gender} 
             order={orders.length} 
             model={model}
-            color={color}
-            set_sort={SortOnCost}
+            color={color}           
             size={size}
             set_color={set_color}
             set_size={set_size}
@@ -255,38 +275,44 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
             noFilterCost={noFilterCost}
         />
         <Page>
+            <Filtr color={color} onClick={()=>set_color("all")}>color: {color}</Filtr>
+            <Filtr color={size} onClick={()=>set_size(null)}>size: {size}</Filtr>
+            <Filtr color={min_cost} onClick={()=>set_min(0)}>cost {">"} {min_cost}</Filtr>
+            <Filtr color={max_cost} onClick={()=>set_max(180)}>cost {"<"} {max_cost}</Filtr> 
+            <span className="sort">
+                    sort by:
+                    <select onChange={(e)=>SortOnCost(e.target.value)}>
+                        <option value="true" >cheap first</option>
+                        <option value="false" >expensive first</option>
+                    </select>
+            </span>     
             <span>Page:</span>
             {orders.filter((i,index)=>!("" + (index/10)).includes(".")).map((i,index) => 
             <span style={{backgroundColor: index+1 === page  ? 'yellow' : 'inherit'}} onClick={()=>set_page(index+1)}>{index+1}</span>)}
         </Page>
         <div className="menu_items">
             <MenuItem >
-                ITEM
-                <p>
+               
+               
                     <Label for="shoes" item={item}>Shoes</Label>
                     <Checkbox id="shoes" type="checkbox" name="shoes" onChange={()=>set_item("shoes")}/>
                     <Label for="clothing" item={item}>Clothing</Label>
                     <Checkbox  id="clothing" type="checkbox" name="clothing"  onChange={()=>set_item("clothing")}/>
-                </p>
+                
             </MenuItem>          
             <MenuItem >BRAND</MenuItem>
             <MenuItem >MODEL</MenuItem>
             <MenuItem >
                <Select  onChange={(e)=>set_gender(e.target.value)}>
                    <option value="GENDER" >all</option>
-                   {pageContext.gender.map(i=><option key={i} value={i}>{i}</option>)}
-                  
+                   {pageContext.gender.map(i=><option key={i} value={i}>{i}</option>)}                  
                </Select>
             </MenuItem>
             <MenuItem width="10">COLOR</MenuItem>
             <MenuItem >SIZE</MenuItem>
-            <MenuItem style={{padding:"3px"}}>
-               
-                {/* {sort ? <Size  onClick={SortOnCost}>cost A to Z</Size> : <Size  onClick={SortOnCost}>cost Z to A</Size>} */}
-                <Slider min={min_cost} max={max_cost} setMin={set_min} setMax={set_max} />
-            
-            </MenuItem>
-            
+            <MenuItem style={{padding:"3px"}}>              
+                <Slider min={min_cost} max={max_cost} setMin={set_min} setMax={set_max} />            
+            </MenuItem>            
             
         </div>   
         {orders.filter((i,index)=> (page-1)*10 <= index && index < page*10).map((i,index) => 

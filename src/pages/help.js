@@ -42,8 +42,9 @@ const DivInput = styled.div`
     width: 100%;
     
     padding: 2vw;
-    h2 {
+    h1 {
         color: #fff;
+        font-size: 25px;
         margin: 0 0 20px;
     }
    
@@ -112,7 +113,7 @@ const Help = () => {
                         { contact ? 
                             <h2>Message sending to manager</h2>
                         : <>   
-                            <h2>Contact  us</h2>
+                            <h1>Contact  us</h1>
                             <InputName type="text" placeholder="NAME" value={name} onChange={(e)=>set_name(e.target.value)} />
                             <InputName type="text"  placeholder="PHONE" value={phone} onChange={(e)=>set_phone(e.target.value)} />
                             <InputName type="text"  placeholder="EMAIL" value={email} onChange={(e)=>set_email(e.target.value)}  />

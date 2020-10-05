@@ -43,9 +43,10 @@ const Gender = styled.p`
     margin: 10px 0;
 `; 
 
-const FavoriteItems = styled.h3`
+const FavoriteItems = styled.h1`
     background-color: beige;
     padding: 15px;
+    font-size: 1.5em;
     margin: 0;
     @media (max-width: 580px) {
         padding: 10px;

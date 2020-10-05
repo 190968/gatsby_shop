@@ -35,7 +35,7 @@ const Main = () => {
           <html lang="en" /> 
       </Helmet>     
       <Layout set_number={set_number} >
-        <SEO title="Shop for run" />       
+        <SEO title="Shoes and clothing the best of world brands for running" />       
         <Brand  number={number} />
         <Favorite />
         <FavoriteSale />        

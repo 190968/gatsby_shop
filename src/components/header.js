@@ -68,13 +68,15 @@ const Euro = styled(Account)`
     &:hover {
         box-shadow: none;
         color: red;
-    } 
-   
+    }
+    @media(max-width:600px) {
+        font: 300 18px/47px 'Arial', sans-serif;
+    }   
 `;
 const DivCur = styled.div`
     display: inline-block;
     width: 45px;
-    height: 47px;
+    height: 49px;
     overflow: hidden;
     float: right;
     vertical-align: middle;
@@ -83,15 +85,18 @@ const DivCur = styled.div`
     
     &:hover {
         width: 150px;
-        transition: all 0.5s;
-       
+        transition: all 0.5s;       
         background-color: #ccc;
+    }
+    @media(max-width:600px) {
+        width: 45px;
+        position: relative;
     }
 
 `;
 
 
-const Header = ({ euro, currency }) => { 
+export const Header = ({ euro, currency }) => { 
     const s = currency === 0.8 ? '€' : currency === 1 ? "$"  : "£" ;
   
     return (
@@ -110,23 +115,19 @@ const Header = ({ euro, currency }) => {
         `}
        
         render={(data) => (   
-            <div className="header">  
-               
-                    <Link to="/" className="icon" style={{textShadow: 'none',backgroundImage:'none'}}>                
-                        <One src={data.allDatoCmsHeader.nodes[0].siteimage.url} >
-                            {data.allDatoCmsHeader.nodes[0].title}
-                        </One>
-                    </Link>
-                  
-                <Search /> 
-               
+            <div className="header">              
+                <Link to="/" className="icon" >                
+                    <One src={data.allDatoCmsHeader.nodes[0].siteimage.url} >
+                        {data.allDatoCmsHeader.nodes[0].title}
+                    </One>
+                </Link>                  
+                <Search />               
                 <Linktobag  title="open bag" /> 
                 <Link to="/orders" title="open account">
                     <Account />
-                </Link> 
-                         
+                </Link>                         
                 <DivCur>                 
-                {["€","$","£"].filter(i=>i!==s).concat(s).reverse().map(i=><Euro key={i} onClick={()=>euro(i)}>{i}</Euro> )}    
+                {["€","$","£"].filter(i=>i!==s).concat(s).reverse().map(i=><Euro key={i}  onClick={()=>euro(i)}>{i}</Euro> )}    
                     
                    
                    

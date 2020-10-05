@@ -12,8 +12,12 @@ a {
     font-weight: 300;
 }
 
-a:hover {
-    border-bottom: 3px solid  cornflowerblue;
+.order {
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+.order:first-of-type {
+    margin-top: 50px;
 }
 a:active,a:focus {
     border-bottom: 3px solid red;
@@ -166,7 +170,7 @@ img  {
 .sort {
    
     width: fit-content;
-    float: right;
+    
     font-size: 16px;
     margin-right: 2vw;
 }
@@ -579,6 +583,9 @@ img {
     html {
         font:100%/1 'Quattrocento Sans',sans-serif;
     }
+    .menu_items {
+        display: none;
+    }
 }
 @media screen and (max-width: 600px) {
     .delivery_name label {
@@ -628,8 +635,6 @@ img {
        
         width: 100%;
     } 
-    .menu_items {
-        display: none;
-    }
+   
     
 }
