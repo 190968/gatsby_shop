@@ -37,8 +37,8 @@ const Main = () => {
       <Layout set_number={set_number} >
         <SEO title="Shoes and clothing the best of world brands for running" />       
         <Brand  number={number} />
-        <Favorite />
-        <FavoriteSale />        
+        <FavoriteSale />
+        <Favorite />                
       </Layout>
     </>     
   ) 

@@ -44,8 +44,9 @@ const Gender = styled.p`
 `; 
 
 const FavoriteItems = styled.h1`
-    background-color: beige;
+    background-image: linear-gradient(rgba(255,0,0,1), rgba(255,0,0,0));;
     padding: 15px;
+    color: blue;
     font-size: 1.5em;
     margin: 0;
     @media (max-width: 580px) {

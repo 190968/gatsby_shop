@@ -29,16 +29,7 @@ const DivItem = styled.div`
         width: 33%;
     }
 `;
-const FavoriteItems = styled.h3`
-    background-image: linear-gradient(rgba(255,0,0,0), rgba(255,0,0,1));
-    padding: 15px;
-    margin: 0;
-    color: silver;
-    @media (max-width: 580px) {
-      padding: 10px;
-      font-size: 1em;
-    }
-`;
+
 const DivItems = styled.div`
     margin-top: 50px;
     
@@ -48,13 +39,14 @@ const DivItems = styled.div`
         font-size: 25px;
     }
     :before {
-        content: "FAVORITE SALE";
-        font-size: 25px;
-        height: 50px;
+        content: "Favorite Sale Last Weak";
+        font: 600 1.5em/25px 'Arial', sans-serif;
+        
+        
         width: 100%;
         color: yellow;
         position: absolute;
-        background-image: linear-gradient(rgba(255,0,0,0), rgba(255,0,0,1));
+        background-image: linear-gradient(rgba(255,0,0,0), rgba(255,0,0,0.5));
         padding: 12px;
         top:-50px;
         left: 0;

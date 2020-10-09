@@ -225,7 +225,7 @@ const Admin = () => {
     };
     const ViewQuestions =  async () => {        
        let res = await axios(
-            `https://www.aplacadance.ru/.netlify/functions/all-questions`,{                            
+            `https://www.aplacadance.ru/.netlify/functions/all_questions`,{                            
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Headers": "Content-Type",
             "Content-Type" : "Application/json",
