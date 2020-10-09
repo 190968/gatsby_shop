@@ -17,17 +17,11 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
-        host: 'https://aplacadance.ru',
-        sitemap: 'https://www.aplacadance.ru/sitemap.xml',
-        resolveEnv: () => process.env.GATSBY_ENV,
-        env: {
-          development: {
-            policy: [{ userAgent: '*', disallow: ['/'] }]
-          },
-          production: {
-            policy: [{ userAgent: '*', allow: '/',disallow: '/holobuda/y' }]
-          }
-        }
+        host: 'https://www.aplacadance.ru',
+        sitemap: 'https://www.aplacadance.ru/sitemap.xml',        
+        production: {
+          policy: [{ userAgent: '*', allow: '/'}]
+        }        
       }
     },   
     {

@@ -35,7 +35,7 @@ export default function Layout ({ children , context_brand, context_gender, set_
       <BlockPhone />
       <Header />  
       <Menu link = {context_brand} set_number={set_number} />  
-      <String  link ={context_brand} gender={context_gender} />    
+      <String  brands ={context_brand} gender={context_gender} />    
         {children}
       <Footer />
     </div>

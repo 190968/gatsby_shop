@@ -78,7 +78,7 @@ const Footer = () => {
             <Div text="SHOPPING" onClick={()=>navigate("/help/")}>
                 <p>Delivery</p>
                 <p>Account</p>
-                <p>Store Finder</p>
+                <p onClick={()=>navigate("/locations")}>Store Finder</p>
             </Div>    
             <Div text="ABOUT US" onClick={()=>navigate("/help/")}>
                 <p>About Us</p>

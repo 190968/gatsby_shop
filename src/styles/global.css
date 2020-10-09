@@ -11,7 +11,27 @@ a {
     text-shadow: none;
     font-weight: 300;
 }
-
+input[type=button] {   
+    width: 30%;
+    font-size: 25px;
+    padding: 5px;
+   
+    cursor: pointer;
+    margin: 10px auto;
+    display: block;
+    background-color: lime;
+    border: 2px solid lime;
+}    
+   
+input[type=button]:hover {
+    background-color: yellow;       
+}
+input[type=checkbox] {   
+    width: 20px;
+    height: 20px;   
+    float: right;
+    margin: 4px 5%;
+}
 .order {
     border: 1px solid #ccc;
     padding: 5px;
@@ -19,8 +39,8 @@ a {
 .order:first-of-type {
     margin-top: 50px;
 }
-a:active,a:focus {
-    border-bottom: 3px solid red;
+.string a:hover {
+    border-bottom: 1px solid #ccc;
    
 }
 .main_block,
@@ -118,12 +138,12 @@ input:focus {
 .menu_items {
     background-color: lavender;    
     margin: 5px 0 0;
-    padding: 0;
+    padding: 5px 0;
     text-align: left;
     font-weight: 600;
     position: -webkit-sticky;
     position: sticky;
-    top: 50px;
+    top: 70px;
     z-index: 10;
 }
 .menu_items span {
@@ -167,10 +187,8 @@ img  {
     font: 600 16px/20px 'Arial', sans-serif;  
     display: block;
 }
-.sort {
-   
-    width: fit-content;
-    
+.sort {   
+    width: fit-content;    
     font-size: 16px;
     margin-right: 2vw;
 }
@@ -218,12 +236,10 @@ img {
 }
 .img_main_link {   
     height: 25vw;
-    background-size: cover;
-   
+    background-size: cover;   
     width: 33.33%;   
     display: inline-block;
-    cursor: pointer;
-   
+    cursor: pointer;   
     text-shadow: none;
 }   
 .img_main_link b {
@@ -261,19 +277,16 @@ img {
     display: inline-block;
     text-shadow: none;
 }
+.delivery_main_link:hover {
+    text-decoration: underline;
+    font-weight: 600;
+}
 .two {
-    float: right;
-   
+    float: right;   
 }
-.delivery_main {
-    padding-top: 100px;  
-    width: 100%;
-    margin: 0 auto;   
-    z-index: 10; 
-    height: 700px;  
-}
+
 .delivery_name {
-    margin: 0 auto;
+    margin: 30px auto 0;
     width: calc(100vw - 20px)px;
     padding: 10px;
     background-color: lavender;
@@ -285,7 +298,6 @@ img {
     font-weight: 600;
     margin-right: 10px;
     display: inline-block;
-
 }    
 .delivery_name:before {
     content : "LAST STEP";
@@ -295,6 +307,12 @@ img {
     margin: -10px 0 30px -10px;
     background-color: thistle;
     display: block;       
+}
+.delivery_name p {
+    width: 25%;
+    margin: 10px auto;
+    font-weight: 600;
+
 }
 
 .div_delivery {
@@ -310,11 +328,11 @@ img {
 }
 .div_delivery:before {
     content: "SELECT DELIVERY";
-    font-size: 22px;
+   
     font-weight: 600;
-    display: block;
+   
     padding: 8px;
-    left: 0;
+   
     background-color: cornflowerblue;
     position: absolute;
     width: 100%;
@@ -364,8 +382,7 @@ img {
     width: 100%;
     top: -40px;
 }
-.div_bag_menu {
-   
+.div_bag_menu {   
     margin-top: 50px;
     background-color: lavender;
     font-size: 20px;
@@ -406,8 +423,7 @@ img {
     border-top: 1px solid #ccc;
     padding-top: 10px;
     height: 40%;
-    text-align: left;
-    
+    text-align: left;    
 }
 .div_description li {
     margin: 0 5px;
@@ -436,8 +452,7 @@ img {
     margin-left: -10px; 
 }
 .div_bag_item h1 {
-    display: none;
-    
+    display: none;    
 }
 .div_big_image {
     margin: 20px 0;   
@@ -469,6 +484,7 @@ img {
 .string b {
     margin-left: 10px;
     width: auto;
+    color: #000;
 }
 .to_main {
     width: 80px;
@@ -593,7 +609,10 @@ img {
         width: 30%;
         
     }
-    
+    input[type=button] {
+        font-size: 4vw;
+        width: 70%;
+    }    
     .go_to_account, .orders {
         margin: 200px 0 0;
     }

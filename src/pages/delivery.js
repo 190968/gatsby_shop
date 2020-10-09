@@ -8,6 +8,7 @@ import styled from "styled-components";
 import "../styles/global.css";
 import { Link } from "gatsby";
 import BlockPhone from "../components/blockPhone";
+import { Footer } from "../components/footer";
 
 const Input = styled.input`
     display: inline-block;
@@ -21,28 +22,14 @@ const Input = styled.input`
         width: 50%;
     }
 `;
-
-const Button = styled.button`
-    width: 30%;
-    font-size: 25px;
-    padding: 5px;
-    height: auto;
-    cursor: pointer;
-    margin: 10px auto;
-    display: block;
-    background-color: lime;
-    border: 2px solid lime;
-    &:active {
-        border: 2px solid red;
-    }
-    &:hover {
-        background-color: yellow;       
-    }
-    @media(max-width: 600px) {
-        font-size: 4vw;
-        width: 70%;
+const Div = styled.div`
+    max-width: 1350px;
+    margin: 0 auto;
+    div:last-of-type {
+        text-align: center;
     }
 `;
+
 const FormDelivery = ({ bag, delBag, delivery }) => {
     const [country, set_country] = React.useState("");
     const [city, set_city] = React.useState("");
@@ -53,9 +40,9 @@ const FormDelivery = ({ bag, delBag, delivery }) => {
     const [ok, set_ok] = React.useState("");   
 
     function sendData() {
-        const url =  "https://www.aplacadance.ru/.netlify/functions/tobag";
+        const url =  "https://www.aplacadance.ru/.netlify/functions/new-question";
        
-        // const url = 'http://localhost:8888/.netlify/functions/new_bag';       
+        // const url = 'http://localhost:8888/.netlify/functions/new_question';       
         const params = {           
             name,
             phone,
@@ -74,14 +61,10 @@ const FormDelivery = ({ bag, delBag, delivery }) => {
             setTimeout(delBag(),2000);
         })
     };
-    console.log("This is request");
-    return <>
-        <BlockPhone />
-        <div className="delivery_main"> 
-                   
-            <div className="delivery_name">            
-               
-                <form>
+   
+    return <Div>
+        <BlockPhone />              
+        <form className="delivery_name">
                     <label>COUNTRY:</label>                
                     <Input type="text" required value={country}  onChange={(e)=>set_country(e.target.value)} placeholder="input country" />
                     <label>CITY:</label> 
@@ -91,25 +74,29 @@ const FormDelivery = ({ bag, delBag, delivery }) => {
                     <label>NAME:  </label>
                     <Input type="text" required value={name}  onChange={(e)=>set_name(e.target.value)} placeholder="input name" />
                     <label>PHONE: </label>
-                    <Input type="phone" required value={phone} onChange={(e)=>set_phone(e.target.value)} placeholder="input phone" />
+                    <Input 
+                        type="phone" 
+                        required value={phone.replace( /^(\d\d)(\d\d\d)(\d\d)(\d\d)/, (...match) => `+375-(${match[1]})-${match[2]}-${match[3]}-${match[4]}` )} 
+                        onChange={(e)=>set_phone(e.target.value)} placeholder="input phone" 
+                    />
                     <label>EMAIL: </label>
                     <Input type="email" required value={email} onChange={(e)=>set_email(e.target.value)} placeholder="input email" />
-                    
-                    <Button 
+                    <p>
+                       Subscription on sale: <Input type="checkbox" value="30" />
+                    </p>
+                    <Input type="button" 
                         onClick={sendData}
                         disabled={!(name.length > 3 & email.includes("@") & email.includes("."))}
-                    >
-                        BUY
-                    </Button>
-                </form>
-                <Link to="/bag" className="delivery_main_link">BACK TO BAG</Link>
-                <Link to="/" className="delivery_main_link two">TO MAIN</Link>
-                <h3>{ok}</h3>
-            </div>
-
-        </div>
+                        value="BUY" 
+                    />
+                    <Link to="/bag" className="delivery_main_link">BACK TO BAG</Link>
+                    <Link to="/" className="delivery_main_link two">TO MAIN</Link>
+                    <h3>{ok}</h3>
+                   
+        </form>
+        <Footer />
         
-    </>
+    </Div>
 };
 
 

@@ -147,7 +147,11 @@ const Page = styled.p`
     text-align: right;
     padding: 0 10px;
     margin: 5px 0;
-   
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 40px;
+    background-color: lightgoldenrodyellow;
+    z-index: 10;   
     span {
        padding: 0 10px;
        color: blue;

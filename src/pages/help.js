@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import styled from "styled-components";
 import { Helmet } from 'react-helmet';
 import { Link } from "gatsby";
@@ -84,18 +85,36 @@ const Help = () => {
     const [name, set_name] = React.useState("");
     const [phone, set_phone] = React.useState("");
     const [email, set_email] = React.useState("");
-    const [message, set_message] = React.useState("");
+    const [question, set_message] = React.useState("");
     const [contact, set_contact] = React.useState(false);
- 
-    function sendMessage() {
-       set_contact(true);
-       setTimeout(()=>set_contact(false),3000);
-       set_name("");
-       set_phone("");
-       set_email("");
-       set_message("")
 
+    function sendMessage() {
+        // const url =  "https://www.aplacadance.ru/.netlify/functions/tobag";
+       
+        const url = 'http://localhost:8888/.netlify/functions/new-question';       
+        const params = {           
+            name,
+            phone,
+            email,
+            question           
+        };
+        const headers = {
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/json'
+        };
+        axios.post(url,JSON.stringify(params))     
+        .then(res => {           
+            set_contact(true);
+            set_name("");
+            set_phone("");
+            set_email("");
+            set_message("");
+            setTimeout(()=>set_contact(false),5000)
+        });
+        
     };
+ 
+    
     
     return (
         <>
@@ -120,11 +139,11 @@ const Help = () => {
                             <Input 
                                 type="text" 
                                 placeholder="OWN QUESTION (min ten symbols)" 
-                                value={message} 
+                                value={question} 
                                 onChange={(e)=>set_message(e.target.value)} 
                             />
                             <Button
-                                disabled = {name.length < 3 || phone.length < 10 || message.length < 20}
+                                disabled = {name.length < 3 || phone.length < 10 || question.length < 20}
                                 text = {name}
                                 onClick={sendMessage}
                             >Send</Button>

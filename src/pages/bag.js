@@ -41,7 +41,7 @@ const Button = styled.button`
    
 `;
 const ButtonCode = styled(Button)`
-    width: 30%;
+    width: 31%;
     height: 40px;
     background-color: #ccc;
     font-size: 16px;
@@ -67,16 +67,8 @@ const Items = styled.div`
     background-size: 30%;
     
 `;
-const Input = styled.input`
-    width: 20px;
-    height: 20px;
-   
-    float: right;
-    margin-right: 5%;
-    
-    
-`;
-const InputCode = styled(Input)`
+
+const InputCode = styled.input`
    margin: 10px;
    display: inline-block;
     height: 40px;
@@ -93,21 +85,16 @@ const InputCode = styled(Input)`
 const InputSpan = styled.span`
     font-size: 16px;
     display: inline-block;
-    margin: 0;
-   
+    margin: 0;   
     margin-right: 10px;
     text-align: right;
     width: 70%;
-    
-
 `;
 const Add = styled.b`
         border: 1px solid #ddd;
         border-radius: 50%;
-        cursor: pointer;
-       
-        padding: 1px 7px;
-        
+        cursor: pointer;       
+        padding: 1px 7px;        
         margin: 10px;
         &:hover {
             background-color: cornflowerblue;
@@ -176,13 +163,13 @@ const Bag =  ({ bag, delete_from_bag, add_count, currency, delivery, setDelivery
                 )}
                 <div className="div_delivery">
                     <p><InputSpan>Delivery to the warehouse</InputSpan>10 {s}
-                        <Input type="checkbox" value="10" checked={delivery===10} onChange={()=>setDelivery(10)}/>
+                        <input type="checkbox" value="10" checked={delivery===10} onChange={()=>setDelivery(10)}/>
                     </p>
                     <p><InputSpan>Home delivery</InputSpan>20 {s}
-                        <Input type="checkbox" value="20" checked={delivery===20} onChange={()=>setDelivery(20)}/>
+                        <input type="checkbox" value="20" checked={delivery===20} onChange={()=>setDelivery(20)}/>
                     </p>
                     <p><InputSpan>Express delivery </InputSpan>30 {s}
-                        <Input type="checkbox" value="30" checked={delivery===30} onChange={()=>setDelivery(30)}/>
+                        <input type="checkbox" value="30" checked={delivery===30} onChange={()=>setDelivery(30)}/>
                     </p>
                     <p style={{borderTop: "1px solid #ccc; paddingTop: 20" }}>
                         <InputCode placeholder="Discount code" type="text" />
