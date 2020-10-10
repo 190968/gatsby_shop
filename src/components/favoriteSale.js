@@ -13,31 +13,55 @@ const Sale = styled.b`
 
 const DivItem = styled.div`
     height: fit-content;
-    padding-bottom: 10px;
-   
+    padding-bottom: 10px;   
     width: 20vw;
     display: inline-block;  
-    margin: 1vw;
+    
     background-color: #fff;
     cursor: pointer;
     &:hover {
-        box-shadow: 0 0 5px 5px #ddd;
+        box-shadow: 0 0 2px 2px #ddd;
+    }
+    span {
+        background-size: 80%;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 15vw;
+        width: 100%;
+    }
+    h3 {
+        font:italic 600 20px/20px 'Verdana', sans-serif;
+        color: cornflowerblue;
+        margin:  0 0 10px;
+    }
+    h4 {
+       
+        height: 50px;
     }
     @media (max-width: 660px) {
         padding: 5px;
         margin: 0;
-        width: 33%;
+        width: 30vw;
+       
+            &:last-child {
+                display: none;
+              }
+       
     }
 `;
 
 const DivItems = styled.div`
     margin-top: 50px;
-    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+   
     position: relative;
     p b {
         color: red;
         font-size: 25px;
     }
+   
     :before {
         content: "Favorite Sale Last Weak";
         font: 600 1.5em/25px 'Arial', sans-serif;
@@ -51,16 +75,17 @@ const DivItems = styled.div`
         top:-50px;
         left: 0;
        
-        @media (max-width: 580px) {
+        @media (max-width: 660px) {
           padding: 10px;
           font-size: 1em;
+         
         }
     }
 `;
 
 const  FavoriteSale = () => {
     const [number, set_number] = React.useState(false);
-    const data = useStaticQuery(
+    let data = useStaticQuery(
         graphql`
            
                         query {
@@ -78,28 +103,26 @@ const  FavoriteSale = () => {
                         }
                     `
        
-    )
+    );
+     data.length = 2;
     return (
        
             
             <DivItems>
                 {data.allDatoCmsSale.nodes.map((i,index) => <DivItem onClick={()=>set_number(index+1)} key={index}> 
                     <span                    
-                        role="button"                   
+                                          
                         style={{backgroundImage: `url(https://myrunshop.000webhostapp.com/wp-content/image/${i.brand}/${i.modelitem}_${i.color}.jpg),
                             url(https://myrunshop.000webhostapp.com/wp-content/image/${i.brand}/${i.modelitem}_${i.color}.webp)`,
-                            backgroundSize:"80%",
-                            backgroundPosition:"center",
-                            backgroundRepeat: "no-repeat",
-                            height:"150px",
-                            width: "100%"
+                           
                         }}                   
                     >
                         <Sale>{i.sale}%</Sale>
                     </span>    
-                    <h4 className="brand_favorite">{i.brand.toUpperCase()}</h4>
-                    <h4>{i.modelitem.replace("_"," ")}</h4> 
-                    <p>{i.color}</p>
+                    <h3>{i.brand.toUpperCase()}</h3>
+                    <h4>{i.modelitem.replace(/_/g," ")}</h4> 
+                    <b>{i.gender}</b>
+                    <p> {i.color}</p>
                     <p>
                         <del>{i.cost}$</del> 
                         <b>{(i.cost*(100-i.sale)/100).toFixed(0)}$</b>

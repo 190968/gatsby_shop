@@ -91,7 +91,7 @@ const Help = () => {
     function sendMessage() {
         // const url =  "https://www.aplacadance.ru/.netlify/functions/tobag";
        
-        const url = 'http://localhost:8888/.netlify/functions/new-question';       
+        const url = 'https://wwwaplacadance.ru/.netlify/functions/new-question';       
         const params = {           
             name,
             phone,

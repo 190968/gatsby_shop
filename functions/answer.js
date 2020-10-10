@@ -1,5 +1,5 @@
-var Mongoclient = require('mongodb').MongoClient;
-
+const Mongoclient = require('mongodb').MongoClient;
+const nodemailer = require('nodemailer');
 exports.handler = async (event, context, callback) => {         
     const uri = process.env.uri;   
     // var d = new Date();    
@@ -9,9 +9,7 @@ exports.handler = async (event, context, callback) => {
     var connect = await Mongoclient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
            
             var set = {
-                $set: {                           
-                    "answer": params.answer
-                }              
+                $set: { "answer": params.answer }        
             };
             var filter = { "email": params.email  };                      
                                         

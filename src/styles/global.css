@@ -170,11 +170,7 @@ img  {
     margin: 10px 0;
     font-weight: 600;
 }
-.brand_favorite {
-    font:italic 600 20px/20px 'Verdana', sans-serif;
-    color: cornflowerblue;
-    margin:  0 0 10px;
-}
+
 .quantBag {
     margin: -10px -40px 0 0;
     color: red;
