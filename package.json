@@ -35,6 +35,7 @@
     "gatsby-source-mongodb": "^2.2.1",
     "gatsby-transformer-remark": "^2.7.1",
     "node-libpng": "^0.2.13",
+    "nodemailer": "^6.4.13",
     "pngquant-bin": "^4.0.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
