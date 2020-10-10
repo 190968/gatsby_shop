@@ -1,5 +1,5 @@
 const Mongoclient = require('mongodb').MongoClient;
-const nodemailer = require('nodemailer');
+const nodemailer = require("nodemailer");
 exports.handler = async (event, context, callback) => {         
     const uri = process.env.uri;   
     // var d = new Date();    

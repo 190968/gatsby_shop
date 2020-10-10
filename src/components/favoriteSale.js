@@ -34,8 +34,7 @@ const DivItem = styled.div`
         color: cornflowerblue;
         margin:  0 0 10px;
     }
-    h4 {
-       
+    h4 {    
         height: 50px;
     }
     @media (max-width: 660px) {
