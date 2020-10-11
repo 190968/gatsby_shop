@@ -20,7 +20,7 @@ exports.handler = async (event, context, callback) => {
           service: 'gmail',   
           auth: {
               user: '19ham09@gmail.com',
-              pass: body.password
+              pass: params.password
           }        
         });
     
@@ -32,9 +32,9 @@ exports.handler = async (event, context, callback) => {
         // send mail with defined transport object
         let info = await transporter.sendMail({
           from: 'e-shop', // sender address
-          to: body.email, // list of receivers
+          to: params.email, // list of receivers
           subject: "Message from e-shop aplacadance.ru", // Subject line
-          text: body.details, // plain text body
+          text: params.details, // plain text body
           html: `<!doctype html>
                   <html>
                     <head>
@@ -42,9 +42,9 @@ exports.handler = async (event, context, callback) => {
                       
                     </head>
                     <body>
-                    <h1>Hello ${body.name}</h1>
-                  <h3>On your question  <ins>${body.question}</ins>, we answering.</h3>
-                  <p>${body.details}</p>
+                    <h1>Hello ${params.name}</h1>
+                  <h3>On your question  <ins>${params.question}</ins>, we answering.</h3>
+                  <p>${params.details}</p>
                       <p>Image: <img src="https://cldup.com/P0b1bUmEet.png" width="16" height="16"/></p>
                      
                         <p><img src="https://cldup.com/D72zpdwI-i.gif" width="500" height="350"/></p>
