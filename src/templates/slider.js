@@ -13,10 +13,11 @@ const Main = styled.div`
     border-radius: 5px;
     background: cornflowerblue;   
     position: relative;
+    top: 3px;
     &:after {
         content: "${props=>props.pos_max}";  
         width: 30px;
-        height: 25px;
+       
         border-radius: 7px;
         position: absolute;
         color: blue;
@@ -41,10 +42,10 @@ const Min = styled(Main)`
   float: left;
     background: #ccc;
     border-right:10px solid red;   
-    top: -10px;
+    top: -5px;
     &:after {
       content: "${props=>props.min}";
-      top: -8px;
+      top: -10px;
       left: ${props=>props.min-15}px;       
     }    
 `; 

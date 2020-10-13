@@ -70,8 +70,7 @@ const Button = styled.button.attrs(props=>({
         left: 30%;
         visibility: hidden;
         background-color: yellow;
-        padding: 0 10px;
-      
+        padding: 0 10px;      
         color: blue;
         border-radius: 10px;
     }
@@ -82,14 +81,20 @@ const Button = styled.button.attrs(props=>({
 `;
 const Help = () => {
 
-    const [name, set_name] = React.useState("");
-    const [phone, set_phone] = React.useState("");
-    const [email, set_email] = React.useState("");
-    const [question, set_message] = React.useState("");
+    const [name, set_name] = React.useState('');
+    const [phone, set_phone] = React.useState('');
+    const [email, set_email] = React.useState('');
+    const [question, set_message] = React.useState();
     const [contact, set_contact] = React.useState(false);
 
+    const setPhone = (e) => {
+        return (
+            set_phone(isNaN(e.target.value) ? phone : phone.length >= 10 ? phone : e.target.value)
+        )
+    }
+
     function sendMessage() {
-        // const url =  "https://www.aplacadance.ru/.netlify/functions/tobag";
+       
        
         const url = 'https://www.aplacadance.ru/.netlify/functions/new-question';       
         const params = {           
@@ -98,12 +103,12 @@ const Help = () => {
             email,
             question           
         };
-        const headers = {
-            'Access-Control-Allow-Origin': '*',
-            'Content-Type': 'application/json'
-        };
+        // const headers = {
+        //     'Access-Control-Allow-Origin': '*',
+        //     'Content-Type': 'application/json'
+        // };
         axios.post(url,JSON.stringify(params))     
-        .then(res => {           
+        .then(() => {           
             set_contact(true);
             set_name("");
             set_phone("");
@@ -118,23 +123,26 @@ const Help = () => {
     
     return (
         <>
-        <Helmet>
-        
-        <title>Only better brands shoes for run</title>
-        <html lang="en" /> 
+        <Helmet>        
+          <title>Only better brands shoes for run</title>
+          <html lang="en" /> 
         </Helmet>     
-           <DivAbout>
-                    <Link to="/" className="to_main" ></Link>
+          <DivAbout>
+            <Link to="/" className="to_main" ></Link>                    
+            <span>Customer service</span>
                     
-                    <span>Customer service</span>
-                    
-                    <DivInput>
+              <DivInput>
                         { contact ? 
                             <h2>Message sending to manager</h2>
                         : <>   
                             <h1>Contact  us</h1>
                             <InputName type="text" placeholder="NAME" value={name} onChange={(e)=>set_name(e.target.value)} />
-                            <InputName type="text"  placeholder="PHONE" value={phone} onChange={(e)=>set_phone(e.target.value)} />
+                            <InputName 
+                                type="text"  
+                                placeholder="PHONE " 
+                                value={phone.replace( /^(\d\d)(\d\d\d)(\d\d)(\d\d)/, (...match) => `+375-(${match[1]})-${match[2]}-${match[3]}-${match[4]}` )} 
+                                onChange={setPhone} 
+                            />
                             <InputName type="text"  placeholder="EMAIL" value={email} onChange={(e)=>set_email(e.target.value)}  />
                             <Input 
                                 type="text" 

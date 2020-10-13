@@ -127,13 +127,13 @@ const Orders = () => {
     return (
         <Layout set_number={set_number} title="Your orders">
             {visible_account ? 
-                <div className="go_to_account">                   
-                    <p>                   
-                        <Input type="text" ref={inputRef} value={name||''} placeholder="input name" onChange={(e)=>set_name(e.target.value)} />
+                <div className="go_to_account">               
+                                     
+                    <Input type="text" ref={inputRef} value={name||''} placeholder="input name" onChange={(e)=>set_name(e.target.value)} />
 
-                        <Input type="phone" value={phone} placeholder="input phone" onChange={(e)=>set_phone(e.target.value)}/>
-                        <ButtonAccount onClick={Go_account}>ENTER</ButtonAccount>                  
-                    </p>                   
+                    <Input type="phone" value={phone} placeholder="input phone" onChange={(e)=>set_phone(e.target.value)}/>
+                    <ButtonAccount onClick={Go_account}>ENTER</ButtonAccount>                  
+                                    
                 </div>        
             :   <>
                 {visible_order ? <div className="orders">

@@ -576,8 +576,11 @@ img {
     }
     .go_to_account, .orders {
         margin: 170px 0 0;
+       
     }
-   
+    .go_to_account:before {
+        font-size: 16px;
+    }
     .div_content,
     .div_description {
         width: 100vw;

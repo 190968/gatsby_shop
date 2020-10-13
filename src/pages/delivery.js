@@ -65,12 +65,15 @@ const FormDelivery = ({ bag, delBag, delivery }) => {
     return <Div>
         <BlockPhone />              
         <form className="delivery_name">
-                    <label>COUNTRY:</label>                
-                    <Input type="text" required value={country}  onChange={(e)=>set_country(e.target.value)} placeholder="input country" />
-                    <label>CITY:</label> 
-                    <Input type="phone" required value={city} onChange={(e)=>set_city(e.target.value)} placeholder="input city" />
-                    <label>STREET: </label>
+                    <label>COUNTRY:              
+                        <Input type="text" required value={country}  onChange={(e)=>set_country(e.target.value)} placeholder="input country" />
+                    </label>  
+                    <label>CITY:
+                        <Input type="phone" required value={city} onChange={(e)=>set_city(e.target.value)} placeholder="input city" />
+                    </label> 
+                    <label>STREET:                
                     <Input type="email" required value={street} onChange={(e)=>set_street(e.target.value)} placeholder="input street" />
+                    </label>
                     <label>NAME:  </label>
                     <Input type="text" required value={name}  onChange={(e)=>set_name(e.target.value)} placeholder="input name" />
                     <label>PHONE: </label>

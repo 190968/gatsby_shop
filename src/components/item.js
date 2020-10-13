@@ -122,7 +122,7 @@ const Item = (props) => {
             <div className="div_content">
                 <h2>{page.brand.toUpperCase()} <Linktobag /></h2>
                 <p>
-                    {image_model.replace("T_S","T-S").replace(/_/g," ")} {gender} run {item}                        
+                    {image_model.replace("T_S","T-S").replace(/_/g," ")} {gender}s run {item}                        
                 </p>
                 <h2>                        
                     {sale === 0 ? 
