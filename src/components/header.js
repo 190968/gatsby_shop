@@ -146,13 +146,13 @@ const mapStateToProps = state => ({
     bag: state.app.bag,
     link: state.app.link,
     currency: state.app.currency
-   });
+});
    
-   const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = dispatch => ({
     addBag: () => dispatch(addBag()),
     euro: (a) => dispatch(euro(a))
     
-   });
+});
 export default connect(mapStateToProps,mapDispatchToProps)(Header);
 
 

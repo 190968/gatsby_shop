@@ -108,7 +108,7 @@ const Item = (props) => {
                     style={{backgroundSize: "90%", backgroundImage: `url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model.replace(" ","_") + "_" + image_color}${number}.jpg),url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model.replace(" ","_") + "_" + image_color}${number}.webp)`}}
                 
                 />
-                {["",1,2].map(i => <div className="div_small_image"
+                {["",1,2].map((i,index) => <div className="div_small_image" key={index}
                         onClick={()=>set_number(i)}                       
                         style={{backgroundImage: `url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model.replace(" ","_") + "_" + image_color}${i}.jpg),
                                 url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model.replace(" ","_") + "_" + image_color}${i}.webp)`,

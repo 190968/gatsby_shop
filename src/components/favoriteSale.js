@@ -10,13 +10,11 @@ const Sale = styled.b`
     float: right;
     padding: 5px;
 `;
-
 const DivItem = styled.div`
     height: fit-content;
-    padding-bottom: 10px;   
+    padding-bottom: 5px;   
     width: 20vw;
-    display: inline-block;  
-    
+    display: inline-block;    
     background-color: #fff;
     cursor: pointer;
     &:hover {
@@ -40,78 +38,65 @@ const DivItem = styled.div`
     @media (max-width: 660px) {
         padding: 5px;
         margin: 0;
-        width: 30vw;
-       
-            &:last-child {
-                display: none;
-              }
-       
+        width: 30vw;       
+        &:last-child {
+            display: none;
+        }       
     }
 `;
 
-const DivItems = styled.div`
-    margin-top: 50px;
+const AllSale = styled.div`
+    margin: 50px 0 5px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-   
+    justify-content: space-between;  
     position: relative;
     p b {
         color: red;
         font-size: 25px;
-    }
-   
+    }   
     :before {
         content: "Favorite Sale Last Weak";
-        font: 600 1.5em/25px 'Arial', sans-serif;
-        
-        
+        font: italic 600 1.5em/25px 'Arial', sans-serif;      
         width: 100%;
-        color: yellow;
+        color: cornflowerblue;
         position: absolute;
         background-image: linear-gradient(rgba(255,0,0,0), rgba(255,0,0,0.5));
         padding: 12px;
-        top:-50px;
-        left: 0;
-       
+        top:-55px;
+        left: 0;       
         @media (max-width: 660px) {
           padding: 10px;
-          font-size: 1em;
-         
+          font-size: 1em;         
         }
     }
 `;
 
-const  FavoriteSale = () => {
+export default function () {
     const [number, set_number] = React.useState(false);
     let data = useStaticQuery(
         graphql`
-           
-                        query {
-                            allDatoCmsSale {
-                                nodes {
-                                    brand
-                                    modelitem
-                                    color
-                                    cost
-                                    sale
-                                    size
-                                    gender
-                                }
-                            }
-                        }
-                    `
-       
-    );
-     data.length = 2;
-    return (
-       
-            
-            <DivItems>
-                {data.allDatoCmsSale.nodes.map((i,index) => <DivItem onClick={()=>set_number(index+1)} key={index}> 
-                    <span                    
+            query {
+                allDatoCmsSale {
+                    nodes {
+                        brand
+                        modelitem
+                        color
+                        cost
+                        sale
+                        size
+                        gender
+                    }
+                }
+            }
+    `);
+    
+    return (            
+        <AllSale>
+            {data.allDatoCmsSale.nodes.map((i,index) => <DivItem onClick={()=>set_number(index+1)} key={index}> 
+                    <span  
                                           
-                        style={{backgroundImage: `url(https://myrunshop.000webhostapp.com/wp-content/image/${i.brand}/${i.modelitem}_${i.color}.jpg),
+                        style={{ backgroundImage: `url(https://myrunshop.000webhostapp.com/wp-content/image/${i.brand}/${i.modelitem}_${i.color}.jpg),
                             url(https://myrunshop.000webhostapp.com/wp-content/image/${i.brand}/${i.modelitem}_${i.color}.webp)`,
                            
                         }}                   
@@ -120,8 +105,8 @@ const  FavoriteSale = () => {
                     </span>    
                     <h3>{i.brand.toUpperCase()}</h3>
                     <h4>{i.modelitem.replace(/_/g," ")}</h4> 
-                    <b>{i.gender}</b>
-                    <p> {i.color}</p>
+                    <b>{i.gender}s</b>
+                    <p>{i.color}</p>
                     <p>
                         <del>{i.cost}$</del> 
                         <b>{(i.cost*(100-i.sale)/100).toFixed(0)}$</b>
@@ -139,11 +124,7 @@ const  FavoriteSale = () => {
                     size={data.allDatoCmsSale.nodes[number-1].size}
                 />
             }
-            </DivItems>
-          
-       
+        </AllSale>       
 
     )
-};
-
-export default FavoriteSale;
+}; 

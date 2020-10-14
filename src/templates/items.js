@@ -94,6 +94,7 @@ const Color = styled.span.attrs(props=>({
     &:hover:before {
         display: inline-block;
         font-weight: 600;
+        width: 100px;
     }
     &:before {
         content: 'select ${props=>props.color}';
@@ -101,30 +102,27 @@ const Color = styled.span.attrs(props=>({
         top: -20px;
         left: -25px;
         display: none;
-        color: #000;
+        color: #000;      
+        width: 100px; 
         font-size: 16px;
     }
 `;
-const Sale = styled.b.attrs(props => ({
+const Sale = styled.div.attrs(props => ({
     sale:props.sale,
     props:props.currency
 }))`    
-    display: inline-block;
-    margin: 0;
-    font-size: 25px;
-    width: auto;
-    position: relative;
-    text-align: center;
-    padding: 0 10px;
+    display: inline-block;    
+    font-size: 25px;   
+    position: relative;    
     &:before {
         content: '-${props=>props.sale}%';
         top: -25px;
-        left: 32px;
+        left: 55%;
         color: yellow;
         visibility: ${props=>props.sale === 0 ? 'hidden': 'visible'};
         background-color: red;
         padding: 5px 2px;
-        border-radius: 50%;
+        border-radius: 20%;
         position: absolute;
         font: 600 16px/18px 'Arial', sans-serif;
     }
@@ -223,60 +221,48 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
     const [image_item, set_image_item] = React.useState(false);
     const [new_index, set_new_index] = React.useState();
     
-    const noFilterCost = () => {      
+    const setItem = a => { 
+        set_item(a);     
         set_min(0);
-        set_max(10000);
+        set_max(180);
         set_size(null);
         set_color("all")      
     };
-    const SortOnCost = () => {
-        set_sort(!sort)
-    };
+    const SortOnCost = () => set_sort(!sort) ;
     
-    const setItem = (a,b) => {
+    const setItemView = (a,b) => {
         set_image_item(a);
-        set_new_index(b);
-       
+        set_new_index(b);       
     };
-    const setColor = (i) => {
-        set_color(color === i.color ? "all" : i.color)
-    };    
+    const setColor = i => set_color(color === i.color ? "all" : i.color) ;   
+
     const orders = data.allMongodbMyBase.nodes
-        .filter(i=>i.item === item)
-        .filter(i=> size ? i.size.split(',').some(a=>a===size) : i.size)
-        .filter(i=> model ? i.model === model : i.model)
-        .filter(i=> gender==='GENDER' ? i : i.gender === gender)
-        .sort((a,b)=> sort ? a.cost-b.cost:b.cost-a.cost)
-        .filter(i=> i.cost >= min_cost)
-        .filter(i=> i.cost <= max_cost)    
-        .filter(i=> color === "all" ? i : i.color === color);
+        .filter(i => i.item === item)
+        .filter(i => size ? i.size.split(',').some(a=>a===size) : i.size)
+        .filter(i => model ? i.model === model : i.model)
+        .filter(i => gender==='GENDER' ? i : i.gender === gender)
+        .sort((a,b) => sort ? a.cost-b.cost:b.cost-a.cost)
+        .filter(i => i.cost >= min_cost)
+        .filter(i => i.cost <= max_cost)    
+        .filter(i => color === "all" ? i : i.color === color);
 
     
 
 
     return <Layout 
-            countr={countr} 
-            model={model} 
-            set_number={set_number} 
-            orders={orders.length} 
+            countr = {countr} 
+            model = {model} 
+            set_number = {set_number} 
+            orders = {orders.length} 
             context_brand = {pageContext.brand} 
-            context_gender={pageContext.gender} 
+            context_gender = {pageContext.gender} 
         > 
         <Info 
             brand ={pageContext.brand} 
             gender={pageContext.gender} 
             order={orders.length} 
-            model={model}
-            color={color}           
-            size={size}
-            set_color={set_color}
-            set_size={set_size}
-            min ={min_cost}
-            max ={max_cost}
-            item= { item }
-            set_min={set_min}
-            set_max={set_max}
-            noFilterCost={noFilterCost}
+            model={model}      
+            item= { item }          
         />
         <Page>
             <Filtr color={color} onClick={()=>set_color("all")}>color: {color}</Filtr>
@@ -291,17 +277,22 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
                     </select>
             </span>     
             <span>Page:</span>
-            {orders.filter((i,index)=>!("" + (index/10)).includes(".")).map((i,index) => 
+            {orders.filter( (i,index) => !("" + (index/10)).includes(".")).map( (i,index) => 
             <span style={{backgroundColor: index+1 === page  ? 'yellow' : 'inherit'}} onClick={()=>set_page(index+1)}>{index+1}</span>)}
         </Page>
         <div className="menu_items">
-            <MenuItem >
-               
-               
-                    <Label for="shoes" item={item}>Shoes</Label>
-                    <Checkbox id="shoes" type="checkbox" name="shoes" onChange={()=>set_item("shoes")}/>
-                    <Label for="clothing" item={item}>Clothing</Label>
-                    <Checkbox  id="clothing" type="checkbox" name="clothing"  onChange={()=>set_item("clothing")}/>
+            <MenuItem>              
+                <Label  item={item}>Shoes
+                    <Checkbox 
+                        id="shoes" 
+                        type="checkbox" 
+                        name="shoes" 
+                        onChange={()=>setItem("shoes")} 
+                    />
+                </Label>
+                <Label  item={item}>Clothing
+                    <Checkbox  id="clothing" type="checkbox" name="clothing"  onChange={()=>setItem("clothing")} />
+                </Label>
                 
             </MenuItem>          
             <MenuItem >BRAND</MenuItem>
@@ -319,15 +310,15 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
             </MenuItem>            
             
         </div>   
-        {orders.filter((i,index)=> (page-1)*10 <= index && index < page*10).map((i,index) => 
+        {orders.filter((i,index) => (page-1)*10 <= index && index < page*10).map((i,index) => 
             <div className="items" key={index} >              
                 <ButImage                  
                     style={{backgroundImage: `url(https://myrunshop.000webhostapp.com/wp-content/image/${i.brand}/${i.model}_${i.color}.jpg),
                         url(https://myrunshop.000webhostapp.com/wp-content/image/${pageContext.brand}/${i.model}_${i.color}.webp),
                         url('https://www.datocms-assets.com/28552/1590394654-image.jpg')`
-                        }} 
-                        alt="no image"
-                    onClick={()=>setItem(true,index)}
+                    }} 
+                    alt="no image"
+                    onClick={()=>setItemView(true,index)}
                         
                 />    
                 <span className="brand">{i.brand}</span>
@@ -347,17 +338,15 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
                             onClick={()=>set_size(m)}                          
                         >{m}</Size>
                     )}
-                </span>
-                <div className="cost">                  
-                    <Sale sale={i.sale} currency={s} >     
-                           
-                        {(i.cost*currency).toFixed(0)} 
+                </span>                                
+                <Sale className="cost"  sale={i.sale} currency={s}>{(i.cost*currency).toFixed(0)}</Sale>                            
+                       
                                
                            
-                    </Sale>              
+                              
                    
                    
-                </div>
+               
                 {(image_item & index === new_index) ? <Item 
                         page={i} 
                         closeImage={set_image_item} 

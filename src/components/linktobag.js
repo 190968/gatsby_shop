@@ -37,16 +37,8 @@ const BagLink = styled(Link).attrs(props=> ({
     }
 `;
 
-const LinkToBag = ({ bag }) => (
+const LinkToBag = ({ bag }) => <BagLink to="/bag" count={bag.length} /> 
 
-    <BagLink to="/bag" count={bag.length}/>
-      
-   
-);
-const mapStateToProps = state => ({
-    bag: state.app.bag
-   
-});
-   
+const mapStateToProps = state => ({ bag: state.app.bag });  
    
 export default connect(mapStateToProps)(LinkToBag);
