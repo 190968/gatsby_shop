@@ -12,8 +12,8 @@ import { Footer } from "../components/footer";
 
 const Input = styled.input`
     display: inline-block;
-    width: 20%;
-    margin: 0 0 20px;
+   
+    margin: 0  10px 20px;
     font-size: 1.2vw;
     padding: 5px;
     border: none;
@@ -72,18 +72,21 @@ const FormDelivery = ({ bag, delBag, delivery }) => {
                         <Input type="phone" required value={city} onChange={(e)=>set_city(e.target.value)} placeholder="input city" />
                     </label> 
                     <label>STREET:                
-                    <Input type="email" required value={street} onChange={(e)=>set_street(e.target.value)} placeholder="input street" />
+                        <Input type="email" required value={street} onChange={(e)=>set_street(e.target.value)} placeholder="input street" />
                     </label>
-                    <label>NAME:  </label>
-                    <Input type="text" required value={name}  onChange={(e)=>set_name(e.target.value)} placeholder="input name" />
-                    <label>PHONE: </label>
-                    <Input 
-                        type="phone" 
-                        required value={phone.replace( /^(\d\d)(\d\d\d)(\d\d)(\d\d)/, (...match) => `+375-(${match[1]})-${match[2]}-${match[3]}-${match[4]}` )} 
-                        onChange={(e)=>set_phone(e.target.value)} placeholder="input phone" 
-                    />
-                    <label>EMAIL: </label>
-                    <Input type="email" required value={email} onChange={(e)=>set_email(e.target.value)} placeholder="input email" />
+                    <label>NAME: 
+                        <Input type="text" required value={name}  onChange={(e)=>set_name(e.target.value)} placeholder="input name" />
+                    </label>
+                    <label>PHONE: 
+                        <Input 
+                            type="phone" 
+                            required value={phone.replace( /^(\d\d)(\d\d\d)(\d\d)(\d\d)/, (...match) => `+375-(${match[1]})-${match[2]}-${match[3]}-${match[4]}` )} 
+                            onChange={(e)=>set_phone(e.target.value)} placeholder="input phone" 
+                        />
+                    </label>
+                    <label>EMAIL: 
+                        <Input type="email" required value={email} onChange={(e)=>set_email(e.target.value)} placeholder="input email" />
+                    </label>
                     <p>
                        Subscription on sale: <Input type="checkbox" value="30" />
                     </p>

@@ -5,16 +5,16 @@ import "../styles/global.css";
 const brands = ["adidas","new-balance","nike","puma","salomon","reebok"];
 const gender = ["men","women","kids"];
 
-const Brand = ({number}) => (   
+const Brand = ({ number }) => (   
         <>       
-            {gender.map(i => <Link   
+            {gender.map(i => <div   
                     style={{ backgroundImage: `url(https://myrunshop.000webhostapp.com/brands/${brands[number]}_${i}.jpg)`}}         
-                    to = {`/${brands[number]}/${i}`}                   
-                    className="img_main_link"
+                                     
+                    className="img_brand"
                     key={i}
                 >
-                    <b>veiw {brands[number]}{" "}{i}</b>
-                </Link>
+                    <Link to = {`/${brands[number]}/${i}`} >veiw {brands[number]}{" "}{i}</Link>
+                </div>
             )}            
         </> 
 )

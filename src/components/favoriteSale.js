@@ -9,6 +9,7 @@ const Sale = styled.b`
     background-color: red;
     float: right;
     padding: 5px;
+    font:italic 600 1.2vw/1.2vw 'Verdana', sans-serif;
 `;
 const DivItem = styled.div`
     height: fit-content;

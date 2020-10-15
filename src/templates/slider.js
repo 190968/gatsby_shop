@@ -23,7 +23,7 @@ const Main = styled.div`
         color: blue;
         font: 300 14px/25px 'Arial', sans-serif;
         top: -7px;
-        left: ${props=> ((props.pos_max-15)/180)*100 }%;
+        left: ${props=> ((props.pos_max-15)/(props.wh/8.8))*100 }%;
         opacity: 1;
         background: yellow;
         cursor: pointer;
@@ -50,16 +50,18 @@ const Min = styled(Main)`
     }    
 `; 
 const Max = styled.div.attrs(props => ({
-    pos_max:props.max   
+    pos_max:props.max,
+    wh: props.wh   
 }))`
     height: 10px;
-    width: ${props=> (95 - (props.max/180)*100 )}%; 
+    width: ${props=> (props.wh/16 - (props.max/(props.wh/8.8))*100 )}%; 
     border-radius: 5px;
     float: right;
     background-color: #ccc;
     position: relative;    
 `; 
 const Slider = ({min, max, setMin, setMax}) => {
+  const WH = window.innerWidth;
   const [slider_min,set_slider_min] = React.useState(false);
   const [slider_max,set_slider_max] = React.useState(false); 
     const Mouse_move_min = (e) => {
@@ -70,7 +72,7 @@ const Slider = ({min, max, setMin, setMax}) => {
     };
     const Mouse_move_max = (e) => {
         if (slider_max) {        
-            setMax(max > 190 ? 188 : e.nativeEvent.offsetX-15)
+            setMax(max > WH/8.4 ? WH/8.8 : e.nativeEvent.offsetX-15)
         } else {}
     };     
    
@@ -78,15 +80,15 @@ const Slider = ({min, max, setMin, setMax}) => {
    
   return (
     <>
-    
+     
       <Main 
-        pos_max={max} 
+        pos_max={max} wh={WH}
         onMouseUp={()=>set_slider_max(false)} 
         onMouseDown={()=>set_slider_max(true)}      
         onMouseMove={e=>Mouse_move_max(e)}
         >
       
-       <Max  max={max} ></Max>
+       <Max  max={max} wh={WH}></Max>
       </Main>
       <Min  
         min={min}

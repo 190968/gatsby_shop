@@ -57,12 +57,13 @@ const Input = styled.input`
     margin-right: 1.2%;
     border: none;
 `;
-const Button = styled.button.attrs(props=>({
+const InputSub = styled.input.attrs(props=>({
     text: props.text
 }))`
     width: 32.2%;
     padding: 10px;
     position: relative;
+    color: #fff;
     :before {
         content: "input all position ";
         position: absolute;
@@ -77,14 +78,17 @@ const Button = styled.button.attrs(props=>({
     :hover :before {
         visibility: ${props => props.text.length < 3 ? 'visible': 'hidden'};
     }
+    :active {
+        box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
+                    inset 2px 2px 3px rgba(0, 0, 0, .6);
    
 `;
 const Help = () => {
 
-    const [name, set_name] = React.useState('');
-    const [phone, set_phone] = React.useState('');
-    const [email, set_email] = React.useState('');
-    const [question, set_message] = React.useState();
+    const [name, set_name] = React.useState("");
+    const [phone, set_phone] = React.useState("");
+    const [email, set_email] = React.useState("");
+    const [question, set_message] = React.useState("");
     const [contact, set_contact] = React.useState(false);
 
     const setPhone = (e) => {
@@ -134,7 +138,7 @@ const Help = () => {
               <DivInput>
                         { contact ? 
                             <h2>Message sending to manager</h2>
-                        : <>   
+                        : <form>   
                             <h1>Contact  us</h1>
                             <InputName type="text" placeholder="NAME" value={name} onChange={(e)=>set_name(e.target.value)} />
                             <InputName 
@@ -150,12 +154,14 @@ const Help = () => {
                                 value={question} 
                                 onChange={(e)=>set_message(e.target.value)} 
                             />
-                            <Button
-                                disabled = {name.length < 3 || phone.length < 10 || question.length < 20}
+                            <InputSub
+                                disabled = {name.length < 3  || question.length < 20}
                                 text = {name}
+                                value="SEND"
+                                type="submit"
                                 onClick={sendMessage}
-                            >Send</Button>
-                        </>
+                            />
+                        </form>
                         }
                     </DivInput>
                     

@@ -29,6 +29,7 @@ const MenuItem = styled.div`
     width: ${props=>props.width === '10' ? '10':'15'}%;
     display: inline-block;
     text-align: center;
+    
     vertical-align: middle;
     padding: 5px 0;
     b {
@@ -42,6 +43,14 @@ const MenuItem = styled.div`
         font-size: 16px;
    
 `;
+const MenuItemPage = styled(MenuItem)`
+    display: none;
+    @media(max-width: 1000px) {
+        display: inline-block;
+        width: auto;
+    }
+`;
+
 const Size = styled(Currency)`     
     font: 300 15px/30px 'Arial', sans-serif;    
     display: inline-block;
@@ -83,7 +92,7 @@ const ButImage = styled.button`
 const Color = styled.span.attrs(props=>({
     color:props.color
 }))`
-    height: 25px;
+    height: 24px;
     padding: 0 12px;
     display: inline-block;
     background-color: ${props=>props.color};   
@@ -100,7 +109,7 @@ const Color = styled.span.attrs(props=>({
         content: 'select ${props=>props.color}';
         position: absolute;
         top: -20px;
-        left: -25px;
+        left: -40px;
         display: none;
         color: #000;      
         width: 100px; 
@@ -143,11 +152,11 @@ const Select = styled.select`
 `;
 const Page = styled.p`
     text-align: right;
-    padding: 0 10px;
+    padding: 0 10px 0 0;
     margin: 5px 0;
     position: -webkit-sticky; /* Safari */
     position: sticky;
-    top: 40px;
+    top: 0;
     background-color: lightgoldenrodyellow;
     z-index: 10;   
     span {
@@ -166,12 +175,12 @@ const Checkbox = styled.input`
     display: none;
 `;
 const Label = styled.label.attrs(props=>({
-    props:props.for,
-   
+    htmlFor: props.htmlFor,
+    item: props.item
 }))`
     color: blue;
     margin: 0 5px;
-    background-color: ${props=>props.for === props.item ? "yellow" :" inherrit "}
+    background-color: ${props=>props.htmlFor === props.item ? "yellow" :" inherrit "}
 
 `;
 const Filtr = styled.b.attrs(props=>({
@@ -204,6 +213,21 @@ const Filtr = styled.b.attrs(props=>({
         background-color: yellow;
     }
 `;
+
+const ItemSelect = ({ props, item_new, setItem }) => {
+    return (
+        <Label item= {item_new} htmlFor={props} >
+            {props}
+            <Checkbox 
+                id={props} 
+                type="checkbox" 
+                name={props} 
+                onChange={()=>setItem(props)} 
+            />
+        </Label>
+    )
+};
+
 const Items =  ({ currency, pageContext, data,  location, countr }) => {   
    
     const {state = {}} = location;
@@ -265,6 +289,10 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
             item= { item }          
         />
         <Page>
+            <MenuItemPage>              
+                < ItemSelect props="shoes" item_new={item} setItem={setItem} />
+                < ItemSelect props="clothing" item_new={item} setItem={setItem} />
+            </MenuItemPage>          
             <Filtr color={color} onClick={()=>set_color("all")}>color: {color}</Filtr>
             <Filtr color={size} onClick={()=>set_size(null)}>size: {size}</Filtr>
             <Filtr color={min_cost} onClick={()=>set_min(0)}>cost {">"} {min_cost}</Filtr>
@@ -282,18 +310,8 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
         </Page>
         <div className="menu_items">
             <MenuItem>              
-                <Label  item={item}>Shoes
-                    <Checkbox 
-                        id="shoes" 
-                        type="checkbox" 
-                        name="shoes" 
-                        onChange={()=>setItem("shoes")} 
-                    />
-                </Label>
-                <Label  item={item}>Clothing
-                    <Checkbox  id="clothing" type="checkbox" name="clothing"  onChange={()=>setItem("clothing")} />
-                </Label>
-                
+                < ItemSelect props="shoes" item_new={item} setItem={setItem} />
+                < ItemSelect props="clothing" item_new={item} setItem={setItem} />
             </MenuItem>          
             <MenuItem >BRAND</MenuItem>
             <MenuItem >MODEL</MenuItem>
