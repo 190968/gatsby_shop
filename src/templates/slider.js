@@ -13,7 +13,7 @@ const Main = styled.div`
     border-radius: 5px;
     background: cornflowerblue;   
     position: relative;
-    top: 3px;
+    top: 5px;
     &:after {
         content: "${props=>props.pos_max}";  
         width: 30px;
@@ -22,7 +22,7 @@ const Main = styled.div`
         position: absolute;
         color: blue;
         font: 300 14px/25px 'Arial', sans-serif;
-        top: -7px;
+        top: -8px;
         left: ${props=> ((props.pos_max-15)/(props.wh/8.8))*100 }%;
         opacity: 1;
         background: yellow;
@@ -60,8 +60,9 @@ const Max = styled.div.attrs(props => ({
     background-color: #ccc;
     position: relative;    
 `; 
+const WH = window.innerWidth || 1600;
 const Slider = ({min, max, setMin, setMax}) => {
-  const WH = window.innerWidth;
+ 
   const [slider_min,set_slider_min] = React.useState(false);
   const [slider_max,set_slider_max] = React.useState(false); 
     const Mouse_move_min = (e) => {
@@ -80,7 +81,7 @@ const Slider = ({min, max, setMin, setMax}) => {
    
   return (
     <>
-     
+    
       <Main 
         pos_max={max} wh={WH}
         onMouseUp={()=>set_slider_max(false)} 
