@@ -26,7 +26,7 @@ const Currency = styled.button`
 `;
 
 const MenuItem = styled.div`
-    width: ${props=>props.width === '10' ? '10':'15'}%;
+    width: ${props=>props.width === '10' ? '9':'13.5'}vw;
     display: inline-block;
     text-align: center;
     
