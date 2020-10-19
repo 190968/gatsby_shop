@@ -6,7 +6,7 @@ const Main = styled.div`
     height: 10px;
     width: 95%;   
     border-radius: 5px;
-    background: cornflowerblue;   
+    background: linear-gradient(90deg, cornflowerblue ${props=> props.pos_max/1.8 - 8 }%, #ccc 50% ) ;   
     position: relative;
     top: 5px;
     &:after {
@@ -43,17 +43,7 @@ const Min = styled(Main)`
       left: ${props=>props.min-15}px;       
     }    
 `; 
-const Max = styled.div.attrs(props => ({
-    pos_max:props.max,
-    wh: props.wh   
-}))`
-    height: 10px;
-    width: ${props=> 100 - props.pos_max/1.8 - 5 }%; 
-    border-radius: 5px;
-    float: right;
-    background-color: #ccc;
-    position: relative;    
-`; 
+
 
 const Slider = ({min, max, setMin, setMax}) => {
   const [wh, set_width] = React.useState(1600);
@@ -61,30 +51,27 @@ const Slider = ({min, max, setMin, setMax}) => {
   const [slider_max,set_slider_max] = React.useState(false);
   
   useEffect(()=>set_width(Math.trunc(window.innerWidth*0.135*0.95)),[]);
-    const Mouse_move_min = (e) => {
-            if (slider_min) {        
-                setMin(min < 1 ? 2 : e.nativeEvent.offsetX)
-            } else { }
-    };
-    const Mouse_move_max = (e) => {
-        if (slider_max) {        
-            setMax(max > wh*1 ? wh*1 : e.nativeEvent.offsetX-18)
-        } else {}
-    };     
+  const Mouse_move_min = e => {
+    if (slider_min) {        
+      setMin(min < 1 ? 2 : e.nativeEvent.offsetX)
+    } else {}
+  };
+  const Mouse_move_max = e => {
+    if (slider_max) {        
+      setMax(max > wh*0.9 ? wh*0.9 : e.nativeEvent.offsetX-18)
+    } else {}
+  };     
    
 
    
   return (
-    <>    
+    <>
       <Main 
         pos_max={max} wh={wh}
         onMouseUp={()=>set_slider_max(false)} 
         onMouseDown={()=>set_slider_max(true)}      
         onMouseMove={e=>Mouse_move_max(e)}
-      >
-      
-       <Max  max={max} wh={wh}></Max>
-      </Main>
+      />
       <Min  
         min={min}
         onMouseUp={()=>set_slider_min(false)} 

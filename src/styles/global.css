@@ -631,10 +631,9 @@ img {
         display: inline-block;
         white-space: nowrap;    
     }
-    .items span, .cost {
-        display: block;
-       
-        width: 100%;
+    .items > span, .cost {
+        display: block;       
+       width: 100%;
     } 
    
     

@@ -28,8 +28,7 @@ const Currency = styled.button`
 const MenuItem = styled.div`
     width: ${props=>props.width === '10' ? '9':'13.5'}vw;
     display: inline-block;
-    text-align: center;
-    
+    text-align: center;    
     vertical-align: middle;
     padding: 5px 0;
     b {
@@ -89,17 +88,12 @@ const ButImage = styled.button`
 `;
 
 
-const Color = styled.span.attrs(props=>({
+const Color = styled(MenuItem).attrs(props=>({
     color:props.color
-}))`
-    height: 24px;
-    padding: 0 12px;
-    display: inline-block;
-    background-color: ${props=>props.color};   
+}))`   
+    font: 100px/16px 'Arial', sans-serif;
     cursor: pointer;
     position: relative;   
-    vertical-align: middle;
-    border-radius: 20px;
     &:hover:before {
         display: inline-block;
         font-weight: 600;
@@ -109,7 +103,7 @@ const Color = styled.span.attrs(props=>({
         content: 'select ${props=>props.color}';
         position: absolute;
         top: -20px;
-        left: -40px;
+        left: 1vw;
         display: none;
         color: #000;      
         width: 100px; 
@@ -342,12 +336,9 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
                 <span className="brand">{i.brand}</span>
                 <span>{i.model.replace("T_S","T-S").replace(/_/g," ")}</span>
                 <span>{i.gender}s</span>
-                <MenuItem width="10" style={{color: i.color}}>
-                  
-                  
-                    <Color color={i.color} onClick={()=>setColor(i)} />
-                    
-                </MenuItem>
+                <Color width="10" style={{color: i.color}} color={i.color}  onClick={()=>setColor(i)}>                  
+                    &#8226;                    
+                </Color>
                 <span>
                     {i.size.split(',').map(m=>
                         <Size 
