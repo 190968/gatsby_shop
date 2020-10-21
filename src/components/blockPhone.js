@@ -69,12 +69,13 @@ const Delivery_two = styled(Delivery)`
     }      
 `;
 const Img = styled.img`
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     opacity: 0.5;
+    float: right;
+    margin: 8px 10px 0 20px;
    
-    margin: 0 10px;
-    :hover {
+    &:hover {
         opacity: 1;
     }
 
@@ -123,7 +124,7 @@ const BlockPhone = ({country = "BY", setCountry,  setLocations}) => {
                         <img src = {`https://myrunshop.000webhostapp.com/flags/${country}.png`} height="40px" width="40px" alt={country}   title={country}/>
                         
                     </Hi>  
-                    <Img  onClick={()=>navigate("/locations")} src = {location}  alt="Location" title="Location"/>
+                   
                    
                      
                    
@@ -131,7 +132,8 @@ const BlockPhone = ({country = "BY", setCountry,  setLocations}) => {
                 <Delivery_two>
                     <p>Free delivery on order over 
                         <b>200$</b>         
-                    </p>
+                    </p> 
+                    <Img  onClick={()=>navigate("/locations")} src = {location}  alt="Location" title="Location"/>
                     <span title="help" onClick={()=>navigate("/help")}>Help & Contact</span> 
                    
                      

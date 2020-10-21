@@ -76,6 +76,7 @@ const Button = styled.button`
         z-index: 1;
         text-align: center;       
         width: 15%;
+       
         border: 1px solid #fff;
         background-color: ${props => props.setSize === props.newSize ? "#ccc": "#fff"};
         display: inline-block;
@@ -138,8 +139,12 @@ const Item = (props) => {
                 </h2>
                 
                     <p><strong>color:</strong> {image_color}</p>
-                    <p><strong>size:</strong> {new_size}</p>
-                    <p>{size.split(",").map((i,index)=><Size key={index} newSize={new_size} setSize={i} onClick={()=>set_size(i)}>{i}</Size>)}</p>
+                    <p><strong>size: </strong>{new_size}</p>
+                    <p>{size.split(",").map((i,index) => 
+                        <Size key={index} newSize={new_size} setSize={i} onClick={()=>set_size(i)}>
+                            {i-31}({i})
+                        </Size>)}
+                    </p>
                     <Button
                         disabled={new_size === "select size" ? "disabled":""}                        
                         title={new_size === "select size" ? "select size":"add to bag"}
@@ -159,9 +164,10 @@ const Item = (props) => {
                     <b>Description</b>
                     <ul>
                         <li>{gender} {item} for run</li>
-                        <li>Upper: Textile</li>
+                        <li>Upper: Textile. Aggressive Chevron grip pattern</li>
                         <li>Lining: Textile/Sinthetic</li>
-                        <li>Outsole: Sintehic</li>
+                        <li>Outsole: Sintehic. Full length Ignite Foam midsole</li>
+                        <li>Made in: Chine</li>
                     </ul>
             </div>
            

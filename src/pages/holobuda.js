@@ -3,6 +3,7 @@ import "../styles/global.css";
 import axios from "axios";
 import { Helmet } from 'react-helmet';
 import styled from "styled-components";
+import SendFile from "../components/sendBase";
 
 const Index = styled.b.attrs(props=>({
     ind: props.ind,
@@ -164,6 +165,7 @@ const Admin = () => {
     const [answered, set_answered] = React.useState(false);
     const [email, set_email] = React.useState("");
     const [password, set_password] = React.useState("");
+    const [div_base, div_base_view] = React.useState(false);
     
     // const url = 'http://localhost:8888/.netlify/functions/hello';
     // const url = 'https://www.aplacadance.ru/.netlify/functions/all_bags';
@@ -263,7 +265,7 @@ const Admin = () => {
             </Helmet>
             <div className="admin" >
                 <h4>ADMIN PANEL</h4> 
-            
+                <img src="https://github.com/superHotBob/image/blob/main/adidas/Enegy_falcon_black1.jpg?raw=true" height="150" width="150"/>
                 <p>
                     <Button>
                         <a href="https://shop-5589.admin.datocms.com/editor">CMS</a>
@@ -283,9 +285,10 @@ const Admin = () => {
                            
                        
                    
-                    <Button>BASE {questions.length}</Button>
+                    {/* <a href='http://localhost:8888/.netlify/functions/send_base'>BASE </a> */}
                     <Button onClick={()=>reboot()}>REBUILD</Button>                
                 </p>
+               
                 {view_bags && <>    
                     {orders.reverse().map((i,index) => <div key={index}  className="order" >
                     <IndexOne ind={index} text="№">{index + 1}.</IndexOne>
@@ -346,8 +349,7 @@ const Admin = () => {
 
                                 <div>
                                     <span onClick={()=>set_answered(false)}>x</span>
-                                    <h4>Answer to {i.name} on question: {i.question}</h4>
-                                    
+                                    <h4>Answer to {i.name} on question: {i.question}</h4>                                    
                                     <textarea rows="5" placeholder="answer"  autofocus type="text" value={text} onChange={(e)=>answer(e.target.value)}/>
                                     <input 
                                         required 

@@ -37,7 +37,20 @@ const MenuItem = styled.div`
             background-color: #ccc;
         }
     }
-   
+    p {
+        width: 20%;
+       margin: 0 auto;
+       display: inline-block;
+       vertical-align: middle;
+       color: gray;
+        font: 300 20px/5px 'Arial', sans-serif;
+        span {
+            margin: 0;
+            padding: 0;
+            font: 300 40px/15px 'Arial', sans-serif;
+            display: inline-block;
+        }
+    }
        
         font-size: 16px;
    
@@ -51,10 +64,10 @@ const MenuItemPage = styled(MenuItem)`
 `;
 
 const Size = styled(Currency)`     
-    font: 300 15px/30px 'Arial', sans-serif;    
+    font: 300 15px/20px 'Arial', sans-serif;    
     display: inline-block;
     text-align: center;
-    height: 30px;
+    height: 20px;
     width: auto;
     margin: 0;       
    
@@ -187,7 +200,7 @@ const Filtr = styled.b.attrs(props=>({
     position: relative;
     font: italic 300 16px/16px "Taroma", sans-serif;
     margin: 0 10px;
-    display: ${props=>(props.color === "all" || props.color === null || props.color === 0 || props.color === 180) ? 'none': 'inline-block'};
+    display: ${props=>(props.color === "GENDER" || props.color === "all" || props.color === null || props.color === 0 || props.color === 180) ? 'none': 'inline-block'};
     vertical-align: middle;
     // border-radius: 10px;
     z-index: 0;      
@@ -282,11 +295,13 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
             model={model}      
             item= { item }          
         />
+       
         <Page>
             <MenuItemPage>              
                 < ItemSelect props="shoes" item_new={item} setItem={setItem} />
                 < ItemSelect props="clothing" item_new={item} setItem={setItem} />
-            </MenuItemPage>          
+            </MenuItemPage> 
+            <Filtr color={gender} onClick={()=>set_gender("GENDER")}>gender: {gender}</Filtr>         
             <Filtr color={color} onClick={()=>set_color("all")}>color: {color}</Filtr>
             <Filtr color={size} onClick={()=>set_size(null)}>size: {size}</Filtr>
             <Filtr color={min_cost} onClick={()=>set_min(0)}>cost {">"} {min_cost}</Filtr>
@@ -309,12 +324,7 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
             </MenuItem>          
             <MenuItem >BRAND</MenuItem>
             <MenuItem >MODEL</MenuItem>
-            <MenuItem >
-               <Select  onChange={(e)=>set_gender(e.target.value)}>
-                   <option value="GENDER" >all</option>
-                   {pageContext.gender.map(i=><option key={i} value={i}>{i}</option>)}                  
-               </Select>
-            </MenuItem>
+            <MenuItem >GENDER</MenuItem>
             <MenuItem width="10">COLOR</MenuItem>
             <MenuItem >SIZE</MenuItem>
             <MenuItem style={{padding:"3px"}}>              
@@ -335,17 +345,19 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
                 />    
                 <span className="brand">{i.brand}</span>
                 <span>{i.model.replace("T_S","T-S").replace(/_/g," ")}</span>
-                <span>{i.gender}s</span>
+                <span onClick={()=>set_gender(i.gender)}>{i.gender}s</span>
                 <Color width="10" style={{color: i.color}} color={i.color}  onClick={()=>setColor(i)}>                  
                     &#8226;                    
                 </Color>
                 <span>
-                    {i.size.split(',').map(m=>
+                    {i.size.split(',').map( m =>
                         <Size 
                             key={m}
                             style={{ backgroundColor: size === m  ? '#ddd' : 'inherit'}}                           
                             onClick={()=>set_size(m)}                          
-                        >{m}</Size>
+                        > 
+                            {item === 'shoes' ? `${m - 32} (${m})` : m}
+                        </Size>
                     )}
                 </span>                                
                 <Sale className="cost"  sale={i.sale} currency={s}>{(i.cost*currency).toFixed(0)}</Sale>                            

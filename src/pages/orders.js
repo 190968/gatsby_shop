@@ -56,26 +56,24 @@ const Button = styled.button`
     }
 `;
 const Input = styled.input`
-    vertical-align: top;
-    height: 45px;
+    
+   
     padding: 10px;
-    width: 33%;
-    color: red;
-    border: none;
+    display: block;
+    background-color: #ddd;
+    width: 80%;
+    
+    border: 1px solid #ccc;
    
     outline: none;
-    background-color: #fff;
-    margin: 5px;
-    @media(max-width: 600px){
-        width: 80%;
-        display: block;
-        margin: 10px auto;
-    }
+    
+    margin: 20px auto; 
+    
 `;
 
 const ButtonAccount = styled(Button)`
-    margin: 5px;
-    width: 30%;
+   
+    width: 80%;
    
 `;
 const IndexOne = styled(Index)`

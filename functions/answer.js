@@ -9,7 +9,9 @@ exports.handler = async (event, context, callback) => {
     const connect = await Mongoclient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });           
     const set = { $set: { "answer": params.answer }   };          
     const filter = { "email": params.email  };         
-    const dbo = await connect.db("my").collection("question").updateOne(filter,set);
+    const dbo = await connect.db("my").collection("questions").updateOne(filter,set);
+    console.log("Answer sending");
+
     async function main() { 
         const transporter = nodemailer.createTransport ({
           service: 'gmail',   

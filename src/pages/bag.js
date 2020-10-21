@@ -152,8 +152,8 @@ const Bag =  ({ bag, delete_from_bag, add_count, currency, delivery, setDelivery
                                 {i.count}
                             <Add onClick={()=>add_count(index,1)}>+</Add>
                         </Quant>
-                        <span>{(i.cost*currency).toFixed(0)} {s}</span>
-                        <span><b style={{fontSize: "1.3em"}}>{(i.cost*i.count*currency).toFixed(0)}</b>{s}</span>
+                        <span>{s}{(i.cost*currency).toFixed(0)} </span>
+                        <span><b style={{fontSize: "1.3em"}}>{s}{(i.cost*i.count*currency).toFixed(0)}</b></span>
                         
                         
                     
@@ -162,13 +162,13 @@ const Bag =  ({ bag, delete_from_bag, add_count, currency, delivery, setDelivery
                 
                 )}
                 <div className="div_delivery">
-                    <p><InputSpan>Delivery to the warehouse</InputSpan>10 {s}
+                    <p><InputSpan>Delivery to the warehouse</InputSpan> {s}10
                         <input type="checkbox" value="10" checked={delivery===10} onChange={()=>setDelivery(10)}/>
                     </p>
-                    <p><InputSpan>Home delivery</InputSpan>20 {s}
+                    <p><InputSpan>Home delivery</InputSpan> {s}20
                         <input type="checkbox" value="20" checked={delivery===20} onChange={()=>setDelivery(20)}/>
                     </p>
-                    <p><InputSpan>Express delivery </InputSpan>30 {s}
+                    <p><InputSpan>Express delivery </InputSpan> {s}30
                         <input type="checkbox" value="30" checked={delivery===30} onChange={()=>setDelivery(30)}/>
                     </p>
                     <p style={{borderTop: "1px solid #ccc; paddingTop: 20" }}>
