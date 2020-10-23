@@ -21,8 +21,7 @@ const Delivery = styled.div`
         color: red;       
     }
     b {
-        color: blue;       
-        
+        color: blue;     
         @media (max-width: 550px) {
             font-size: 18px;
         }
@@ -72,9 +71,7 @@ const Img = styled.img`
     width: 35px;
     height: 35px;
     opacity: 0.5;
-    float: right;
-    margin: 8px 10px 0 20px;
-   
+    margin: 0 10px; 
     &:hover {
         opacity: 1;
     }
@@ -83,7 +80,7 @@ const Img = styled.img`
 const Hi = styled.p`
     display: inline-block;
     margin: 0 20px;
-    color: #bbb;
+    color: blue;
     
     cursor: pointer;
     font: italic 300 16px/50px 'Verdana', sans-serif;

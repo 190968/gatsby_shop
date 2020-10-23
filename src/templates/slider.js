@@ -39,7 +39,7 @@ const Min = styled(Main)`
     top: -5px;
     &:after {
       content: "${props=>props.min}";
-      top: -10px;
+     
       left: ${props=>props.min-15}px;       
     }    
 `; 
@@ -58,7 +58,7 @@ const Slider = ({min, max, setMin, setMax}) => {
   };
   const Mouse_move_max = e => {
     if (slider_max) {        
-      setMax(max > wh*0.9 ? wh*0.9 : e.nativeEvent.offsetX-18)
+      setMax(max > wh*0.9 ? wh*0.9 : Math.trunc(e.nativeEvent.offsetX - e.nativeEvent.offsetX/9 ))
     } else {}
   };     
    

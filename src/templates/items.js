@@ -123,6 +123,28 @@ const Color = styled(MenuItem).attrs(props=>({
         font-size: 16px;
     }
 `;
+const Gender = styled(MenuItem).attrs(props=>({
+    color:props.gender
+}))`   
+    font: 20px/16px 'Arial', sans-serif;
+    cursor: pointer;
+    position: relative;   
+    &:hover:before {
+        display: inline-block;
+        font-weight: 600;
+       
+    }
+    &:before {
+        content: 'select ${props=>props.gender}';
+        position: absolute;
+        top: -20px;
+        left: 4vw;
+        display: none;
+        color: #000;      
+        
+        font-size: 16px;
+    }
+`;
 const Sale = styled.div.attrs(props => ({
     sale:props.sale,
     props:props.currency
@@ -345,7 +367,7 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
                 />    
                 <span className="brand">{i.brand}</span>
                 <span>{i.model.replace("T_S","T-S").replace(/_/g," ")}</span>
-                <span onClick={()=>set_gender(i.gender)}>{i.gender}s</span>
+                <Gender onClick={()=>set_gender(i.gender)} gender={i.gender} >{i.gender}s</Gender>
                 <Color width="10" style={{color: i.color}} color={i.color}  onClick={()=>setColor(i)}>                  
                     &#8226;                    
                 </Color>

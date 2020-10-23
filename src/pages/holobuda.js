@@ -272,7 +272,10 @@ const Admin = () => {
                     </Button>
                     <Button>
                         <a href="https://files.000webhost.com/">IMAGE</a>
-                    </Button>                    
+                    </Button>
+                    <Button>
+                        <a href="http://localhost:8888/.netlify/functions/uploadfile">BASE</a>
+                    </Button>                              
                     {view_questions && 
                         <Button 
                             onClick={()=>{set_view_bags(!view_bags);set_view_questions(!view_questions)}}
@@ -285,7 +288,7 @@ const Admin = () => {
                            
                        
                    
-                    {/* <a href='http://localhost:8888/.netlify/functions/send_base'>BASE </a> */}
+                  
                     <Button onClick={()=>reboot()}>REBUILD</Button>                
                 </p>
                

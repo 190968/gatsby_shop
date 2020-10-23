@@ -553,10 +553,10 @@ img {
         left: 0;
         top: 0%;    
     }
-    .div_image {
+    /* .div_image {
         margin: 10px auto 0;
         float: none;        
-    }
+    } */
     .div_big_image {         
         margin:  0 auto 5px;
         width: auto;        
