@@ -63,35 +63,32 @@ const Euro = styled(Account)`
     color: #fff;   
     background: none;
     text-align: center;
-    margin: 2px 0;
-    display: inline-block;
+    margin: 2px auto;
+    width: 45px;
+   
     &:hover {
         box-shadow: none;
-        color: red;
+        color: yellow;
     }
-    @media(max-width:600px) {
-        font: 300 18px/47px 'Arial', sans-serif;
-    }   
+    
 `;
 const DivCur = styled.div`
-    display: inline-block;
+    display: block;
     width: 45px;
-    height: 49px;
+    height: 45px;
+    position: absolute;
+    right: 140px;
+    top: 0px;
     overflow: hidden;
-    float: right;
-    vertical-align: middle;
-   
-    transition: all 0.5s;
-    
+    float: right;  
+    transition: all 0.5s;    
     &:hover {
-        width: 150px;
+        height: 150px;
         transition: all 0.5s;       
-        background-color: #ccc;
+        background-color: cornflowerblue;
+        
     }
-    @media(max-width:600px) {
-        width: 45px;
-        position: relative;
-    }
+    
 
 `;
 
@@ -127,8 +124,9 @@ export const Header = ({ euro, currency }) => {
                     <Account />
                 </Link>                         
                 <DivCur>                 
-                {["€","$","£"].filter(i=>i!==s).concat(s).reverse().map(i=><Euro key={i}  onClick={()=>euro(i)}>{i}</Euro> )}    
-                    
+                    {["€","$","£"].filter(i=>i!==s).concat(s).reverse().map( i =>
+                        <Euro key={i}  onClick={()=>euro(i)}>{i}</Euro> )
+                    }  
                    
                    
                 </DivCur>           

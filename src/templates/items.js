@@ -170,15 +170,7 @@ const Sale = styled.div.attrs(props => ({
         font: 400 20px/18px 'Arial', sans-serif;
     }
 `;
-const Select = styled.select`
-    border: none;
-    outline: none;
-    background: inherit;
-    option {
-        border: none;
-        outline: none;
-    }
-`;
+
 const Page = styled.p`
     text-align: right;
     padding: 0 10px 0 0;
@@ -216,17 +208,17 @@ const Filtr = styled.b.attrs(props=>({
     props:props.color
 }))`
     padding: 5px 8px;    
-    border: 1px solid yellow;
+    border: 1px solid cornflowerblue;
     cursor: pointer;
-    background-color: cornflowerblue;    
+    background-color: yellow;    
     position: relative;
-    font: italic 300 16px/16px "Taroma", sans-serif;
+    font: italic 600 16px/16px "Taroma", sans-serif;
     margin: 0 10px;
     display: ${props=>(props.color === "GENDER" || props.color === "all" || props.color === null || props.color === 0 || props.color === 180) ? 'none': 'inline-block'};
     vertical-align: middle;
     // border-radius: 10px;
     z-index: 0;      
-    color: yellow;   
+    color: cornflowerblue;   
     &:after {
         content: 'x';
         color: cornflowerblue;
@@ -329,7 +321,7 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
             <Filtr color={min_cost} onClick={()=>set_min(0)}>cost {">"} {min_cost}</Filtr>
             <Filtr color={max_cost} onClick={()=>set_max(180)}>cost {"<"} {max_cost}</Filtr> 
             <span className="sort">
-                    sort by:
+                    Sort by:{" "}
                     <select onChange={(e)=>SortOnCost(e.target.value)}>
                         <option value="true" >cheap first</option>
                         <option value="false" >expensive first</option>
@@ -349,7 +341,7 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
             <MenuItem >GENDER</MenuItem>
             <MenuItem width="10">COLOR</MenuItem>
             <MenuItem >SIZE</MenuItem>
-            <MenuItem style={{padding:"3px"}}>              
+            <MenuItem style={{paddingRight: "3px"}}>              
                 <Slider min={min_cost} max={max_cost} setMin={set_min} setMax={set_max} />            
             </MenuItem>            
             
@@ -359,6 +351,8 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
                 <ButImage                  
                     style={{backgroundImage: `url(https://myrunshop.000webhostapp.com/wp-content/image/${i.brand}/${i.model}_${i.color}.jpg),
                         url(https://myrunshop.000webhostapp.com/wp-content/image/${pageContext.brand}/${i.model}_${i.color}.webp),
+                        url(https://github.com/superHotBob/image/blob/main/${pageContext.brand}/${i.model}_${i.color}.webp?raw=true),
+                        url(https://github.com/superHotBob/image/blob/main/${pageContext.brand}/${i.model}_${i.color}.jpg?raw=true),
                         url('https://www.datocms-assets.com/28552/1590394654-image.jpg')`
                     }} 
                     alt="no image"

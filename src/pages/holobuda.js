@@ -265,7 +265,8 @@ const Admin = () => {
             </Helmet>
             <div className="admin" >
                 <h4>ADMIN PANEL</h4> 
-                <img src="https://github.com/superHotBob/image/blob/main/adidas/Enegy_falcon_black1.jpg?raw=true" height="150" width="150"/>
+                <img src="https://github.com/superHotBob/image/blob/main/new%20balance/Liverpool_6_T_Shirt_black.webp?raw=true" height="150" width="150"/>
+                <img src="https://github.com/superHotBob/image/blob/main/adidas/T_shirt2_white.webp?raw=true" height="150" width="150"/>
                 <p>
                     <Button>
                         <a href="https://shop-5589.admin.datocms.com/editor">CMS</a>

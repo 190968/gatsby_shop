@@ -67,16 +67,16 @@ const Button = styled.button`
         
     }
 `;
- const Size = styled.span.attrs(props=>({
+ const Size = styled.b.attrs(props=>({
         setSize: props.setSize,
         newSize: props.newSize
     }))`
-        padding: 5px;
+        
         margin: 0 5px 0 0;
         z-index: 1;
         text-align: center;       
-        width: 15%;
        
+        font: 400 16px/28px 'Arial', sans-serif;
         border: 1px solid #fff;
         background-color: ${props => props.setSize === props.newSize ? "#ccc": "#fff"};
         display: inline-block;
@@ -91,7 +91,7 @@ const Button = styled.button`
     `;
 const Item = (props) => {
 
-    const { currency,addBag, page, gender, closeImage, image_color, image_model, size =  0, cost, sale= 0, item = 'shoes' } = props;
+    const { currency,addBag, page, gender, closeImage, image_color, image_model, size =  0, cost, sale = false, item = 'shoes' } = props;
     const [new_size, set_size] = React.useState("select size");
     const s = (currency === 0.8) ? "€" : (currency === 1) ? "$"  : "£" ;
     const handClose = () => {
@@ -125,24 +125,16 @@ const Item = (props) => {
                 <p>
                     {image_model.replace("T_S","T-S").replace(/_/g," ")} {gender}s run {item}                        
                 </p>
-                <h2>                        
-                    {sale === 0 ? 
-                       <Sale sale={sale} currency={s}>                          
-                            {(cost*currency).toFixed(0)}            
-                          
-                        </Sale>           
-                        :
-                        <> 
-                            <del>{cost*currency}$</del>  <b>{(cost*(100-sale)/100).toFixed(0) + `$`}</b>
-                        </>
-                    }
+                <h2>         
+                    
+                    {sale > 0 && <del>{Math.trunc(cost*currency)}$</del>}  <b>{(cost*(100-sale)/100).toFixed(0) + `$`}</b>
                 </h2>
                 
                     <p><strong>color:</strong> {image_color}</p>
                     <p><strong>size: </strong>{new_size}</p>
                     <p>{size.split(",").map((i,index) => 
                         <Size key={index} newSize={new_size} setSize={i} onClick={()=>set_size(i)}>
-                            {i-31}({i})
+                           {item === 'shoes' ? `${i - 32} (${i})` : i}
                         </Size>)}
                     </p>
                     <Button

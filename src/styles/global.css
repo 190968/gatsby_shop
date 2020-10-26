@@ -60,6 +60,7 @@ input[type=checkbox] {
     text-align: left;
     height: 49px;
     padding: 0 15px;
+    position: relative;
     background-color: cornflowerblue;
 }
 
@@ -80,12 +81,18 @@ input[type=checkbox] {
 .footer p {
     font-size: 18px;  
 }
-/* label {
+label {
     cursor: pointer;
     position: relative;
     padding: 5px;
 }
-label::after {
+select, option {
+    border: none;
+    outline: none;
+    background-color: yellow;
+    color: blue;
+}
+/* label::after {
     content: "select";
     position: absolute;
     top: -15px;
@@ -94,7 +101,7 @@ label::after {
     display: none;
     border-radius: 15px;
     background-color: #ddd;
-}
+} */
 label:hover {
    background-color: #ddd;
     padding: 5px;
@@ -103,7 +110,7 @@ label:hover {
 }
 label:hover:after {
     display: inline;
-} */
+}
 .color {
     display: none;
 }
@@ -183,7 +190,7 @@ img  {
 }
 .sort {   
     width: fit-content;    
-    font-size: 16px;
+    font-size: 18px;
     margin-right: 2vw;
 }
 .sort select {
