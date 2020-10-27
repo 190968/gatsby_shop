@@ -45,7 +45,7 @@ const Button = styled.button`
     color: blue;    
     height: 45px;
     padding: 8px 0;
-    border: 1px solid lavander;   
+    
     &:active {
         box-shadow: inset 0 0 5px  1px green;        
     }
@@ -61,20 +61,20 @@ const Input = styled.input`
     padding: 10px;
     display: block;
     background-color: #ddd;
-    width: 80%;
+    width: 100%;
     
     border: 1px solid #ccc;
    
     outline: none;
     
-    margin: 20px auto; 
+    margin: 0 auto 20px; 
     
 `;
 
 const ButtonAccount = styled(Button)`
    
-    width: 80%;
-   
+    width: 100%;
+    height: 49px;
 `;
 const IndexOne = styled(Index)`
     width: 5%;

@@ -26,7 +26,7 @@ const Currency = styled.button`
 `;
 
 const MenuItem = styled.div`
-    width: ${props=>props.width === '10' ? '9':'13.5'}vw;
+    width: ${props => props.ten ? '9vw' : '13.5vw'};
     display: inline-block;
     text-align: center;    
     vertical-align: middle;
@@ -339,7 +339,7 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
             <MenuItem >BRAND</MenuItem>
             <MenuItem >MODEL</MenuItem>
             <MenuItem >GENDER</MenuItem>
-            <MenuItem width="10">COLOR</MenuItem>
+            <MenuItem ten >COLOR</MenuItem>
             <MenuItem >SIZE</MenuItem>
             <MenuItem style={{paddingRight: "3px"}}>              
                 <Slider min={min_cost} max={max_cost} setMin={set_min} setMax={set_max} />            
@@ -362,7 +362,7 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
                 <span className="brand">{i.brand}</span>
                 <span>{i.model.replace("T_S","T-S").replace(/_/g," ")}</span>
                 <Gender onClick={()=>set_gender(i.gender)} gender={i.gender} >{i.gender}s</Gender>
-                <Color width="10" style={{color: i.color}} color={i.color}  onClick={()=>setColor(i)}>                  
+                <Color ten style={{color: i.color}} color={i.color}  onClick={()=>setColor(i)}>                  
                     &#8226;                    
                 </Color>
                 <span>

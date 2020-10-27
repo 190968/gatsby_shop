@@ -45,6 +45,7 @@ const ButtonCode = styled(Button)`
     height: 40px;
     background-color: #ccc;
     font-size: 16px;
+    margin-right: 4%;
 `;
 
 const P = styled.p`
@@ -69,10 +70,10 @@ const Items = styled.div`
 `;
 
 const InputCode = styled.input`
-   margin: 10px;
+   margin: 1vw;
    display: inline-block;
     height: 40px;
-    width: 60%;
+    width: 40%;
     float: none;
     padding: 10px;
     font-size: 16px;
@@ -86,7 +87,7 @@ const InputSpan = styled.span`
     font-size: 16px;
     display: inline-block;
     margin: 0;   
-    margin-right: 10px;
+    
     text-align: right;
     width: 70%;
 `;
@@ -162,16 +163,16 @@ const Bag =  ({ bag, delete_from_bag, add_count, currency, delivery, setDelivery
                 
                 )}
                 <div className="div_delivery">
-                    <p><InputSpan>Delivery to the warehouse</InputSpan> {s}10
+                    <p><InputSpan>Delivery to the warehouse</InputSpan> <b>{s}10</b>
                         <input type="checkbox" value="10" checked={delivery===10} onChange={()=>setDelivery(10)}/>
                     </p>
-                    <p><InputSpan>Home delivery</InputSpan> {s}20
+                    <p><InputSpan>Home delivery</InputSpan> <b>{s}20</b>
                         <input type="checkbox" value="20" checked={delivery===20} onChange={()=>setDelivery(20)}/>
                     </p>
-                    <p><InputSpan>Express delivery </InputSpan> {s}30
+                    <p><InputSpan>Express delivery </InputSpan> <b>{s}30</b>
                         <input type="checkbox" value="30" checked={delivery===30} onChange={()=>setDelivery(30)}/>
                     </p>
-                    <p style={{borderTop: "1px solid #ccc; paddingTop: 20" }}>
+                    <p style={{borderTop: "1px solid #ccc; padding: 20px" }}>
                         <InputCode placeholder="Discount code" type="text" />
                         <ButtonCode>Apply</ButtonCode>
                     </p>

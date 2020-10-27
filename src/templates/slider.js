@@ -6,7 +6,7 @@ const Main = styled.div`
     height: 10px;
     width: 95%;   
     border-radius: 5px;
-    background: linear-gradient(90deg, cornflowerblue ${props=> props.pos_max/1.8 - 8 }%, #ccc 50% ) ;   
+    background: linear-gradient(90deg, cornflowerblue ${props=> props.pos_max}px, #ccc 50% ) ;   
     position: relative;
     top: 5px;
     &:after {
@@ -17,7 +17,7 @@ const Main = styled.div`
         color: blue;
         font: 300 14px/25px 'Arial', sans-serif;
         top: -8px;
-        left: ${props=> props.pos_max/1.8 - 8 }%;
+        left: ${props=> props.pos_max - 8 }px;
         opacity: 1;
         background: yellow;
         cursor: pointer;
@@ -58,7 +58,7 @@ const Slider = ({min, max, setMin, setMax}) => {
   };
   const Mouse_move_max = e => {
     if (slider_max) {        
-      setMax(max > wh*0.9 ? wh*0.9 : Math.trunc(e.nativeEvent.offsetX - e.nativeEvent.offsetX/9 ))
+      setMax(max > wh*0.9 ? wh*0.9 : Math.trunc(e.nativeEvent.offsetX  ))
     } else {}
   };     
    
