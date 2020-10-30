@@ -25,7 +25,7 @@ const Main = () => {
             content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover"
             
           />
-          <link rel="canonical" href="https://aplacadance.ru"/>
+          <link rel="canonical" href="https://www.aplacadance.ru"/>
           <meta
             name="description"
             content="This is shop for shoes and clothing for running favorite brands  ADIDAS,NIKE,SALOMON,PUMA,REBOOK."

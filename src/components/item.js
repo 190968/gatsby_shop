@@ -106,13 +106,18 @@ const Item = (props) => {
 
             <div className="div_image">
                 <div className="div_big_image"                             
-                    style={{backgroundSize: "90%", backgroundImage: `url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model.replace(" ","_") + "_" + image_color}${number}.jpg),url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model.replace(" ","_") + "_" + image_color}${number}.webp)`}}
+                    style={{backgroundSize: "90%", backgroundImage: `url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model.replace(" ","_") + "_" + image_color}${number}.jpg),
+                    url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model.replace(" ","_") + "_" + image_color}${number}.webp),
+                    url(https://github.com/superHotBob/image/blob/main/${page.brand}/${image_model.replace(" ","_") + "_" + image_color}${number}.jpg?raw=true)
+                    `}}
                 
                 />
                 {["",1,2].map((i,index) => <div className="div_small_image" key={index}
                         onClick={()=>set_number(i)}                       
                         style={{backgroundImage: `url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model.replace(" ","_") + "_" + image_color}${i}.jpg),
-                                url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model.replace(" ","_") + "_" + image_color}${i}.webp)`,
+                                url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model.replace(" ","_") + "_" + image_color}${i}.webp),
+                                url(https://github.com/superHotBob/image/blob/main/${page.brand}/${image_model.replace(" ","_") + "_" + image_color}${i}.jpg?raw=true)`,
+
                                 borderBottom: number === i ? "2px solid #000" : "none"
                         }}
                     />
@@ -125,9 +130,9 @@ const Item = (props) => {
                 <p>
                     {image_model.replace("T_S","T-S").replace(/_/g," ")} {gender}s run {item}                        
                 </p>
-                <h2>         
-                    
-                    {sale > 0 && <del>{Math.trunc(cost*currency)}$</del>}  <b>{(cost*(100-sale)/100).toFixed(0) + `$`}</b>
+                <h2>                  
+                    {sale > 0 && <del>{Math.trunc(cost*currency)}$</del>} 
+                    <b>{(cost*(100-sale)/100).toFixed(0) + `$`}</b>
                 </h2>
                 
                     <p><strong>color:</strong> {image_color}</p>

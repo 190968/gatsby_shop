@@ -6,18 +6,18 @@ const Main = styled.div`
     height: 10px;
     width: 95%;   
     border-radius: 5px;
-    background: linear-gradient(90deg, cornflowerblue ${props=> props.pos_max}px, #ccc 50% ) ;   
+    background: linear-gradient(90deg, cornflowerblue ${props=> props.pos_max}%, #ccc 50% ) ;   
     position: relative;
     top: 5px;
     &:after {
-        content: "${props=>props.pos_max}";  
+        content: "${props=>props.cost_max}";  
         width: 30px;       
         border-radius: 7px;
         position: absolute;
         color: blue;
         font: 300 14px/25px 'Arial', sans-serif;
         top: -8px;
-        left: ${props=> props.pos_max - 8 }px;
+        left: ${props=> props.pos_max-8}%;
         opacity: 1;
         background: yellow;
         cursor: pointer;
@@ -38,8 +38,7 @@ const Min = styled(Main)`
     border-right:10px solid red;   
     top: -5px;
     &:after {
-      content: "${props=>props.min}";
-     
+      content: "${props=>props.min}";     
       left: ${props=>props.min-15}px;       
     }    
 `; 
@@ -49,6 +48,7 @@ const Slider = ({min, max, setMin, setMax}) => {
   const [wh, set_width] = React.useState(1600);
   const [slider_min,set_slider_min] = React.useState(false);
   const [slider_max,set_slider_max] = React.useState(false);
+  const [pos_max, setMaxPosition] = React.useState(100);
   
   useEffect(()=>set_width(Math.trunc(window.innerWidth*0.135*0.95)),[]);
   const Mouse_move_min = e => {
@@ -57,8 +57,9 @@ const Slider = ({min, max, setMin, setMax}) => {
     } else {}
   };
   const Mouse_move_max = e => {
-    if (slider_max) {        
-      setMax(max > wh*0.9 ? wh*0.9 : Math.trunc(e.nativeEvent.offsetX  ))
+    if (slider_max ) {        
+      setMax(Math.trunc(e.nativeEvent.offsetX*1.8*100/wh ));
+      setMaxPosition(pos_max > 105 ? 100 :  Math.trunc(e.nativeEvent.offsetX*100/wh))
     } else {}
   };     
    
@@ -66,8 +67,9 @@ const Slider = ({min, max, setMin, setMax}) => {
    
   return (
     <>
-      <Main 
-        pos_max={max} wh={wh}
+   
+      <Main id="main"
+        pos_max={pos_max} wh={wh} cost_max={max}
         onMouseUp={()=>set_slider_max(false)} 
         onMouseDown={()=>set_slider_max(true)}      
         onMouseMove={e=>Mouse_move_max(e)}

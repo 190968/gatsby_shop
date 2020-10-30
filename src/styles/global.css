@@ -7,8 +7,7 @@ html {
 h1 {
     margin: 0;
 }
-a {
-   
+a {   
     background-image: none;
     text-decoration: none;
     text-shadow: none;
@@ -402,11 +401,12 @@ img {
     float: left;    
 }
 .div_content h2 b {
-    color: red;
+   
     font-size: 30px;
 }
-.div_content h2,h3,p,span {
+.div_content h2 b,h3,p,span, p b {
     margin: 15px 0;
+    color: #000;
 }
 .div_description {
     width: 30%;
@@ -504,6 +504,9 @@ img {
 }
 
 @media screen and (max-width: 1000px) {
+    div.menu_items {
+        display: none;
+    }
     .admin {
         width: 100%;
     }
@@ -518,16 +521,16 @@ img {
     }
     .menu .link,
     .main_Menu_link {
-    padding: 0.5em 0;   
-    width: 33.33%;
-    height: auto;
-    float: left;
-    text-align: center;   
-    font: 400 16px/16px 'Verdana', sans-serif;    
+        padding: 0.5em 0;   
+        width: 33.33%;
+        height: auto;
+        float: left;
+        text-align: center;   
+        font: 400 16px/16px 'Verdana', sans-serif;    
     }
     .main_Menu_link:hover {
         color: red;
-        font: 600 16px/16px 'Verdana', sans-serif;     
+          
     }
    
     .div_bag_menu {       
@@ -554,10 +557,7 @@ img {
         left: 0;
         top: 0%;    
     }
-    /* .div_image {
-        margin: 10px auto 0;
-        float: none;        
-    } */
+   
     .div_big_image {         
         margin:  0 auto 5px;
         width: auto;        
@@ -592,11 +592,9 @@ img {
     html {
         font: 100%/1 'Quattrocento Sans',sans-serif;
     }
-    .menu_items {
-        display: none;
-    }
+    
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 660px) {
     .delivery_name label {
         font-size: 3vw;
         width: 30%;
@@ -626,19 +624,17 @@ img {
     }
     .menu .link,
     .main_Menu_link {
-    padding: 0.5em 0;   
-    width: 50%;
-    height: auto;
-    float: left;
-    text-align: center;
-   
-    font: 400 22px/16px 'Verdana', sans-serif;
-    
+        padding: 0.5em 0;   
+        width: 50%;
+        height: auto;
+        float: left;
+        text-align: center;   
+        font: 400 22px/16px 'Verdana', sans-serif;    
     }
     .items {
-        margin: 5px;
+        margin: 0.5%;
         text-align: center;       
-        width: 45%;
+        width: 48%;
         display: inline-block;
         white-space: nowrap;    
     }

@@ -265,7 +265,7 @@ const Admin = () => {
             </Helmet>
             <div className="admin" >
                 <h4>ADMIN PANEL</h4> 
-                <img src="https://github.com/superHotBob/image/blob/main/new%20balance/Liverpool_6_T_Shirt_black.webp?raw=true" height="150" width="150"/>
+                <img src="https://github.com/superHotBob/image/blob/main/nike/Zoom_Stucture_red.jpg?raw=true" height="150" width="150"/>
                 <img src="https://github.com/superHotBob/image/blob/main/adidas/T_shirt2_white.webp?raw=true" height="150" width="150"/>
                 <p>
                     <Button>
@@ -274,9 +274,12 @@ const Admin = () => {
                     <Button>
                         <a href="https://files.000webhost.com/">IMAGE</a>
                     </Button>
-                    <Button>
+                    {/* <Button>
                         <a href="http://localhost:8888/.netlify/functions/uploadfile">BASE</a>
-                    </Button>                              
+                    </Button> */}
+                    <Button>
+                        <a href="https://www.aplacadance.ru/.netlify/functions/uploadbase">BASE</a>
+                    </Button>                                         
                     {view_questions && 
                         <Button 
                             onClick={()=>{set_view_bags(!view_bags);set_view_questions(!view_questions)}}

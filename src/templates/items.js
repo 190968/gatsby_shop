@@ -69,12 +69,15 @@ const Size = styled(Currency)`
     text-align: center;
     height: 20px;
     width: auto;
-    margin: 0;       
-   
+    margin:   0 ;   
     cursor: pointer;  
     &:hover {
         box-shadow: 0 0 1px 1px  #bbb;
     }
+    @media (max-width: 660px) {
+        margin:  10px 0 15px;  
+    }
+
     
 `;
 
@@ -93,7 +96,7 @@ const ButImage = styled.button`
     &:hover {
         border: 1px solid #ccc;
     }
-    @media (max-width: 600px) {
+    @media (max-width: 660px) {
         width: 100%;
         height: 130px;
     }
@@ -143,6 +146,10 @@ const Gender = styled(MenuItem).attrs(props=>({
         color: #000;      
         
         font-size: 16px;
+    }
+    @media(max-width: 660px){
+        display: block;
+        width: 100%;
     }
 `;
 const Sale = styled.div.attrs(props => ({
