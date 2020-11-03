@@ -1,15 +1,12 @@
 import React from "react";
-import { Helmet } from 'react-helmet';
-
-import Layout from "../components/layout";
 import "../styles/global.css";
-
-import Brand from "../components/Brand";
-
 import SEO from "../components/seo";
-
+import Brand from "../components/Brand";
+import { Helmet } from 'react-helmet';
 import Favorite from "../components/favorite";
 import FavoriteSale from "../components/favoriteSale";
+import Layout from "../components/layout";
+
 
 
 
@@ -31,7 +28,7 @@ const Main = () => {
             content="This is shop for shoes and clothing for running favorite brands  ADIDAS,NIKE,SALOMON,PUMA,REBOOK."
             
           />
-          {/* <title>Shoes for run</title> */}
+         
           <html lang="en" /> 
       </Helmet>     
       <Layout set_number={set_number} >

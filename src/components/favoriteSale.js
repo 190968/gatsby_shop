@@ -55,6 +55,9 @@ const AllSale = styled.div`
     p b {
         color: red;
         font-size: 25px;
+    }
+    h3 {
+        text-transform: uppercase;
     }   
     :before {
         content: "Favorite Sale Last Weak";
@@ -104,7 +107,7 @@ export default function () {
                     >
                         <Sale>{i.sale}%</Sale>
                     </span>    
-                    <h3>{i.brand.toUpperCase()}</h3>
+                    <h3>{i.brand}</h3>
                     <h4>{i.modelitem.replace(/_/g," ")}</h4> 
                     <b>{i.gender}s</b>
                     <p>{i.color}</p>

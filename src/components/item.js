@@ -6,13 +6,13 @@ import { addBag } from "../state/app";
 import Linktobag from "./linktobag";
 
 
-const Sale = styled.b.attrs(props => ({
+const Cost = styled.h2.attrs(props => ({
     sale:props.sale,
     props:props.currency
 }))`    
     display: inline-block;
     margin: 0;
-    font-size: 25px;
+    font: 400 25px/25px 'Taroma',sans-serif;
     width: auto;
     position: relative;
     text-align: center;
@@ -20,20 +20,20 @@ const Sale = styled.b.attrs(props => ({
     color: #000;
     &:before {
         content: '-${props=>props.sale}%';
-        top: -25px;
-        left: 32px;
+       
+        left: 50px;
         color: yellow;
-        visibility: ${props=>props.sale === 0 ? 'hidden': 'visible'};
-        background-color: red;
-        padding: 5px 2px;
-        border-radius: 50%;
+        display: ${props=>props.sale ? 'inline-block':'none'};
+        color: red;   
         position: absolute;
-        font: 600 16px/18px 'Arial', sans-serif;
+        font: 600 25px/25px 'Arial', sans-serif;
     }
     &:after {
-        content: '${props=>props.currency}';      
-        padding: 5px 2px 0 5px;       
-        font: 400 20px/18px 'Arial', sans-serif;
+        content: '${props=>props.currency}';
+        left: 28px;
+        position: absolute;      
+           
+       
     }
 `;
 const Close = styled.button`    
@@ -49,7 +49,7 @@ const Close = styled.button`
     }
 `;
 
-const Button = styled.button`
+const Input = styled.input`
     width: 100%;
     border: 2px solid lime;
     outline: none;
@@ -72,11 +72,10 @@ const Button = styled.button`
         newSize: props.newSize
     }))`
         
-        margin: 0 5px 0 0;
+        margin: 0 ;
         z-index: 1;
-        text-align: center;       
-       
-        font: 400 16px/28px 'Arial', sans-serif;
+        text-align: center;     
+        font: 400 19px/19px 'Arial', sans-serif;
         border: 1px solid #fff;
         background-color: ${props => props.setSize === props.newSize ? "#ccc": "#fff"};
         display: inline-block;
@@ -84,27 +83,22 @@ const Button = styled.button`
         &:hover {
             border: 1px solid #ccc;
         }
-        h2 b {
-            color: red;
-            font-size: 25px;
-        }
+        
     `;
 const Item = (props) => {
 
     const { currency,addBag, page, gender, closeImage, image_color, image_model, size =  0, cost, sale = false, item = 'shoes' } = props;
-    const [new_size, set_size] = React.useState("select size");
+    const [new_size, set_size] = React.useState(true);
     const s = (currency === 0.8) ? "€" : (currency === 1) ? "$"  : "£" ;
-    const handClose = () => {
-        closeImage(false)
-    };
+    const handClose = () => closeImage(false) ;
     const [ number, set_number ] = React.useState("");
    
 
     return (
         <div className="div_item">
-            <Close  onClick={handClose}>x</Close>
-
+           
             <div className="div_image">
+                 <Close  onClick={handClose}>x</Close>
                 <div className="div_big_image"                             
                     style={{backgroundSize: "90%", backgroundImage: `url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model.replace(" ","_") + "_" + image_color}${number}.jpg),
                     url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model.replace(" ","_") + "_" + image_color}${number}.webp),
@@ -126,25 +120,21 @@ const Item = (props) => {
            
             </div>            
             <div className="div_content">
-                <h2>{page.brand.toUpperCase()} <Linktobag /></h2>
+                <h3>{page.brand} <Linktobag /></h3>
                 <p>
                     {image_model.replace("T_S","T-S").replace(/_/g," ")} {gender}s run {item}                        
-                </p>
-                <h2>                  
-                    {sale > 0 && <del>{Math.trunc(cost*currency)}$</del>} 
-                    <b>{(cost*(100-sale)/100).toFixed(0) + `$`}</b>
-                </h2>
-                
-                    <p><strong>color:</strong> {image_color}</p>
-                    <p><strong>size: </strong>{new_size}</p>
-                    <p>{size.split(",").map((i,index) => 
-                        <Size key={index} newSize={new_size} setSize={i} onClick={()=>set_size(i)}>
-                           {item === 'shoes' ? `${i - 32} (${i})` : i}
-                        </Size>)}
-                    </p>
-                    <Button
-                        disabled={new_size === "select size" ? "disabled":""}                        
-                        title={new_size === "select size" ? "select size":"add to bag"}
+                </p>                  
+                <Cost sale={sale} currency={s}>{Math.trunc(cost*currency)}</Cost>
+                <p><strong>color:</strong> {image_color}</p>
+                <p><strong>size: </strong>{new_size}</p>
+                <p>{size.split(",").map((i,index) => 
+                    <Size key={index} newSize={new_size} setSize={i} onClick={()=>set_size(i)}>
+                        {item === 'shoes' ? `${i - 29} (${i})` : i}
+                    </Size>)}
+                </p>        
+                <Input type="button"
+                        disabled = {!parseInt(new_size)}                        
+                       
                         onClick={()=>addBag({
                             "brand": page.brand.toUpperCase(),
                             "model": image_model,
@@ -153,12 +143,18 @@ const Item = (props) => {
                             "color": image_color,
                             "size": new_size,
                             "count": 1
-                        })} 
-                    >ADD TO BAG</Button>
+                        })}
+                        value={!parseInt(new_size)  ? "SELECT SIZE":"ADD TO BAG"}
+                />        
+                   
+               
+                
+                    
+                   
 
             </div>
             <div className="div_description">
-                    <b>Description</b>
+                <b>Description</b>
                     <ul>
                         <li>{gender} {item} for run</li>
                         <li>Upper: Textile. Aggressive Chevron grip pattern</li>

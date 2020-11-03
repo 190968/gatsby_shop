@@ -12,8 +12,9 @@ import { Footer } from "../components/footer";
 
 const Input = styled.input`
     display: inline-block;
-   
-    margin: 0  10px 20px;
+    width: 40%;
+    background-color: lightgoldenrodyellow;
+    margin: 0  20px;
     font-size: 1.2vw;
     padding: 5px;
     border: none;
@@ -90,12 +91,13 @@ const FormDelivery = ({ bag, delBag, delivery }) => {
                     <p>
                        Subscription on sale: <Input type="checkbox" value="30" />
                     </p>
+                    <Link to="/bag" className="delivery_main_link">BACK TO BAG</Link>
                     <Input type="button" 
                         onClick={sendData}
                         disabled={!(name.length > 3 & email.includes("@") & email.includes("."))}
                         value="BUY" 
                     />
-                    <Link to="/bag" className="delivery_main_link">BACK TO BAG</Link>
+                   
                     <Link to="/" className="delivery_main_link two">TO MAIN</Link>
                     <h3>{ok}</h3>
                    

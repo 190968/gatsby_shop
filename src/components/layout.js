@@ -28,7 +28,7 @@ export default function Layout ({ children , context_brand, context_gender, set_
         </title>        
       
         <html lang="en" />
-        <link rel="canonical" /> 
+        
       </Helmet>
     
       <BlockPhone />

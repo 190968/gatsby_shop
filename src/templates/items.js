@@ -60,23 +60,24 @@ const MenuItemPage = styled(MenuItem)`
     @media(max-width: 1000px) {
         display: inline-block;
         width: auto;
+        float: left;
+        margin: 0;
     }
 `;
 
 const Size = styled(Currency)`     
-    font: 300 15px/20px 'Arial', sans-serif;    
+    font: 300 15px/15px 'Arial', sans-serif;    
     display: inline-block;
     text-align: center;
     height: 20px;
     width: auto;
     margin:   0 ;   
-    cursor: pointer;  
+    cursor: pointer; 
+    white-space: break-spaces; 
     &:hover {
         box-shadow: 0 0 1px 1px  #bbb;
     }
-    @media (max-width: 660px) {
-        margin:  10px 0 15px;  
-    }
+    
 
     
 `;
@@ -195,6 +196,7 @@ const Page = styled.p`
           text-decoration: underline;
        }
     }
+   
 `;
 const Checkbox = styled.input`
     margin: 0 10px;
@@ -372,14 +374,14 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
                 <Color ten style={{color: i.color}} color={i.color}  onClick={()=>setColor(i)}>                  
                     &#8226;                    
                 </Color>
-                <span>
+                <span className="size">
                     {i.size.split(',').map( m =>
                         <Size 
                             key={m}
                             style={{ backgroundColor: size === m  ? '#ddd' : 'inherit'}}                           
                             onClick={()=>set_size(m)}                          
                         > 
-                            {item === 'shoes' ? `${m - 32} (${m})` : m}
+                            {item === 'shoes' ? `${m - 30} (${m})` : m}
                         </Size>
                     )}
                 </span>                                

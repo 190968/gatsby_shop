@@ -4,7 +4,7 @@ html {
 :root {
 --width-main: 90vw;
 }
-h1 {
+h1, h2, h3 {
     margin: 0;
 }
 a {   
@@ -14,16 +14,16 @@ a {
     font-weight: 300;
 }
 input[type=button] {   
-    width: 30%;
+    
     font-size: 25px;
     padding: 5px;
    
     cursor: pointer;
     margin: 10px auto;
-    display: block;
+   
     background-color: lightgoldenrodyellow;
     border: 2px solid lightgoldenrodyellow;
-}    
+}     */
    
 input[type=button]:hover {
     background-color: lightgoldenrodyellow;       
@@ -92,7 +92,7 @@ select, option {
     color: blue;
 }
 
-label:hover {
+.menu_items label:hover {
    background-color: #ddd;
     padding: 5px;
     border-radius: 5px;
@@ -158,8 +158,9 @@ img  {
 }
 .items span {
     width: 15%;   
-    font-size: 18px;
+    font: 300 18px/18px 'Arial', sans-serif;
     vertical-align: middle;
+    white-space: break-spaces;
 }
 .items .brand {
     font-size: 25px;
@@ -265,7 +266,7 @@ img {
 }
 .delivery_main_link {    
     color: #000;
-    margin: 5px;
+    width: 29%;
     display: inline-block;
     text-shadow: none;
 }
@@ -274,7 +275,7 @@ img {
     font-weight: 600;
 }
 .two {
-    float: right;   
+    text-align: right;
 }
 .delivery_name {
     margin: 30px auto 0;
@@ -400,6 +401,9 @@ img {
     text-align: left;
     float: left;    
 }
+.div_content h3 {
+    text-transform: capitalize;
+}
 .div_content h2 b {
    
     font-size: 30px;
@@ -451,8 +455,8 @@ img {
     display: none;    
 }
 .div_big_image {
-    margin: 20px 0;   
-    margin: 10px;
+    margin: 0;   
+   
     width: auto;
     height: 40vw;    
     background-position: center;    
@@ -575,11 +579,13 @@ img {
     .go_to_account:before {
         font-size: 16px;
     }
+  
     .div_content,
     .div_description {
         width: 100vw;
         padding: 0 20px 10px;
         height: fit-content;
+        white-space: break-spaces;
        
     }
     .delivery_name {       
@@ -640,8 +646,11 @@ img {
     }
     .items > span, .cost {
         display: block;       
-       width: 100%;
+        width: 100%;
+       
     } 
-   
+    span.size {
+        height: 70px;
+    }
     
 }

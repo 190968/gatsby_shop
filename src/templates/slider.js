@@ -44,13 +44,13 @@ const Min = styled(Main)`
 `; 
 
 
-const Slider = ({min, max, setMin, setMax}) => {
+const Slider = ({ min, max, setMin, setMax }) => {
   const [wh, set_width] = React.useState(1600);
   const [slider_min,set_slider_min] = React.useState(false);
   const [slider_max,set_slider_max] = React.useState(false);
   const [pos_max, setMaxPosition] = React.useState(100);
   
-  useEffect(()=>set_width(Math.trunc(window.innerWidth*0.135*0.95)),[]);
+  useEffect(() => set_width(Math.trunc(window.innerWidth*0.135*0.95)),[]);
   const Mouse_move_min = e => {
     if (slider_min) {        
       setMin(min < 1 ? 2 : e.nativeEvent.offsetX)
@@ -58,8 +58,8 @@ const Slider = ({min, max, setMin, setMax}) => {
   };
   const Mouse_move_max = e => {
     if (slider_max ) {        
-      setMax(Math.trunc(e.nativeEvent.offsetX*1.8*100/wh ));
-      setMaxPosition(pos_max > 105 ? 100 :  Math.trunc(e.nativeEvent.offsetX*100/wh))
+      setMax(Math.trunc(e.nativeEvent.offsetX*1.9*100/wh));
+      setMaxPosition(pos_max > 101 ? 100 :  Math.trunc(e.nativeEvent.offsetX*100/wh))
     } else {}
   };     
    
@@ -67,7 +67,7 @@ const Slider = ({min, max, setMin, setMax}) => {
    
   return (
     <>
-   
+  
       <Main id="main"
         pos_max={pos_max} wh={wh} cost_max={max}
         onMouseUp={()=>set_slider_max(false)} 
