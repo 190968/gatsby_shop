@@ -52,15 +52,15 @@ const P = styled.p`
     margin: 0;
    
     display: inline-block;
-    b {
-        padding: 0 10px 0 0;
-    }
+   
+        padding: 0 10px ;
+   
 `;
 const Items = styled.div`
   
     display: inline-block;
     vertical-align: middle;
-    width: 53%;
+    width: 37%;
     padding-left: 16%;
     background-color: #fff;
     background-position: left center;
@@ -94,8 +94,11 @@ const InputSpan = styled.span`
 const Add = styled.b`
         border: 1px solid #ddd;
         border-radius: 50%;
-        cursor: pointer;       
-        padding: 1px 7px;        
+        cursor: pointer;
+        height: 20px;
+        width: 20px;
+        font: 600 20px/20px 'Arial',sans-serif;       
+        display: inline-block;  
         margin: 10px;
         &:hover {
             background-color: cornflowerblue;

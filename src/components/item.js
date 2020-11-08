@@ -18,6 +18,7 @@ const Cost = styled.h2.attrs(props => ({
     text-align: center;
     padding: 0;
     color: #000;
+    margin-left: 15px;
     &:before {
         content: '-${props=>props.sale}%';
        
@@ -30,7 +31,7 @@ const Cost = styled.h2.attrs(props => ({
     }
     &:after {
         content: '${props=>props.currency}';
-        left: 28px;
+        left:-15px;
         position: absolute;      
            
        
@@ -40,9 +41,9 @@ const Close = styled.button`
     float: left;
     cursor: pointer;
     border: none;
+    font-size: 30px;
     background-color: #fff;
-    height: 40px;
-    width: 40px;    
+   
     margin: 0;
     &:hover {
         background-color: #ddd;
@@ -54,34 +55,46 @@ const Input = styled.input`
     border: 2px solid lime;
     outline: none;
     cursor: pointer;
-    background-color: lime;
-    font-weight: 600;
-    color: #000;    
+    font-size: 20px;
+
+    font-weight: 400;
+    color: #fff;    
     margin: 0;
-    padding: 10px 0;
-    &:hover {
-       background-color: yellow;      
-    }
+    padding: 15px 0;
+   
     &:active {
         box-shadow: inset 0 0 5px  1px green;
         
     }
 `;
- const Size = styled.b.attrs(props=>({
+    const Images = styled.div`
+        display: inline-block;
+        width: 10vw;
+        height: fit-content;
+       
+        vertical-align: top;
+        margin: 0;
+        @media (max-width: 1000px) {
+            width: 20vw;
+           
+        }
+    `;
+    const Size = styled.b.attrs(props=>({
         setSize: props.setSize,
         newSize: props.newSize
     }))`
         
-        margin: 0 ;
+        margin: 2px ;
         z-index: 1;
         text-align: center;     
-        font: 400 19px/19px 'Arial', sans-serif;
-        border: 1px solid #fff;
+        font: 400 16px/22px 'Arial', sans-serif;
+        border: 1px solid #ddd;
         background-color: ${props => props.setSize === props.newSize ? "#ccc": "#fff"};
         display: inline-block;
         cursor: pointer;
+        padding: 6px 8px;
         &:hover {
-            border: 1px solid #ccc;
+            border: 1px solid #000;
         }
         
     `;
@@ -97,17 +110,11 @@ const Item = (props) => {
     return (
         <div className="div_item">
            
-            <div className="div_image">
-                 <Close  onClick={handClose}>x</Close>
-                <div className="div_big_image"                             
-                    style={{backgroundSize: "90%", backgroundImage: `url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model.replace(" ","_") + "_" + image_color}${number}.jpg),
-                    url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model.replace(" ","_") + "_" + image_color}${number}.webp),
-                    url(https://github.com/superHotBob/image/blob/main/${page.brand}/${image_model.replace(" ","_") + "_" + image_color}${number}.jpg?raw=true)
-                    `}}
-                
-                />
+            <div className="div_image"> 
+                <Close  onClick={handClose}>x</Close>
+                <Images>
                 {["",1,2].map((i,index) => <div className="div_small_image" key={index}
-                        onClick={()=>set_number(i)}                       
+                        onMouseEnter={()=>set_number(i)}                       
                         style={{backgroundImage: `url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model.replace(" ","_") + "_" + image_color}${i}.jpg),
                                 url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model.replace(" ","_") + "_" + image_color}${i}.webp),
                                 url(https://github.com/superHotBob/image/blob/main/${page.brand}/${image_model.replace(" ","_") + "_" + image_color}${i}.jpg?raw=true)`,
@@ -116,6 +123,15 @@ const Item = (props) => {
                         }}
                     />
                 )}   
+                </Images>
+                <div className="div_big_image"                             
+                    style={{backgroundSize: "90%", backgroundImage: `url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model.replace(" ","_") + "_" + image_color}${number}.jpg),
+                    url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model.replace(" ","_") + "_" + image_color}${number}.webp),
+                    url(https://github.com/superHotBob/image/blob/main/${page.brand}/${image_model.replace(" ","_") + "_" + image_color}${number}.jpg?raw=true)
+                    `}}
+                
+                />
+               
            
            
             </div>            
@@ -147,21 +163,21 @@ const Item = (props) => {
                         value={!parseInt(new_size)  ? "SELECT SIZE":"ADD TO BAG"}
                 />        
                    
-               
+                <dl>
+                    <dt>Description</dt>
+                    <dd>{ page.brand} {gender} {item} for run</dd>
+                    <dd>- Upper: Textile. Aggressive Chevron grip pattern</dd>
+                    <dd>- Lining: Textile/Sinthetic</dd>
+                    <dd>- Outsole: Sintehic. Full length Ignite Foam midsole</dd>
+                    <dd>- Made in: Chine</dd>    
+                </dl>
                 
                     
+                 
+           
+           
+                
                    
-
-            </div>
-            <div className="div_description">
-                <b>Description</b>
-                    <ul>
-                        <li>{gender} {item} for run</li>
-                        <li>Upper: Textile. Aggressive Chevron grip pattern</li>
-                        <li>Lining: Textile/Sinthetic</li>
-                        <li>Outsole: Sintehic. Full length Ignite Foam midsole</li>
-                        <li>Made in: Chine</li>
-                    </ul>
             </div>
            
         </div>       

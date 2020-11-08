@@ -7,7 +7,8 @@ import styled from "styled-components";
 import  Layout  from "../components/layout";
 import { addBag } from "../state/app";
 import { Info } from "../components/info";
-import Slider from "./slider";
+import Slider from "../components/slider";
+// import Slider from "./slider";
 
 const Currency = styled.button`
     font: 400 22px/30px 'Arial', sans-serif;
@@ -26,7 +27,7 @@ const Currency = styled.button`
 `;
 
 const MenuItem = styled.div`
-    width: ${props => props.ten ? '9vw' : '13.5vw'};
+    width: ${props => props.ten ? '9vw' : '13.4vw'};
     display: inline-block;
     text-align: center;    
     vertical-align: middle;
@@ -198,6 +199,30 @@ const Page = styled.p`
     }
    
 `;
+
+const MenuDiv = styled.div`
+    margin:0;
+    background-color: lavender;      
+        padding: 5px 0;
+        text-align: left;
+        font-weight: 600;
+        
+        position: sticky;
+        top: 30px;
+        z-index: 10;
+        label:hover {
+            background-color: #ddd;
+             padding: 5px;
+             border-radius: 5px;
+         
+        }
+        @media (max-width: 1000px) {
+           display: none;
+        }   
+  
+        
+   
+`;
 const Checkbox = styled.input`
     margin: 0 10px;
     height: 20px;
@@ -330,17 +355,17 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
             <Filtr color={min_cost} onClick={()=>set_min(0)}>cost {">"} {min_cost}</Filtr>
             <Filtr color={max_cost} onClick={()=>set_max(180)}>cost {"<"} {max_cost}</Filtr> 
             <span className="sort">
-                    Sort by:{" "}
-                    <select onChange={(e)=>SortOnCost(e.target.value)}>
-                        <option value="true" >cheap first</option>
-                        <option value="false" >expensive first</option>
-                    </select>
+                Sort by:{" "}
+                <select onChange={(e)=>SortOnCost(e.target.value)}>
+                    <option value="true" >cheap first</option>
+                    <option value="false" >expensive first</option>
+                </select>    
             </span>     
             <span>Page:</span>
             {orders.filter( (i,index) => !("" + (index/10)).includes(".")).map( (i,index) => 
             <span style={{backgroundColor: index+1 === page  ? 'yellow' : 'inherit'}} onClick={()=>set_page(index+1)}>{index+1}</span>)}
         </Page>
-        <div className="menu_items">
+        <MenuDiv>
             <MenuItem>              
                 < ItemSelect props="shoes" item_new={item} setItem={setItem} />
                 < ItemSelect props="clothing" item_new={item} setItem={setItem} />
@@ -350,11 +375,11 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
             <MenuItem >GENDER</MenuItem>
             <MenuItem ten >COLOR</MenuItem>
             <MenuItem >SIZE</MenuItem>
-            <MenuItem style={{paddingRight: "3px"}}>              
-                <Slider min={min_cost} max={max_cost} setMin={set_min} setMax={set_max} />            
+            <MenuItem style={{paddingRight: "3px"}}> 
+                <Slider min={min_cost} max={max_cost} setMin={set_min} setMax={set_max} />             
             </MenuItem>            
             
-        </div>   
+        </MenuDiv>   
         {orders.filter((i,index) => (page-1)*10 <= index && index < page*10).map((i,index) => 
             <div className="items" key={index} >              
                 <ButImage                  

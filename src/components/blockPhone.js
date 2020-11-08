@@ -51,6 +51,7 @@ const Delivery_two = styled(Delivery)`
     span {
         float: right;
         cursor: pointer;
+        margin: 0;
         :hover {
             color: blue;
            text-decoration: underline;

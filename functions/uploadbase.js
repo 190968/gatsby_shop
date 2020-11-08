@@ -4,36 +4,44 @@ const Mongoclient = require('mongodb').MongoClient;
 
 
 exports.handler = async (event, context) => {
-  let s = await axios.get("https://api.github.com/repos/superHotBob/image/contents/shoes3.xls");
-  
+  let s = await axios.get("https://api.github.com/repos/superHotBob/image/contents/base3.xls");
+ 
   const result = excelToJson({   
     source: s.data.content,
+    header:{
+      rows: 1
+    },
     columnToKey: {
       A: 'id',
       B: 'cost',
-      C: 'size',
-      D: 'color',
+      C: 'brand',
+      D: 'model',
       E: 'gender',
-      F: 'model'
+      F: 'size',
+      G: 'color',
+      H: 'item',
+      I: 'rev',
+      J: 'sale'
     }
   });
+ 
   var uri = "mongodb+srv://alex:alex@cluster0alex-mvffj.gcp.mongodb.net/my?retryWrites=true";   
   var connect = await Mongoclient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
            
-           
-  const dbo = await connect.db("my").collection("test").insertMany(result.shoes3);
-  console.log(dbo.result.insertedCount);
-
+  const del = await connect.db("my").collection("base").deleteMany();         
+  const dbo = await connect.db("my").collection("base").insertMany(result.Лист1);
+  console.log("Base add ok");
     return {
       statusCode: 200,
       headers: {
           "Access-Control-Allow-Origin": "*",
           "Access-Control-Allow-Headers": "Content-Type",
-          "Content-Type" : "multipart/form-data",
+          "Content-Type" : "application/json",
           "Access-Control-Allow-Methods": "OPTIONS,POST"
       },
-      body: "Return"                   
+      body: "Good upload base"                   
     };
   
 
 };  
+

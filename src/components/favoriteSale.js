@@ -10,6 +10,9 @@ const Sale = styled.b`
     float: right;
     padding: 5px;
     font:italic 600 90%/100% 'Verdana', sans-serif;
+    @media (max-width: 1000px) {
+        font:italic 600 50%/100% 'Verdana', sans-serif;
+    }    
 `;
 const DivItem = styled.div`
     height: fit-content;
@@ -25,18 +28,32 @@ const DivItem = styled.div`
         background-size: 80%;
         background-position: center;
         background-repeat: no-repeat;
+        display: block;
         height: 15vw;
         width: 100%;
     }
+  
     h3 {
         font:italic 600 20px/20px 'Verdana', sans-serif;
         color: cornflowerblue;
         margin:  0 0 10px;
     }
-    h4 {    
-        height: 50px;
+    h4 {
+        font: 400 18px/25px 'Verdana', sans-serif;
+        
     }
-    @media (max-width: 660px) {
+    p {
+        margin: 5px;
+    }
+   
+    @media (max-width: 1000px) {
+        h4 {
+            height: 50px;
+            font: 400 15px/20px 'Verdana', sans-serif;
+        }
+        span {
+            margin: 0;
+        }
         padding: 5px;
         margin: 0;
         width: 30vw;       
@@ -66,9 +83,9 @@ const AllSale = styled.div`
         color: cornflowerblue;
         position: absolute;
         background-image: linear-gradient(rgba(255,0,0,0), rgba(255,0,0,0.5));
-        padding: 12px;
+        padding: 12px 0;
         top:-55px;
-        left: 0;       
+             
         @media (max-width: 660px) {
           padding: 10px;
           font-size: 1em;         

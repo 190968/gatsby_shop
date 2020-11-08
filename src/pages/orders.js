@@ -37,18 +37,14 @@ const Index = styled.b.attrs(props=>({
 
 const Button = styled.button`
     width: 33%;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    font-weight: 800;
-    background-color: lime;
-    color: blue;    
-    height: 45px;
-    padding: 8px 0;
+   
+   
+   
+   
     
-    &:active {
-        box-shadow: inset 0 0 5px  1px green;        
-    }
+    
+    
+    
     @media(max-width: 600px){
         width: 80%;
         display: block;
@@ -58,10 +54,11 @@ const Button = styled.button`
 const Input = styled.input`
     
    
-    padding: 10px;
+    padding: 15px 10px;
     display: block;
-    background-color: #ddd;
-    width: 100%;
+    font-size: 20px;
+    background-color: #fff;
+    width: 95%;
     
     border: 1px solid #ccc;
    
@@ -72,9 +69,13 @@ const Input = styled.input`
 `;
 
 const ButtonAccount = styled(Button)`
-   
+    font-size: 20px;
     width: 100%;
-    height: 49px;
+    height: 55px;
+    background: linear-gradient(to top, lime, lightgreen);
+    &:hover {
+        background: linear-gradient(to top, lime, lime);
+    }
 `;
 const IndexOne = styled(Index)`
     width: 5%;

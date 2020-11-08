@@ -12,16 +12,20 @@ import { Footer } from "../components/footer";
 
 const Input = styled.input`
     display: inline-block;
-    width: 40%;
-    background-color: lightgoldenrodyellow;
+    width: 60%;
+   
     margin: 0  20px;
     font-size: 1.2vw;
     padding: 5px;
-    border: none;
+   
     @media(max-width: 600px) {
         font-size: 3vw;
         width: 50%;
     }
+`;
+const Button = styled.input`
+    width: 40%;
+    margin: 20px 0;
 `;
 const Div = styled.div`
     max-width: 1350px;
@@ -92,7 +96,7 @@ const FormDelivery = ({ bag, delBag, delivery }) => {
                        Subscription on sale: <Input type="checkbox" value="30" />
                     </p>
                     <Link to="/bag" className="delivery_main_link">BACK TO BAG</Link>
-                    <Input type="button" 
+                    <Button type="button" 
                         onClick={sendData}
                         disabled={!(name.length > 3 & email.includes("@") & email.includes("."))}
                         value="BUY" 

@@ -17,10 +17,11 @@ const DivAbout = styled.article.attrs(props=>({
   
     p {
         padding-left: 1vw;
-       font-size: 18px;
+       font-size: 20px;
     }
     li {
-        margin: 0 ;
+        margin: 5px 0 ;
+        font-size: 16px;
     }
     span {
         font: 600 39px/30px 'Arial', san-serif;
@@ -34,14 +35,14 @@ const DivAbout = styled.article.attrs(props=>({
     } 
 `;
 const InputName = styled.input`
-    width: 32.33%;
-    margin: 5px 1% 10px 0;
+    width: 30.2%;
+    margin: 5px 1% 20px 0;
     padding: 10px;
 `;
 const DivInput = styled.div`
     background-color: blue;
-    width: 100%;
-    
+    width: 95%;
+    margin-bottom: 20px;
     padding: 2vw;
     h1 {
         color: #fff;
@@ -51,7 +52,7 @@ const DivInput = styled.div`
    
 `;
 const Input = styled.input`
-    width: 65.5%;
+    width: 63.5%;
     padding: 10px;
    
     margin-right: 1.2%;
@@ -60,7 +61,7 @@ const Input = styled.input`
 const InputSub = styled.input.attrs(props=>({
     text: props.text
 }))`
-    width: 32.2%;
+    width: 32%;
     padding: 10px;
     position: relative;
     color: #fff;
@@ -131,11 +132,11 @@ const Help = () => {
           <title>Only better brands shoes for run</title>
           <html lang="en" /> 
         </Helmet>     
-          <DivAbout>
+        <DivAbout>
             <Link to="/" className="to_main" ></Link>                    
             <span>Customer service</span>
                     
-              <DivInput>
+            <DivInput>
                         { contact ? 
                             <h2>Message sending to manager</h2>
                         : <form>   
@@ -163,9 +164,9 @@ const Help = () => {
                             />
                         </form>
                         }
-                    </DivInput>
+                </DivInput>
                     
-                    <Link to="/">Home</Link>
+                    <Link to="/">To home</Link>
                     <h3>About us</h3>
                     <p> The online shop <b>ShopForRun.by</b> the better ability
                         to buy run shoes and clothing the best world brands

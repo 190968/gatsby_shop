@@ -51,6 +51,7 @@ const Slider = ({ min, max, setMin, setMax }) => {
   const [pos_max, setMaxPosition] = React.useState(100);
   
   useEffect(() => set_width(Math.trunc(window.innerWidth*0.135*0.95)),[]);
+  useEffect(() => max === 180 ? setMaxPosition(100) : setMaxPosition(pos_max) ,[max]);
   const Mouse_move_min = e => {
     if (slider_min) {        
       setMin(min < 1 ? 2 : e.nativeEvent.offsetX)

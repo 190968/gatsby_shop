@@ -20,8 +20,10 @@ const Input = styled.input`
     vertical-align: middle;
     outline: none;   
     display: inline-block;
-    padding: 10px;
+    padding: 0 10px;
+    font-size: 20px;
     width: 100%;
+    height: 100%;
     border: none ;
     outline: none;       
     }
@@ -41,7 +43,7 @@ const SearchModel = styled.div`
     }   
 `;
 
-// const url = 'http://localhost:8888/.netlify/functions/myfun';
+
 const url = 'https://aplacadance.ru/.netlify/functions/find_model';
 
 const Search = () => {
@@ -63,7 +65,7 @@ const Search = () => {
                 console.log(result.data);
                
                 
-                if(models.length > 1 ){
+                if(models.length > 1 ) {
                      set_model(models);  
                 }  else {
                     set_model(["none model"]);

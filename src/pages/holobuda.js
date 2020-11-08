@@ -105,6 +105,9 @@ const IndexPhone = styled(Index)`
 `;
 const IndexItem = styled(Index)`
     width: 30%;
+    span {
+        margin: 0;
+    }
 `;
 const FormAnswer = styled.div`
     width: 100vw;
@@ -264,9 +267,7 @@ const Admin = () => {
                 <link rel="canonical" ></link> 
             </Helmet>
             <div className="admin" >
-                <h4>ADMIN PANEL</h4> 
-                <img src="https://github.com/superHotBob/image/blob/main/nike/Zoom_Stucture_red.jpg?raw=true" height="150" width="150"/>
-                <img src="https://github.com/superHotBob/image/blob/main/adidas/T_shirt2_white.webp?raw=true" height="150" width="150"/>
+                <h4>ADMIN PANEL</h4>                
                 <p>
                     <Button>
                         <a href="https://shop-5589.admin.datocms.com/editor">CMS</a>
@@ -274,9 +275,7 @@ const Admin = () => {
                     <Button>
                         <a href="https://files.000webhost.com/">IMAGE</a>
                     </Button>
-                    {/* <Button>
-                        <a href="http://localhost:8888/.netlify/functions/uploadfile">BASE</a>
-                    </Button> */}
+                    
                     <Button>
                         <a href="https://www.aplacadance.ru/.netlify/functions/uploadbase">BASE</a>
                     </Button>                                         
