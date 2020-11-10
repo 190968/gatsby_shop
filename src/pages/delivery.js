@@ -58,7 +58,7 @@ const Div = styled.div`
     }
 `;
 
-const FormDelivery = ({ bag, delBag, delivery, currency }) => {
+const FormDelivery = ({ bag = [], delBag, delivery, currency }) => {
     const s = currency === 0.8 ? '€' : currency === 1 ? "$"  : "£" ;
     const [country, set_country] = React.useState("");
     const [city, set_city] = React.useState("");
@@ -68,15 +68,20 @@ const FormDelivery = ({ bag, delBag, delivery, currency }) => {
     const [phone, set_phone] = React.useState("");
     const [email, set_email] = React.useState("");
     const [ok, set_ok] = React.useState("");
-    const Total_sum = `Total sum:  ${bag.reduce(((total,num)=> Number(total) + num.cost*currency),[]).toFixed(0)}${s}`;   
+    const Total_sum =  bag.length === 1 ? 
+        `Total sum:  ${bag.reduce(((total,num)=> Number(total) + num.cost*currency),[]).toFixed(0)}${s}`
+        : "Total sum: 0"
+     ;   
 
     function sendData() {
-        const url =  "https://www.aplacadance.ru/.netlify/functions/new-question";
+        const url =  "https://www.aplacadance.ru/.netlify/functions/tobag";
        
         // const url = 'http://localhost:8888/.netlify/functions/new_question';       
         const params = {           
             name,
             surname,
+            city,
+            street,
             phone,
             email,
             bag,
@@ -97,21 +102,22 @@ const FormDelivery = ({ bag, delBag, delivery, currency }) => {
     return <Div>
         <h1>Only the best shoes and clothing for run on ShopForRun.com</h1> 
                  
-        <form className="delivery_name">
+        <form className="delivery_name" method="post" action="/delivery" data-netlify="true">
             <h2>Delivery Options</h2>
             {delivery !== 10 ? <>
                           
                 <Input 
                     type="text" 
-                    required value={country}  
+                    required 
+                    value={country}  
                     onChange={(e)=>set_country(e.target.value)} 
                     placeholder="country (example: usa) *" 
-                />
-                    
+                />     
                     
                 <Input 
                     type="text" 
-                    required value={city} 
+                    required 
+                    value={city} 
                     onChange={(e)=>set_city(e.target.value)} 
                     placeholder="city (example: Mexico) *" 
                 />
@@ -131,12 +137,13 @@ const FormDelivery = ({ bag, delBag, delivery, currency }) => {
             />
                     
             <Input type="email*" required value={email} onChange={(e)=>set_email(e.target.value)} placeholder="email*" />
-            <Button type="button" 
+            <Input type="submit" 
                 onClick={sendData}
                 disabled={!(name.length > 3 & email.includes("@") & email.includes("."))}
+               
                 value="BUY" 
             />
-            <Total type="text" value={Total_sum} disabled/>        
+            <Total type="text" value={Total_sum} required/>        
             <Link to="/bag" className="delivery_main_link">BACK TO BAG</Link>
             <Link to="/" className="delivery_main_link two">TO MAIN</Link>
             <h3>{ok}</h3>      
