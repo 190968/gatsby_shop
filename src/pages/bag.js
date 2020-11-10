@@ -23,14 +23,14 @@ const Empty = styled.span`
 `;
 const Button = styled.button`
     width: 100%;
-    border: 2px solid lime;
+    border: none;
     outline: none;
     cursor: pointer;
     font-weight: 600;
     background-color: lime;
     color: #000;    
-   
-    padding: 8px 0;
+    font-size: 20px;
+    padding: 12px 0;
     &:hover {
        background-color: yellow;    
        
@@ -60,7 +60,7 @@ const Items = styled.div`
   
     display: inline-block;
     vertical-align: middle;
-    width: 37%;
+    width: 38%;
     padding-left: 16%;
     background-color: #fff;
     background-position: left center;

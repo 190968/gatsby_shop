@@ -10,14 +10,15 @@ import { connect } from "react-redux";
 const Delivery = styled.div`   
     display: inline-block;
     vertical-align: middle;
-    width: 300px;
+    width: 45%;
     text-align: left;
-    font: italic 300 20px/50px 'Verdana', sans-serif;
+    font: italic 300 20px/25px 'Verdana', sans-serif;
     margin: 0;
     color: red;
+    
     span {
         width: auto;
-        font:  300 18px/50px 'Verdana', sans-serif;
+        font:  300 18px/25px 'Verdana', sans-serif;
         color: red;       
     }
     b {
@@ -29,69 +30,77 @@ const Delivery = styled.div`
     }
     p {
         display: inline-block;
-        margin: 0;
+      
         vertical-align: middle;
        
     }
     @media (max-width: 880px) {
        
         text-align: center;
-              
+        
+         width: auto;
+         margin: 0 auto;    
         font: italic 300 15px/25px 'Verdana', sans-serif;
     }
   
 `;
-const Delivery_two = styled(Delivery)`
-    width: calc(100% - 300px);
+const DeliveryTwo = styled(Delivery)`
+    width: 50%;
     @media (max-width: 880px) {
          display: block;
          width: 100%; 
          font: 300 15px/25px 'Verdana', sans-serif;  
     } 
-    span {
-        float: right;
+   
+    a {
         cursor: pointer;
-        margin: 0;
+        margin-top: 13px;
+        float: right;
+        vertical-align: middle;
         :hover {
             color: blue;
-           text-decoration: underline;
+            text-decoration: underline;
         }
-        @media (max-width: 880px) {
-            font: 300 15px/25px 'Verdana', sans-serif; 
-           float: none;
-           margin-left: 10px;
-       } 
     }
-    b {
-        @media (max-width: 880px) {
-           font-size: 15px;
-       } 
-    }      
+   
 `;
-const Img = styled.img`
-    width: 35px;
-    height: 35px;
+const Img = styled.div`
+    width: 80px;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-image: url(${location});
+    background-size: 30%;
     opacity: 0.5;
-    margin: 0 10px; 
+    cursor: pointer;   
+    text-align: right;
+    margin: 0 0 0 30px;   
     &:hover {
         opacity: 1;
     }
-
+    @media (max-width: 660px) {
+        margin: 0 10px;
+        font: italic 300 15px/18px 'Verdana', sans-serif;
+    }
 `;
+
 const Hi = styled.p`
     display: inline-block;
     margin: 0 20px;
-    color: blue;
     
     cursor: pointer;
-    font: italic 300 16px/50px 'Verdana', sans-serif;
-    &:hover {
-        text-decoration: underline;
-        color: blue;
-    }
+    font: italic 300 16px/25px 'Verdana', sans-serif;
+    span{
+        :hover {
+            color: blue;
+            text-decoration: underline;
+        }
+    }    
     @media (max-width: 880px) {
-        
-        font: italic 300 15px/25px 'Verdana', sans-serif;
+        display: block;
+        text-align: left;
+        width: 100%;
+        font: italic 300 15px/18px 'Verdana', sans-serif;
     }
 `;
 const H = styled.h1`
@@ -113,40 +122,42 @@ const BlockPhone = ({country = "BY", setCountry,  setLocations}) => {
 
    
     
-       return (   
-            <div className="div_phone">
+       return <>
                <Delivery>
                    
-                    <Hi onClick={()=>navigate("/orders")} title="Enter account">Hello, Guest! From           
+                    <Hi >
+                        <span  title="Enter account" onClick={()=>navigate("/orders")}>Hello, Guest! From  </span>         
                         
-                        <img src = {`https://myrunshop.000webhostapp.com/flags/${country}.png`} height="40px" width="40px" alt={country}   title={country}/>
-                        
+                        <img src = {`https://myrunshop.000webhostapp.com/flags/${country}.png`} height="30px" width="30px" alt={country}   title={country}/>
+                        <Img  onClick={()=>navigate("/locations")} >Stores</Img>
                     </Hi>  
                    
                    
                      
                    
                 </Delivery>
-                <Delivery_two>
+                <DeliveryTwo>
                     <p>Free delivery on order over 
                         <b>200$</b>         
                     </p> 
-                    <Img  onClick={()=>navigate("/locations")} src = {location}  alt="Location" title="Location"/>
-                    <span title="help" onClick={()=>navigate("/help")}>Help & Contact</span> 
+                    
+                   
+                    
+                    <a title="help" onClick={()=>navigate("/help")}>Help & Contact</a> 
                    
                      
                    
-                </Delivery_two>
+                </DeliveryTwo>
 
               
                 
 
-            </div>
+            </>
         
 
    
 
-)};
+};
 
 const mapStateToProps = state => ({
     country: state.app.country,   

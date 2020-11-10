@@ -1,5 +1,4 @@
 import React from "react";
-import "../styles/global.css";
 import SEO from "../components/seo";
 import Brand from "../components/Brand";
 import { Helmet } from 'react-helmet';

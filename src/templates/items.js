@@ -315,7 +315,7 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
     };
     const setColor = i => set_color(color === i.color ? "all" : i.color) ;   
 
-    const orders = data.allMongodbMyBase.nodes
+    const orders = data.allMongodbMyTest.nodes
         .filter(i => i.item === item)
         .filter(i => size ? i.size.split(',').some(a=>a===size) : i.size)
         .filter(i => model ? i.model === model : i.model)
@@ -410,7 +410,7 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
                         </Size>
                     )}
                 </span>                                
-                <Sale className="cost"  sale={i.sale} currency={s}>{(i.cost*currency).toFixed(0)}</Sale>                            
+                <Sale className="cost"  sale={i.sale} currency={s}>{(parseInt(i.cost)*currency).toFixed(0)}</Sale>                            
                        
                                
                            
@@ -418,7 +418,7 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
                    
                    
                
-                {(image_item & index === new_index) ? <Item 
+               {(image_item & index === new_index) ? <Item 
                         page={i} 
                         closeImage={set_image_item} 
                         image_color={i.color} 
@@ -427,7 +427,7 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
                         gender={i.gender}
                         item ={i.item}
                         sale={i.sale}
-                        cost={i.cost}
+                        cost={parseInt(i.cost)}
                         size={i.size}
                     />
                     :
@@ -435,7 +435,6 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
                     </>    
                 }
                   
-               
                        
             </div>
            
@@ -462,17 +461,20 @@ const mapStateToProps = state => ({
 export default connect(mapStateToProps,mapDispatchToProps)(Items);
 
 export const query = graphql`
-    query Mongo($brand: [String!], $gender: [String!]){
-        allMongodbMyBase(filter:{brand: {in: $brand},gender: {in: $gender}}) {     
-            nodes {                      
+    query ($brand: [String!], $gender: [String!]) {
+        allMongodbMyTest(filter:{brand: {in: $brand},gender: {in: $gender}}) {     
+            nodes { 
+                id 
+                cost                     
                 gender
                 color
-                brand 
-                cost 
+                brand                
                 model
                 size
+                item
+                rev
                 sale 
-                item                  
+                                  
             }
         }
    

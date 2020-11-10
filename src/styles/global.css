@@ -259,9 +259,9 @@ img {
     text-align: right;
 }
 .delivery_name {
-    margin: 30px auto 0;
-    width: calc(100vw - 20px)px;
-    padding: 10px;
+    margin: 30px  0;
+    width: calc(60vw - 20px);
+   
     background-color: lavender;
 }
 .delivery_name label {
@@ -274,10 +274,11 @@ img {
 }    
 .delivery_name:before {
     content : "LAST STEP";
-    width: calc(100% + 20px);
-    padding: 10px;
-    font-weight: 600;
-    margin: -10px 0 30px -10px;
+   
+    padding: 10px 20px;
+    font: 600 20px/20px 'Verdana', san-serif;
+
+    margin: -10px 0 30px;
     background-color: thistle;
     display: block;       
 }
@@ -539,7 +540,7 @@ img {
               
     }
     .div_delivery {
-        width: 70%;
+        width: 100%;
         margin: 40px auto 10px;
     }
     .delivery_name label {
@@ -589,8 +590,8 @@ img {
        
     }
     .delivery_name {       
-        left: 20%;
-        width: 60%;       
+        
+        width: 100%;       
     }
     .img_main_link b{      
        display: none;

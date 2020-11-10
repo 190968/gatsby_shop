@@ -68,11 +68,7 @@ const AllSale = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;  
-    position: relative;
-    p b {
-        color: red;
-        font-size: 25px;
-    }
+    position: relative;   
     h3 {
         text-transform: uppercase;
     }   
