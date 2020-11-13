@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 
 import { connect } from "react-redux";
-import { delete_from_bag, add_count, delBag } from "../state/app";
+import { setDelivery, delBag } from "../state/app";
 import styled from "styled-components";
 
 
@@ -12,28 +12,36 @@ const Input = styled.input`
     display: inline-block;
     width: 44%;
     text-transform: capitalize;
-    margin: 20px;
+    margin: 2%;
     font-size: 1vw;
     padding: 15px 5px;
    
     @media(max-width: 600px) {
-        font-size: 4vw;
-        width: 80%;
+        font-size: 2vw;
+        width: 90%;
     }
 `;
-const Button = styled.input`
-    width: 45%;
-    margin: 20px;
-    
+const Button = styled.button`
+    width: 23vw;
+    margin: 20px auto;
+    padding: 10px 0;
+    color: black;
+    font: 600 20px/20px 'Impact' , sans-serif;
+    @media(max-width: 600px) {
+       
+        width: 90vw;
+     }
    
 `;
 const Total = styled(Input)`
-    width: 45%;
-    margin:  20px ;
+    width: 80%;
+    margin:  20px 0 0;
     border: none;
+
     background-color: inherit;
     font: 600 20px/20px 'Verdana' , sans-serif;
-    float: none;
+   
+   
 `;
 const Div = styled.div`
     max-width: 1350px;
@@ -42,23 +50,50 @@ const Div = styled.div`
         text-align: center;
     }
     p {
-        width: 25%;
+        font-size: 15px;
     }
     a {
         width: 50%;
-        vertical-align: bottom;
+        float: left;
         font-weight: 600;
         box-sizing: border-box;   
-        padding: 8px;   
-        background-color: cornflowerblue;
+        padding: 8px;
+        text-align: center;
+        border-top: 1px solid #ddd;   
+        
     }
-    h2 {
-        margin-left: 20px;
-        font: 600 20px/20px 'Verdana' , sans-serif;
+    h3 {
+        margin: 20px;
+        border: 1px solid #ccc;
+        padding: 5px 10px; 
+        font: 400 20px/20px 'Verdana' , sans-serif;
     }
 `;
-
-const FormDelivery = ({ bag = [], delBag, delivery, currency }) => {
+const InputSpan = styled.span`
+    font-size: 16px;
+    display: inline-block;
+    margin: 0;  
+    text-align: right;   
+`;
+const DivSumm = styled.div`
+    display: inline-block;
+    vertical-align: top;
+    width: 23vw;
+    border: 1px solid #ddd;
+    margin: 20px auto;
+    float: left;
+    @media(max-width: 600px) {
+       float: none;
+        width: 100vw;
+    }
+    @media(max-width: 1000px) {
+        float: none;
+        width: 50vw;
+        display: block;
+        
+     }
+`;
+const FormDelivery = ({ bag = [],  delivery, currency , setDelivery}) => {
     const s = currency === 0.8 ? '€' : currency === 1 ? "$"  : "£" ;
     const [country, set_country] = React.useState("");
     const [city, set_city] = React.useState("");
@@ -68,8 +103,8 @@ const FormDelivery = ({ bag = [], delBag, delivery, currency }) => {
     const [phone, set_phone] = React.useState("");
     const [email, set_email] = React.useState("");
     const [ok, set_ok] = React.useState("");
-    const Total_sum =  bag.length === 1 ? 
-        `Total sum:  ${bag.reduce(((total,num)=> Number(total) + num.cost*currency),[]).toFixed(0)}${s}`
+    const Total_sum =  bag.length === 1 ?    
+        `${+bag.reduce(((total,num)=> Number(total) + num.cost*currency),[]).toFixed(0)}`
         : "Total sum: 0"
      ;   
 
@@ -103,7 +138,20 @@ const FormDelivery = ({ bag = [], delBag, delivery, currency }) => {
         <h1>Only the best shoes and clothing for run on ShopForRun.com</h1> 
                  
         <form className="delivery_name" method="post" action="/delivery" data-netlify="true">
-            <h2>Delivery Options</h2>
+            <h3>Select Delivery Method
+           
+                    <p><InputSpan>Delivery to the warehouse</InputSpan> <b>{s}10</b>
+                        <input type="checkbox" value="10" checked={delivery===10} onChange={()=>setDelivery(10)}/>
+                    </p>
+                    <p><InputSpan>Home delivery</InputSpan> <b>{s}20</b>
+                        <input type="checkbox" value="20" checked={delivery===20} onChange={()=>setDelivery(20)}/>
+                    </p>
+                    <p><InputSpan>Express delivery </InputSpan> <b>{s}30</b>
+                        <input type="checkbox" value="30" checked={delivery===30} onChange={()=>setDelivery(30)}/>
+                    </p>
+            </h3>        
+            <h3>
+                <p>Delivery Address</p>
             {delivery !== 10 ? <>
                           
                 <Input 
@@ -137,24 +185,33 @@ const FormDelivery = ({ bag = [], delBag, delivery, currency }) => {
             />
                     
             <Input type="email*" required value={email} onChange={(e)=>set_email(e.target.value)} placeholder="email*" />
-            <Input type="submit" 
-                onClick={sendData}
-                disabled={!(name.length > 3 & email.includes("@") & email.includes("."))}
-               
-                value="BUY" 
-            />
-            <Total type="text" value={Total_sum} required/>        
-            <Link to="/bag" className="delivery_main_link">BACK TO BAG</Link>
-            <Link to="/" className="delivery_main_link two">TO MAIN</Link>
-            <h3>{ok}</h3>      
-                   
+           
+                 
+            
+            <p>{ok}</p>      
+            </h3>      
                   
                     
                    
         </form>
-        <p>Subscription on new sale: <Input type="checkbox" value="30" /></p>
-        <p>Subscription on new sale: <Input type="checkbox" value="30" /></p>
+        <DivSumm>
+        <p>Delivery {delivery} $</p> 
+        <layout> Total 
+            <Total type="text" value={parseInt(Total_sum) + delivery + s} required/>
+        </layout> 
+           
+        <Link to="/bag" className="delivery_main_link">Edit Bag</Link>
+        <Link to="/" className="delivery_main_link two">To Main</Link>
         
+        </DivSumm>
+        <p> <Input type="checkbox" value="30" />Subscription on new sale:</p>
+        <p> <Input type="checkbox" value="30" />I accept the terms and conditions of supply</p>
+        <Button 
+            onClick={sendData}
+            disabled={!(name.length > 3 & email.includes("@") & email.includes("."))}         
+                 
+        >GO to Pay</Button> 
+       
         
     </Div>
 };
@@ -170,9 +227,8 @@ const mapStateToProps = state => ({
 });
    
 const mapDispatchToProps = dispatch => ({
-    delete_from_bag: (a) => dispatch(delete_from_bag(a)),
-    add_count: (a,b) => dispatch(add_count(a,b)),
-    delBag: () => dispatch(delBag())
+  
+    setDelivery: (a) => dispatch(setDelivery(a))
     
 });
 export default connect(mapStateToProps,mapDispatchToProps)(FormDelivery);

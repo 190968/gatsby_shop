@@ -25,7 +25,7 @@ exports.handler = async (event, context) => {
       J: 'sale'
     }
   });
- 
+  console.log(result.Лист1);
   var uri = "mongodb+srv://alex:alex@cluster0alex-mvffj.gcp.mongodb.net/my?retryWrites=true";   
   var connect = await Mongoclient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
            
@@ -41,7 +41,7 @@ exports.handler = async (event, context) => {
           "Access-Control-Allow-Methods": "OPTIONS,POST"
       },
       body: "Good upload base"                   
-    };
+  };
   
 
 };  

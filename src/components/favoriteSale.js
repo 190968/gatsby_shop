@@ -54,7 +54,7 @@ const DivItem = styled.div`
         span {
             margin: 0;
         }
-        padding: 5px;
+        
         margin: 0;
         width: 30vw;       
         &:last-child {
@@ -74,23 +74,47 @@ const AllSale = styled.div`
     }   
     :before {
         content: "Favorite Sale Last Weak";
-        font: italic 600 1.5em/25px 'Arial', sans-serif;      
+        font: italic 600 1.8em/28px 'Arial', sans-serif;      
         width: 100%;
-        color: cornflowerblue;
+        color: blue;
         position: absolute;
         background-image: linear-gradient(rgba(255,0,0,0), rgba(255,0,0,0.5));
         padding: 12px 0;
         top:-55px;
              
         @media (max-width: 660px) {
-          padding: 10px;
-          font-size: 1em;         
+         
+          font: italic 600 1em/20px 'Arial', sans-serif;     
         }
     }
+   
 `;
-
+const I =styled.i`
+    cursor: pointer;    
+        position: absolute;
+        top: 45%;
+        left: ${props => props.left ? "0%": "97%" };
+        font-size: 2em;   
+        padding: 5px 10px;
+        border: 1px solid #ddd;
+        border-radius: ${props => props.left ? "0 50% 50% 0" : "50% 0 0 50%" };
+        z-index: 10;
+        background-color: #fff;
+        :hover {
+            background-color: #ddd;
+            transition: all 1s; 
+        }    
+    
+ 
+`;
 export default function () {
-    const [number, set_number] = React.useState(false);
+    const [number, set_number] = React.useState(false); 
+    const [view, set_view] = React.useState(0);
+
+    const setView = (a) => {
+        view - a > 0 ?  set_view(0) : set_view(a) 
+    };
+
     let data = useStaticQuery(
         graphql`
             query {
@@ -107,14 +131,17 @@ export default function () {
                 }
             }
     `);
-    
+   
     return (            
-        <AllSale>
-            {data.allDatoCmsSale.nodes.map((i,index) => <DivItem onClick={()=>set_number(index+1)} key={index}> 
+        <AllSale ><I onClick={()=>setView(0)} left>{'<'}</I> 
+            {data.allDatoCmsSale.nodes.slice(4-`${view}`,8-`${view}`).map((i,index) => <DivItem onClick={()=>set_number(index+1)} key={index}>
+                    
                     <span  
                                           
                         style={{ backgroundImage: `url(https://myrunshop.000webhostapp.com/wp-content/image/${i.brand}/${i.modelitem}_${i.color}.jpg),
-                            url(https://myrunshop.000webhostapp.com/wp-content/image/${i.brand}/${i.modelitem}_${i.color}.webp)`,
+                            url(https://myrunshop.000webhostapp.com/wp-content/image/${i.brand}/${i.modelitem}_${i.color}.webp),
+                            url(https://github.com/superHotBob/image/blob/main/${i.brand}/${i.modelitem}_${i.color}.jpg?raw=true),
+                            url(https://github.com/superHotBob/image/blob/main/${i.brand}/${i.modelitem}_${i.color}.webp?raw=true)`
                            
                         }}                   
                     >
@@ -129,18 +156,20 @@ export default function () {
                         <b>{(i.cost*(100-i.sale)/100).toFixed(0)}$</b>
                     </p>
                 </DivItem>)}
+               
                 {number && <Item
-                    page={data.allDatoCmsSale.nodes[number-1]}
+                    page={data.allDatoCmsSale.nodes.slice(4-`${view}`,8-`${view}`)[number-1]}
                     closeImage={set_number}
-                    image_color={data.allDatoCmsSale.nodes[number-1].color} 
-                    image_model={data.allDatoCmsSale.nodes[number-1].modelitem } 
+                    color={data.allDatoCmsSale.nodes.slice(4-`${view}`,8-`${view}`)[number-1].color} 
+                    image_model={data.allDatoCmsSale.nodes.slice(4-`${view}`,8-`${view}`)[number-1].modelitem } 
                     num={number-1}
-                    gender={data.allDatoCmsSale.nodes[number-1].gender}
-                    sale={data.allDatoCmsSale.nodes[number-1].sale}
-                    cost={data.allDatoCmsSale.nodes[number-1].cost}
-                    size={data.allDatoCmsSale.nodes[number-1].size}
+                    gender={data.allDatoCmsSale.nodes.slice(4-`${view}`,8-`${view}`)[number-1].gender}
+                    sale={data.allDatoCmsSale.nodes.slice(4-`${view}`,8-`${view}`)[number-1].sale}
+                    cost={data.allDatoCmsSale.nodes.slice(4-`${view}`,8-`${view}`)[number-1].cost}
+                    size={data.allDatoCmsSale.nodes.slice(4-`${view}`,8-`${view}`)[number-1].size}
                 />
             }
+             <I onClick={()=>setView(4)}>{'>'}</I> 
         </AllSale>       
 
     )

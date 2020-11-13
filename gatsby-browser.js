@@ -7,6 +7,10 @@ import "./src/styles/global.css"
 //     console.log('new pathname', location.pathname)
 //     console.log('old pathname', prevLocation ? prevLocation.pathname : null)
 // }
+// exports.onClientEntry = () => {
+//     console.log("We've started!")
+    
+// };
 export { default as wrapRootElement } from './src/state/ReduxWrapper';
 // const React = require("react")
 // const { Provider } = require("react-redux")

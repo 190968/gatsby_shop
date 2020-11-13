@@ -92,7 +92,7 @@ module.exports = {
       options: { 
         connectionString: `mongodb+srv://alex:alex@cluster0alex-mvffj.gcp.mongodb.net/test?retryWrites=true&w=majority`,
         dbName: `my`, 
-        collection: `test`
+        collection: `base`
         
       },
     }, 

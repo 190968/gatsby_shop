@@ -4,7 +4,7 @@ import axios from "axios";
 import styled from "styled-components";
 import Layout  from "../components/layout";
 
-import "../styles/global.css";
+
 
 
 const Index = styled.b.attrs(props=>({
@@ -86,10 +86,10 @@ const IndexDate = styled(Index)`
 `;
 const IndexStatus = styled(Index)`
    
-    width: 18%;
+    width: 17%;
 `;
 const IndexItem = styled(Index)`
-    width: 62%;
+    width: 60%;
 `;
 const Order = styled.div`
     text-align: left;

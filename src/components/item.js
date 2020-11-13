@@ -73,7 +73,7 @@ const Input = styled.input`
         height: fit-content;
        
         vertical-align: top;
-        margin: 0;
+        margin: 0 0 0 -5px;
         @media (max-width: 1000px) {
             width: 20vw;
            
@@ -100,7 +100,7 @@ const Input = styled.input`
     `;
 const Item = (props) => {
 
-    const { currency,addBag, page, gender, closeImage, image_color, image_model, size =  0, cost, sale = false, item = 'shoes' } = props;
+    const { currency,addBag, page, gender, closeImage, color, image_model, size =  0, cost, sale = false, item = 'shoes' } = props;
     const [new_size, set_size] = React.useState(true);
     const s = (currency === 0.8) ? "€" : (currency === 1) ? "$"  : "£" ;
     const handClose = () => closeImage(false) ;
@@ -115,9 +115,11 @@ const Item = (props) => {
                 <Images>
                 {["",1,2].map((i,index) => <div className="div_small_image" key={index}
                         onMouseEnter={()=>set_number(i)}                       
-                        style={{backgroundImage: `url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model.replace(" ","_") + "_" + image_color}${i}.jpg),
-                                url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model.replace(" ","_") + "_" + image_color}${i}.webp),
-                                url(https://github.com/superHotBob/image/blob/main/${page.brand}/${image_model.replace(" ","_") + "_" + image_color}${i}.jpg?raw=true)`,
+                        style={{backgroundImage: `url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model.replace(" ","_") + "_" + color}${i}.jpg),
+                                url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model.replace(" ","_") + "_" + color}${i}.webp),
+                                url(https://github.com/superHotBob/image/blob/main/${page.brand}/${image_model.replace(" ","_") + "_" + color}${i}.jpg?raw=true),
+                                url(https://github.com/superHotBob/image/blob/main/${page.brand}/${image_model.replace(" ","_") + "_" + color}${i}.webp?raw=true),
+                                url(https://www.datocms-assets.com/28552/1590394654-image.jpg)`,
 
                                 borderBottom: number === i ? "2px solid #000" : "none"
                         }}
@@ -125,9 +127,10 @@ const Item = (props) => {
                 )}   
                 </Images>
                 <div className="div_big_image"                             
-                    style={{backgroundSize: "90%", backgroundImage: `url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model.replace(" ","_") + "_" + image_color}${number}.jpg),
-                    url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model.replace(" ","_") + "_" + image_color}${number}.webp),
-                    url(https://github.com/superHotBob/image/blob/main/${page.brand}/${image_model.replace(" ","_") + "_" + image_color}${number}.jpg?raw=true)
+                    style={{backgroundSize: "90%", backgroundImage: `url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model.replace(" ","_") + "_" + color}${number}.jpg),
+                    url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model.replace(" ","_") + "_" + color}${number}.webp),
+                    url(https://github.com/superHotBob/image/blob/main/${page.brand}/${image_model.replace(" ","_") + "_" + color}${number}.jpg?raw=true),
+                    url(https://github.com/superHotBob/image/blob/main/${page.brand}/${image_model.replace(" ","_") + "_" + color}${number}.webp?raw=true)
                     `}}
                 
                 />
@@ -141,7 +144,7 @@ const Item = (props) => {
                     {image_model.replace("T_S","T-S").replace(/_/g," ")} {gender}s run {item}                        
                 </p>                  
                 <Cost sale={sale} currency={s}>{Math.trunc(cost*currency)}</Cost>
-                <p><strong>color:</strong> {image_color}</p>
+                <p><strong>color:</strong> {color}</p>
                 <p><strong>size: </strong>{new_size}</p>
                 <p>{size.split(",").map((i,index) => 
                     <Size key={index} newSize={new_size} setSize={i} onClick={()=>set_size(i)}>
@@ -156,7 +159,7 @@ const Item = (props) => {
                             "model": image_model,
                             "gender": gender,
                             "cost": cost,
-                            "color": image_color,
+                            "color": color,
                             "size": new_size,
                             "count": 1
                         })}

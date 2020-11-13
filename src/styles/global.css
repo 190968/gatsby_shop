@@ -33,8 +33,8 @@ input[type=button]:hover {
 input[type=checkbox] {   
     width: 20px;
     height: 20px;   
-    float: right;
-    margin: 4px 5%;
+    float: left;
+    margin: 0 1% 0 0;
 }
 .order {
     border: 1px solid #ccc;
@@ -125,7 +125,7 @@ input:focus {
     border-bottom: none;
 }
 .main_Menu_link:hover {
-    font: 300 22px/50px 'Georgia', serif;
+   box-shadow: inset 0 0 12px 25px rgb(55, 240, 55);
 }
 
 
@@ -247,7 +247,7 @@ img {
 }
 .delivery_main_link {    
     color: #000;
-    width: 29%;
+    width: 49%;
     display: inline-block;
     text-shadow: none;
 }
@@ -259,10 +259,11 @@ img {
     text-align: right;
 }
 .delivery_name {
-    margin: 30px  0;
-    width: calc(60vw - 20px);
-   
+    margin: 30px  2vw 0 0;
+    width: 58vw;   
     background-color: lavender;
+   
+    float: left;
 }
 .delivery_name label {
     width: 30%;
@@ -273,7 +274,7 @@ img {
     display: inline-block;
 }    
 .delivery_name:before {
-    content : "LAST STEP";
+    content : "LAST STEP: DELIVERY OPTIONS";
    
     padding: 10px 20px;
     font: 600 20px/20px 'Verdana', san-serif;
@@ -283,9 +284,10 @@ img {
     display: block;       
 }
 .delivery_name p {
-    width: 25%;
+   
     margin: 10px auto;
     font-weight: 600;
+   
 }
 .div_delivery {
     height: auto;
@@ -296,13 +298,15 @@ img {
     background-color: lavender;
     vertical-align: top;
     position: relative; 
-    text-align: left; 
+    text-align: left;  
+   
 }
 .div_delivery p {
-    text-align: right;
+    text-align: right; 
+    font-size: 15px;
 }
 .div_delivery:before {
-    content: "SELECT DELIVERY";   
+    content: "ORDER SUMMARY";   
     font-weight: 600;   
     padding: 8px;   
     background-color: cornflowerblue;
@@ -326,9 +330,9 @@ img {
 }
 .orders:before {
     content: "YOUR ORDERS LAST FOUR MOUNTH";
-    border-bottom: 1px solid #000;
-    font-size: 22px;
-    font-weight: 600;
+    font: 300 24px/24px 'Verdana',sans-serif;
+   
+    
     display: block;
     padding: 3px;
     left: 0;
@@ -524,11 +528,11 @@ img {
         height: auto;
         float: left;
         text-align: center;   
-        font: 400 16px/16px 'Verdana', sans-serif;    
+        font: 400 22px/16px 'Verdana', sans-serif;    
     }
     .main_Menu_link:hover {
         color: red;
-          
+        font: 400 22px/16px 'Verdana', sans-serif;  
     }
    
     .div_bag_menu {       
@@ -569,11 +573,11 @@ img {
     }
     .div_small_image {
         width: 20vw;
-        height: 15vw;
+        height: 10vh;
        
     }
     .go_to_account, .orders {
-        margin: 170px 0 0;
+        margin: 170px auto 0;
        
     }
     .go_to_account:before {
@@ -629,12 +633,15 @@ img {
     .go_to_account, .orders {
         margin: 200px 0 0;
     }
+    .go_to_account {
+        width: 95%;
+    }
     .div_delivery {
         width: 100%;
         margin: 40px auto 10px;
     }
     .delivery_name {       
-        left: 0;
+       
         width: 100%;       
     }
     

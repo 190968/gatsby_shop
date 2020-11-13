@@ -106,7 +106,7 @@ const Favorite = () =>{
                 gender = {data.allDatoCmsItem.nodes[number-1].gender}
                 size={data.allDatoCmsItem.nodes[number-1].size}
                 cost={data.allDatoCmsItem.nodes[number-1].cost}
-                image_color={data.allDatoCmsItem.nodes[number-1].color}
+                color={data.allDatoCmsItem.nodes[number-1].color}
                 item={data.allDatoCmsItem.nodes[number-1].item}  
                 image_model={data.allDatoCmsItem.nodes[number-1].modelItem } 
                 num={number-1}

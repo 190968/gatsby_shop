@@ -315,7 +315,7 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
     };
     const setColor = i => set_color(color === i.color ? "all" : i.color) ;   
 
-    const orders = data.allMongodbMyTest.nodes
+    const orders = data.allMongodbMyBase.nodes
         .filter(i => i.item === item)
         .filter(i => size ? i.size.split(',').some(a=>a===size) : i.size)
         .filter(i => model ? i.model === model : i.model)
@@ -421,7 +421,7 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
                {(image_item & index === new_index) ? <Item 
                         page={i} 
                         closeImage={set_image_item} 
-                        image_color={i.color} 
+                        color={i.color} 
                         image_model={i.model} 
                         set_image={set_image_item}              
                         gender={i.gender}
@@ -462,7 +462,7 @@ export default connect(mapStateToProps,mapDispatchToProps)(Items);
 
 export const query = graphql`
     query ($brand: [String!], $gender: [String!]) {
-        allMongodbMyTest(filter:{brand: {in: $brand},gender: {in: $gender}}) {     
+        allMongodbMyBase(filter:{brand: {in: $brand},gender: {in: $gender}}) {     
             nodes { 
                 id 
                 cost                     

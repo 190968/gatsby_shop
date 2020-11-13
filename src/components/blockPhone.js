@@ -61,6 +61,10 @@ const DeliveryTwo = styled(Delivery)`
             color: blue;
             text-decoration: underline;
         }
+        @media (max-width: 880px) {
+            display: none;
+           
+       } 
     }
    
 `;
@@ -80,7 +84,7 @@ const Img = styled.div`
     }
     @media (max-width: 660px) {
         margin: 0 10px;
-        font: italic 300 15px/18px 'Verdana', sans-serif;
+        font: italic 300 15px/25px 'Verdana', sans-serif;
     }
 `;
 

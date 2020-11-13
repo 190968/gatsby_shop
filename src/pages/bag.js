@@ -9,9 +9,10 @@ import  DeliveryName  from "../components/delivery";
 import "../styles/global.css";
 
 const Total = styled.h3`   
-    text-align: right;    
+    text-align: left;    
     padding: 10px 15px;
-    color: red;
+    color: #000;
+    font-size: 25px;
     margin-bottom: 0;    
     background-color: #bbb;
 `;
@@ -165,23 +166,14 @@ const Bag =  ({ bag, delete_from_bag, add_count, currency, delivery, setDelivery
                     </div>
                 
                 )}
-                <div className="div_delivery">
-                    <p><InputSpan>Delivery to the warehouse</InputSpan> <b>{s}10</b>
-                        <input type="checkbox" value="10" checked={delivery===10} onChange={()=>setDelivery(10)}/>
-                    </p>
-                    <p><InputSpan>Home delivery</InputSpan> <b>{s}20</b>
-                        <input type="checkbox" value="20" checked={delivery===20} onChange={()=>setDelivery(20)}/>
-                    </p>
-                    <p><InputSpan>Express delivery </InputSpan> <b>{s}30</b>
-                        <input type="checkbox" value="30" checked={delivery===30} onChange={()=>setDelivery(30)}/>
-                    </p>
+                <div className="div_delivery">                    
                     <p style={{borderTop: "1px solid #ccc; padding: 20px" }}>
                         <InputCode placeholder="Discount code" type="text" />
                         <ButtonCode>Apply</ButtonCode>
                     </p>
                     <Total>
-                        Total cost: {bag.reduce(((total,num)=> Number(total) + num.cost*num.count*currency + delivery),[]).toFixed(0)}
-                        {s}
+                         Total cost: {s}{bag.reduce(((total,num)=> Number(total) + num.cost*num.count*currency + delivery),[]).toFixed(0)}
+                       
                     
                     </Total>
                     
