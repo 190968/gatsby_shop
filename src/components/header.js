@@ -6,7 +6,8 @@ import { addBag, euro } from "../state/app";
 import "../styles/global.css";
 import { graphql, StaticQuery, Link } from "gatsby";
 import Linktobag from "./linktobag";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faShoppingCart, faUser } from "@fortawesome/free-solid-svg-icons"
 
 const One = styled.h2.attrs(props=>({
     src:props.src,
@@ -113,15 +114,17 @@ export const Header = ({ euro, currency }) => {
        
         render={(data) => (   
             <div className="header">              
-                <Link to="/" className="icon" >                
+                <Link to="/" className="shopIcon" >                
                     <One src={data.allDatoCmsHeader.nodes[0].siteimage.url} >
                         {data.allDatoCmsHeader.nodes[0].title}
                     </One>
                 </Link>                  
                 <Search />               
-                <Linktobag  title="open bag" /> 
+                <Linktobag  title="open bag" size="2x" /> 
+               
+               
                 <Link to="/orders" title="open account">
-                    <Account />
+                    <FontAwesomeIcon icon={faUser} size="2x" className="icon" /> 
                 </Link>                         
                 <DivCur>                 
                     {["€","$","£"].filter(i=>i!==s).concat(s).reverse().map( i =>

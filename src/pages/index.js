@@ -34,6 +34,7 @@ const Main = () => {
         <SEO title="Shoes and clothing the best of world brands for running" />       
         <Brand  number={number} />
         <FavoriteSale />
+       
         <Favorite />                
       </Layout>
     </>     

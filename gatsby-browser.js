@@ -1,4 +1,5 @@
-import "./src/styles/global.css"
+// import "./src/styles/global.css"
+require('./src/styles/global.css')
 // import React from "react";
 // or:
 // require('./src/styles/global.css')
@@ -12,11 +13,11 @@ import "./src/styles/global.css"
     
 // };
 export { default as wrapRootElement } from './src/state/ReduxWrapper';
-// const React = require("react")
-// const { Provider } = require("react-redux")
+// const React = require("react");
+// const { Provider } = require("react-redux");
 
-// // const createStore = require("./src/state/ReduxWrapper")
-// const store = createStore()
+// const wrapRootElement  = require("./src/state/ReduxWrapper");
+// const store = createStore(reducer);
 
 // exports.wrapRootElement = ({ element }) => {
 //   return (

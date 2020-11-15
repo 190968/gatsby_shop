@@ -93,9 +93,9 @@ const I =styled.i`
     cursor: pointer;    
         position: absolute;
         top: 45%;
-        left: ${props => props.left ? "0%": "97%" };
+        left: ${props => props.left ? "0%": "97.8%" };
         font-size: 2em;   
-        padding: 5px 10px;
+        padding: 5px;
         border: 1px solid #ddd;
         border-radius: ${props => props.left ? "0 50% 50% 0" : "50% 0 0 50%" };
         z-index: 10;
