@@ -172,7 +172,7 @@ const Bag =  ({ bag, delete_from_bag, add_count, currency, delivery, setDelivery
                         <ButtonCode>Apply</ButtonCode>
                     </p>
                     <Total>
-                         Total cost: {s}{bag.reduce(((total,num)=> Number(total) + num.cost*num.count*currency + delivery),[]).toFixed(0)}
+                         Total cost: {s}{bag.reduce(((total,num)=> Number(total) + num.cost*num.count*currency),[]).toFixed(0)}
                        
                     
                     </Total>

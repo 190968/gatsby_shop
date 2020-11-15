@@ -125,6 +125,7 @@ export default function () {
                         color
                         cost
                         sale
+                        item
                         size
                         gender
                     }
@@ -155,14 +156,14 @@ export default function () {
                         <del>{i.cost}$</del> 
                         <b>{(i.cost*(100-i.sale)/100).toFixed(0)}$</b>
                     </p>
-                </DivItem>)}
-               
+                </DivItem>)}               
                 {number && <Item
                     page={data.allDatoCmsSale.nodes.slice(4-`${view}`,8-`${view}`)[number-1]}
                     closeImage={set_number}
                     color={data.allDatoCmsSale.nodes.slice(4-`${view}`,8-`${view}`)[number-1].color} 
                     image_model={data.allDatoCmsSale.nodes.slice(4-`${view}`,8-`${view}`)[number-1].modelitem } 
                     num={number-1}
+                    item={data.allDatoCmsSale.nodes.slice(4-`${view}`,8-`${view}`)[number-1].item}
                     gender={data.allDatoCmsSale.nodes.slice(4-`${view}`,8-`${view}`)[number-1].gender}
                     sale={data.allDatoCmsSale.nodes.slice(4-`${view}`,8-`${view}`)[number-1].sale}
                     cost={data.allDatoCmsSale.nodes.slice(4-`${view}`,8-`${view}`)[number-1].cost}

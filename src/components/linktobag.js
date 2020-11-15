@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import { Link } from "gatsby";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faShoppingCart, faUser } from "@fortawesome/free-solid-svg-icons"
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons"
 
 const BagLink = styled(Link).attrs(props=> ({
     count: props.count,
@@ -11,14 +11,12 @@ const BagLink = styled(Link).attrs(props=> ({
     float: right;
     width: 43px;
     height: 43px;
-    margin: 2px 10px;   
+    margin: 1px 10px 0;   
    
     opacity: ${props=>props.count === 0 ? "0.5" : "1"};
     position: relative;
     
-    &:hover {
-        box-shadow: 0 0 2px 2px #fff;
-    } 
+   
     &: after {
         position: absolute;
         content: '${props=>props.count}';
@@ -36,10 +34,10 @@ const BagLink = styled(Link).attrs(props=> ({
     }
 `;
 
-const LinkToBag = ({ bag, size }) => {
+const LinkToBag = ({ bag }) => {
     return <BagLink to="/bag" count={bag.length} >
 
-    <FontAwesomeIcon  icon={faShoppingCart} size={size} className="icon"/>
+    <FontAwesomeIcon  icon={faShoppingCart}  className="icon"/>
     </BagLink>
 };        
 

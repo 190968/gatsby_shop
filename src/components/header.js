@@ -7,7 +7,8 @@ import "../styles/global.css";
 import { graphql, StaticQuery, Link } from "gatsby";
 import Linktobag from "./linktobag";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faShoppingCart, faUser } from "@fortawesome/free-solid-svg-icons"
+import {  faUser } from "@fortawesome/free-solid-svg-icons"
+import { LinkToAccount } from "./linktoaccount";
 
 const One = styled.h2.attrs(props=>({
     src:props.src,
@@ -120,12 +121,10 @@ export const Header = ({ euro, currency }) => {
                     </One>
                 </Link>                  
                 <Search />               
-                <Linktobag  title="open bag" size="2x" /> 
+                <Linktobag  title="open bag"  /> 
+                <LinkToAccount title="to account" />
                
-               
-                <Link to="/orders" title="open account">
-                    <FontAwesomeIcon icon={faUser} size="2x" className="icon" /> 
-                </Link>                         
+                           
                 <DivCur>                 
                     {["€","$","£"].filter(i=>i!==s).concat(s).reverse().map( i =>
                         <Euro key={i}  onClick={()=>euro(i)}>{i}</Euro> )

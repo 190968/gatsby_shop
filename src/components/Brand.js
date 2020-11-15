@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
-import "../styles/global.css";
+
 
 const brands = ["adidas","new-balance","nike","puma","salomon","reebok"];
 const gender = ["men","women","kids"];
