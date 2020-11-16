@@ -8,7 +8,7 @@ import {  faUser } from "@fortawesome/free-solid-svg-icons"
 export const LinkToAccount = () => {
     return (
         <Link to="/orders" title="open account">
-            <FontAwesomeIcon icon={faUser}  className="icon" /> 
+            <FontAwesomeIcon icon={faUser} size="2x" className="icon" /> 
         </Link> 
     )            
 };        

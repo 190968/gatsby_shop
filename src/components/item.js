@@ -115,8 +115,8 @@ const Item = (props) => {
                 <Images>
                 {["",1,2].map((i,index) => <div className="div_small_image" key={index}
                         onMouseEnter={()=>set_number(i)}                       
-                        style={{backgroundImage: `url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model.replace(" ","_") + "_" + color}${i}.jpg),
-                                url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model.replace(" ","_") + "_" + color}${i}.webp),
+                        style={{backgroundImage: `url(https://myrunshop.000webhostapp.com/image/${page.brand}/${image_model.replace(" ","_") + "_" + color}${i}.jpg),
+                                url(https://myrunshop.000webhostapp.com/image/${page.brand}/${image_model.replace(" ","_") + "_" + color}${i}.webp),
                                 url(https://github.com/superHotBob/image/blob/main/${page.brand}/${image_model.replace(" ","_") + "_" + color}${i}.jpg?raw=true),
                                 url(https://github.com/superHotBob/image/blob/main/${page.brand}/${image_model.replace(" ","_") + "_" + color}${i}.webp?raw=true),
                                 url(https://www.datocms-assets.com/28552/1590394654-image.jpg)`,
@@ -127,8 +127,8 @@ const Item = (props) => {
                 )}   
                 </Images>
                 <div className="div_big_image"                             
-                    style={{backgroundSize: "90%", backgroundImage: `url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model.replace(" ","_") + "_" + color}${number}.jpg),
-                    url(https://myrunshop.000webhostapp.com/wp-content/image/${page.brand}/${image_model.replace(" ","_") + "_" + color}${number}.webp),
+                    style={{backgroundSize: "90%", backgroundImage: `url(https://myrunshop.000webhostapp.com/image/${page.brand}/${image_model.replace(" ","_") + "_" + color}${number}.jpg),
+                    url(https://myrunshop.000webhostapp.com/image/${page.brand}/${image_model.replace(" ","_") + "_" + color}${number}.webp),
                     url(https://github.com/superHotBob/image/blob/main/${page.brand}/${image_model.replace(" ","_") + "_" + color}${number}.jpg?raw=true),
                     url(https://github.com/superHotBob/image/blob/main/${page.brand}/${image_model.replace(" ","_") + "_" + color}${number}.webp?raw=true)
                     `}}

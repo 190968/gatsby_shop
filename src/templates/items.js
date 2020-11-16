@@ -383,8 +383,8 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
         {orders.filter((i,index) => (page-1)*10 <= index && index < page*10).map((i,index) => 
             <div className="items" key={index} >              
                 <ButImage                  
-                    style={{backgroundImage: `url(https://myrunshop.000webhostapp.com/wp-content/image/${i.brand}/${i.model}_${i.color}.jpg),
-                        url(https://myrunshop.000webhostapp.com/wp-content/image/${pageContext.brand}/${i.model}_${i.color}.webp),
+                    style={{backgroundImage: `url(https://myrunshop.000webhostapp.com/image/${i.brand}/${i.model}_${i.color}.jpg),
+                        url(https://myrunshop.000webhostapp.com/image/${pageContext.brand}/${i.model}_${i.color}.webp),
                         url(https://github.com/superHotBob/image/blob/main/${pageContext.brand}/${i.model}_${i.color}.webp?raw=true),
                         url(https://github.com/superHotBob/image/blob/main/${pageContext.brand}/${i.model}_${i.color}.jpg?raw=true),
                         url('https://www.datocms-assets.com/28552/1590394654-image.jpg')`

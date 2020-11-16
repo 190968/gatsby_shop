@@ -40,6 +40,7 @@ const SearchModel = styled.div`
     width: 20vw;
     @media(max-width: 600px) {
         width: 40vw;
+        float: left;
     }   
 `;
 

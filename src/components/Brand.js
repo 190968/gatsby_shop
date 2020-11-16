@@ -18,4 +18,6 @@ const Brand = ({ number }) => (
             )}            
         </> 
 )
+
+
 export default Brand; 

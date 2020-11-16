@@ -139,12 +139,10 @@ export default function () {
                     
                     <span  
                                           
-                        style={{ backgroundImage: `url(https://myrunshop.000webhostapp.com/wp-content/image/${i.brand}/${i.modelitem}_${i.color}.jpg),
-                            url(https://myrunshop.000webhostapp.com/wp-content/image/${i.brand}/${i.modelitem}_${i.color}.webp),
-                            url(https://github.com/superHotBob/image/blob/main/${i.brand}/${i.modelitem}_${i.color}.jpg?raw=true),
-                            url(https://github.com/superHotBob/image/blob/main/${i.brand}/${i.modelitem}_${i.color}.webp?raw=true)`
+                        style={{ backgroundImage: `url(https://myrunshop.000webhostapp.com/image/${i.brand}/${i.modelitem}_${i.color}.webp)`}}                      
+                            
                            
-                        }}                   
+                                        
                     >
                         <Sale>{i.sale}%</Sale>
                     </span>    

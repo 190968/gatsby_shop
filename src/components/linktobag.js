@@ -37,7 +37,7 @@ const BagLink = styled(Link).attrs(props=> ({
 const LinkToBag = ({ bag }) => {
     return <BagLink to="/bag" count={bag.length} >
 
-    <FontAwesomeIcon  icon={faShoppingCart}  className="icon"/>
+    <FontAwesomeIcon  icon={faShoppingCart} size="2x" className="icon"/>
     </BagLink>
 };        
 
