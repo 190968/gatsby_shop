@@ -4,7 +4,7 @@ import Header from "./header";
 import { Footer } from "./footer";
 import { Helmet } from 'react-helmet';
 
-import BlockPhone from "./blockPhone";
+import BlockPhone from "./blockphone";
 
 
 

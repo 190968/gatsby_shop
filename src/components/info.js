@@ -34,9 +34,9 @@ export const Info = ({  model="one",...props }) => {
     const { brand ,gender } = props;
     return (       
         <InfoString>
-            <Link to="/" >Home </Link> / {" "}
-            {brand.length > 1 ? model.replace(/[_]/g, match => " " + match.toUpperCase()) : brand + " "}         
-            {gender.length === 1 ? gender : gender.length === 2 ? `boys and girls` : ""}{" "}
+            <Link to="/" >Home </Link> / {" "} {gender} {" "}
+            {/* {brand.length > 1 ? model.replace(/[_]/g, match => " " + match.toUpperCase()) : brand + " "}          */}
+            {/* {gender.length === 1 ? gender : gender.length === 2 ? `boys and girls` : ""}{" "} */}
             {props.item} <span>({props.order} items)</span>                
         </InfoString> 
     )

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "gatsby";
+import { navigate } from "gatsby";
 
 
 const brands = ["adidas","new-balance","nike","puma","salomon","reebok"];
@@ -9,11 +9,11 @@ const Brand = ({ number }) => (
         <>       
             {gender.map(i => <div   
                     style={{ backgroundImage: `url(https://myrunshop.000webhostapp.com/brands/${brands[number]}_${i}.jpg)`}}         
-                                     
+                    onClick={()=>navigate(`/${brands[number]}`,{state: { name: i }},{ replace: true } )}               
                     className="img_brand"
                     key={i}
                 >
-                    <Link to = {`/${brands[number]}/${i}`} >veiw {brands[number]}{" "}{i}</Link>
+                    <span>veiw {brands[number]}{" "}{i}</span>
                 </div>
             )}            
         </> 

@@ -16,6 +16,7 @@ const Menu = ({  link, set_number }) => {
                     activeStyle={{ color: "white",backgroundColor: "cornflowerblue" }}
                     partiallyActive={true}
                     to = {`/${i}`} 
+                    state={{name: "all" }}
                     onMouseEnter = {()=>set_number(index)}
                     
                     

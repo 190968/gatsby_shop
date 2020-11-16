@@ -231,7 +231,7 @@ img {
     transition: all 0.5s;
     text-shadow: none;
 }   
-.img_brand a {
+.img_brand span {
     background-color: crimson;
     padding: 5px 10px;
     border-radius: 5px;
@@ -239,12 +239,11 @@ img {
     color: #fff;
     font:  300 1.5vw/29vw "Times new roman", sans;
 }
-.img_brand:hover a {
+.img_brand:hover span {
     opacity: 1;
     transition: all 0.5s;
-    border: 1px solid blue;
+    cursor: pointer;
 }
-
 .div_image {
     text-align: left;
     width: 63vw;
@@ -693,4 +692,9 @@ img {
         height: 70px;
     }
     
+}
+@media screen and (max-width: 550px) {
+    .account {
+        margin-top: -15px;
+    }
 }

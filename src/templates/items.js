@@ -283,12 +283,13 @@ const ItemSelect = ({ props, item_new, setItem }) => {
     )
 };
 
-const Items =  ({ currency, pageContext, data,  location, countr }) => {   
+const Items =  ({ currency, pageContext, data , countr ,  location }) => {   
    
-    const {state = {}} = location;
+    const { state ={} } = location;
+    const { name } = state || "men";
     const { model } = state || "run";
     const s = (currency === 0.8) ? "€" : (currency === 1) ? "$"  : "£" ;
-    const [gender, set_gender] = React.useState("GENDER");
+    const [gender, set_gender] = React.useState( name? name : "all" );
     const [sort, set_sort] = React.useState(true);
     const [color, set_color] = React.useState("all");
     const [size, set_size] = React.useState(null); 
@@ -319,7 +320,7 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
         .filter(i => i.item === item)
         .filter(i => size ? i.size.split(',').some(a=>a===size) : i.size)
         .filter(i => model ? i.model === model : i.model)
-        .filter(i => gender==='GENDER' ? i : i.gender === gender)
+        .filter(i => gender ==='all' ? i.gender : gender === "kids" ? (i.gender === "girl" || i.gender === "boy") : i.gender === gender)
         .sort((a,b) => sort ? a.cost-b.cost:b.cost-a.cost)
         .filter(i => i.cost >= min_cost)
         .filter(i => i.cost <= max_cost)    
@@ -334,22 +335,22 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
             set_number = {set_number} 
             orders = {orders.length} 
             context_brand = {pageContext.brand} 
-            context_gender = {pageContext.gender} 
+            context_gender = { gender} 
         > 
         <Info 
             brand ={pageContext.brand} 
-            gender={pageContext.gender} 
+            gender={ gender }     
             order={orders.length} 
             model={model}      
             item= { item }          
         />
-       
+      
         <Page>
             <MenuItemPage>              
                 < ItemSelect props="shoes" item_new={item} setItem={setItem} />
                 < ItemSelect props="clothing" item_new={item} setItem={setItem} />
             </MenuItemPage> 
-            <Filtr color={gender} onClick={()=>set_gender("GENDER")}>gender: {gender}</Filtr>         
+            <Filtr color={gender} onClick={()=>set_gender("all")}>gender: {gender}</Filtr>         
             <Filtr color={color} onClick={()=>set_color("all")}>color: {color}</Filtr>
             <Filtr color={size} onClick={()=>set_size(null)}>size: {size}</Filtr>
             <Filtr color={min_cost} onClick={()=>set_min(0)}>cost {">"} {min_cost}</Filtr>
@@ -360,7 +361,8 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
                     <option value="true" >cheap first</option>
                     <option value="false" >expensive first</option>
                 </select>    
-            </span>     
+            </span>
+         
             <span>Page:</span>
             {orders.filter( (i,index) => !("" + (index/10)).includes(".")).map( (i,index) => 
             <span style={{backgroundColor: index+1 === page  ? 'yellow' : 'inherit'}} onClick={()=>set_page(index+1)}>{index+1}</span>)}

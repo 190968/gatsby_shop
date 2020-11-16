@@ -18,27 +18,27 @@ exports.createPages = async ({ actions }) => {
       context: { brand : [`${i}`],gender: ["men","women","boy","girl"]}
       }) 
   );
-  brands.forEach(i =>
-    createPage({
-      path: `/${i}/men`,
-      component: require.resolve('./src/templates/items.js'),
-      context: { brand : [`${i}`],gender: ["men"]}
-      }) 
-  );
-  brands.forEach(i =>
-    createPage({
-      path: `/${i}/women`,
-      component: require.resolve('./src/templates/items.js'),
-      context: { brand : [`${i}`],gender: ["women"]}
-      }) 
-  ); 
-  brands.forEach(i =>
-    createPage({
-      path: `/${i}/kids`,
-      component: require.resolve('./src/templates/items.js'),
-      context: { brand : [`${i}`],gender: ["boy","girl"]}
-      }) 
-  );   
+  // brands.forEach(i =>
+  //   createPage({
+  //     path: `/${i}/men`,
+  //     component: require.resolve('./src/templates/items.js'),
+  //     context: { brand : [`${i}`],gender: ["men"]}
+  //     }) 
+  // );
+  // brands.forEach(i =>
+  //   createPage({
+  //     path: `/${i}/women`,
+  //     component: require.resolve('./src/templates/items.js'),
+  //     context: { brand : [`${i}`],gender: ["women"]}
+  //     }) 
+  // ); 
+  // brands.forEach(i =>
+  //   createPage({
+  //     path: `/${i}/kids`,
+  //     component: require.resolve('./src/templates/items.js'),
+  //     context: { brand : [`${i}`],gender: ["boy","girl"]}
+  //     }) 
+  // );   
  
 
 }
