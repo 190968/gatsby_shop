@@ -24,7 +24,10 @@ const InfoString = styled.h1`
                 text-decoration: underline;
             }
         }    
-    
+        i {
+            font: 300 18px/20px "Lucida Console", Courier, monospace; 
+            color: #d0d0d0;
+        }
    
    
 `;
@@ -34,10 +37,10 @@ export const Info = ({  model="one",...props }) => {
     const { brand ,gender } = props;
     return (       
         <InfoString>
-            <Link to="/" >Home </Link> / {" "} {gender} {" "}
-            {/* {brand.length > 1 ? model.replace(/[_]/g, match => " " + match.toUpperCase()) : brand + " "}          */}
-            {/* {gender.length === 1 ? gender : gender.length === 2 ? `boys and girls` : ""}{" "} */}
-            {props.item} <span>({props.order} items)</span>                
+            <Link to="/" >Home </Link> / 
+            <i>{" "} {gender} {" "}{brand.length > 1 ? model.replace(/[_]/g, match => " " + match.toUpperCase()) : brand + " "} {props.item}</i>         
+           
+            <span>({props.order} items)</span>                
         </InfoString> 
     )
 };

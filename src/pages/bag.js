@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { delete_from_bag, add_count, setDelivery } from "../state/app";
+import { delete_from_bag, add_count } from "../state/app";
 import styled from "styled-components";
 import  Layout  from "../components/layout";
 import { Link } from "gatsby";
@@ -120,7 +120,7 @@ const Add = styled.b`
         text-align: center;
     `;   
 
-const Bag =  ({ bag, delete_from_bag, add_count, currency, delivery, setDelivery }) => {
+const Bag =  ({ bag, delete_from_bag, add_count, currency, delivery }) => {
     const s = currency === 0.8 ? '€' : currency === 1 ? "$"  : "£" ;
     const [number, set_number] = React.useState(0);
     const [continue_buy, set_continue_buy] = React.useState(false); 
@@ -139,8 +139,8 @@ const Bag =  ({ bag, delete_from_bag, add_count, currency, delivery, setDelivery
                         <h1>This is better site to buy run shoes.</h1>
                         <Items 
                             style={{ backgroundImage: `
-                                url(https://myrunshop.000webhostapp.com/wp-content/image/${i.brand.toLowerCase()}/${i.model}_${i.color}.jpg),
-                                url(https://myrunshop.000webhostapp.com/wp-content/image/${i.brand.toLowerCase()}/${i.model}_${i.color}.webp)
+                                url(https://myrunshop.000webhostapp.com/image/${i.brand.toLowerCase()}/${i.model}_${i.color}.jpg),
+                                url(https://myrunshop.000webhostapp.com/image/${i.brand.toLowerCase()}/${i.model}_${i.color}.webp)
                                 ` }}
                         >
                             <P><b>{i.brand},</b></P> 
@@ -197,8 +197,8 @@ const mapStateToProps = state => ({
    
 const mapDispatchToProps = dispatch => ({
     delete_from_bag: (a) => dispatch(delete_from_bag(a)),
-    add_count: (a,b) => dispatch(add_count(a,b)),
-    setDelivery: (a) => dispatch(setDelivery(a))
+    add_count: (a,b) => dispatch(add_count(a,b))
+   
     
 });
 export default connect(mapStateToProps,mapDispatchToProps)(Bag);
