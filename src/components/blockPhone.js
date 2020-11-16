@@ -131,8 +131,8 @@ const BlockPhone = ({country = "BY", setCountry,  setLocations}) => {
                    
                     <Hi >
                         <span  title="Enter account" onClick={()=>navigate("/orders")}>Hello, Guest! From  </span>         
-                        {country}
-                        {/* <img src = {`static/${country}.png`} height="30px" width="30px" alt={country}   title={country}/> */}
+                       
+                        <img src = {`/${country}.png`} height="30px" width="30px" alt={country}   title={country}/>
                         <Img  onClick={()=>navigate("/locations")} >Stores</Img>
                     </Hi>  
                    

@@ -119,7 +119,7 @@ const Item = (props) => {
                                 url(https://myrunshop.000webhostapp.com/image/${page.brand}/${image_model.replace(" ","_") + "_" + color}${i}.webp),
                                 url(https://github.com/superHotBob/image/blob/main/${page.brand}/${image_model.replace(" ","_") + "_" + color}${i}.jpg?raw=true),
                                 url(https://github.com/superHotBob/image/blob/main/${page.brand}/${image_model.replace(" ","_") + "_" + color}${i}.webp?raw=true),
-                                url(https://www.datocms-assets.com/28552/1590394654-image.jpg)`,
+                                url(https://www.datocms-assets.com/28552/1605514167-image.webp)`,
 
                                 borderBottom: number === i ? "2px solid #000" : "none"
                         }}

@@ -132,10 +132,11 @@ export default function () {
                 }
             }
     `);
-   
+    const newDate = data.allDatoCmsSale.nodes.slice(4-`${view}`,8-`${view}`);        
     return (            
-        <AllSale ><I onClick={()=>setView(0)} left>{'<'}</I> 
-            {data.allDatoCmsSale.nodes.slice(4-`${view}`,8-`${view}`).map((i,index) => <DivItem onClick={()=>set_number(index+1)} key={index}>
+        <AllSale >
+            <I onClick={()=>setView(0)} left>{'<'}</I> 
+            {newDate.map((i,index) => <DivItem onClick={()=>set_number(index+1)} key={index}>
                     
                     <span  
                                           

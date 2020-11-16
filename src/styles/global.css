@@ -9,6 +9,7 @@ h1, h2, h3 {
 }
 .icon {
     color: white;
+    cursor: pointer;
     float: right;
     font-size: 35px;
     padding: 5px;

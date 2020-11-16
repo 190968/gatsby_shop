@@ -387,7 +387,7 @@ const Items =  ({ currency, pageContext, data,  location, countr }) => {
                         url(https://myrunshop.000webhostapp.com/image/${pageContext.brand}/${i.model}_${i.color}.webp),
                         url(https://github.com/superHotBob/image/blob/main/${pageContext.brand}/${i.model}_${i.color}.webp?raw=true),
                         url(https://github.com/superHotBob/image/blob/main/${pageContext.brand}/${i.model}_${i.color}.jpg?raw=true),
-                        url('https://www.datocms-assets.com/28552/1590394654-image.jpg')`
+                        url(https://www.datocms-assets.com/28552/1605514167-image.webp)`
                     }} 
                     alt="no image"
                     onClick={()=>setItemView(true,index)}

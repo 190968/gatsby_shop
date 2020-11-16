@@ -6,8 +6,7 @@ import { addBag, euro } from "../state/app";
 import "../styles/global.css";
 import { graphql, StaticQuery, Link } from "gatsby";
 import Linktobag from "./linktobag";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import {  faUser } from "@fortawesome/free-solid-svg-icons"
+
 import { LinkToAccount } from "./linktoaccount";
 
 const One = styled.h2.attrs(props=>({
