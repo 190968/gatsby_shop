@@ -4,7 +4,7 @@ import { Link } from "gatsby";
 
 const brands = ["adidas","new-balance","nike","puma","salomon","reebok"];
 
-const Menu = ({  link, set_number }) => {
+const Menu = ({  set_number }) => {
 
    
     

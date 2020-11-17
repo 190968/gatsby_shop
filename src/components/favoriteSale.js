@@ -11,7 +11,7 @@ const Sale = styled.b`
     padding: 5px;
     font:italic 600 90%/100% 'Verdana', sans-serif;
     @media (max-width: 1000px) {
-        font:italic 600 50%/100% 'Verdana', sans-serif;
+        font:italic 400 50%/100% 'Verdana', sans-serif;
     }    
 `;
 const DivItem = styled.div`
@@ -34,12 +34,12 @@ const DivItem = styled.div`
     }
   
     h3 {
-        font:italic 600 20px/20px 'Verdana', sans-serif;
+        font:italic 400 20px/20px 'Verdana', sans-serif;
         color: cornflowerblue;
         margin:  0 0 10px;
     }
     h4 {
-        font: 400 18px/25px 'Verdana', sans-serif;
+        font: 300 18px/25px 'Verdana', sans-serif;
         
     }
     p {
@@ -49,7 +49,7 @@ const DivItem = styled.div`
     @media (max-width: 1000px) {
         h4 {
             height: 50px;
-            font: 400 15px/20px 'Verdana', sans-serif;
+            font: 300 15px/20px 'Verdana', sans-serif;
         }
         span {
             margin: 0;
@@ -74,7 +74,7 @@ const AllSale = styled.div`
     }   
     :before {
         content: "Favorite Sale Last Weak";
-        font: italic 600 1.8em/28px 'Arial', sans-serif;      
+        font: italic 400 1.8em/28px 'Arial', sans-serif;      
         width: 100%;
         color: blue;
         position: absolute;
@@ -84,7 +84,7 @@ const AllSale = styled.div`
              
         @media (max-width: 660px) {
          
-          font: italic 600 1em/20px 'Arial', sans-serif;     
+          font: italic 400 1em/20px 'Arial', sans-serif;     
         }
     }
    

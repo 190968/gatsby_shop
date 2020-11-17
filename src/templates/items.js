@@ -61,8 +61,8 @@ const MenuItemPage = styled(MenuItem)`
     @media(max-width: 1000px) {
         display: inline-block;
         width: auto;
-        float: left;
-        margin: 0;
+       
+        margin: 10px 0;
     }
 `;
 
@@ -131,7 +131,7 @@ const Color = styled(MenuItem).attrs(props=>({
 const Gender = styled(MenuItem).attrs(props=>({
     color:props.gender
 }))`   
-    font: 20px/16px 'Arial', sans-serif;
+    font: 300 20px/16px 'Arial', sans-serif;
     cursor: pointer;
     position: relative;   
     &:hover:before {
@@ -182,21 +182,32 @@ const Sale = styled.div.attrs(props => ({
 
 const Page = styled.p`
     text-align: right;
-    padding: 0 10px 0 0;
-    margin: 5px 0;
+    padding: 10px 0;
+   
+    width: 49.9%;
+    display: inline-block;
     position: -webkit-sticky; /* Safari */
     position: sticky;
     top: 0;
     background-color: lightgoldenrodyellow;
     z-index: 10;   
     span {
-       padding: 0 10px;
+       padding: 0 5px;
        color: blue;
        cursor: pointer;
        :hover :not(:nth-of-type(1)) {
           text-decoration: underline;
        }
     }
+    @media (max-width: 800px) {
+        display: block;
+        top: 0;
+        font-size: 15px;
+        margin: 0;
+        width: 99%;
+        text-align: center;
+        padding: 0 0 5px;
+     }   
    
 `;
 
@@ -345,7 +356,7 @@ const Items =  ({ currency, pageContext, data , countr ,  location }) => {
             item= { item }          
         />
       
-        <Page>
+        <Page> 
             <MenuItemPage>              
                 < ItemSelect props="shoes" item_new={item} setItem={setItem} />
                 < ItemSelect props="clothing" item_new={item} setItem={setItem} />
@@ -355,6 +366,8 @@ const Items =  ({ currency, pageContext, data , countr ,  location }) => {
             <Filtr color={size} onClick={()=>set_size(null)}>size: {size}</Filtr>
             <Filtr color={min_cost} onClick={()=>set_min(0)}>cost {">"} {min_cost}</Filtr>
             <Filtr color={max_cost} onClick={()=>set_max(180)}>cost {"<"} {max_cost}</Filtr> 
+        </Page>       
+        <Page>     
             <span className="sort">
                 Sort by:{" "}
                 <select onChange={(e)=>SortOnCost(e.target.value)}>
@@ -362,7 +375,7 @@ const Items =  ({ currency, pageContext, data , countr ,  location }) => {
                     <option value="false" >expensive first</option>
                 </select>    
             </span>
-         
+       
             <span>Page:</span>
             {orders.filter( (i,index) => !("" + (index/10)).includes(".")).map( (i,index) => 
             <span style={{backgroundColor: index+1 === page  ? 'yellow' : 'inherit'}} onClick={()=>set_page(index+1)}>{index+1}</span>)}

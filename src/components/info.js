@@ -5,19 +5,20 @@ import styled from "styled-components";
 const InfoString = styled.h1`  
         background-color: #fff;      
         text-align: left;
-        padding: 10px;
+        padding:0 10px;
           
-        font: 400 20px/20px "Taroma", sans-serif;        
+        font: 300 20px/20px "Taroma", sans-serif;        
         margin: 10px 0 0;
         @media(max-width: 600px) {
-            font: 400 16px/30px "Taroma", sans-serif;             
+            font: 300 16px/30px "Taroma", sans-serif;
+                         
         }
         span {
         color: #ccc000;
-        font: italic 400 18px/20px "Taroma", sans-serif;
+        font: italic 300 18px/30px "Taroma", sans-serif;
         }
         a {
-            font: 400 20px/20px "Arial", sans-serif; 
+            font: 300 20px/20px "Arial", sans-serif; 
             color: #000;
             &:hover {
                 color: blue;    
@@ -25,8 +26,8 @@ const InfoString = styled.h1`
             }
         }    
         i {
-            font: 300 18px/20px "Lucida Console", Courier, monospace; 
-            color: #d0d0d0;
+            font: 300 16px/30px "Arial", sans-serif; 
+            color: gray;
         }
    
    
