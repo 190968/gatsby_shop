@@ -88,7 +88,7 @@ const Img = styled.div`
     }
 `;
 
-const Hi = styled.p`
+const Hi = styled.div`
     display: inline-block;
     margin: 0 20px;
     
@@ -107,9 +107,7 @@ const Hi = styled.p`
         font: italic 300 15px/18px 'Verdana', sans-serif;
     }
 `;
-const H = styled.h1`
-    display: none;
-`;
+
 const BlockPhone = ({country = "BY", setCountry,  setLocations}) => {
 
    

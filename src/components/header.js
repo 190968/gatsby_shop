@@ -78,10 +78,10 @@ const DivCur = styled.div`
     width: 45px;
     height: 45px;
     position: absolute;
-    right: 140px;
+    right: 130px;
     top: 0px;
     overflow: hidden;
-    float: right;  
+    
     transition: all 0.5s;    
     &:hover {
         height: 150px;
@@ -89,7 +89,10 @@ const DivCur = styled.div`
         background-color: cornflowerblue;
         
     }
-    
+    @media(max-width: 500px) {
+        right: 120px;
+        
+    } 
 
 `;
 

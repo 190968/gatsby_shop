@@ -11,9 +11,9 @@ h1, h2, h3 {
     color: white;
     cursor: pointer;
     float: right;
-    font-size: 35px;
+    font-size: 25px;
     padding: 5px;
-    margin-top: 2px;
+    margin-top: 8px;
     background-color:  cornflowerblue;
 }
 a {   
@@ -653,7 +653,7 @@ img {
         margin: 200px 0 0;
     }
     .go_to_account {
-        width: 95%;
+        width: 90%;
     }
     .div_delivery {
         width: 100%;
@@ -692,13 +692,13 @@ img {
        
     } 
     span.size {
-        height: 70px;
+        height: 40px;
     }
     
 }
 @media screen and (max-width: 550px) {
     .account {
-        margin: -15px  5px;
+        margin: -10px  5px;
     }
     .header {
         padding: 0;

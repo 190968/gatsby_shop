@@ -9,11 +9,11 @@ const Brand = ({ number }) => (
         <>       
             {gender.map(i => <div   
                     style={{ backgroundImage: `url(https://myrunshop.000webhostapp.com/brands/${brands[number]}_${i}.jpg)`}}         
-                    onClick={()=>navigate(`/${brands[number]}`,{state: { name: i }},{ replace: true } )}               
+                    onClick={()=>navigate(`/${brands[number]}`,{state: { name: i }} )}               
                     className="img_brand"
                     key={i}
                 >
-                    <span>veiw {brands[number]}{" "}{i}</span>
+                    <span>view {brands[number]}{" "}{i}</span>
                 </div>
             )}            
         </> 

@@ -8,6 +8,8 @@ import  Layout  from "../components/layout";
 import { addBag } from "../state/app";
 import { Info } from "../components/info";
 import Slider from "../components/slider";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faStar, faStarHalf } from "@fortawesome/free-solid-svg-icons"
 // import Slider from "./slider";
 
 const Currency = styled.button`
@@ -182,8 +184,8 @@ const Sale = styled.div.attrs(props => ({
 
 const Page = styled.p`
     text-align: right;
-    padding: 10px 0;
-   
+    height: 30px;
+    vertical-align: middle;
     width: 49.9%;
     display: inline-block;
     position: -webkit-sticky; /* Safari */
@@ -216,8 +218,7 @@ const MenuDiv = styled.div`
     background-color: lavender;      
         padding: 5px 0;
         text-align: left;
-        font-weight: 600;
-        
+        font-weight: 600;        
         position: sticky;
         top: 30px;
         z-index: 10;
@@ -409,15 +410,20 @@ const Items =  ({ currency, pageContext, data , countr ,  location }) => {
                         
                 />    
                 <span className="brand">{i.brand}</span>
-                <span>{i.model.replace("T_S","T-S").replace(/_/g," ")}</span>
+                <span>{i.model.replace("T_S","T-S").replace(/_/g," ")}<br/>
+                    {[1,2,3,4,5].map((a,index)=>
+                        <FontAwesomeIcon key={a} size="sm" icon={a === i.model.length/3 ? faStarHalf :faStar} style={{color: index < i.model.length/3 ? "lime":"gray"}} />
+                    )}
+                    
+                </span>
                 <Gender onClick={()=>set_gender(i.gender)} gender={i.gender} >{i.gender}s</Gender>
                 <Color ten style={{color: i.color}} color={i.color}  onClick={()=>setColor(i)}>                  
                     &#8226;                    
                 </Color>
                 <span className="size">
-                    {i.size.split(',').map( m =>
+                    {i.size.split(',').map( (m,index) =>
                         <Size 
-                            key={m}
+                            key={index}
                             style={{ backgroundColor: size === m  ? '#ddd' : 'inherit'}}                           
                             onClick={()=>set_size(m)}                          
                         > 

@@ -36,11 +36,7 @@ const Index = styled.b.attrs(props=>({
 `;
 
 const Button = styled.button`
-    width: 33%;
-   
-   
-   
-   
+    width: 33%;   
     
     
     
@@ -72,6 +68,8 @@ const ButtonAccount = styled(Button)`
     font-size: 20px;
     width: 100%;
     height: 55px;
+    cursor: pointer;
+    border: none;
     background: linear-gradient(to top, lime, lightgreen);
     &:hover {
         background: linear-gradient(to top, lime, lime);
@@ -109,7 +107,7 @@ const Orders = () => {
     useEffect(() => inputRef.current.focus(),[]);
    
     const url = 'https://www.aplacadance.ru/.netlify/functions/readfororders';
-    // const url = 'http://localhost:8888/.netlify/functions/read_orders';
+    
     const Go_account = async () => {        
         let result = await axios(`${url}?name=${name}&phone=${phone}`,{
             "Access-Control-Allow-Origin": "*",
@@ -128,9 +126,9 @@ const Orders = () => {
             {visible_account ? 
                 <div className="go_to_account">               
                                      
-                    <Input type="text" ref={inputRef} value={name||''} placeholder="input name" onChange={(e)=>set_name(e.target.value)} />
+                    <Input required type="text" ref={inputRef} value={name||''} placeholder="input name" onChange={(e)=>set_name(e.target.value)} />
 
-                    <Input type="phone" value={phone} placeholder="input phone" onChange={(e)=>set_phone(e.target.value)}/>
+                    <Input required type="phone" value={phone} placeholder="input phone" onChange={(e)=>set_phone(e.target.value)}/>
                     <ButtonAccount onClick={Go_account}>ENTER</ButtonAccount>                  
                                     
                 </div>        

@@ -8,7 +8,7 @@ import {  faUser } from "@fortawesome/free-solid-svg-icons"
 export const LinkToAccount = () => {
     return (
        
-        <FontAwesomeIcon icon={faUser} onClick={()=>navigate("/orders")} className="icon account" style={{height: 35, width: 35}}/> 
+        <FontAwesomeIcon icon={faUser} onClick={()=>navigate("/orders")} className="icon account" style={{height: 25, width: 25}}/> 
        
     )            
 };        

@@ -4,7 +4,8 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import { addBag } from "../state/app";
 import Linktobag from "./linktobag";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faStar, faStarHalf } from "@fortawesome/free-solid-svg-icons"
 
 const Cost = styled.h2.attrs(props => ({
     sale:props.sale,
@@ -141,7 +142,12 @@ const Item = (props) => {
             <div className="div_content">
                 <h3>{page.brand} <Linktobag /></h3>
                 <p>
-                    {image_model.replace("T_S","T-S").replace(/_/g," ")} {gender}s run {item}                        
+                    {image_model.replace("T_S","T-S").replace(/_/g," ")} {gender}s run {item}
+                </p>
+                <p>     
+                    {[1,2,3,4,5].map((a,index)=>
+                        <FontAwesomeIcon key="a" size="sm" icon={a === image_model.length/3 ? faStarHalf :faStar} style={{float: "right", color: index < image_model.length/3 ? "lime":"gray"}} />
+                    )}                       
                 </p>                  
                 <Cost sale={sale} currency={s}>{Math.trunc(cost*currency)}</Cost>
                 <p><strong>color:</strong> {color}</p>
