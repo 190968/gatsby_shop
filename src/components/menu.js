@@ -16,7 +16,8 @@ const Menu = ({  set_number }) => {
                     activeStyle={{ color: "white",backgroundColor: "cornflowerblue" }}
                     partiallyActive={true}
                     to = {`/${i}`} 
-                    state={{name: "all" }}
+                    state={{name: "all",sale: 0 }}
+
                     onMouseEnter = {()=>set_number(index)}
                     
                     

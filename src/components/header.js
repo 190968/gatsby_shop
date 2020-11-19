@@ -60,11 +60,11 @@ const Account = styled.p`
 `;
 
 const Euro = styled(Account)`   
-    font: 300 35px/47px 'Arial', sans-serif;
+    font: 300 30px/47px 'Arial', sans-serif;
     color: #fff;   
     background: none;
     text-align: center;
-    margin: 2px auto;
+    margin: 3px auto;
     width: 45px;
    
     &:hover {
@@ -78,7 +78,7 @@ const DivCur = styled.div`
     width: 45px;
     height: 45px;
     position: absolute;
-    right: 130px;
+    right: 125px;
     top: 0px;
     overflow: hidden;
     

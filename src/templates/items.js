@@ -300,6 +300,7 @@ const Items =  ({ currency, pageContext, data , countr ,  location }) => {
     const { state ={} } = location;
     const { name } = state || "men";
     const { model } = state || "run";
+    const { sale } = state || 0;
     const s = (currency === 0.8) ? "€" : (currency === 1) ? "$"  : "£" ;
     const [gender, set_gender] = React.useState( name? name : "all" );
     const [sort, set_sort] = React.useState(true);
@@ -329,6 +330,7 @@ const Items =  ({ currency, pageContext, data , countr ,  location }) => {
     const setColor = i => set_color(color === i.color ? "all" : i.color) ;   
 
     const orders = data.allMongodbMyBase.nodes
+        .filter(i => sale !== 100 ? i.sale > -1 : i.sale !==0 )
         .filter(i => i.item === item)
         .filter(i => size ? i.size.split(',').some(a=>a===size) : i.size)
         .filter(i => model ? i.model === model : i.model)
@@ -358,6 +360,7 @@ const Items =  ({ currency, pageContext, data , countr ,  location }) => {
         />
       
         <Page> 
+            
             <MenuItemPage>              
                 < ItemSelect props="shoes" item_new={item} setItem={setItem} />
                 < ItemSelect props="clothing" item_new={item} setItem={setItem} />
@@ -416,7 +419,7 @@ const Items =  ({ currency, pageContext, data , countr ,  location }) => {
                     )}
                     
                 </span>
-                <Gender onClick={()=>set_gender(i.gender)} gender={i.gender} >{i.gender}s</Gender>
+                <Gender onClick={()=>set_gender(i.gender)} gender={i.gender} >{i.gender}'s</Gender>
                 <Color ten style={{color: i.color}} color={i.color}  onClick={()=>setColor(i)}>                  
                     &#8226;                    
                 </Color>

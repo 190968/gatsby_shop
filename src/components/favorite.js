@@ -19,8 +19,8 @@ const DivItem = styled.div.attrs(props => ({
     background-size: 80% 60%;
     background-position: center top;
     background-repeat: no-repeat;
-    background-image: ${props => `url(https://myrunshop.000webhostapp.com/wp-content/image/${props.brand}/${(props.model).replace(" ","_")}_${props.color}.webp),
-                    url(https://myrunshop.000webhostapp.com/wp-content/image/${props.brand}/${(props.model).replace(" ","_")}_${props.color}.jpg)`};
+    background-image: ${props => `url(https://myrunshop.000webhostapp.com/image/${props.brand}/${(props.model).replace(" ","_")}_${props.color}.webp),
+                    url(https://myrunshop.000webhostapp.com/image/${props.brand}/${(props.model).replace(" ","_")}_${props.color}.jpg)`};
     font-size: 18px;    
     height: fit-content;
     width: 20vw;

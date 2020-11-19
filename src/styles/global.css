@@ -32,7 +32,7 @@ input[type=button] {
     height: 55px;
     font-size: 20px;
     padding: 5px;
-    color: #fff;   
+    color: cornflowerblue;   
     background: linear-gradient(to top, lime, lightgreen);
 }
 input[type=button]:hover {

@@ -1,8 +1,10 @@
 import React from "react";
 import "../styles/global.css";
-import {useStaticQuery,  graphql } from "gatsby";
+import {useStaticQuery,  graphql, Link } from "gatsby";
 import styled from "styled-components";
 import Item from "./item";
+
+
 
 const Sale = styled.b`
     color: yellow;
@@ -64,32 +66,35 @@ const DivItem = styled.div`
 `;
 
 const AllSale = styled.div`
-    margin: 50px 0 5px;
+    
     display: flex;
     flex-direction: row;
+    position: relative;
     justify-content: space-between;  
-    position: relative;   
+    margin: 5px 0;  
     h3 {
         text-transform: uppercase;
     }   
-    :before {
-        content: "Favorite Sale Last Weak";
-        font: italic 400 1.8em/28px 'Arial', sans-serif;      
-        width: 100%;
-        color: blue;
-        position: absolute;
-        background-image: linear-gradient(rgba(255,0,0,0), rgba(255,0,0,0.5));
-        padding: 12px 0;
-        top:-55px;
-             
-        @media (max-width: 660px) {
-         
-          font: italic 400 1em/20px 'Arial', sans-serif;     
-        }
-    }
+    
    
 `;
-const I =styled.i`
+const H2 = styled.h2`       
+    font:  400 2em/35px 'Arial', sans-serif;      
+    padding: 10px 0;
+    color: blue;   
+    background-image: linear-gradient(rgba(255,0,0,0), rgba(255,0,0,0.5));         
+    @media (max-width: 660px) {
+     
+      font: italic 400 1em/20px 'Arial', sans-serif;     
+    }
+    a {
+        color: yellow;
+        margin: 5px;
+        display: inline-block;
+        font:  300 22px/1em 'Verdana', sans-serif; 
+    }
+`; 
+const I = styled.i`
     cursor: pointer;    
         position: absolute;
         top: 45%;
@@ -133,8 +138,10 @@ export default function () {
             }
     `);
     const newDate = data.allDatoCmsSale.nodes.slice(4-`${view}`,8-`${view}`);        
-    return (            
+    return <>     
+    <H2>Favorite Sale <Link to="/all" state={{sale: 100}}> (All Sale)</Link></H2>       
         <AllSale >
+           
             <I onClick={()=>setView(0)} left>{'<'}</I> 
             {newDate.map((i,index) => <DivItem onClick={()=>set_number(index+1)} key={index}>
                     
@@ -169,8 +176,8 @@ export default function () {
                     size={data.allDatoCmsSale.nodes.slice(4-`${view}`,8-`${view}`)[number-1].size}
                 />
             }
-             <I onClick={()=>setView(4)}>{'>'}</I> 
+            <I onClick={()=>setView(4)}>{'>'}</I> 
         </AllSale>       
 
-    )
+    </>
 }; 

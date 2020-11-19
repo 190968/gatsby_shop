@@ -69,12 +69,12 @@ const DeliveryTwo = styled(Delivery)`
    
 `;
 const Img = styled.div`
-    width: 80px;
+    width: 130px;
     display: inline-block;
     background-repeat: no-repeat;
     background-position: left center;
     background-image: url(${location});
-    background-size: 30%;
+    background-size: 20%;
     opacity: 0.5;
     cursor: pointer;   
     text-align: right;
@@ -131,7 +131,7 @@ const BlockPhone = ({country = "BY", setCountry,  setLocations}) => {
                         <span  title="Enter account" onClick={()=>navigate("/orders")}>Hello, Guest! From  </span>         
                        
                         <img src = {`/${country}.png`} height="30px" width="30px" alt={country}   title={country}/>
-                        <Img  onClick={()=>navigate("/locations")} >Stores</Img>
+                        <Img  onClick={()=>navigate("/locations")} >Find a store</Img>
                     </Hi>  
                    
                    
@@ -145,7 +145,7 @@ const BlockPhone = ({country = "BY", setCountry,  setLocations}) => {
                     
                    
                     
-                    <a title="help" onClick={()=>navigate("/help")}>Help & Contact</a> 
+                    <a title="help" onClick={()=>navigate("/help")}>Help</a> 
                    
                      
                    

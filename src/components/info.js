@@ -31,7 +31,7 @@ const InfoString = styled.h1`
 `;
 
 
-export const Info = ({  model="one",...props }) => {
+export const Info = ({  model="Sale",...props }) => {
     const { brand ,gender } = props;
     return (       
         <InfoString>
