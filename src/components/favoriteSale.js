@@ -135,9 +135,11 @@ export default function () {
                         gender
                     }
                 }
+               
             }
     `);
-    const newDate = data.allDatoCmsSale.nodes.slice(4-`${view}`,8-`${view}`);        
+    const newDate = data.allDatoCmsSale.nodes.slice(4-`${view}`,8-`${view}`); 
+             
     return <>     
     <H2>Favorite Sale <Link to="/all" state={{sale: 100}}> (All Sale)</Link></H2>       
         <AllSale >
@@ -178,6 +180,6 @@ export default function () {
             }
             <I onClick={()=>setView(4)}>{'>'}</I> 
         </AllSale>       
-
+           
     </>
 }; 

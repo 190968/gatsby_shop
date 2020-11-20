@@ -19,6 +19,7 @@ const Menu = ({  set_number }) => {
                     state={{name: "all",sale: 0 }}
 
                     onMouseEnter = {()=>set_number(index)}
+                    onTouchStart = {()=>set_number(index)}
                     
                     
                     className="main_Menu_link"

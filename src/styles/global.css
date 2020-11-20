@@ -465,8 +465,9 @@ img {
     height: 30px;
     margin-left: -10px; 
 }
-.div_bag_item h1 {
-    display: none;    
+.h1tobag {
+   color: #fff;
+   font-size: 0;
 }
 .div_big_image {
     margin: 0;   
@@ -680,15 +681,16 @@ img {
         font: 400 22px/16px 'Verdana', sans-serif;    
     }
     .items {
-        margin: 0.5%;
+        margin: 5px 0;
         text-align: center;       
-        width: 48%;
+        width: 50%;
         display: inline-block;
         white-space: nowrap;    
     }
     .items > span, .cost {
         display: block;       
         width: 100%;
+        margin-top: 5px;;
        
     } 
     span.size {

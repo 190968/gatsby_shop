@@ -8,6 +8,8 @@ import  Layout  from "../components/layout";
 import { addBag } from "../state/app";
 import { Info } from "../components/info";
 import Slider from "../components/slider";
+import { useLocation } from "@reach/router"
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faStar, faStarHalf } from "@fortawesome/free-solid-svg-icons"
 // import Slider from "./slider";
@@ -163,29 +165,29 @@ const Sale = styled.div.attrs(props => ({
     display: inline-block;    
     font-size: 25px;   
     position: relative;    
-    &:before {
+    &:after {
         content: '-${props=>props.sale}%';
-        top: -25px;
-        left: 55%;
+        top: -3px;
+        left: 65%;
         color: yellow;
         visibility: ${props=>props.sale === 0 ? 'hidden': 'visible'};
-        background-color: red;
-        padding: 5px 2px;
-        border-radius: 20%;
+        background-color: blue;
+        padding:  5px;
+        border-radius: 25%;
         position: absolute;
-        font: 600 16px/18px 'Arial', sans-serif;
+        font: 600 19px/18px 'Arial', sans-serif;
     }
-    &:after {
+    &:before {
         content: '${props=>props.currency}';      
         padding: 5px 2px 0 5px;       
-        font: 400 20px/18px 'Arial', sans-serif;
+        font: 400 25px/18px 'Arial', sans-serif;
     }
 `;
 
 const Page = styled.p`
     text-align: right;
     height: 30px;
-    vertical-align: middle;
+    vertical-align: top;
     width: 49.9%;
     display: inline-block;
     position: -webkit-sticky; /* Safari */
@@ -201,11 +203,11 @@ const Page = styled.p`
           text-decoration: underline;
        }
     }
-    @media (max-width: 800px) {
+    @media (max-width: 660px) {
         display: block;
         top: 0;
         font-size: 15px;
-        margin: 0;
+        margin: 5px 0;
         width: 99%;
         text-align: center;
         padding: 0 0 5px;
@@ -328,7 +330,8 @@ const Items =  ({ currency, pageContext, data , countr ,  location }) => {
         set_new_index(b);       
     };
     const setColor = i => set_color(color === i.color ? "all" : i.color) ;   
-
+    
+    
     const orders = data.allMongodbMyBase.nodes
         .filter(i => sale !== 100 ? i.sale > -1 : i.sale !==0 )
         .filter(i => i.item === item)
@@ -360,7 +363,7 @@ const Items =  ({ currency, pageContext, data , countr ,  location }) => {
         />
       
         <Page> 
-            
+           
             <MenuItemPage>              
                 < ItemSelect props="shoes" item_new={item} setItem={setItem} />
                 < ItemSelect props="clothing" item_new={item} setItem={setItem} />
@@ -384,6 +387,7 @@ const Items =  ({ currency, pageContext, data , countr ,  location }) => {
             {orders.filter( (i,index) => !("" + (index/10)).includes(".")).map( (i,index) => 
             <span style={{backgroundColor: index+1 === page  ? 'yellow' : 'inherit'}} onClick={()=>set_page(index+1)}>{index+1}</span>)}
         </Page>
+       
         <MenuDiv>
             <MenuItem>              
                 < ItemSelect props="shoes" item_new={item} setItem={setItem} />

@@ -29,13 +29,17 @@ const Main = () => {
           />
          
           <html lang="en" /> 
-      </Helmet>     
+      </Helmet>
+           
       <Layout set_number={set_number} >
-        <SEO title="Shoes and clothing the best of world brands for running" />       
+        <SEO 
+          title="Shoes and clothing the best of world's brands for running" 
+          description="super shoes"
+          keywords={["shoes","clothing","adidas","nike"]}
+        />       
         <Brand  number={number} />
-        <FavoriteSale />
-       
-        <Favorite />                
+        <FavoriteSale />       
+        <Favorite />              
       </Layout>
     </>     
   ) 

@@ -69,7 +69,7 @@ const DeliveryTwo = styled(Delivery)`
    
 `;
 const Img = styled.div`
-    width: 130px;
+    width: 115px;
     display: inline-block;
     background-repeat: no-repeat;
     background-position: left center;

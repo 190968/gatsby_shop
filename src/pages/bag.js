@@ -132,11 +132,12 @@ const Bag =  ({ bag, delete_from_bag, add_count, currency, delivery }) => {
                 <span style={{width:"15%"}}>Qty</span>
                 <span>Cost</span>
                 <span>Total</span>            
-            </div>       
+            </div> 
+            <h1 className="h1tobag">This is the better site for buy  shoes for run</h1>      
             {bag.length !== 0 ?  <> 
                 {bag.map((i,index) => 
                     <div className="div_bag_item" key={index}>
-                        <h1>This is better site to buy run shoes.</h1>
+                        
                         <Items 
                             style={{ backgroundImage: `
                                 url(https://myrunshop.000webhostapp.com/image/${i.brand.toLowerCase()}/${i.model}_${i.color}.jpg),

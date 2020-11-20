@@ -13,8 +13,8 @@ const DivItem = styled.div.attrs(props => ({
 }))`
    
     display: inline-block;  
-    margin: 15px 0;
-    padding-top: 20%;
+    margin: 15px 2px;
+    padding-top: 18%;
     background-color: #fff;
     background-size: 80% 60%;
     background-position: center top;
@@ -37,6 +37,19 @@ const DivItem = styled.div.attrs(props => ({
        padding-top: 32%;
       
     }
+    @media (max-width: 1000px) {
+      
+        display: ${props=>props.visible > 3 ? "none": "inline-block"};
+        width: 24%;
+        background-size: 90% 70%;
+        background-position: center -25px;
+        padding-top: 23%;
+       
+     }
+    h4 {
+        font: 300  25px/25px "Lucida Console", Courier, monospace;
+        padding: 0;
+    }
 `;
 const Gender = styled.p`
     font-size: 16px;
@@ -45,12 +58,12 @@ const Gender = styled.p`
 
 const FavoriteItems = styled.h1`
     background-image: linear-gradient(rgba(255,0,0,1), rgba(255,0,0,0));;
-    padding: 15px;
-    color: blue;
-    font-size: 1.5em;
+   
+    color: #fff;
+    font: 300  25px/50px "Lucida Console", Courier, monospace;
     margin: 0;
     @media (max-width: 580px) {
-        padding: 10px;
+       
         font-size: 1em;
     }
 `;
@@ -60,7 +73,7 @@ const DivItems = styled.div`
     flex-direction: row;
 `;
 
-const Favorite = () =>{
+const Favorite = () => {
    
     const [number, set_number] = React.useState(false);
     const data = useStaticQuery(
@@ -82,22 +95,22 @@ const Favorite = () =>{
     )
     return (
         <>
-            <FavoriteItems>The Best For Run 2020</FavoriteItems>
+            <FavoriteItems>The New Items for running in 2020</FavoriteItems>
             <DivItems>
                 {data.allDatoCmsItem.nodes.map((i,index) => 
-                <DivItem 
-                    visible={index}
-                    onClick={()=>set_number(index+1)}
-                    key={index} 
-                    brand={i.brand}
-                    color={i.color}
-                    model={i.modelItem}
-                >                    
-                    <h4 className="brand_favorite">{i.brand.toUpperCase()}</h4>
-                    <b>{i.modelItem} </b>
-                    <Gender>{i.gender}</Gender> 
-                    <Gender>{i.color}</Gender>
-                </DivItem>            
+                    <DivItem 
+                        visible={index}
+                        onClick={()=>set_number(index+1)}
+                        key={index} 
+                        brand={i.brand}
+                        color={i.color}
+                        model={i.modelItem}
+                    >                    
+                        <h4>{i.brand.toUpperCase()}</h4>
+                        <b>{i.modelItem} </b>
+                        <Gender>{i.gender}</Gender> 
+                        <Gender>{i.color}</Gender>
+                    </DivItem>            
                 )}
             </DivItems>
             {number && <Item

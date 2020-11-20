@@ -1,11 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import { Link } from "gatsby";
+import { navigate } from "gatsby";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons"
 
-const BagLink = styled(Link).attrs(props=> ({
+const BagLink = styled.p.attrs(props=> ({
     count: props.count,
 }))`
     float: right;
@@ -35,9 +35,9 @@ const BagLink = styled(Link).attrs(props=> ({
 `;
 
 const LinkToBag = ({ bag }) => {
-    return <BagLink to="/bag" count={bag.length} >
+    return <BagLink onClick={()=>navigate("/bag")} count={bag.length} >
 
-    <FontAwesomeIcon  icon={faShoppingCart} size="x" className="icon" />
+    <FontAwesomeIcon  icon={faShoppingCart} style={{width: 28, height: 28}} className="icon" />
     </BagLink>
 };        
 
