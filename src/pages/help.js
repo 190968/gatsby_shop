@@ -173,6 +173,8 @@ const Help = () => {
                         Adidas, Puma, New-balance, Nike, Reebok. All items
                         is original, not used, in the original box.
                         We selected for you the better for running.
+                        <b>100% Authentic, Guaranteed.</b>Authenticity is the foundation of our business,
+                        and every item we sell is inspected by our expert team.
                     </p>
                     <h3>Contact</h3>
                         <ul>
@@ -189,7 +191,9 @@ const Help = () => {
                             <li>Free delivery (3 days) if on item cost over <b>200$</b></li>
                         </ul>
                     <h3>Return</h3>
-                        <p>Free Return. <b>Return within 30 days</b></p>
+                        <p>Free Return.We accept returns within <b>30 business days</b> of receipt.
+                         Items must be tagged and in new/unworn condition. 
+                        </p>
             </DivAbout>
         </>    
               

@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet";
 import { useLocation } from "@reach/router";
 import { useStaticQuery, graphql } from "gatsby";
 
-const SEO = ({ title, description, image, article, keywords }) => {
+const SEO = ({ title, description, image, article, keywords,lang }) => {
   const { pathname } = useLocation()
   const { site } = useStaticQuery(query)
   const location = useLocation();
@@ -17,7 +17,7 @@ const SEO = ({ title, description, image, article, keywords }) => {
     defaultImage,
     twitterUsername,
   } = site.siteMetadata;
-
+  const canonical = location.pathname ? `${site.siteMetadata.siteUrl}${location.pathname}` : null;
   const seo = {
     title: title || defaultTitle,
     description: description || defaultDescription,
@@ -27,8 +27,29 @@ const SEO = ({ title, description, image, article, keywords }) => {
   };
 
   return (
-    <Helmet title={seo.title} titleTemplate={titleTemplate}>
+    <Helmet title={seo.title} titleTemplate={titleTemplate}
+    htmlAttributes={{
+      lang,
+    }}
+      link={
+        canonical
+          ? [
+              {
+                rel: "canonical",
+                href: canonical,
+              },
+            ]
+          : []
+      }
+    
+    >
+      <meta
+            name="viewport"
+            content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover"
+            
+          />
       <meta name="title" content={seo.title} />
+     
       <meta name="description" content={seo.description} />
       <meta name="image" content={seo.image} />
       <meta name="keywords" content={seo.keywords.join(",")} />
@@ -76,6 +97,7 @@ SEO.defaultProps = {
   description: null,
   image: null,
   article: false,
+  lang: "en"
   
 }
 

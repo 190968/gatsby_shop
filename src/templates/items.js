@@ -3,7 +3,7 @@ import "../styles/global.css";
 import {  graphql } from "gatsby";
 import Item from "../components/item";
 import { connect } from "react-redux";
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import  Layout  from "../components/layout";
 import { addBag } from "../state/app";
 import { Info } from "../components/info";
@@ -57,7 +57,7 @@ const MenuItem = styled.div`
         }
     }
        
-        font-size: 16px;
+    font:300 16px/20px 'Verdana', sans-serif;
    
 `;
 const MenuItemPage = styled(MenuItem)`
@@ -226,8 +226,8 @@ const MenuDiv = styled.div`
         z-index: 10;
         label:hover {
             background-color: #ddd;
-             padding: 5px;
-             border-radius: 5px;
+            padding: 5px;
+            border-radius: 5px;
          
         }
         @media (max-width: 1000px) {
@@ -398,7 +398,7 @@ const Items =  ({ currency, pageContext, data , countr ,  location }) => {
             <MenuItem >GENDER</MenuItem>
             <MenuItem ten >COLOR</MenuItem>
             <MenuItem >SIZE</MenuItem>
-            <MenuItem style={{paddingRight: "3px"}}> 
+            <MenuItem css={`paddingRight: "3px"`}> 
                 <Slider min={min_cost} max={max_cost} setMin={set_min} setMax={set_max} />             
             </MenuItem>            
             

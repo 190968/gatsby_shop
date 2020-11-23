@@ -13,7 +13,7 @@ export default function Layout ({ children , context_brand, context_gender, set_
   
   return (
     <div className="main_block" >
-      <Helmet>
+      {/* <Helmet>
         <meta http-equiv="Cache-control" content="public" max-age="31536000"/>
         <meta
           name="viewport"
@@ -32,7 +32,7 @@ export default function Layout ({ children , context_brand, context_gender, set_
       
         <html lang="en" />
         
-      </Helmet>
+      </Helmet> */}
       <SEO />
       <BlockPhone />
       <Header />  

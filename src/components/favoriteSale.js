@@ -141,7 +141,7 @@ export default function () {
     const newDate = data.allDatoCmsSale.nodes.slice(4-`${view}`,8-`${view}`); 
              
     return <>     
-    <H2>Favorite Sale <Link to="/all" state={{sale: 100}}> (All Sale)</Link></H2>       
+    <H2>Favorite Sale <Link to="/all" state={{sale: 100}}> (See All {`>>`})</Link></H2>       
         <AllSale >
            
             <I onClick={()=>setView(0)} left>{'<'}</I> 

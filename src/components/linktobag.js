@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import styled from "styled-components";
+import styled,{css} from "styled-components";
 import { navigate } from "gatsby";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons"
@@ -37,7 +37,7 @@ const BagLink = styled.p.attrs(props=> ({
 const LinkToBag = ({ bag }) => {
     return <BagLink onClick={()=>navigate("/bag")} count={bag.length} >
 
-    <FontAwesomeIcon  icon={faShoppingCart} style={{width: 28, height: 28}} className="icon" />
+    <FontAwesomeIcon  icon={faShoppingCart} css={`width: 28, height: 28`} className="icon" />
     </BagLink>
 };        
 

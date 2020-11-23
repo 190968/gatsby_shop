@@ -67,6 +67,7 @@ const DeliveryTwo = styled(Delivery)`
        } 
     }
    
+   
 `;
 const Img = styled.div`
     width: 115px;
@@ -123,8 +124,8 @@ const BlockPhone = ({country = "BY", setCountry,  setLocations}) => {
     },[]);
 
    
-    
-       return <>
+    return (
+            <>
                <Delivery>
                    
                     <Hi >
@@ -139,9 +140,8 @@ const BlockPhone = ({country = "BY", setCountry,  setLocations}) => {
                    
                 </Delivery>
                 <DeliveryTwo>
-                    <p>Free delivery on order over 
-                        <b>200$</b>         
-                    </p> 
+                    <p><b>Free delivery</b> on order over  200$ </p>  
+                   
                     
                    
                     
@@ -155,6 +155,8 @@ const BlockPhone = ({country = "BY", setCountry,  setLocations}) => {
                 
 
             </>
+    )    
+       
         
 
    

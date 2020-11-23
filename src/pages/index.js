@@ -13,7 +13,7 @@ const Main = () => {
   const [number, set_number] = React.useState(0); 
   return ( 
     <>
-      <Helmet>
+      {/* <Helmet>
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-177617068-1"></script>
         
           <meta
@@ -21,7 +21,7 @@ const Main = () => {
             content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover"
             
           />
-          <link rel="canonical" href="https://www.aplacadance.ru"/>
+          
           <meta
             name="description"
             content="This is shop for shoes and clothing for running favorite brands  ADIDAS,NIKE,SALOMON,PUMA,REBOOK."
@@ -30,12 +30,12 @@ const Main = () => {
          
           <html lang="en" /> 
       </Helmet>
-           
+            */}
       <Layout set_number={set_number} >
         <SEO 
           title="Shoes and clothing the best of world's brands for running" 
-          description="super shoes"
-          keywords={["shoes","clothing","adidas","nike"]}
+          description="This is shop for shoes and clothing for running favorite brands  ADIDAS,NIKE,SALOMON,PUMA,REBOOK."
+          keywords={["shoes for running men","clothing for running","adidas shoes for running","nike shoes for running"]}
         />       
         <Brand  number={number} />
         <FavoriteSale />       

@@ -128,8 +128,8 @@ const Bag =  ({ bag, delete_from_bag, add_count, currency, delivery }) => {
     return (
         <Layout set_number={set_number} title="Your bag">       
             <div className="div_bag_menu">           
-                <span style={{width:"53%"}}>Items</span>
-                <span style={{width:"15%"}}>Qty</span>
+                <span>Items</span>
+                <span>Qty</span>
                 <span>Cost</span>
                 <span>Total</span>            
             </div> 
@@ -148,7 +148,7 @@ const Bag =  ({ bag, delete_from_bag, add_count, currency, delivery }) => {
                             <P>{i.model},</P>
                             <br/>
                             <P>{i.gender}, {i.color}, size: {i.size}</P>
-                            <P onClick={()=>delete_from_bag(index)}  style={{display: "block",fontSize: "15px"}}>
+                            <P onClick={()=>delete_from_bag(index)}  css="display: block;fontSize: 15px;" >
                                 <img src="https://i.ibb.co/grVRjyB/trash.png" alt="trash" />
                                 remove
                             </P>

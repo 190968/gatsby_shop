@@ -37,18 +37,21 @@ const DivItem = styled.div.attrs(props => ({
        padding-top: 32%;
       
     }
-    @media (max-width: 1000px) {
-      
-        display: ${props=>props.visible > 3 ? "none": "inline-block"};
-        width: 24%;
-        background-size: 90% 70%;
-        background-position: center -25px;
-        padding-top: 23%;
+    @media (max-width: 1000px) {      
+        display: ${props=>props.visible > 2 ? "none": "inline-block"};
+        width: 33%;
+        background-size: 90% 50%;
+        background-position: center -20px;
+        padding-top: 20%;
        
-     }
+    }
     h4 {
-        font: 300  25px/25px "Lucida Console", Courier, monospace;
+        font: 300  calc(13px + 0.6vw)/25px "Lucida Console", Courier, monospace;
         padding: 0;
+    }
+    b {
+        font: 300  calc(10px + 0.4vw)/25px "Arial", sans-serif;
+        padding: 0; 
     }
 `;
 const Gender = styled.p`

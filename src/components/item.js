@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import { addBag } from "../state/app";
 import Linktobag from "./linktobag";
+import Sizes from "./currency";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faStar, faStarHalf } from "@fortawesome/free-solid-svg-icons"
 
@@ -68,6 +69,7 @@ const Input = styled.input`
         
     }
 `;
+
     const Images = styled.div`
         display: inline-block;
         width: 10vw;
@@ -106,7 +108,7 @@ const Item = (props) => {
     const s = (currency === 0.8) ? "€" : (currency === 1) ? "$"  : "£" ;
     const handClose = () => closeImage(false) ;
     const [ number, set_number ] = React.useState("");
-   
+    const [visible, set_size_visible] = React.useState(false);
 
     return (
         <div className="div_item">
@@ -156,7 +158,8 @@ const Item = (props) => {
                     <Size key={index} newSize={new_size} setSize={i} onClick={()=>set_size(i)}>
                         {item === 'shoes' ? `${i - 29} (${i})` : i}
                     </Size>)}
-                </p>        
+                </p> 
+                <p css="margin: 5px" onClick={()=>set_size_visible(true)}>sizing  </p>      
                 <Input type="button"
                         disabled = {!parseInt(new_size)}                        
                        
@@ -181,6 +184,8 @@ const Item = (props) => {
                     <dd>- Made in: Chine</dd>    
                 </dl>
                 
+                    
+                {visible && <Sizes set_size={set_size_visible} gender={gender} item={item}/>}    
                     
                  
            
