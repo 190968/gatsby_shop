@@ -38,7 +38,7 @@
     "gatsby-source-datocms": "^2.2.1",
     "gatsby-source-filesystem": "^2.2.2",
     "gatsby-source-mongodb": "^2.2.1",
-    "gatsby-transformer-remark": "^2.7.1",
+    "gatsby-transformer-remark": "^5.25.1",
     "node-libpng": "^0.2.13",
     "nodemailer": "^6.4.13",
     "pngquant-bin": "^4.0.0",
